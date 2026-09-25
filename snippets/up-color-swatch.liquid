@@ -1,0 +1,39 @@
+{%- doc -%}
+  Úrsula Privée · muestra de color para los selectores de variante.
+  Prioridad: 1) muestra de Shopify (option value swatch) · 2) imagen de la variante · 3) tono según el nombre real del color.
+  @param {object} value - product_option_value
+{%- enddoc -%}
+{%- liquid
+  assign upc_img = blank
+  assign upc_col = blank
+  if value.swatch.image
+    assign upc_img = value.swatch.image
+  elsif value.swatch.color
+    assign upc_col = value.swatch.color
+  elsif value.variant.featured_media
+    assign upc_img = value.variant.featured_media.preview_image
+  endif
+  if upc_img == blank and upc_col == blank
+    assign upc_n = value.name | default: value | downcase | strip
+    assign upc_map = 'blanco puro:#ffffff|blanco roto:#f2ede3|blanco:#f8f6f1|crema:#efe6d2|marfil:#f4efe1|beige:#d9c7ad|camel:#b98a57|nude:#e4c2a6|avellana:#8a6a52|chocolate:#4a2f23|marrón:#6b4631|marron:#6b4631|negro:#151515|gris niebla:#c9cacb|gris perla:#d8d8d6|gris:#9a9a9a|azul marino:#1f2a44|azul noche:#1b2340|azul cielo:#9cc7e8|azul lago:#4f8fb3|azul:#3b6fb6|aguamarina:#7fd1d0|turquesa:#3cbcb4|verde salvia:#9caf88|verde militar:#5a5f3c|verde brote:#9bc36a|verde chartreuse:#c8d94a|verde oliva:#7a7a3a|verde:#4f8a55|rosa palo:#efcfd1|rosa:#e9b3c2|fucsia:#cc3d8a|lila empolvado:#c9b6cf|lila:#c7b3dd|morado:#6b3f86|burdeos:#6d1a2a|granate:#6e1f24|rojo:#b3261e|terracota:#b86447|naranja:#e57a34|amarillo maíz:#f0c33c|amarillo mantequilla:#f3e2a0|amarillo pálido:#f5e9a8|amarillo:#f2d04b|dorado:#c9a54c|plateado:#c0c0c0' | split: '|'
+    for pair in upc_map
+      assign kv = pair | split: ':'
+      if upc_n contains kv[0]
+        assign upc_col = kv[1]
+        break
+      endif
+    endfor
+    if upc_n contains 'rayas' or upc_n contains 'estampad' or upc_n contains 'multicolor'
+      assign upc_col = 'pattern'
+    endif
+  endif
+-%}
+{%- if upc_img != blank -%}
+<span class="upv-sw upv-sw--img" aria-hidden="true">{{ upc_img | image_url: width: 64, height: 64, crop: 'top' | image_tag: alt: '', loading: 'lazy' }}</span>
+{%- elsif upc_col == 'pattern' -%}
+<span class="upv-sw upv-sw--pat" aria-hidden="true"></span>
+{%- elsif upc_col != blank -%}
+<span class="upv-sw" style="--sw:{{ upc_col }}" aria-hidden="true"></span>
+{%- else -%}
+<span class="upv-sw upv-sw--none" aria-hidden="true"></span>
+{%- endif -%}

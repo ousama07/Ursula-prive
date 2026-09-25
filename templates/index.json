@@ -1,0 +1,770 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_iLBwPd": {
+      "type": "hero",
+      "blocks": {
+        "group_mATTUY": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_U86Qji": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 0,
+                "width": "custom",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_m9AcWC": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>La elegancia no se explica, se nota.<br/></p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h2",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "{{ settings.color_palette.background }}",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_m9AcWC"
+              ]
+            },
+            "text_ebNxhf": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>No vistes para encajar, vistes para destacar. En Úrsula Privée seleccionamos cada pieza para que tu presencia se sienta antes de decir una palabra.</p>",
+                "width": "fit-content",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "{{ settings.color_palette.background }}",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "group_U86Qji",
+            "text_ebNxhf"
+          ]
+        }
+      },
+      "block_order": [
+        "group_mATTUY"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/banner_1.png",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": true,
+        "media_type_1_mobile": "image",
+        "image_1_mobile": "shopify://shop_images/banner_movil.png",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "background_color": "{{ settings.color_palette.foreground }}",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 0,
+        "padding-block-end": 31
+      }
+    },
+    "product_list_EDUBdR": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "static": true,
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_qK4EWG": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<p><em>Tu estilo habla antes que tú.</em></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_qK4EWG"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 0,
+            "background_color": "{{ settings.color_palette.color4 }}",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 10,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_hpki3q": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "group_jHUdWN": {
+              "type": "_product-card-group",
+              "name": "t:names.group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 24,
+                "padding-inline-end": 24
+              },
+              "blocks": {
+                "custom_liquid_cGRAnL": {
+                  "type": "custom-liquid",
+                  "name": "t:names.custom_liquid",
+                  "settings": {
+                    "custom_liquid": ""
+                  },
+                  "blocks": {}
+                },
+                "product_title_gH3cpy": {
+                  "type": "product-title",
+                  "name": "t:names.product_title",
+                  "settings": {
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "paragraph",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "custom_liquid_fcy8Ur": {
+                  "type": "custom-liquid",
+                  "name": "t:names.custom_liquid",
+                  "settings": {
+                    "custom_liquid": "{% comment %} Úrsula Privée – Tarjetas de producto centradas {% endcomment %}\n<style>\n  /* Centrar nombre y precio en la tarjeta */\n  product-card .product-card__content .text-block,\n  product-card .product-card__content product-price {\n    align-self: center !important;\n    align-items: center !important;\n    width: 100% !important;\n    text-align: center !important;\n  }\n\n  product-card .product-card__content .text-block > * {\n    width: 100% !important;\n    max-inline-size: 100% !important;\n    text-align: center !important;\n  }\n\n  product-card product-price [ref=\"priceContainer\"] {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    align-items: baseline;\n    gap: 0.4rem;\n  }\n\n  /* Precio actual: negrita más marcada, color normal, apenas más grande */\n  product-card product-price .price {\n    font-weight: 700;\n    font-size: 1.05em;\n  }\n</style>"
+                  },
+                  "blocks": {}
+                },
+                "price_anAima": {
+                  "type": "price",
+                  "name": "t:names.product_price",
+                  "settings": {
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "paragraph",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "text_color": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "swatches_eYcKAz": {
+                  "type": "swatches",
+                  "name": "t:names.swatches",
+                  "settings": {
+                    "product_swatches_alignment": "flex-start",
+                    "product_swatches_alignment_mobile": "flex-start",
+                    "hide_padding": false,
+                    "product_swatches_padding_top": 4,
+                    "product_swatches_padding_bottom": 0,
+                    "product_swatches_padding_left": 0,
+                    "product_swatches_padding_right": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "custom_liquid_cGRAnL",
+                "product_title_gH3cpy",
+                "custom_liquid_fcy8Ur",
+                "price_anAima",
+                "swatches_eYcKAz"
+              ]
+            }
+          },
+          "block_order": [
+            "product_card_gallery_hpki3q",
+            "group_jHUdWN"
+          ]
+        }
+      },
+      "name": "t:names.product_list",
+      "settings": {
+        "collection": "portada",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 12,
+        "rows_gap": 12,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 48,
+        "padding-block-end": 64
+      }
+    },
+    "media_with_content_LfPdEJ": {
+      "type": "media-with-content",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "video",
+            "link": "",
+            "video": "shopify://files/videos/9998209638602698-de5b146b-921e-4f8b-9995-511ecff42968-video_kling_turbo_932531298731294788_1790361397223247715.mp4",
+            "video_loop": true,
+            "video_autoplay": true,
+            "image_position": "cover",
+            "video_position": "cover"
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 24
+          },
+          "blocks": {
+            "custom_liquid_yQVUjp": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{%- comment -%}\n  ÚRSULA PRIVÉE · NUESTRA HISTORIA (versión solo texto, para ir junto al vídeo\n  en la sección \"Multimedia con texto\"). Este comentario no pesa nada.\n{%- endcomment -%}\n{%- liquid\n  assign ua_t1 = 'Nuestra'\n  assign ua_t2 = 'historia'\n  assign ua_q = 'Tu estilo habla antes que tú.'\n  assign ua_txt = ua_t1 | append: ua_t2 | append: ua_q\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&text={{ ua_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<div class=\"uat\"><p class=\"uat-e\">Sobre nosotros</p><h2>{{ ua_t1 }} <em>{{ ua_t2 }}</em></h2><p>Úrsula Privée nació de una idea sencilla: vestir bien no debería depender de la ocasión, sino de cómo quieres sentirte.</p><p>Elegimos cada pieza una a una, pensando en mujeres reales: en cómo cae el tejido, en si favorece de verdad y en si te acompañará igual en una comida entre semana que en una boda de verano.</p><p class=\"uat-q\">{{ ua_q }}</p><a class=\"uat-c\" href=\"{{ routes.all_products_collection_url }}\">Descubre la colección<svg viewBox=\"0 0 24 9\" aria-hidden=\"true\"><path d=\"M0 4.5h22M18.5 1l3.5 3.5L18.5 8\" fill=\"none\" stroke=\"currentColor\"/></svg></a></div>\n<style>.uat{--k:#1c1a17;--m:#6f655c;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);max-width:440px;color:var(--k);text-align:left}.uat-e{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.uat-e:before{content:'';width:28px;height:1px;background:currentColor}.uat h2{margin:0 0 18px;font:300 clamp(2.4rem,4vw,3.6rem)/1 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.uat p{margin:0 0 12px;font-size:15px;line-height:1.7;color:#4a433d}.uat .uat-q{display:flex;align-items:center;gap:14px;margin:20px 0 0;font:italic 400 1.35rem/1.2 var(--f);color:var(--k)}.uat-q:before{content:'';flex:none;width:28px;height:1px;background:currentColor}.uat-c{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding-bottom:6px;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;color:var(--k);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/28px 1px no-repeat;transition:background-size .9s var(--e)}.uat-c svg{width:24px;height:9px;transition:transform .9s var(--e)}.uat-c:focus-visible{outline:2px solid var(--k);outline-offset:4px}@media(hover:hover){.uat-c:hover{background-size:100% 1px}.uat-c:hover svg{transform:translateX(5px)}}</style>"
+              },
+              "blocks": {}
+            },
+            "image_y4ApqF": {
+              "type": "image",
+              "name": "t:names.image",
+              "disabled": true,
+              "settings": {
+                "link": "",
+                "image_ratio": "adapt",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Hf79zK": {
+              "type": "text",
+              "name": "t:names.heading",
+              "disabled": true,
+              "settings": {
+                "text": "<h2>Productivity Essentials</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_jxGhdJ": {
+              "type": "text",
+              "disabled": true,
+              "settings": {
+                "text": "<p>Objects that partner with your digital tools so you can focus on your most important work.</p>",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_zg4nUF": {
+              "type": "button",
+              "disabled": true,
+              "settings": {
+                "label": "Shop Now",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button-secondary",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "custom_liquid_yQVUjp",
+            "image_y4ApqF",
+            "text_Hf79zK",
+            "text_jxGhdJ",
+            "button_zg4nUF"
+          ]
+        }
+      },
+      "name": "t:names.media_with_text",
+      "settings": {
+        "media_position": "left",
+        "media_width": "medium",
+        "media_height": "50svh",
+        "section_width": "page-width",
+        "extend_media": true,
+        "background_color": "{{ settings.color_palette.color3 }}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "collection_list_xpBxCm": {
+      "type": "collection-list",
+      "blocks": {
+        "custom_liquid_3MpCYE": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- comment -%}\n  ÚRSULA PRIVÉE · COLECCIONES (versión compacta)\n  Este comentario lo elimina Shopify antes de enviar la página: no pesa nada.\n\n  ENCUADRE — un valor por colección, en el mismo orden que ce_h:\n    ce_p  → tablet y escritorio · ce_pm → móvil\n    \"horizontal vertical\": 0% izquierda/arriba · 50% centro · 100% derecha/abajo\n{%- endcomment -%}\n{%- liquid\n  assign ce_h = 'mosaicos|conjuntos-americanas|vestidos' | split: '|'\n  assign ce_p = '50% 20%|50% 20%|20% 30%' | split: '|'\n  assign ce_pm = '50% 20%|50% 16%|10% 50%' | split: '|'\n  capture ce_txt\n    echo 'Colecciones'\n    for h in ce_h\n      echo collections[h].title\n    endfor\n  endcapture\n-%}\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&text={{ ce_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<section class=\"ce\" aria-labelledby=\"ce-h-{{ section.id }}\"><div class=\"ce-w\"><header class=\"ce-h\"><p class=\"ce-e\">Descubre nuestra selección</p><h2 id=\"ce-h-{{ section.id }}\">Colecciones</h2><span class=\"ce-r\" aria-hidden=\"true\"></span></header><div class=\"ce-g\">\n{%- for h in ce_h -%}\n{%- liquid\n  assign c = collections[h]\n  assign img = c.featured_image\n  assign i = forloop.index0\n  assign alt = img.alt\n  if alt == blank\n    assign alt = 'Colección ' | append: c.title | append: ' de Úrsula Privée'\n  endif\n  case forloop.index\n    when 1\n      assign sz = '(min-width:750px) 55vw, 100vw'\n    when 2\n      assign sz = '(min-width:750px) 45vw, 100vw'\n    else\n      assign sz = '(min-width:1400px) 1320px, 100vw'\n  endcase\n  assign tp = c.title | split: '/'\n-%}\n{%- if c.id != blank and img != blank -%}\n<a class=\"ce-i ce-i{{ forloop.index }}\" href=\"{{ c.url }}\" style=\"--p:{{ ce_p[i] }};--pm:{{ ce_pm[i] }}\">{{ img | image_url: width: 1600 | image_tag: widths: '400,600,800,1100,1600', sizes: sz, alt: alt, loading: 'lazy' }}<div class=\"ce-c\"><p class=\"ce-n\" aria-hidden=\"true\">0{{ forloop.index }}<i></i>Colección</p><h3 class=\"ce-t\">{% if tp.size > 1 %}{{ tp[0] | strip }}<em>/&nbsp;{{ tp[1] | strip }}</em>{% else %}{{ c.title }}{% endif %}</h3><span class=\"ce-b\">Descubrir<svg viewBox=\"0 0 24 9\" aria-hidden=\"true\"><path d=\"M0 4.5h22M18.5 1l3.5 3.5L18.5 8\" fill=\"none\" stroke=\"currentColor\"/></svg></span></div></a>\n{%- endif -%}\n{%- endfor -%}\n</div></div></section>\n<style>.ce{--k:#1c1a17;--m:#6f655c;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);padding:clamp(28px,4vw,56px) 0;color:var(--k)}.ce *{box-sizing:border-box}.ce-w{max-width:1320px;margin:0 auto;padding:0 clamp(16px,3vw,48px)}.ce-h{text-align:center;margin-bottom:clamp(20px,3vw,36px)}.ce-e{margin:0 0 8px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.ce-h h2{margin:0;font:300 clamp(2.4rem,5vw,4.2rem)/1 var(--f);color:var(--k)}.ce-r{display:block;width:48px;height:1px;margin:14px auto 0;background:var(--k);opacity:.45}.ce-g{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.ce-i{position:relative;display:block;overflow:hidden;isolation:isolate;border-radius:16px;aspect-ratio:1;background:#efe9e1;color:var(--k);text-decoration:none}.ce-i2{aspect-ratio:4/5}.ce-i img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pm);transition:transform 1.4s var(--e)}.ce-i:after{content:'';position:absolute;inset:0;background:radial-gradient(110% 65% at 0 100%,rgb(248 245 240/.8),rgb(248 245 240/.35) 40%,transparent 65%);pointer-events:none}.ce-c{position:absolute;left:0;bottom:0;z-index:1;max-width:60%;padding:clamp(16px,2.4vw,32px)}.ce-n{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--m)}.ce-n i{width:26px;height:1px;background:currentColor;transition:width 1s var(--e)}.ce-t{margin:0;font:400 clamp(1.6rem,6.5vw,2rem)/1 var(--f);color:var(--k)}.ce-t em{display:block;font-weight:300}.ce-b{display:inline-flex;align-items:center;gap:10px;margin-top:12px;padding-bottom:4px;font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .9s var(--e)}.ce-b svg{width:24px;height:9px;transition:transform .9s var(--e)}.ce-i:focus-visible{outline:2px solid var(--k);outline-offset:3px}@media(min-width:750px){.ce-g{grid-template-columns:55fr 45fr;gap:clamp(12px,1.4vw,20px)}.ce-i2{aspect-ratio:auto}.ce-i3{grid-column:1/-1;aspect-ratio:16/9}.ce-i img{object-position:var(--p)}.ce-t{font-size:clamp(1.9rem,3vw,2.5rem)}.ce-c{max-width:50%}}@media(min-width:990px){.ce-i3{aspect-ratio:21/9}}@media(hover:hover){.ce-i:hover img{transform:scale(1.035)}.ce-i:hover .ce-n i{width:44px}.ce-i:hover .ce-b{background-size:100% 1px}.ce-i:hover svg{transform:translateX(5px)}}@media(prefers-reduced-motion:reduce){.ce *{transition:none!important}}</style>"
+          },
+          "blocks": {}
+        },
+        "group_mfTd9p": {
+          "type": "group",
+          "name": "t:names.header",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 16,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 16,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "custom_liquid_9UmRYH": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{%- comment -%}\n  ÚRSULA PRIVÉE · PREGUNTAS FRECUENTES\n  Este comentario lo elimina Shopify: no pesa nada.\n\n  EDITAR PREGUNTAS: cada pregunta va en el bloque ufq_data con este formato\n    Categoría|Pregunta|Respuesta en HTML\n  y separada de la siguiente por ~~\n  (No uses los caracteres | ni ~~ dentro de los textos.)\n  [EMAIL] se sustituye por el email de ufq_email y [PAGOS] por los iconos de pago activos.\n{%- endcomment -%}\n{%- capture ufq_data -%}\nEnvíos|¿Cuánto tarda en llegar mi pedido?|<p>Tu pedido llegará en un plazo de <strong>7 a 15 días</strong> desde que lo confirmas. Enviamos desde nuestro almacén en Asia, por lo que en temporadas de mucha demanda el transporte puede retrasarse algún día.</p>\n~~Envíos|¿Cuánto cuesta el envío?|<p>Nada. El <strong>envío es gratuito</strong> en todos los pedidos a España, sin importe mínimo.</p>\n~~Envíos|¿Cómo puedo seguir mi pedido?|<p>Cuando tu pedido salga del almacén te enviaremos un email con el <strong>número de seguimiento</strong>. Si no lo encuentras, revisa la carpeta de spam o escríbenos a [EMAIL].</p>\n~~Envíos|Han pasado 15 días y mi pedido no ha llegado. ¿Qué hago?|<p>Escríbenos a [EMAIL] con tu número de pedido y lo revisaremos contigo al momento.</p>\n~~Pedidos y pagos|¿Qué métodos de pago aceptáis?|<p>Puedes pagar con cualquiera de estos métodos. El pago es 100&nbsp;% seguro y se realiza en una pasarela cifrada: nunca vemos ni guardamos los datos de tu tarjeta.</p>[PAGOS]\n~~Pedidos y pagos|¿Puedo modificar o cancelar mi pedido?|<p>Los pedidos se procesan de forma automática, así que escríbenos <strong>lo antes posible</strong> a [EMAIL]. Si todavía no ha salido, lo cambiamos o cancelamos y te reembolsamos el importe íntegro. Si ya está en camino, podrás devolverlo cuando lo recibas.</p>\n~~Tallas|¿Cómo sé qué talla elegir?|<p>En cada prenda tienes una <strong>guía de tallas</strong> con las medidas de pecho, cintura y cadera. Si dudas entre dos tallas, te recomendamos elegir la mayor. Si quieres, escríbenos con tus medidas y te asesoramos.</p>\n~~Devoluciones|¿Puedo devolver una prenda?|<p>Sí. Tienes <strong>30 días</strong> desde que recibes tu pedido para devolverlo. La prenda debe estar sin usar, sin lavar, con sus etiquetas y en su embalaje original.</p>\n~~Devoluciones|¿Cómo hago una devolución?|<p>Escríbenos a [EMAIL] con tu número de pedido, tu nombre y el motivo. Te responderemos con la dirección y los pasos a seguir. <strong>No envíes el paquete a la dirección del remitente</strong> sin haber recibido antes nuestras indicaciones.</p>\n~~Devoluciones|¿Quién paga el envío de la devolución?|<p>Los gastos de envío de la devolución corren a cargo de la clienta. Como la dirección de devolución es nuestro almacén en Asia, el coste puede ser elevado, así que te recomendamos revisar bien la guía de tallas antes de comprar. Si la prenda llega defectuosa o equivocada, los gastos los asumimos nosotros.</p>\n~~Devoluciones|¿Cuándo recibiré mi reembolso?|<p>En un máximo de <strong>14 días</strong>, por el mismo método de pago que usaste. Podemos esperar a recibir la prenda, o el justificante de que la has enviado, antes de hacerlo.</p>\n~~Devoluciones|Mi prenda ha llegado defectuosa o no es la que pedí|<p>Lo sentimos mucho. Escríbenos a [EMAIL] con tu número de pedido y unas fotos, y te enviaremos una reposición o te devolveremos el dinero, <strong>sin ningún coste para ti</strong>. Además, todas nuestras prendas tienen 3 años de garantía legal.</p>\n~~Contacto|¿Cómo puedo contactar con vosotros?|<p>Escríbenos a [EMAIL] y te responderemos lo antes posible. Si tu consulta es sobre un pedido, incluye el número de pedido para que podamos ayudarte más rápido.</p>\n{%- endcapture -%}\n{%- capture ufq_pay -%}{%- if shop.enabled_payment_types.size > 0 -%}<ul class=\"ufq-pay\" aria-label=\"Métodos de pago\">{%- for t in shop.enabled_payment_types -%}<li>{{ t | payment_type_svg_tag }}</li>{%- endfor -%}</ul>{%- endif -%}{%- endcapture -%}\n{%- liquid\n  assign ufq_email = 'support@ursulaprive.com'\n  assign ufq_mail = '<a href=\"mailto:' | append: ufq_email | append: '\">' | append: ufq_email | append: '</a>'\n  assign ufq_items = ufq_data | strip | split: '~~'\n  assign ufq_txt = 'Preguntasfrecuentes'\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&text={{ ufq_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<section class=\"ufq\" aria-labelledby=\"ufq-{{ section.id }}\"><div class=\"ufq-w\">\n<header class=\"ufq-h\"><p class=\"ufq-e\">Ayuda</p><h2 id=\"ufq-{{ section.id }}\">Preguntas <em>frecuentes</em></h2><p class=\"ufq-s\">Todo lo que necesitas saber sobre envíos, tallas y devoluciones. ¿No encuentras tu respuesta? Escríbenos a {{ ufq_mail }}</p></header>\n<div class=\"ufq-l\">\n{%- assign ufq_cat = '' -%}\n{%- for it in ufq_items -%}\n{%- assign p = it | strip | split: '|' -%}\n{%- if p[0] != ufq_cat -%}{%- assign ufq_cat = p[0] -%}<p class=\"ufq-c\">{{ ufq_cat }}</p>{%- endif -%}\n<details class=\"ufq-i\" name=\"ufq-{{ section.id }}\"><summary>{{ p[1] }}<span aria-hidden=\"true\"></span></summary><div class=\"ufq-a\">{{ p[2] | replace: '[EMAIL]', ufq_mail | replace: '[PAGOS]', ufq_pay }}</div></details>\n{%- endfor -%}\n</div></div></section>\n<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{%- for it in ufq_items -%}{%- assign p = it | strip | split: '|' -%}{\"@type\":\"Question\",\"name\":{{ p[1] | json }},\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":{{ p[2] | replace: '[EMAIL]', ufq_email | replace: '[PAGOS]', '' | replace: '&nbsp;', ' ' | strip_html | strip | json }}}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]}</script>\n<style>.ufq{--k:#1c1a17;--m:#6f655c;--c:#efe8df;--l:#e3dbd0;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);interpolate-size:allow-keywords;padding:clamp(40px,6vw,88px) 0;color:var(--k)}.ufq *{box-sizing:border-box}.ufq-w{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,40px)}.ufq-e{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.ufq-e:before{content:'';width:28px;height:1px;background:currentColor}.ufq h2{margin:0;font:300 clamp(2.6rem,8vw,4.4rem)/.95 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.ufq-s{margin:18px 0 0;max-width:40ch;font-size:15px;line-height:1.7;color:#4a433d}.ufq a{color:var(--k);text-underline-offset:3px;text-decoration-thickness:1px}.ufq-c{margin:32px 0 6px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--m)}.ufq-c:first-child{margin-top:0}.ufq-i{border-bottom:1px solid var(--l)}.ufq-i summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;cursor:pointer;font-size:16px;line-height:1.4;color:var(--k)}.ufq-i summary::-webkit-details-marker{display:none}.ufq-i summary span{position:relative;flex:none;width:12px;height:12px}.ufq-i summary span:before,.ufq-i summary span:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:var(--k);transition:transform .5s var(--e)}.ufq-i summary span:after{transform:rotate(90deg)}.ufq-i[open] summary span:after{transform:rotate(0)}.ufq-i summary:focus-visible{outline:2px solid var(--k);outline-offset:4px}.ufq-i::details-content{block-size:0;overflow:hidden;transition:block-size .5s var(--e),content-visibility .5s allow-discrete}.ufq-i[open]::details-content{block-size:auto}.ufq-a{padding:0 32px 20px 0;font-size:15px;line-height:1.75;color:#4a433d}.ufq-a p{margin:0}.ufq-pay{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}.ufq-pay svg{display:block;width:38px;height:24px}@media(min-width:990px){.ufq-w{grid-template-columns:minmax(0,4fr) minmax(0,7fr);column-gap:clamp(48px,6vw,96px)}.ufq-h{position:sticky;top:32px;align-self:start}}@media(hover:hover){.ufq-i summary:hover{color:var(--m)}}@media(prefers-reduced-motion:reduce){.ufq *{transition:none!important}}</style>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "custom_liquid_9UmRYH"
+          ]
+        },
+        "static-collection-card": {
+          "type": "_collection-card",
+          "name": "t:names.collection_card",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "placement": "on_image",
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "flex-start",
+            "collection_card_gap": 8,
+            "background_color": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 10
+          },
+          "blocks": {
+            "collection_title_zyBdAJ": {
+              "type": "collection-title",
+              "name": "t:names.collection_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h5",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "text_color": "{{ settings.color_palette.foreground }}",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "static": true,
+              "settings": {
+                "image_ratio": "portrait",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "collection_title_zyBdAJ"
+          ]
+        }
+      },
+      "block_order": [
+        "custom_liquid_3MpCYE",
+        "group_mfTd9p"
+      ],
+      "custom_css": [],
+      "name": "t:names.collection_list",
+      "settings": {
+        "collection_list": [
+          "mosaicos",
+          "conjuntos-americanas",
+          "vestidos"
+        ],
+        "layout_type": "bento",
+        "carousel_on_mobile": true,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 16,
+        "bento_gap": 12,
+        "rows_gap": 16,
+        "max_collections": 4,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 12,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 48,
+        "padding-block-end": 64
+      }
+    }
+  },
+  "order": [
+    "hero_iLBwPd",
+    "product_list_EDUBdR",
+    "media_with_content_LfPdEJ",
+    "collection_list_xpBxCm"
+  ]
+}
