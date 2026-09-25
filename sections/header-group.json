@@ -17,7 +17,7 @@
         "announcement_mxxhta": {
           "type": "_announcement",
           "settings": {
-            "text": "! <strong>ENVÍO GRATUITO</strong> en toda España &nbsp;!&nbsp;",
+            "text": "¡<strong>ENVÍO GRATUITO</strong> en toda España!",
             "link": "",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
@@ -32,7 +32,6 @@
       "block_order": [
         "announcement_mxxhta"
       ],
-      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
@@ -131,7 +130,7 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "",
+        "custom_liquid": "{%- comment -%} Úrsula Privée · cuenta atrás de la barra de anuncios (hasta las 23:59:59, hora de España). Se reinicia cada día. {%- endcomment -%}\n<style>.up-cd{display:inline-block;margin-inline-start:10px;padding:4px 10px;border-radius:999px;background:#1c1a17;color:#fff;font-size:.82em;font-weight:600;letter-spacing:.08em;line-height:1.2;font-variant-numeric:tabular-nums;vertical-align:middle;white-space:nowrap}.announcement-bar__text:has(.up-cd){line-height:1.6}@media(max-width:420px){.announcement-bar__text:has(.up-cd){font-size:13px}.up-cd{margin-inline-start:6px;padding:3px 8px}}</style>\n<script>(()=>{const p=document.querySelector('.announcement-bar__text');if(!p||p.querySelector('.up-cd'))return;const c=document.createElement('span');c.className='up-cd';c.setAttribute('role','timer');p.append(' ',c);const z=n=>String(n).padStart(2,'0');const f=new Intl.DateTimeFormat('es-ES',{timeZone:'Europe/Madrid',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'});const t=()=>{const[h,m,s]=f.format(new Date()).split(':').map(Number);let r=86400-(h*3600+m*60+s);c.textContent=z(Math.floor(r/3600))+':'+z(Math.floor(r%3600/60))+':'+z(r%60)};t();setInterval(t,1000)})();</script>",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
