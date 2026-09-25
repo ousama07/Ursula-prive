@@ -281,7 +281,7 @@
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
                     "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
+                    "gap": 8,
                     "width": "fill",
                     "custom_width": 100,
                     "width_mobile": "fill",
@@ -346,8 +346,8 @@
                         "placeholder": "",
                         "padding-block-start": 20,
                         "padding-block-end": 20,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
+                        "padding-inline-start": 8,
+                        "padding-inline-end": 8
                       },
                       "blocks": {
                         "icon_CbKB4N": {
@@ -394,136 +394,6 @@
                         "text_ktmjan"
                       ]
                     },
-                    "group_YAKm6a": {
-                      "type": "group",
-                      "name": "t:names.group",
-                      "settings": {
-                        "content_direction": "column",
-                        "vertical_on_mobile": true,
-                        "horizontal_alignment": "flex-start",
-                        "vertical_alignment": "center",
-                        "align_baseline": false,
-                        "horizontal_alignment_flex_direction_column": "center",
-                        "vertical_alignment_flex_direction_column": "center",
-                        "gap": 8,
-                        "width": "fill",
-                        "custom_width": 100,
-                        "width_mobile": "fill",
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "background_media": "none",
-                        "background_color": "{{ settings.color_palette.color4 }}",
-                        "video_position": "cover",
-                        "background_image_position": "cover",
-                        "toggle_overlay": false,
-                        "overlay_color": "#00000026",
-                        "overlay_style": "solid",
-                        "gradient_direction": "to top",
-                        "border": "none",
-                        "border_width": 1,
-                        "border_opacity": 100,
-                        "border_color": "",
-                        "border_radius": 10,
-                        "link": "",
-                        "open_in_new_tab": false,
-                        "placeholder": "",
-                        "padding-block-start": 20,
-                        "padding-block-end": 20,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {
-                        "icon_AXg4Q3": {
-                          "type": "icon",
-                          "name": "t:names.icon",
-                          "settings": {
-                            "icon": "stopwatch",
-                            "width": 20,
-                            "link": "",
-                            "open_in_new_tab": false,
-                            "icon_color": ""
-                          },
-                          "blocks": {}
-                        },
-                        "text_DRMYrh": {
-                          "type": "text",
-                          "name": "t:names.heading",
-                          "settings": {
-                            "text": "<p>Entrega en 7-15 días</p>",
-                            "width": "100%",
-                            "max_width": "normal",
-                            "alignment": "center",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "text_color": "",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "corner_radius": 0,
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
-                            "padding-inline-start": 0,
-                            "padding-inline-end": 0
-                          },
-                          "blocks": {}
-                        }
-                      },
-                      "block_order": [
-                        "icon_AXg4Q3",
-                        "text_DRMYrh"
-                      ]
-                    }
-                  },
-                  "block_order": [
-                    "group_aXnYyb",
-                    "group_YAKm6a"
-                  ]
-                },
-                "group_e7FkRj": {
-                  "type": "group",
-                  "name": "t:names.row",
-                  "settings": {
-                    "content_direction": "row",
-                    "vertical_on_mobile": false,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "background_media": "none",
-                    "background_color": "",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_color": "",
-                    "border_radius": 0,
-                    "link": "",
-                    "open_in_new_tab": false,
-                    "placeholder": "",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
                     "group_NGJDpt": {
                       "type": "group",
                       "name": "t:names.group",
@@ -560,8 +430,8 @@
                         "placeholder": "",
                         "padding-block-start": 20,
                         "padding-block-end": 20,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
+                        "padding-inline-start": 8,
+                        "padding-inline-end": 8
                       },
                       "blocks": {
                         "icon_bjBHgQ": {
@@ -644,8 +514,8 @@
                         "placeholder": "",
                         "padding-block-start": 20,
                         "padding-block-end": 20,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
+                        "padding-inline-start": 8,
+                        "padding-inline-end": 8
                       },
                       "blocks": {
                         "icon_twG6iJ": {
@@ -694,14 +564,14 @@
                     }
                   },
                   "block_order": [
+                    "group_aXnYyb",
                     "group_NGJDpt",
                     "group_73gqqM"
                   ]
                 }
               },
               "block_order": [
-                "group_XqRYxC",
-                "group_e7FkRj"
+                "group_XqRYxC"
               ]
             },
             "up_description": {
@@ -1011,11 +881,23 @@
         "padding-block-start": 56,
         "padding-block-end": 72
       }
+    },
+    "up_faq": {
+      "type": "custom-liquid",
+      "name": "Preguntas frecuentes",
+      "settings": {
+        "custom_liquid": "{%- capture ufq_data -%}\nEnvíos|¿Cuánto tarda en llegar mi pedido?|<p>Tu pedido llegará en un plazo de <strong>7 a 15 días</strong> desde que lo confirmas. Enviamos desde nuestro almacén en Asia, por lo que en temporadas de mucha demanda el transporte puede retrasarse algún día.</p>\n~~Envíos|¿Cuánto cuesta el envío?|<p>Nada. El <strong>envío es gratuito</strong> en todos los pedidos a España, sin importe mínimo.</p>\n~~Envíos|¿Cómo puedo seguir mi pedido?|<p>Cuando tu pedido salga del almacén te enviaremos un email con el <strong>número de seguimiento</strong>. Si no lo encuentras, revisa la carpeta de spam o escríbenos a [EMAIL].</p>\n~~Envíos|Han pasado 15 días y mi pedido no ha llegado. ¿Qué hago?|<p>Escríbenos a [EMAIL] con tu número de pedido y lo revisaremos contigo al momento.</p>\n~~Pedidos y pagos|¿Qué métodos de pago aceptáis?|<p>Puedes pagar con cualquiera de estos métodos. El pago es 100&nbsp;% seguro y se realiza en una pasarela cifrada: nunca vemos ni guardamos los datos de tu tarjeta.</p>[PAGOS]\n~~Pedidos y pagos|¿Puedo modificar o cancelar mi pedido?|<p>Los pedidos se procesan de forma automática, así que escríbenos <strong>lo antes posible</strong> a [EMAIL]. Si todavía no ha salido, lo cambiamos o cancelamos y te reembolsamos el importe íntegro. Si ya está en camino, podrás devolverlo cuando lo recibas.</p>\n~~Tallas|¿Cómo sé qué talla elegir?|<p>En cada prenda tienes una <strong>guía de tallas</strong> con las medidas de pecho, cintura y cadera. Si dudas entre dos tallas, te recomendamos elegir la mayor. Si quieres, escríbenos con tus medidas y te asesoramos.</p>\n~~Devoluciones|¿Puedo devolver una prenda?|<p>Sí. Tienes <strong>30 días</strong> desde que recibes tu pedido para devolverlo. La prenda debe estar sin usar, sin lavar, con sus etiquetas y en su embalaje original.</p>\n~~Devoluciones|¿Cómo hago una devolución?|<p>Escríbenos a [EMAIL] con tu número de pedido, tu nombre y el motivo. Te responderemos con la dirección y los pasos a seguir. <strong>No envíes el paquete a la dirección del remitente</strong> sin haber recibido antes nuestras indicaciones.</p>\n~~Devoluciones|¿Quién paga el envío de la devolución?|<p>Los gastos de envío de la devolución corren a cargo de la clienta. Como la dirección de devolución es nuestro almacén en Asia, el coste puede ser elevado, así que te recomendamos revisar bien la guía de tallas antes de comprar. Si la prenda llega defectuosa o equivocada, los gastos los asumimos nosotros.</p>\n~~Devoluciones|¿Cuándo recibiré mi reembolso?|<p>En un máximo de <strong>14 días</strong>, por el mismo método de pago que usaste. Podemos esperar a recibir la prenda, o el justificante de que la has enviado, antes de hacerlo.</p>\n~~Devoluciones|Mi prenda ha llegado defectuosa o no es la que pedí|<p>Lo sentimos mucho. Escríbenos a [EMAIL] con tu número de pedido y unas fotos, y te enviaremos una reposición o te devolveremos el dinero, <strong>sin ningún coste para ti</strong>. Además, todas nuestras prendas tienen 3 años de garantía legal.</p>\n~~Contacto|¿Cómo puedo contactar con vosotros?|<p>Escríbenos a [EMAIL] y te responderemos lo antes posible. Si tu consulta es sobre un pedido, incluye el número de pedido para que podamos ayudarte más rápido.</p>\n{%- endcapture -%}\n{%- capture ufq_pay -%}{%- if shop.enabled_payment_types.size > 0 -%}<ul class=\"ufq-pay\" aria-label=\"Métodos de pago\">{%- for t in shop.enabled_payment_types -%}<li>{{ t | payment_type_svg_tag }}</li>{%- endfor -%}</ul>{%- endif -%}{%- endcapture -%}\n{%- liquid\n  assign ufq_email = 'support@ursulaprive.com'\n  assign ufq_mail = '<a href=\"mailto:' | append: ufq_email | append: '\">' | append: ufq_email | append: '</a>'\n  assign ufq_items = ufq_data | strip | split: '~~'\n  assign ufq_txt = 'Preguntasfrecuentes'\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&text={{ ufq_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<section class=\"ufq\" aria-labelledby=\"ufq-{{ section.id }}\"><div class=\"ufq-w\">\n<header class=\"ufq-h\"><p class=\"ufq-e\">Ayuda</p><h2 id=\"ufq-{{ section.id }}\">Preguntas <em>frecuentes</em></h2><p class=\"ufq-s\">Todo lo que necesitas saber sobre envíos, tallas y devoluciones. ¿No encuentras tu respuesta? Escríbenos a {{ ufq_mail }}</p></header>\n<div class=\"ufq-l\">\n{%- assign ufq_cat = '' -%}\n{%- for it in ufq_items -%}\n{%- assign p = it | strip | split: '|' -%}\n{%- if p[0] != ufq_cat -%}{%- assign ufq_cat = p[0] -%}<p class=\"ufq-c\">{{ ufq_cat }}</p>{%- endif -%}\n<details class=\"ufq-i\" name=\"ufq-{{ section.id }}\"><summary>{{ p[1] }}<span aria-hidden=\"true\"></span></summary><div class=\"ufq-a\">{{ p[2] | replace: '[EMAIL]', ufq_mail | replace: '[PAGOS]', ufq_pay }}</div></details>\n{%- endfor -%}\n</div></div></section>\n<style>.ufq{--k:#1c1a17;--m:#6f655c;--c:#efe8df;--l:#e3dbd0;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);interpolate-size:allow-keywords;padding:clamp(40px,6vw,88px) 0;color:var(--k)}.ufq *{box-sizing:border-box}.ufq-w{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,40px)}.ufq-e{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.ufq-e:before{content:'';width:28px;height:1px;background:currentColor}.ufq h2{margin:0;font:300 clamp(2.6rem,8vw,4.4rem)/.95 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.ufq-s{margin:18px 0 0;max-width:40ch;font-size:15px;line-height:1.7;color:#4a433d}.ufq a{color:var(--k);text-underline-offset:3px;text-decoration-thickness:1px}.ufq-c{margin:32px 0 6px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--m)}.ufq-c:first-child{margin-top:0}.ufq-i{border-bottom:1px solid var(--l)}.ufq-i summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;cursor:pointer;font-size:16px;line-height:1.4;color:var(--k)}.ufq-i summary::-webkit-details-marker{display:none}.ufq-i summary span{position:relative;flex:none;width:12px;height:12px}.ufq-i summary span:before,.ufq-i summary span:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:var(--k);transition:transform .5s var(--e)}.ufq-i summary span:after{transform:rotate(90deg)}.ufq-i[open] summary span:after{transform:rotate(0)}.ufq-i summary:focus-visible{outline:2px solid var(--k);outline-offset:4px}.ufq-i::details-content{block-size:0;overflow:hidden;transition:block-size .5s var(--e),content-visibility .5s allow-discrete}.ufq-i[open]::details-content{block-size:auto}.ufq-a{padding:0 32px 20px 0;font-size:15px;line-height:1.75;color:#4a433d}.ufq-a p{margin:0}.ufq-pay{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}.ufq-pay svg{display:block;width:38px;height:24px}@media(min-width:990px){.ufq-w{grid-template-columns:minmax(0,4fr) minmax(0,7fr);column-gap:clamp(48px,6vw,96px)}.ufq-h{position:sticky;top:32px;align-self:start}}@media(hover:hover){.ufq-i summary:hover{color:var(--m)}}@media(prefers-reduced-motion:reduce){.ufq *{transition:none!important}}</style>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
     "section_NaqU9X",
-    "up_recommendations"
+    "up_recommendations",
+    "up_faq"
   ]
 }
