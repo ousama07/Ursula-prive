@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "sections": {
     "section": {
       "type": "section",
@@ -54,7 +53,7 @@
               "type": "contact-form-submit-button",
               "static": true,
               "settings": {
-                "label": "Send",
+                "label": "Enviar",
                 "style_class": "button",
                 "width": "fit-content",
                 "custom_width": 100,

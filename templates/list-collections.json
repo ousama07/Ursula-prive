@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "collection_list_KreTXe": {
       "type": "main-collection-list",
@@ -51,7 +52,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h1>Collections</h1>",
+                "text": "<h1>Colecciones</h1>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",

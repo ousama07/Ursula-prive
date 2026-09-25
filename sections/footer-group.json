@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
@@ -71,7 +70,7 @@
                 "custom_button_border": "{{ settings.color_palette.background }}",
                 "link_text_color": "",
                 "display_type": "arrow",
-                "label": "Sign up",
+                "label": "Suscribirme",
                 "integrated_button": false,
                 "button_type_preset": "paragraph",
                 "padding-block-start": 0,
@@ -106,7 +105,7 @@
           "type": "menu",
           "settings": {
             "menu": "footer",
-            "heading": "Shop",
+            "heading": "Tienda",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -126,7 +125,7 @@
           "type": "menu",
           "settings": {
             "menu": "",
-            "heading": "Help",
+            "heading": "Ayuda",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -147,7 +146,7 @@
           "name": "t:names.menu",
           "settings": {
             "menu": "",
-            "heading": "About",
+            "heading": "Úrsula Privée",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -205,7 +204,7 @@
             "text_jBr8nr": {
               "type": "text",
               "settings": {
-                "text": "<p>Stay Connected</p>",
+                "text": "<p>Síguenos</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
