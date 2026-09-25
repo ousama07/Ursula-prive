@@ -45,6 +45,13 @@
 .product-details .add-to-cart-button{min-height:56px;letter-spacing:.14em;text-transform:uppercase;font-size:13px;transition:background-color .4s var(--up-e),transform .4s var(--up-e)}
 .product-details .add-to-cart-button:not([disabled]):hover{transform:translateY(-1px)}
 .product-details .add-to-cart-button[disabled]{opacity:.55}
+/* ===== Galería de la ficha: flechas visibles en ordenador y móvil ===== */
+.media-gallery slideshow-arrows.up-arrows{padding-inline:12px;mix-blend-mode:normal}
+.media-gallery slideshow-arrows.up-arrows .slideshow-control{--slideshow-controls-icon:14px;width:42px;height:42px;min-width:0;min-height:0;padding:0!important;opacity:1;pointer-events:auto;border-radius:50%;background:rgb(255 255 255/.88);color:var(--up-ink);box-shadow:0 6px 18px -8px rgb(28 26 23/.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background-color .35s var(--up-e),transform .35s var(--up-e)}
+.media-gallery slideshow-arrows.up-arrows .slideshow-control:hover{background:#fff}
+.media-gallery slideshow-arrows.up-arrows .slideshow-control:active{transform:scale(.94)}
+.media-gallery slideshow-arrows.up-arrows .slideshow-control:focus-visible{outline:2px solid var(--up-ink);outline-offset:2px}
+@media(max-width:749px){.media-gallery slideshow-arrows.up-arrows{padding-inline:8px}.media-gallery slideshow-arrows.up-arrows .slideshow-control{width:40px;height:40px;--slideshow-controls-icon:12px}}
 /* ===== Tarjetas de producto (coherentes con la portada) ===== */
 product-card .product-card__content .text-block,product-card .product-card__content product-price{align-self:center!important;align-items:center!important;width:100%!important;text-align:center!important}
 product-card .product-card__content .text-block>*{width:100%!important;max-inline-size:100%!important;text-align:center!important}

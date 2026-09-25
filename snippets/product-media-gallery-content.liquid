@@ -441,7 +441,7 @@
 
     {% if render_slideshow_arrows %}
       {% capture slideshow_arrows %}
-        {% render 'slideshow-arrows', class: 'mobile:hidden', icon_style: block_settings.icons_style %}
+        {% render 'slideshow-arrows', class: 'up-arrows', icon_style: block_settings.icons_style, icon_shape: 'circle' %}
       {% endcapture %}
     {% endif %}
 
