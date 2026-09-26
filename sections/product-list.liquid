@@ -84,8 +84,7 @@
     %}
     {% render 'depth-carousel',
       list_items_array: list_items_array,
-      initial_index: depth_initial_index,
-      section_id: section.id
+      initial_index: depth_initial_index
     %}
   {% else %}
     {% render 'resource-list',
@@ -158,7 +157,7 @@
       "type": "product",
       "id": "initial_product",
       "label": "Producto centrado al cargar",
-      "visible_if": "{{ section.settings.layout_type == 'depth_carousel' }}"
+      "info": "Solo para el diseño Carrusel con profundidad"
     },
     {
       "type": "checkbox",
