@@ -378,7 +378,7 @@
                   "type": "price",
                   "name": "t:names.product_price",
                   "settings": {
-                    "show_sale_price_first": true,
+                    "show_sale_price_first": false,
                     "show_installments": false,
                     "show_tax_info": false,
                     "type_preset": "paragraph",
@@ -430,7 +430,8 @@
       "name": "t:names.product_list",
       "settings": {
         "collection": "portada",
-        "layout_type": "grid",
+        "layout_type": "depth_carousel",
+        "initial_product": "lucia-vestido-estampado",
         "carousel_on_mobile": false,
         "max_products": 8,
         "columns": 4,

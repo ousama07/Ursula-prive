@@ -69,14 +69,34 @@
     assign list_items_array = list_items | strip | split: '<!--@list/split-->'
   %}
 
-  {% render 'resource-list',
-    list_items: list_items,
-    list_items_array: list_items_array,
-    settings: section.settings,
-    slide_count: max_items,
-    content_type: 'products',
-    test_id: 'resource-list-grid'
-  %}
+  {% if section.settings.layout_type == 'depth_carousel' %}
+    {% liquid
+      # Úrsula Privée – posición del producto que aparece centrado al cargar
+      assign depth_initial_index = 0
+      if section.settings.initial_product != blank and section.settings.collection != blank
+        for product in section.settings.collection.products limit: max_items
+          if product.id == section.settings.initial_product.id
+            assign depth_initial_index = forloop.index0
+            break
+          endif
+        endfor
+      endif
+    %}
+    {% render 'depth-carousel',
+      list_items_array: list_items_array,
+      initial_index: depth_initial_index,
+      section_id: section.id
+    %}
+  {% else %}
+    {% render 'resource-list',
+      list_items: list_items,
+      list_items_array: list_items_array,
+      settings: section.settings,
+      slide_count: max_items,
+      content_type: 'products',
+      test_id: 'resource-list-grid'
+    %}
+  {% endif %}
 
   <div
     class="section-resource-list__content"
@@ -126,9 +146,19 @@
         {
           "value": "editorial",
           "label": "t:options.editorial"
+        },
+        {
+          "value": "depth_carousel",
+          "label": "Carrusel con profundidad"
         }
       ],
       "default": "grid"
+    },
+    {
+      "type": "product",
+      "id": "initial_product",
+      "label": "Producto centrado al cargar",
+      "visible_if": "{{ section.settings.layout_type == 'depth_carousel' }}"
     },
     {
       "type": "checkbox",

@@ -1,0 +1,319 @@
+{%- doc -%}
+  Úrsula Privée – Carrusel de productos con efecto de profundidad (tarjeta central delante, laterales detrás).
+  Reutiliza las tarjetas de producto existentes (imagen, badge "Oferta", nombre, precios, enlaces).
+
+  @param {string[]} list_items_array - Tarjetas de producto ya renderizadas
+  @param {number} [initial_index] - Posición del producto que se muestra en el centro al cargar
+  @param {string} section_id - ID de la sección
+{%- enddoc -%}
+
+<depth-carousel
+  class="depth-carousel"
+  data-initial-index="{{ initial_index | default: 0 }}"
+  aria-roledescription="carrusel"
+  aria-label="Productos destacados"
+>
+  <div class="depth-carousel__stage" ref="stage">
+    {%- for item in list_items_array -%}
+      <div
+        class="depth-carousel__slide{% if forloop.index0 == initial_index %} is-active{% endif %}"
+        data-index="{{ forloop.index0 }}"
+        role="group"
+        aria-roledescription="producto"
+        aria-label="{{ forloop.index }} / {{ list_items_array.size }}"
+      >
+        {{ item }}
+      </div>
+    {%- endfor -%}
+
+    {%- if list_items_array.size > 1 -%}
+      <button
+        type="button"
+        class="depth-carousel__arrow depth-carousel__arrow--prev"
+        data-action="prev"
+        aria-label="{{ 'accessibility.slideshow_previous' | t }}"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button
+        type="button"
+        class="depth-carousel__arrow depth-carousel__arrow--next"
+        data-action="next"
+        aria-label="{{ 'accessibility.slideshow_next' | t }}"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    {%- endif -%}
+  </div>
+
+  {%- if list_items_array.size > 1 -%}
+    <div class="depth-carousel__dots">
+      {%- for item in list_items_array -%}
+        <button
+          type="button"
+          class="depth-carousel__dot"
+          data-dot="{{ forloop.index0 }}"
+          aria-label="{{ forloop.index }} / {{ list_items_array.size }}"
+        ></button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</depth-carousel>
+
+<script src="{{ 'depth-carousel.js' | asset_url }}" type="module" defer></script>
+
+{% stylesheet %}
+  .depth-carousel {
+    --dc-card-w: min(70%, 320px);
+    --dc-shift: 0.62;
+    --dc-side-scale: 0.84;
+    --dc-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --dc-duration: 620ms;
+    --dc-sale-red: #c62828;
+
+    display: block;
+    width: 100%;
+    min-width: 0;
+    position: relative;
+  }
+
+  .depth-carousel__stage {
+    position: relative;
+    display: grid;
+    align-items: start;
+    justify-items: center;
+    overflow: hidden;
+    overflow: clip;
+    padding-block: 12px 28px;
+    touch-action: pan-y pinch-zoom;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* En móvil el carrusel llega hasta los bordes de la pantalla para que se vean los laterales */
+  @media screen and (max-width: 749px) {
+    .depth-carousel__stage {
+      margin-inline: calc(var(--page-margin, 16px) * -1);
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .depth-carousel {
+      --dc-card-w: 44%;
+      --dc-shift: 0.64;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .depth-carousel {
+      --dc-card-w: min(34%, 430px);
+      --dc-shift: 0.68;
+    }
+  }
+
+  .depth-carousel__slide {
+    grid-area: 1 / 1;
+    width: var(--dc-card-w);
+    min-width: 0;
+    position: relative;
+    transform-origin: 50% 40%;
+    will-change: transform, opacity;
+    transition:
+      transform var(--dc-duration) var(--dc-ease),
+      opacity var(--dc-duration) var(--dc-ease),
+      filter var(--dc-duration) var(--dc-ease);
+  }
+
+  /* Estado inicial antes de que cargue el JS: solo la tarjeta inicial visible */
+  depth-carousel:not([data-ready]) .depth-carousel__slide {
+    opacity: 0;
+    transition: none;
+  }
+
+  depth-carousel:not([data-ready]) .depth-carousel__slide.is-active {
+    opacity: 1;
+  }
+
+  .depth-carousel.is-dragging .depth-carousel__slide {
+    transition: none;
+  }
+
+  .depth-carousel__slide > .resource-list__item,
+  .depth-carousel__slide product-card {
+    width: 100%;
+  }
+
+  /* Tarjeta central: delante, con sombra suave */
+  .depth-carousel__slide product-card .product-card__content {
+    transition: box-shadow var(--dc-duration) var(--dc-ease);
+  }
+
+  .depth-carousel__slide.is-active product-card .product-card__content {
+    box-shadow: 0 22px 44px -26px rgb(0 0 0 / 0.35), 0 6px 14px -10px rgb(0 0 0 / 0.12);
+  }
+
+  /* Tarjetas laterales: detrás, más discretas; su texto se atenúa para no competir */
+  .depth-carousel__slide:not(.is-active) {
+    cursor: pointer;
+  }
+
+  /* Velo que "empuja" las tarjetas laterales hacia el fondo sin transparentar la central */
+  .depth-carousel__slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    border-radius: 10px;
+    background: rgb(var(--color-background-rgb, 255 255 255));
+    opacity: var(--dc-veil, 0);
+    pointer-events: none;
+    transition: opacity var(--dc-duration) var(--dc-ease);
+  }
+
+  .depth-carousel.is-dragging .depth-carousel__slide::after {
+    transition: none;
+  }
+
+  .depth-carousel__slide:not(.is-active) :is(quick-add-component, .quick-add) {
+    display: none !important;
+  }
+
+  /* Las fotos de cada tarjeta no se deslizan por separado: el gesto cambia de vestido */
+  .depth-carousel .card-gallery slideshow-slides {
+    overflow: hidden !important;
+    scroll-snap-type: none;
+  }
+
+  .depth-carousel .card-gallery :is(slideshow-arrows, slideshow-controls) {
+    display: none !important;
+  }
+
+  .depth-carousel img {
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+
+  /* Precios: tachado a la izquierda, actual a la derecha y en rojo (mismo tamaño y grosor) */
+  .depth-carousel product-price .price,
+  .depth-carousel .price-item__group.price {
+    color: var(--dc-sale-red);
+  }
+
+  /* Flechas */
+  .depth-carousel__arrow {
+    position: absolute;
+    z-index: 200;
+    top: calc(12px + var(--dc-arrow-top, 38%));
+    translate: 0 -50%;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border: 1px solid rgb(0 0 0 / 0.08);
+    border-radius: 50%;
+    background: rgb(255 255 255 / 0.86);
+    color: #1a1a1a;
+    box-shadow: 0 6px 18px -8px rgb(0 0 0 / 0.3);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition:
+      background-color 200ms ease,
+      transform 200ms ease,
+      box-shadow 200ms ease;
+  }
+
+  .depth-carousel__arrow::before {
+    /* Área táctil más amplia que el círculo visible */
+    content: '';
+    position: absolute;
+    inset: -8px;
+  }
+
+  .depth-carousel__arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .depth-carousel__arrow:hover {
+    background: #fff;
+    box-shadow: 0 8px 22px -8px rgb(0 0 0 / 0.35);
+  }
+
+  .depth-carousel__arrow:active {
+    transform: scale(0.94);
+  }
+
+  .depth-carousel__arrow:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  .depth-carousel__arrow--prev {
+    left: max(8px, calc(50% - var(--dc-card-w) / 2 - 64px));
+  }
+
+  .depth-carousel__arrow--next {
+    right: max(8px, calc(50% - var(--dc-card-w) / 2 - 64px));
+  }
+
+  @media screen and (max-width: 749px) {
+    .depth-carousel__arrow {
+      width: 42px;
+      height: 42px;
+    }
+
+    .depth-carousel__arrow--prev {
+      left: 6px;
+    }
+
+    .depth-carousel__arrow--next {
+      right: 6px;
+    }
+  }
+
+  /* Indicadores */
+  .depth-carousel__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    margin-top: 4px;
+  }
+
+  .depth-carousel__dot {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .depth-carousel__dot::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 2px;
+    border-radius: 2px;
+    background: rgb(0 0 0 / 0.2);
+    transition:
+      width 400ms var(--dc-ease),
+      background-color 400ms var(--dc-ease);
+  }
+
+  .depth-carousel__dot[aria-current='true']::after {
+    width: 22px;
+    background: rgb(0 0 0 / 0.75);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .depth-carousel {
+      --dc-duration: 1ms;
+    }
+  }
+{% endstylesheet %}
