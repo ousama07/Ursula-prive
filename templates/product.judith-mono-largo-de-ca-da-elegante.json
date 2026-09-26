@@ -128,7 +128,8 @@
             "price_a7krng": {
               "type": "price",
               "settings": {
-                "show_sale_price_first": true,
+                "show_sale_price_first": false,
+                "show_savings": true,
                 "show_installments": true,
                 "show_tax_info": true,
                 "type_preset": "h4",
