@@ -431,7 +431,6 @@
       "settings": {
         "collection": "portada",
         "layout_type": "depth_carousel",
-        "initial_product": "lucia-vestido-estampado",
         "carousel_on_mobile": false,
         "max_products": 8,
         "columns": 4,
@@ -446,7 +445,8 @@
         "gap": 28,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 48,
-        "padding-block-end": 64
+        "padding-block-end": 64,
+        "initial_product": "lucia-vestido-estampado"
       }
     },
     "media_with_content_LfPdEJ": {
