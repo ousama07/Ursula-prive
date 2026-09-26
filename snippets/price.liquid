@@ -5,6 +5,7 @@
   @param {product} product_resource - The product to render
   @param {boolean} [show_unit_price] - Whether to show the unit price
   @param {boolean} [show_sale_price_first] - Whether to show the sale price first
+  @param {boolean} [show_savings] - Úrsula Privée: muestra "Ahorras X€" y "Por tiempo limitado" junto al precio
 {%- enddoc -%}
 
 {% render 'price-styles' %}
@@ -19,6 +20,13 @@
   assign show_compare_price = false
   if compare_at_price > price
     assign show_compare_price = true
+  endif
+
+  # Úrsula Privée – ahorro calculado para cada producto/variante (precio anterior - precio actual)
+  assign show_savings = show_savings | default: false
+  assign savings_amount = 0
+  if show_compare_price
+    assign savings_amount = compare_at_price | minus: price
   endif
 
   if product_resource == blank
@@ -62,11 +70,13 @@
 
   # Format all prices
   if use_currency
+    assign savings = savings_amount | money_with_currency
     assign price = price | money_with_currency
     assign compare_at_price = compare_at_price | money_with_currency
     assign price_min = price_min | money_with_currency
     assign price_max = price_max | money_with_currency
   else
+    assign savings = savings_amount | money
     assign price = price | money
     assign compare_at_price = compare_at_price | money
     assign price_min = price_min | money
@@ -74,7 +84,7 @@
   endif
 -%}
 
-<div ref="priceContainer">
+<div ref="priceContainer"{% if show_savings %} class="price--with-savings"{% endif %}>
   {% if has_volume_pricing %}
     {% comment %} Volume pricing display {% endcomment %}
     {% if show_compare_price %}
@@ -114,6 +124,15 @@
         ><bdi>{{ price | default: '&nbsp;' }}</bdi></span
       >
     {% endif %}
+    {%- if show_savings and show_compare_price and savings_amount > 0 -%}
+      <span class="price-savings">
+        <span class="price-savings__amount">Ahorras <bdi>{{ savings }}</bdi></span>
+        <span class="price-savings__note">
+          <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor"/><path d="M6 3.2V6l1.9 1.2" fill="none" stroke="currentColor" stroke-linecap="round"/></svg>
+          Por tiempo limitado
+        </span>
+      </span>
+    {%- endif -%}
   {% endif %}
   {%- if selected_variant.unit_price and show_unit_price %}
     {%- liquid
@@ -134,3 +153,90 @@
     {{- 'content.volume_pricing_available' | t -}}
   </small>
 {%- endif -%}
+
+{% stylesheet %}
+  /* Úrsula Privée – precio tachado · precio actual en rojo · ahorro en verde */
+  .price--with-savings {
+    --price-sale-red: #c62828;
+    --price-savings-green: #1f7a4d;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.45em;
+    row-gap: 10px;
+    max-width: 100%;
+  }
+
+  .price--with-savings .price {
+    color: var(--price-sale-red);
+  }
+
+  .price-savings {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-inline-start: 0.4em;
+    font-family: var(--font-body--family);
+    font-style: normal;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .price-savings__amount {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgb(31 122 77 / 0.1);
+    box-shadow: inset 0 0 0 1px rgb(31 122 77 / 0.14);
+    color: var(--price-savings-green);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .price-savings__note {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding-inline-start: 12px;
+    color: rgb(var(--color-foreground-rgb, 0 0 0) / 0.55);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .price-savings__note svg {
+    flex: none;
+    width: 11px;
+    height: 11px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .price--with-savings {
+      row-gap: 8px;
+    }
+
+    .price-savings {
+      margin-inline-start: 0.25em;
+    }
+
+    .price-savings__amount {
+      padding: 5px 10px;
+      font-size: 0.875rem;
+    }
+
+    .price-savings__note {
+      padding-inline-start: 10px;
+      font-size: 0.625rem;
+      letter-spacing: 0.12em;
+    }
+  }
+{% endstylesheet %}
