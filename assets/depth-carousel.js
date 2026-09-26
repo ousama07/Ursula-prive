@@ -69,8 +69,54 @@ class DepthCarousel extends HTMLElement {
 
   goTo(index) {
     if (!Number.isFinite(index)) return;
+    const before = this.slides.map((_, i) => this.offsetOf(i));
     this.active = ((index % this.count) + this.count) % this.count;
+
+    // Tarjetas que dan la vuelta (p. ej. de la izquierda a la derecha con pocas tarjetas):
+    // se recolocan sin animación fuera de la vista para que entren desde su lado, sin cruzar por detrás.
+    if (this.hasAttribute('data-ready') && this.shift) {
+      const wrapped = this.slides.filter((_, i) => Math.abs(this.offsetOf(i) - before[i]) > 1);
+      if (wrapped.length) {
+        wrapped.forEach((slide) => {
+          const d = this.offsetOf(parseInt(slide.dataset.index, 10));
+          const start = d + (d < 0 ? -1 : 1);
+          const { transform } = this.placement(start);
+          slide.style.transition = 'none';
+          slide.style.transform = transform;
+          slide.style.opacity = '0';
+        });
+        void this.stage.offsetWidth;
+        wrapped.forEach((slide) => (slide.style.transition = ''));
+      }
+    }
     this.layout();
+  }
+
+  /** Posición, escala y opacidad de una tarjeta según su distancia (d) a la central */
+  placement(d) {
+    const shift = this.shift;
+    const sideScale = this.sideScale;
+    const a = Math.abs(d);
+    const sign = d < 0 ? -1 : 1;
+    let x;
+    let scale;
+    let opacity;
+    if (a <= 1) {
+      x = a * shift;
+      scale = 1 - (1 - sideScale) * a;
+      opacity = 1;
+    } else {
+      const b = Math.min(a - 1, 1.5);
+      x = shift + b * shift * 0.55;
+      scale = sideScale - 0.1 * Math.min(b, 1);
+      opacity = Math.max(0, 1 - b * 1.4);
+    }
+    return {
+      transform: `translate3d(${(sign * x).toFixed(2)}px, 0, 0) scale(${scale.toFixed(4)})`,
+      opacity,
+      veil: 0.48 * Math.min(a, 1),
+      z: Math.round(100 - a * 10),
+    };
   }
 
   /** Distancia circular más corta entre una tarjeta y la activa */
@@ -91,38 +137,22 @@ class DepthCarousel extends HTMLElement {
     const sideScale = parseFloat(styles.getPropertyValue('--dc-side-scale')) || 0.84;
     const shift = width * shiftFactor;
     this.shift = shift;
+    this.sideScale = sideScale;
 
-    // Flechas centradas en la foto (imagen cuadrada = ancho de la tarjeta)
-    const gallery = this.slides[this.active].querySelector('.card-gallery');
-    const arrowTop = gallery ? gallery.offsetHeight / 2 : width / 2;
+    // Flechas centradas en la foto
+    const activeSlide = this.slides[this.active];
+    const gallery = activeSlide.querySelector('.card-gallery, [data-dc-media]');
+    const arrowTop = gallery ? gallery.offsetHeight / 2 : activeSlide.offsetHeight / 2;
     this.stage.style.setProperty('--dc-arrow-top', `${arrowTop}px`);
 
     const dragOffset = dragPx / shift;
 
     this.slides.forEach((slide, index) => {
-      const d = this.offsetOf(index) + dragOffset;
-      const a = Math.abs(d);
-      const sign = d < 0 ? -1 : 1;
-
-      let x;
-      let scale;
-      let opacity;
-      if (a <= 1) {
-        x = a * shift;
-        scale = 1 - (1 - sideScale) * a;
-        opacity = 1;
-      } else {
-        const b = Math.min(a - 1, 1.5);
-        x = shift + b * shift * 0.55;
-        scale = sideScale - 0.1 * Math.min(b, 1);
-        opacity = Math.max(0, 1 - b * 1.4);
-      }
-      const veil = 0.48 * Math.min(a, 1);
-
-      slide.style.transform = `translate3d(${(sign * x).toFixed(2)}px, 0, 0) scale(${scale.toFixed(4)})`;
+      const { transform, opacity, veil, z } = this.placement(this.offsetOf(index) + dragOffset);
+      slide.style.transform = transform;
       slide.style.opacity = opacity.toFixed(3);
       slide.style.setProperty('--dc-veil', veil.toFixed(3));
-      slide.style.zIndex = String(Math.round(100 - a * 10));
+      slide.style.zIndex = String(z);
 
       const isActive = index === this.active;
       const isHidden = Math.abs(this.offsetOf(index)) > 1;
