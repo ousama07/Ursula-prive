@@ -162,7 +162,7 @@
 
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     column-gap: 0.45em;
     row-gap: 10px;
     max-width: 100%;
@@ -178,6 +178,7 @@
     align-items: flex-start;
     gap: 6px;
     margin-inline-start: 0.4em;
+    margin-block-start: max(0px, calc((1lh - 27px) / 2));
     font-family: var(--font-body--family);
     font-style: normal;
     line-height: 1;
