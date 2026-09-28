@@ -1,6 +1,6 @@
 {%- doc -%}
   Úrsula Privée · muestra de color para los selectores de variante.
-  Prioridad: 1) muestra de Shopify (option value swatch) · 2) imagen de la variante · 3) tono según el nombre real del color.
+  Prioridad: 1) muestra de Shopify (option value swatch) · 2) tono según el nombre real del color · 3) imagen de la variante (solo si el color no se reconoce).
   @param {object} value - product_option_value
 {%- enddoc -%}
 {%- liquid
@@ -10,8 +10,6 @@
     assign upc_img = value.swatch.image
   elsif value.swatch.color
     assign upc_col = value.swatch.color
-  elsif value.variant.featured_media
-    assign upc_img = value.variant.featured_media.preview_image
   endif
   if upc_img == blank and upc_col == blank
     assign upc_n = value.name | default: value | downcase | strip
@@ -26,6 +24,9 @@
     if upc_n contains 'rayas' or upc_n contains 'estampad' or upc_n contains 'multicolor'
       assign upc_col = 'pattern'
     endif
+  endif
+  if upc_img == blank and upc_col == blank and value.variant.featured_media
+    assign upc_img = value.variant.featured_media.preview_image
   endif
 -%}
 {%- if upc_img != blank -%}
