@@ -1,0 +1,101 @@
+{%- comment -%}
+  Tarjeta de reseña para la sección "Opiniones Úrsula" (up-social-proof).
+  Parámetros:
+  - b: el bloque de reseña
+  - i: índice del bloque (para abrir el detalle)
+  - hidden: true en las copias del carrusel infinito (no accesibles)
+  - current_id: id del producto de la página actual (o 0)
+{%- endcomment -%}
+{%- liquid
+  assign s = b.settings
+  assign is_current = false
+  if s.product != blank and s.product.id == current_id
+    assign is_current = true
+  endif
+  assign has_media = false
+  if s.image != blank or s.video != blank
+    assign has_media = true
+  endif
+  assign initial = s.name | strip | slice: 0 | upcase
+
+  assign fit_parts = ''
+  if s.size_bought != blank
+    assign fit_parts = fit_parts | append: 'Talla ' | append: s.size_bought | append: '|'
+  endif
+  if s.height != blank
+    assign fit_parts = fit_parts | append: 'Mide ' | append: s.height | append: '|'
+  endif
+  case s.fit
+    when 'small'
+      assign fit_parts = fit_parts | append: 'Tira a pequeña|'
+    when 'perfect'
+      assign fit_parts = fit_parts | append: 'Talla perfecta|'
+    when 'large'
+      assign fit_parts = fit_parts | append: 'Tira a grande|'
+  endcase
+  assign fit_list = fit_parts | split: '|'
+-%}
+<article
+  class="usp-card{% if has_media %} usp-card--media{% endif %}"
+  data-usp-open="{{ i }}"
+  {% if hidden %}
+    aria-hidden="true" inert
+  {% else %}
+    {{ b.shopify_attributes }}
+  {% endif %}
+>
+  <div class="usp-card__top">
+    {% render 'usp-stars', rating: s.rating, size: 15 %}
+    {%- if s.verified -%}
+      <span class="usp-badge">
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Compra verificada
+      </span>
+    {%- endif -%}
+  </div>
+
+  {%- if s.title != blank -%}
+    <h3 class="usp-card__title">{{ s.title | escape }}</h3>
+  {%- endif -%}
+
+  {%- if s.text != blank -%}
+    <p class="usp-card__text">{{ s.text | escape | newline_to_br }}</p>
+  {%- endif -%}
+
+  {%- if fit_list.size > 0 -%}
+    <p class="usp-card__fit">{{ fit_list | join: ' · ' }}</p>
+  {%- endif -%}
+
+  <div class="usp-card__foot">
+    <span class="usp-avatar{% if s.image != blank %} usp-avatar--img{% endif %}" aria-hidden="true">
+      {%- if s.image != blank -%}
+        {{ s.image | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', width: 44, height: 44 }}
+      {%- else -%}
+        {{ initial | default: '♡' }}
+      {%- endif -%}
+    </span>
+    <span class="usp-card__who">
+      <strong>{{ s.name | escape }}</strong>
+      {%- if s.city != blank or s.date != blank -%}
+        <span>
+          {{- s.city | escape -}}
+          {%- if s.city != blank and s.date != blank %} · {% endif -%}
+          {{- s.date | escape -}}
+        </span>
+      {%- endif -%}
+    </span>
+    {%- if is_current -%}
+      <span class="usp-card__tag">De esta prenda</span>
+    {%- elsif s.product != blank and s.product.featured_image != blank -%}
+      <span class="usp-card__prod" title="{{ s.product.title | escape }}">
+        {{ s.product.featured_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', width: 40, height: 50 }}
+      </span>
+    {%- endif -%}
+  </div>
+
+  <button type="button" class="usp-card__more" data-usp-open="{{ i }}">
+    {%- if has_media -%}Ver foto{%- else -%}Leer entera{%- endif -%}
+    <span class="usp-visually-hidden"> — opinión de {{ s.name | escape }}</span>
+    <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 11L11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</article>

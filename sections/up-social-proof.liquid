@@ -1,0 +1,1665 @@
+{%- comment -%}
+  Opiniones Úrsula — sección de social proof hecha a medida para Úrsula Privée.
+  - Nota media, barras de estrellas y medidor de talla se CALCULAN solos a partir de las reseñas que añadas.
+  - Las reseñas de la prenda que se está viendo salen primero.
+  - Las reseñas con foto o vídeo forman la galería "Así les queda".
+  - Sin reseñas, en la tienda solo se ven las garantías y el botón (en el editor verás un aviso).
+{%- endcomment -%}
+
+{%- liquid
+  assign current_id = 0
+  if product
+    assign current_id = product.id
+  endif
+
+  assign first_ids = ''
+  assign rest_ids = ''
+  for block in section.blocks
+    if block.settings.text == blank and block.settings.title == blank
+      continue
+    endif
+    if section.settings.prioritize_current and block.settings.product != blank and block.settings.product.id == current_id
+      assign first_ids = first_ids | append: forloop.index0 | append: ','
+    else
+      assign rest_ids = rest_ids | append: forloop.index0 | append: ','
+    endif
+  endfor
+  assign order_str = first_ids | append: rest_ids
+  assign order = order_str | split: ','
+  assign review_count = order.size
+
+  assign sum = 0
+  assign c1 = 0
+  assign c2 = 0
+  assign c3 = 0
+  assign c4 = 0
+  assign c5 = 0
+  assign verified_count = 0
+  assign media_count = 0
+  assign fit_small = 0
+  assign fit_true = 0
+  assign fit_large = 0
+
+  for idx in order
+    assign bi = idx | plus: 0
+    assign b = section.blocks[bi]
+    assign r = b.settings.rating | plus: 0
+    assign sum = sum | plus: r
+    case r
+      when 1
+        assign c1 = c1 | plus: 1
+      when 2
+        assign c2 = c2 | plus: 1
+      when 3
+        assign c3 = c3 | plus: 1
+      when 4
+        assign c4 = c4 | plus: 1
+      else
+        assign c5 = c5 | plus: 1
+    endcase
+    if b.settings.verified
+      assign verified_count = verified_count | plus: 1
+    endif
+    if b.settings.image != blank or b.settings.video != blank
+      assign media_count = media_count | plus: 1
+    endif
+    case b.settings.fit
+      when 'small'
+        assign fit_small = fit_small | plus: 1
+      when 'perfect'
+        assign fit_true = fit_true | plus: 1
+      when 'large'
+        assign fit_large = fit_large | plus: 1
+    endcase
+  endfor
+
+  if review_count > 0
+    assign avg = sum | times: 1.0 | divided_by: review_count | round: 1
+    assign avg_display = avg | append: '' | replace: '.', ','
+    assign high = c4 | plus: c5
+    assign high_pct = high | times: 100 | divided_by: review_count | floor
+  endif
+
+  assign fit_total = fit_small | plus: fit_true | plus: fit_large
+  if fit_total > 0
+    assign fit_pos = fit_true | times: 50
+    assign fit_large_w = fit_large | times: 100
+    assign fit_pos = fit_pos | plus: fit_large_w | divided_by: fit_total | round
+    assign fit_true_pct = fit_true | times: 100 | divided_by: fit_total | floor
+    if fit_pos < 35
+      assign fit_label = 'Tira a pequeña'
+    elsif fit_pos > 65
+      assign fit_label = 'Tira a grande'
+    else
+      assign fit_label = 'Fiel a la talla'
+    endif
+  endif
+
+  assign rows = 1
+  if review_count >= 6
+    assign rows = 2
+  endif
+
+  assign ss = section.settings
+-%}
+
+<usp-reviews
+  class="usp{% if request.design_mode %} usp--editor{% endif %}"
+  id="usp-{{ section.id }}"
+  style="
+    --usp-bg-top: {{ ss.bg_top }};
+    --usp-bg-bottom: {{ ss.bg_bottom }};
+    --usp-ink: {{ ss.ink }};
+    --usp-ink-rgb: {{ ss.ink.red }}, {{ ss.ink.green }}, {{ ss.ink.blue }};
+    --usp-card: {{ ss.card_bg }};
+    --usp-accent: {{ ss.accent }};
+    --usp-accent-rgb: {{ ss.accent.red }}, {{ ss.accent.green }}, {{ ss.accent.blue }};
+    --usp-pt: {{ ss.padding_top }}px;
+    --usp-pb: {{ ss.padding_bottom }}px;
+  "
+>
+  <div class="usp__inner">
+    {%- if review_count > 0 -%}
+      {%- comment -%} ============ CABECERA + PANEL DE NOTA ============ {%- endcomment -%}
+      <header class="usp__head" id="opiniones">
+        <div class="usp__intro usp-reveal">
+          {%- if ss.eyebrow != blank -%}
+            <p class="usp__eyebrow"><span class="usp__dot" aria-hidden="true"></span>{{ ss.eyebrow }}</p>
+          {%- endif -%}
+          <h2 class="usp__title">{{ ss.heading }}</h2>
+          {%- if ss.subheading != blank -%}
+            <p class="usp__sub">{{ ss.subheading }}</p>
+          {%- endif -%}
+
+          <div class="usp__chips">
+            {%- if review_count > 1 -%}
+              <span class="usp__chip"><strong>{{ high_pct }}%</strong> la valora con 4 o 5 estrellas</span>
+            {%- endif -%}
+            {%- if media_count > 0 -%}
+              <span class="usp__chip"><strong>{{ media_count }}</strong> {% if media_count == 1 %}opinión{% else %}opiniones{% endif %} con foto</span>
+            {%- endif -%}
+          </div>
+        </div>
+
+        {%- if ss.show_score -%}
+          <div class="usp__score usp-reveal">
+            <div class="usp__score-top">
+              <span class="usp__score-num">{{ avg_display }}</span>
+              <div class="usp__score-meta">
+                {%- assign score_label = avg_display | append: ' de 5 estrellas' -%}
+                {% render 'usp-stars', rating: avg, size: 22, label: score_label %}
+                <span class="usp__score-count">
+                  {{ review_count }}
+                  {% if review_count == 1 %}opinión{% else %}opiniones{% endif %}
+                  {%- if verified_count == review_count %} verificadas{% endif -%}
+                </span>
+              </div>
+            </div>
+
+            {%- if ss.show_bars -%}
+              <ul class="usp__bars" aria-label="Reparto de valoraciones">
+                {%- for n in (1..5) reversed -%}
+                  {%- liquid
+                    case n
+                      when 5
+                        assign cn = c5
+                      when 4
+                        assign cn = c4
+                      when 3
+                        assign cn = c3
+                      when 2
+                        assign cn = c2
+                      else
+                        assign cn = c1
+                    endcase
+                    assign w = cn | times: 100 | divided_by: review_count | floor
+                  -%}
+                  <li>
+                    <span class="usp__bar-lbl">{{ n }}<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6l2.84 6.02 6.6.8-4.87 4.53 1.25 6.53L12 17.27 6.18 20.48l1.25-6.53L2.56 9.42l6.6-.8z"/></svg></span>
+                    <span class="usp__bar"><span class="usp__bar-fill" style="--w: {{ w }}%; --d: {{ forloop.index0 | times: 90 }}ms;"></span></span>
+                    <span class="usp__bar-num">{{ cn }}</span>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+
+            {%- if ss.show_fit and fit_total > 0 -%}
+              <div class="usp__fit">
+                <div class="usp__fit-head">
+                  <span>¿Cómo queda la talla?</span>
+                  <strong>{{ fit_label }}</strong>
+                </div>
+                <div class="usp__fit-track" role="img" aria-label="{{ fit_label }}: {{ fit_true_pct }}% dice que la talla es perfecta">
+                  <span class="usp__fit-tick" style="left: 0%"></span>
+                  <span class="usp__fit-tick" style="left: 50%"></span>
+                  <span class="usp__fit-tick" style="left: 100%"></span>
+                  <span class="usp__fit-marker" style="--pos: {{ fit_pos }}%;"></span>
+                </div>
+                <div class="usp__fit-labels" aria-hidden="true">
+                  <span>Pequeña</span><span>Perfecta</span><span>Grande</span>
+                </div>
+                <p class="usp__fit-note">
+                  {{ fit_true_pct }}% dice que la talla es perfecta ({{ fit_total }}
+                  {% if fit_total == 1 %}opinión{% else %}opiniones{% endif %} con dato de talla)
+                </p>
+              </div>
+            {%- endif -%}
+
+            {%- if ss.reviews_note != blank -%}
+              <p class="usp__note">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.2v3.6M8 5.1v.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                {{ ss.reviews_note }}
+              </p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </header>
+
+      {%- comment -%} ============ GALERÍA DE FOTOS / VÍDEOS DE CLIENTAS ============ {%- endcomment -%}
+      {%- if ss.show_gallery and media_count > 0 -%}
+        <div class="usp__gallery usp-reveal">
+          <div class="usp__gallery-head">
+            <h3 class="usp__gallery-title">{{ ss.gallery_heading }}</h3>
+            {%- if media_count > 3 -%}
+              <div class="usp__arrows">
+                <button type="button" class="usp__arrow" data-usp-scroll="-1" aria-label="Anterior">
+                  <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M12 4l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button type="button" class="usp__arrow" data-usp-scroll="1" aria-label="Siguiente">
+                  <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+            {%- endif -%}
+          </div>
+          <div class="usp__gallery-track" data-usp-track>
+            {%- for idx in order -%}
+              {%- liquid
+                assign bi = idx | plus: 0
+                assign b = section.blocks[bi]
+                assign s = b.settings
+                unless s.image != blank or s.video != blank
+                  continue
+                endunless
+              -%}
+              <button type="button" class="usp-tile" data-usp-open="{{ bi }}" aria-label="Ver la foto de {{ s.name | escape }}">
+                {%- if s.video != blank -%}
+                  {{
+                    s.video
+                    | video_tag:
+                      image_size: '600x',
+                      autoplay: true,
+                      loop: true,
+                      muted: true,
+                      controls: false,
+                      playsinline: true,
+                      class: 'usp-tile__media'
+                  }}
+                  <span class="usp-tile__play" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" focusable="false"><path d="M5 3.5v9l7.5-4.5z" fill="currentColor"/></svg>
+                  </span>
+                {%- else -%}
+                  {{
+                    s.image
+                    | image_url: width: 900
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '300, 450, 600, 900',
+                      sizes: '(min-width: 990px) 260px, 45vw',
+                      class: 'usp-tile__media',
+                      alt: ''
+                  }}
+                {%- endif -%}
+                <span class="usp-tile__shade" aria-hidden="true"></span>
+                <span class="usp-tile__info" aria-hidden="true">
+                  {% render 'usp-stars', rating: s.rating, size: 12 %}
+                  <span class="usp-tile__name">{{ s.name | escape }}</span>
+                  {%- if s.size_bought != blank -%}
+                    <span class="usp-tile__size">Talla {{ s.size_bought | escape }}{% if s.height != blank %} · {{ s.height | escape }}{% endif %}</span>
+                  {%- endif -%}
+                </span>
+              </button>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} ============ MURO DE OPINIONES EN MOVIMIENTO ============ {%- endcomment -%}
+      <div class="usp__wall usp-reveal">
+        {%- for row in (1..rows) -%}
+          {%- liquid
+            assign row_index = forloop.index0
+            assign row_items = 0
+            for idx in order
+              assign m = forloop.index0 | modulo: rows
+              if m == row_index
+                assign row_items = row_items | plus: 1
+              endif
+            endfor
+            assign use_marquee = false
+            if row_items >= 3
+              assign use_marquee = true
+            endif
+            assign reps = 1
+            if use_marquee
+              assign reps = 8 | plus: row_items | minus: 1 | divided_by: row_items
+              if reps < 1
+                assign reps = 1
+              endif
+            endif
+            assign passes = reps
+            if use_marquee
+              assign passes = reps | times: 2
+            endif
+            assign cards_per_half = row_items | times: reps
+            assign dur = cards_per_half | times: ss.speed
+          -%}
+          <div class="usp__row{% if use_marquee %} usp__row--marquee{% else %} usp__row--static{% endif %}{% if row_index == 1 %} usp__row--reverse{% endif %}">
+            <div class="usp__track" style="--usp-dur: {{ dur }}s;">
+              {%- for pass in (1..passes) -%}
+                {%- liquid
+                  assign is_copy = false
+                  if forloop.index > 1
+                    assign is_copy = true
+                  endif
+                -%}
+                {%- for idx in order -%}
+                  {%- liquid
+                    assign m = forloop.index0 | modulo: rows
+                    if m != row_index
+                      continue
+                    endif
+                    assign bi = idx | plus: 0
+                    assign b = section.blocks[bi]
+                  -%}
+                  {% render 'usp-review-card', b: b, i: bi, hidden: is_copy, current_id: current_id %}
+                {%- endfor -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} ============ PLANTILLAS DEL DETALLE (se abren en ventana) ============ {%- endcomment -%}
+      {%- for idx in order -%}
+        {%- liquid
+          assign bi = idx | plus: 0
+          assign b = section.blocks[bi]
+          assign s = b.settings
+          assign has_media = false
+          if s.image != blank or s.video != blank
+            assign has_media = true
+          endif
+          assign is_current = false
+          if s.product != blank and s.product.id == current_id
+            assign is_current = true
+          endif
+        -%}
+        <template data-usp-tpl="{{ bi }}">
+          <div class="usp-m{% if has_media %} usp-m--media{% endif %}">
+            {%- if has_media -%}
+              <div class="usp-m__media">
+                {%- if s.video != blank -%}
+                  {{
+                    s.video
+                    | video_tag:
+                      image_size: '900x',
+                      autoplay: true,
+                      loop: true,
+                      muted: true,
+                      controls: true,
+                      playsinline: true
+                  }}
+                {%- else -%}
+                  {{
+                    s.image
+                    | image_url: width: 1200
+                    | image_tag: widths: '600, 900, 1200', sizes: '(min-width: 750px) 460px, 100vw', alt: s.name
+                  }}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+            <div class="usp-m__body">
+              <div class="usp-card__top">
+                {% render 'usp-stars', rating: s.rating, size: 18 %}
+                {%- if s.verified -%}
+                  <span class="usp-badge">
+                    <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Compra verificada
+                  </span>
+                {%- endif -%}
+              </div>
+              {%- if s.title != blank -%}
+                <h3 class="usp-m__title">{{ s.title | escape }}</h3>
+              {%- endif -%}
+              <p class="usp-m__text">{{ s.text | escape | newline_to_br }}</p>
+
+              {%- if s.size_bought != blank or s.height != blank or s.fit == 'small' or s.fit == 'perfect' or s.fit == 'large' -%}
+                <ul class="usp-m__facts">
+                  {%- if s.size_bought != blank -%}<li><span>Talla</span><strong>{{ s.size_bought | escape }}</strong></li>{%- endif -%}
+                  {%- if s.height != blank -%}<li><span>Altura</span><strong>{{ s.height | escape }}</strong></li>{%- endif -%}
+                  {%- case s.fit -%}
+                    {%- when 'small' -%}<li><span>Ajuste</span><strong>Tira a pequeña</strong></li>
+                    {%- when 'perfect' -%}<li><span>Ajuste</span><strong>Perfecta</strong></li>
+                    {%- when 'large' -%}<li><span>Ajuste</span><strong>Tira a grande</strong></li>
+                  {%- endcase -%}
+                </ul>
+              {%- endif -%}
+
+              <p class="usp-m__who">
+                <strong>{{ s.name | escape }}</strong>
+                {%- if s.city != blank %} · {{ s.city | escape }}{% endif -%}
+                {%- if s.date != blank %} · {{ s.date | escape }}{% endif -%}
+              </p>
+
+              {%- if s.product != blank -%}
+                <div class="usp-m__prod">
+                  {%- if s.product.featured_image != blank -%}
+                    {{ s.product.featured_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '', width: 64, height: 80 }}
+                  {%- endif -%}
+                  <div class="usp-m__prod-info">
+                    <span class="usp-m__prod-kicker">{% if is_current %}Lleva esta prenda{% else %}Lleva{% endif %}</span>
+                    <span class="usp-m__prod-title">{{ s.product.title | escape }}</span>
+                    <span class="usp-m__prod-price">{{ s.product.price | money }}</span>
+                  </div>
+                  {%- if is_current -%}
+                    <a href="#" class="usp-m__prod-btn" data-usp-top>Elegir mi talla</a>
+                  {%- else -%}
+                    <a href="{{ s.product.url }}" class="usp-m__prod-btn">Ver prenda</a>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </template>
+      {%- endfor -%}
+    {%- elsif request.design_mode -%}
+      <div class="usp__empty">
+        <strong>Opiniones Úrsula: añade reseñas reales</strong>
+        <p>
+          Pulsa «Añadir bloque → Reseña» y pega opiniones de clientas reales. Con una sola reseña ya aparecen la nota
+          media, las barras y el medidor de talla (se calculan solos). Si subes su foto o vídeo, se activa la galería
+          «Así les queda». Mientras no haya reseñas, en la tienda solo se ven las garantías y el botón.
+        </p>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ============ GARANTÍAS ============ {%- endcomment -%}
+    {%- if ss.show_trust -%}
+      <ul class="usp__trust usp-reveal">
+        {%- for n in (1..4) -%}
+          {%- liquid
+            assign t_key = 'trust_' | append: n | append: '_title'
+            assign d_key = 'trust_' | append: n | append: '_text'
+            assign t_title = ss[t_key]
+            assign t_text = ss[d_key]
+            if t_title == blank
+              continue
+            endif
+          -%}
+          <li class="usp__trust-item">
+            <span class="usp__trust-icon" aria-hidden="true">
+              {%- case n -%}
+                {%- when 1 -%}
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M3 6.5h11v9H3zM14 9.5h3.6l3.4 3.4v2.6h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="17" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+                {%- when 2 -%}
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v3.2h3.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8.5V12l2.4 1.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                {%- when 3 -%}
+                  <svg viewBox="0 0 24 24" focusable="false"><rect x="5" y="10.5" width="14" height="9.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="15.2" r="1.3" fill="currentColor"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M4.5 6.5h15v9.5h-8l-4 3.2V16h-3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.5 11.2h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              {%- endcase -%}
+            </span>
+            <span class="usp__trust-txt">
+              <strong>{{ t_title }}</strong>
+              {%- if t_text != blank -%}<span>{{ t_text }}</span>{%- endif -%}
+            </span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- comment -%} ============ BOTÓN ============ {%- endcomment -%}
+    {%- if ss.button_label != blank -%}
+      <div class="usp__cta usp-reveal">
+        <a
+          class="usp__btn"
+          {% if ss.button_link != blank %}
+            href="{{ ss.button_link }}"
+          {% else %}
+            href="#" data-usp-top
+          {% endif %}
+        >
+          <span>{{ ss.button_label | escape }}</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5l4.5 4.5-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        {%- if ss.button_note != blank -%}
+          <p class="usp__cta-note">{{ ss.button_note }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if review_count > 0 -%}
+    <dialog class="usp-dialog" data-usp-dialog aria-label="Opinión de clienta">
+      <button type="button" class="usp-dialog__close" data-usp-close aria-label="Cerrar">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div data-usp-dialog-body></div>
+    </dialog>
+  {%- endif -%}
+</usp-reviews>
+
+{% stylesheet %}
+  .usp {
+    display: block;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: var(--usp-ink);
+    background: linear-gradient(180deg, var(--usp-bg-top) 0%, var(--usp-bg-bottom) 100%);
+    padding-block: var(--usp-pt) var(--usp-pb);
+    font-family: var(--font-body--family);
+    -webkit-font-smoothing: antialiased;
+  }
+  .usp::before {
+    content: '';
+    position: absolute;
+    inset: auto -20% -35% -20%;
+    height: 70%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.55), transparent 65%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .usp *,
+  .usp *::before,
+  .usp *::after { box-sizing: border-box; }
+  .usp h2, .usp h3, .usp p, .usp ul { margin: 0; }
+  .usp ul { padding: 0; list-style: none; }
+  .usp button {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+  .usp-visually-hidden {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .usp__inner {
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
+  /* ---------- Estrellas ---------- */
+  .usp-stars {
+    position: relative;
+    display: inline-flex;
+    line-height: 0;
+    vertical-align: middle;
+  }
+  .usp-stars__base,
+  .usp-stars__fill { display: inline-flex; gap: 2px; }
+  .usp-stars__fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .usp-stars svg {
+    width: var(--usp-star);
+    height: var(--usp-star);
+    flex: 0 0 var(--usp-star);
+  }
+  .usp-stars__base svg { fill: rgba(var(--usp-ink-rgb), 0.14); }
+  .usp-stars__fill svg { fill: var(--usp-ink); }
+
+  /* ---------- Cabecera ---------- */
+  .usp__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 56px;
+    align-items: end;
+  }
+  .usp__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .usp__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--usp-ink);
+    box-shadow: 0 0 0 5px rgba(var(--usp-accent-rgb), 0.9);
+  }
+  .usp .usp__title {
+    font-family: var(--font-heading--family);
+    font-weight: 400;
+    font-size: clamp(44px, 6.2vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+    text-transform: none;
+    color: var(--usp-ink);
+    text-wrap: balance;
+  }
+  .usp__title em { font-style: italic; }
+  .usp__sub {
+    margin-top: 20px !important;
+    max-width: 30em;
+    font-size: 17px;
+    line-height: 1.55;
+    color: rgba(var(--usp-ink-rgb), 0.72);
+  }
+  .usp__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .usp__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    font-size: 13.5px;
+    color: rgba(var(--usp-ink-rgb), 0.8);
+  }
+  .usp__chip strong { color: var(--usp-ink); font-weight: 700; }
+
+  /* ---------- Panel de nota ---------- */
+  .usp__score {
+    background: rgba(255, 255, 255, 0.74);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 28px 28px 24px;
+    box-shadow: 0 30px 60px -40px rgba(60, 72, 28, 0.55), 0 2px 0 rgba(255, 255, 255, 0.6) inset;
+  }
+  .usp__score-top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(var(--usp-ink-rgb), 0.08);
+  }
+  .usp__score-num {
+    font-family: var(--font-heading--family);
+    font-size: 76px;
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+  }
+  .usp__score-meta { display: grid; gap: 8px; }
+  .usp__score-count {
+    font-size: 13.5px;
+    color: rgba(var(--usp-ink-rgb), 0.66);
+  }
+  .usp__bars { display: grid; gap: 8px; margin-top: 18px !important; }
+  .usp__bars li {
+    display: grid;
+    grid-template-columns: 30px 1fr 28px;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .usp__bar-lbl { display: inline-flex; align-items: center; gap: 3px; font-weight: 600; }
+  .usp__bar-lbl svg { width: 11px; height: 11px; fill: var(--usp-ink); }
+  .usp__bar {
+    position: relative;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(var(--usp-ink-rgb), 0.08);
+    overflow: hidden;
+  }
+  .usp__bar-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--w);
+    border-radius: inherit;
+    background: var(--usp-ink);
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d);
+  }
+  .usp.is-seen .usp__bar-fill { transform: scaleX(1); }
+  .usp__bar-num { text-align: right; color: rgba(var(--usp-ink-rgb), 0.6); }
+
+  .usp__fit {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(var(--usp-ink-rgb), 0.08);
+  }
+  .usp__fit-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 13.5px;
+    color: rgba(var(--usp-ink-rgb), 0.7);
+  }
+  .usp__fit-head strong { color: var(--usp-ink); font-size: 14px; }
+  .usp__fit-track {
+    position: relative;
+    height: 8px;
+    margin: 14px 8px 8px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(var(--usp-accent-rgb), 0.45), rgba(var(--usp-accent-rgb), 1) 50%, rgba(var(--usp-accent-rgb), 0.45));
+  }
+  .usp__fit-tick {
+    position: absolute;
+    top: 50%;
+    width: 2px; height: 14px;
+    background: rgba(var(--usp-ink-rgb), 0.18);
+    transform: translate(-50%, -50%);
+  }
+  .usp__fit-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--usp-ink);
+    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transform: translate(-50%, -50%);
+    transition: left 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s;
+  }
+  .usp.is-seen .usp__fit-marker { left: var(--pos); }
+  .usp__fit-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+    color: rgba(var(--usp-ink-rgb), 0.55);
+  }
+  .usp__fit-note { margin-top: 10px !important; font-size: 12.5px; color: rgba(var(--usp-ink-rgb), 0.62); }
+  .usp__note {
+    display: flex;
+    gap: 7px;
+    align-items: flex-start;
+    margin-top: 16px !important;
+    font-size: 12px;
+    line-height: 1.45;
+    color: rgba(var(--usp-ink-rgb), 0.55);
+  }
+  .usp__note svg { flex: 0 0 14px; width: 14px; height: 14px; margin-top: 1px; }
+
+  /* ---------- Galería ---------- */
+  .usp__gallery { margin-top: 72px; }
+  .usp__gallery-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .usp .usp__gallery-title {
+    font-family: var(--font-heading--family);
+    font-weight: 400;
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+  .usp__arrows { display: flex; gap: 8px; }
+  .usp .usp__arrow {
+    width: 46px; height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 6px 18px -10px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+  .usp .usp__arrow:hover { background: var(--usp-ink); color: #fff; transform: translateY(-1px); }
+  .usp__arrow svg { width: 18px; height: 18px; }
+  .usp__gallery-track {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .usp__gallery-track::-webkit-scrollbar { display: none; }
+  .usp .usp-tile {
+    position: relative;
+    flex: 0 0 clamp(170px, 21vw, 262px);
+    aspect-ratio: 3 / 4;
+    border-radius: 20px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    background: rgba(var(--usp-ink-rgb), 0.06);
+    text-align: left;
+  }
+  .usp-tile__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .usp-tile:hover .usp-tile__media { transform: scale(1.05); }
+  .usp-tile__shade {
+    position: absolute;
+    inset: 45% 0 0;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.62));
+  }
+  .usp-tile__info {
+    position: absolute;
+    left: 14px; right: 14px; bottom: 14px;
+    display: grid;
+    gap: 4px;
+    color: #fff;
+  }
+  .usp-tile__info .usp-stars__base svg { fill: rgba(255, 255, 255, 0.35); }
+  .usp-tile__info .usp-stars__fill svg { fill: #fff; }
+  .usp-tile__name { font-weight: 600; font-size: 14.5px; }
+  .usp-tile__size { font-size: 12px; opacity: 0.85; }
+  .usp-tile__play {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 32px; height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--usp-ink);
+  }
+  .usp-tile__play svg { width: 13px; height: 13px; }
+
+  /* ---------- Muro de opiniones ---------- */
+  .usp__wall {
+    display: grid;
+    gap: 16px;
+    margin-top: 56px;
+    margin-inline: calc(50% - 50vw);
+  }
+  .usp__row { overflow: hidden; }
+  .usp__row--marquee {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .usp__track {
+    display: flex;
+    align-items: stretch;
+    width: max-content;
+    padding-block: 10px 18px;
+  }
+  .usp__row--marquee .usp__track {
+    animation: usp-marquee var(--usp-dur, 60s) linear infinite;
+  }
+  .usp__row--reverse .usp__track { animation-direction: reverse; }
+  .usp__row--marquee:hover .usp__track,
+  .usp__row--marquee:focus-within .usp__track,
+  .usp:not(.is-visible) .usp__track,
+  .usp--editor .usp__track,
+  .usp.is-modal-open .usp__track { animation-play-state: paused; }
+  .usp__row--static .usp__track {
+    width: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-inline: 12px;
+    gap: 16px 0;
+  }
+  .usp__row--static .usp-card { margin-inline: 8px; }
+  @keyframes usp-marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+
+  .usp-card {
+    position: relative;
+    flex: 0 0 344px;
+    margin-right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 24px 20px;
+    border-radius: 22px;
+    background: var(--usp-card);
+    box-shadow: 0 1px 0 rgba(var(--usp-ink-rgb), 0.04), 0 22px 44px -32px rgba(60, 72, 28, 0.6);
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+  }
+  .usp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1px 0 rgba(var(--usp-ink-rgb), 0.04), 0 30px 50px -30px rgba(60, 72, 28, 0.7);
+  }
+  .usp-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .usp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px 4px 7px;
+    border-radius: 999px;
+    background: rgba(var(--usp-accent-rgb), 0.45);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--usp-ink);
+    white-space: nowrap;
+  }
+  .usp-badge svg { width: 13px; height: 13px; }
+  .usp .usp-card__title {
+    font-family: var(--font-body--family);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    text-transform: none;
+    color: var(--usp-ink);
+  }
+  .usp-card__text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(var(--usp-ink-rgb), 0.78);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+  }
+  .usp-card__fit {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: rgba(var(--usp-ink-rgb), 0.62);
+  }
+  .usp-card__foot {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgba(var(--usp-ink-rgb), 0.07);
+  }
+  .usp-avatar {
+    flex: 0 0 42px;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: var(--usp-accent);
+    font-family: var(--font-heading--family);
+    font-size: 21px;
+    color: var(--usp-ink);
+  }
+  .usp-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .usp-card__who { display: grid; gap: 1px; min-width: 0; font-size: 14px; line-height: 1.3; }
+  .usp-card__who strong { font-weight: 600; }
+  .usp-card__who span { font-size: 12.5px; color: rgba(var(--usp-ink-rgb), 0.55); }
+  .usp-card__tag {
+    margin-left: auto;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--usp-ink);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .usp-card__prod {
+    margin-left: auto;
+    width: 40px; height: 50px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex: 0 0 40px;
+    background: rgba(var(--usp-ink-rgb), 0.05);
+  }
+  .usp-card__prod img { width: 100%; height: 100%; object-fit: cover; }
+  .usp .usp-card__more {
+    position: absolute;
+    top: 20px; right: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--usp-ink);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .usp-card__more svg { width: 12px; height: 12px; }
+  .usp-card:hover .usp-card__more,
+  .usp .usp-card__more:focus-visible { opacity: 1; transform: none; }
+  .usp-card:hover .usp-badge { visibility: hidden; }
+
+  /* ---------- Garantías ---------- */
+  .usp__trust {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 56px !important;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .usp__trust-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 24px;
+  }
+  .usp__trust-item + .usp__trust-item { border-left: 1px solid rgba(var(--usp-ink-rgb), 0.08); }
+  .usp__trust-icon {
+    flex: 0 0 46px;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--usp-accent);
+  }
+  .usp__trust-icon svg { width: 23px; height: 23px; }
+  .usp__trust-txt { display: grid; gap: 2px; font-size: 13px; line-height: 1.35; color: rgba(var(--usp-ink-rgb), 0.65); }
+  .usp__trust-txt strong { font-size: 14.5px; color: var(--usp-ink); font-weight: 700; }
+
+  /* ---------- Botón ---------- */
+  .usp__cta { margin-top: 40px; display: grid; justify-items: center; gap: 12px; }
+  .usp .usp__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 44px;
+    border-radius: 999px;
+    background: var(--usp-ink);
+    color: #fff;
+    font-family: var(--font-body--family);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    box-shadow: 0 18px 36px -18px rgba(var(--usp-ink-rgb), 0.7);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .usp .usp__btn:hover { transform: translateY(-2px); box-shadow: 0 24px 40px -18px rgba(var(--usp-ink-rgb), 0.75); }
+  .usp__btn svg { width: 18px; height: 18px; transition: transform 0.25s ease; }
+  .usp__btn:hover svg { transform: translateX(4px); }
+  .usp__cta-note { font-size: 13px; color: rgba(var(--usp-ink-rgb), 0.62); }
+
+  /* ---------- Aviso del editor ---------- */
+  .usp__empty {
+    padding: 28px;
+    border: 2px dashed rgba(var(--usp-ink-rgb), 0.3);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    text-align: center;
+  }
+  .usp__empty strong { display: block; font-size: 17px; margin-bottom: 8px; }
+  .usp__empty p { max-width: 44em; margin-inline: auto; font-size: 14px; line-height: 1.55; color: rgba(var(--usp-ink-rgb), 0.72); }
+
+  /* ---------- Aparición ---------- */
+  .usp-reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .usp.is-seen .usp-reveal { opacity: 1; transform: none; }
+  .usp.is-seen .usp__score.usp-reveal { transition-delay: 0.12s; }
+  .usp--editor .usp-reveal { opacity: 1; transform: none; }
+
+  /* ---------- Ventana de detalle ---------- */
+  .usp-dialog {
+    width: min(940px, calc(100vw - 32px));
+    max-width: none;
+    max-height: calc(100dvh - 48px);
+    padding: 0;
+    border: 0;
+    border-radius: 26px;
+    background: #fff;
+    color: var(--usp-ink);
+    overflow: hidden;
+    box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.5);
+  }
+  .usp-dialog[open] { animation: usp-pop 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .usp-dialog::backdrop { background: rgba(18, 18, 18, 0.55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  @keyframes usp-pop { from { opacity: 0; transform: translateY(18px) scale(0.98); } to { opacity: 1; transform: none; } }
+  .usp .usp-dialog__close {
+    position: absolute;
+    top: 14px; right: 14px;
+    z-index: 2;
+    width: 40px; height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  }
+  .usp-dialog__close svg { width: 18px; height: 18px; }
+  .usp-m { display: grid; max-height: calc(100dvh - 48px); }
+  .usp-m--media { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .usp-m:not(.usp-m--media) { max-width: 560px; margin-inline: auto; }
+  .usp-m__media { background: #f2f2f2; min-height: 100%; }
+  .usp-m__media img,
+  .usp-m__media video { width: 100%; height: 100%; max-height: calc(100dvh - 48px); object-fit: cover; display: block; }
+  .usp-m__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 44px 36px 32px;
+    overflow-y: auto;
+  }
+  .usp .usp-m__title {
+    font-family: var(--font-heading--family);
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.02;
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+  .usp-m__body > .usp-card__top { padding-right: 44px; }
+  .usp-m__text { font-size: 16.5px; line-height: 1.65; color: rgba(var(--usp-ink-rgb), 0.82); }
+  .usp-m__facts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .usp-m__facts li {
+    display: grid;
+    gap: 1px;
+    padding: 9px 14px;
+    border-radius: 14px;
+    background: rgba(var(--usp-accent-rgb), 0.35);
+    font-size: 11.5px;
+    color: rgba(var(--usp-ink-rgb), 0.62);
+  }
+  .usp-m__facts strong { font-size: 14px; color: var(--usp-ink); }
+  .usp-m__who { font-size: 14px; color: rgba(var(--usp-ink-rgb), 0.6); }
+  .usp-m__who strong { color: var(--usp-ink); }
+  .usp-m__prod {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: auto;
+    padding: 12px;
+    border-radius: 18px;
+    background: #f5f4f0;
+  }
+  .usp-m__prod img { width: 64px; height: 80px; object-fit: cover; border-radius: 10px; flex: 0 0 64px; }
+  .usp-m__prod-info { display: grid; gap: 2px; min-width: 0; flex: 1; }
+  .usp-m__prod-kicker { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(var(--usp-ink-rgb), 0.5); }
+  .usp-m__prod-title { font-weight: 600; font-size: 14.5px; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .usp-m__prod-price { font-size: 14px; color: rgba(var(--usp-ink-rgb), 0.75); }
+  .usp .usp-m__prod-btn {
+    flex: 0 0 auto;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: var(--usp-ink);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  html.usp-lock { overflow: hidden; }
+
+  /* ---------- Tablet / móvil ---------- */
+  @media (max-width: 989px) {
+    .usp__head { grid-template-columns: 1fr; gap: 32px; }
+    .usp__trust { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .usp__trust-item:nth-child(3) { border-left: 0; }
+    .usp__trust-item:nth-child(n + 3) { border-top: 1px solid rgba(var(--usp-ink-rgb), 0.08); }
+  }
+  @media (max-width: 749px) {
+    .usp { padding-block: calc(var(--usp-pt) * 0.75) calc(var(--usp-pb) * 0.75); }
+    .usp__inner { padding-inline: 16px; }
+    .usp__sub { font-size: 15.5px; }
+    .usp__score { padding: 22px 20px 20px; border-radius: 20px; }
+    .usp__score-num { font-size: 64px; }
+    .usp__gallery { margin-top: 52px; }
+    .usp__gallery-track { margin-inline: -16px; padding-inline: 16px; scroll-padding-inline: 16px; }
+    .usp .usp-tile { flex-basis: 58vw; border-radius: 18px; }
+    .usp__wall { margin-top: 40px; gap: 10px; }
+    .usp-card { flex-basis: 286px; padding: 20px 20px 18px; margin-right: 12px; }
+    .usp-card__text { font-size: 14.5px; }
+    .usp .usp-card__more { opacity: 1; transform: none; position: static; align-self: flex-start; order: 5; background: transparent; color: var(--usp-ink); padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+    .usp-card:hover .usp-badge { visibility: visible; }
+    .usp__trust-item { padding: 16px 14px; gap: 10px; flex-direction: column; align-items: flex-start; }
+    .usp__trust-icon { flex-basis: 40px; width: 40px; height: 40px; }
+    .usp__trust-txt strong { font-size: 13.5px; }
+    .usp__trust-txt { font-size: 12px; }
+    .usp .usp__btn { width: 100%; justify-content: center; padding: 19px 28px; }
+    .usp-dialog { width: 100vw; max-height: 92dvh; margin: auto 0 0; border-radius: 24px 24px 0 0; }
+    .usp-m, .usp-m--media { grid-template-columns: 1fr; max-height: 92dvh; overflow-y: auto; }
+    .usp-m__media img, .usp-m__media video { max-height: 52dvh; }
+    .usp-m__body { padding: 24px 20px 28px; overflow: visible; }
+    .usp .usp-m__title { font-size: 30px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .usp__row--marquee .usp__track { animation: none; }
+    .usp__row--marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+    .usp-card[aria-hidden='true'] { display: none; }
+    .usp-reveal, .usp__bar-fill, .usp__fit-marker { transition: none; }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  if (!customElements.get('usp-reviews')) {
+    class UspReviews extends HTMLElement {
+      connectedCallback() {
+        this.dialog = this.querySelector('[data-usp-dialog]');
+        this.body = this.querySelector('[data-usp-dialog-body]');
+        this.handleClick = this.handleClick.bind(this);
+        this.handleKey = this.handleKey.bind(this);
+        this.addEventListener('click', this.handleClick);
+        this.addEventListener('keydown', this.handleKey);
+
+        if (this.dialog) {
+          this.dialog.addEventListener('click', (event) => {
+            if (event.target === this.dialog) this.dialog.close();
+          });
+          this.dialog.addEventListener('close', () => {
+            this.body.replaceChildren();
+            document.documentElement.classList.remove('usp-lock');
+            this.classList.remove('is-modal-open');
+            if (this.lastFocus) this.lastFocus.focus({ preventScroll: true });
+          });
+        }
+
+        if ('IntersectionObserver' in window) {
+          this.observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                this.classList.toggle('is-visible', entry.isIntersecting);
+                if (entry.isIntersecting) this.classList.add('is-seen');
+              });
+            },
+            { rootMargin: '0px 0px -12% 0px' }
+          );
+          this.observer.observe(this);
+        } else {
+          this.classList.add('is-visible', 'is-seen');
+        }
+      }
+
+      disconnectedCallback() {
+        if (this.observer) this.observer.disconnect();
+        this.removeEventListener('click', this.handleClick);
+        this.removeEventListener('keydown', this.handleKey);
+      }
+
+      handleKey(event) {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        const card = event.target.closest('.usp-card');
+        if (card && event.target === card) {
+          event.preventDefault();
+          this.open(card.dataset.uspOpen, card);
+        }
+      }
+
+      handleClick(event) {
+        const top = event.target.closest('[data-usp-top]');
+        if (top) {
+          event.preventDefault();
+          if (this.dialog && this.dialog.open) this.dialog.close();
+          const target =
+            document.querySelector('.product-information, product-information, [id^="ProductInformation"], main');
+          const y = target ? target.getBoundingClientRect().top + window.scrollY - 80 : 0;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+          return;
+        }
+
+        if (event.target.closest('[data-usp-close]')) {
+          this.dialog.close();
+          return;
+        }
+
+        const arrow = event.target.closest('[data-usp-scroll]');
+        if (arrow) {
+          const track = this.querySelector('[data-usp-track]');
+          if (track) {
+            const dir = Number(arrow.dataset.uspScroll) || 1;
+            track.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: 'smooth' });
+          }
+          return;
+        }
+
+        if (event.target.closest('a') && !event.target.closest('[data-usp-open]')) return;
+        const opener = event.target.closest('[data-usp-open]');
+        if (opener) this.open(opener.dataset.uspOpen, opener);
+      }
+
+      open(index, opener) {
+        if (!this.dialog || index === undefined) return;
+        const tpl = this.querySelector(`template[data-usp-tpl="${index}"]`);
+        if (!tpl) return;
+        this.lastFocus = opener;
+        this.body.replaceChildren(tpl.content.cloneNode(true));
+        document.documentElement.classList.add('usp-lock');
+        this.classList.add('is-modal-open');
+        this.dialog.showModal();
+        const video = this.body.querySelector('video');
+        if (video) {
+          video.muted = true;
+          video.play().catch(() => {});
+        }
+      }
+    }
+    customElements.define('usp-reviews', UspReviews);
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Opiniones Úrsula",
+  "tag": "section",
+  "class": "usp-section",
+  "max_blocks": 40,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "La nota media, las barras de estrellas y el medidor de talla se calculan solos con las reseñas que añadas. Usa solo opiniones reales de clientas: publicar reseñas inventadas es una práctica desleal en la UE y en España."
+    },
+    {
+      "type": "header",
+      "content": "Cabecera"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Antetítulo",
+      "default": "Opiniones de clientas"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Título",
+      "info": "Pon una palabra en cursiva para el toque editorial.",
+      "default": "Ellas ya lo <em>llevan puesto</em>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subtítulo",
+      "default": "Lo que cuentan después de estrenarlo: cómo les queda, qué talla eligieron y cómo se sintieron."
+    },
+    {
+      "type": "header",
+      "content": "Panel de nota"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_score",
+      "label": "Mostrar nota media",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bars",
+      "label": "Mostrar barras de estrellas",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_fit",
+      "label": "Mostrar medidor de talla",
+      "info": "Aparece cuando alguna reseña tiene el dato de ajuste.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "reviews_note",
+      "label": "Cómo verificas las reseñas",
+      "info": "La normativa europea (Omnibus) obliga a explicar si y cómo compruebas que las reseñas son de clientas reales. Ajusta el texto a lo que hagas de verdad.",
+      "default": "Solo publicamos opiniones que nos envían clientas después de recibir su pedido."
+    },
+    {
+      "type": "checkbox",
+      "id": "prioritize_current",
+      "label": "Mostrar primero las reseñas de la prenda que se está viendo",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Galería de fotos"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gallery",
+      "label": "Mostrar galería con las fotos y vídeos de clientas",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "gallery_heading",
+      "label": "Título de la galería",
+      "default": "Así les queda"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Lentitud del carrusel de opiniones",
+      "info": "Segundos por tarjeta. Más alto = más lento.",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Garantías"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust",
+      "label": "Mostrar garantías",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_1_title",
+      "label": "Garantía 1 · título",
+      "default": "Envío gratis"
+    },
+    {
+      "type": "text",
+      "id": "trust_1_text",
+      "label": "Garantía 1 · texto",
+      "default": "A toda España"
+    },
+    {
+      "type": "text",
+      "id": "trust_2_title",
+      "label": "Garantía 2 · título",
+      "default": "30 días para devolver"
+    },
+    {
+      "type": "text",
+      "id": "trust_2_text",
+      "label": "Garantía 2 · texto",
+      "default": "Desde que recibes tu pedido"
+    },
+    {
+      "type": "text",
+      "id": "trust_3_title",
+      "label": "Garantía 3 · título",
+      "default": "Pago seguro"
+    },
+    {
+      "type": "text",
+      "id": "trust_3_text",
+      "label": "Garantía 3 · texto",
+      "default": "Tus datos, cifrados"
+    },
+    {
+      "type": "text",
+      "id": "trust_4_title",
+      "label": "Garantía 4 · título",
+      "default": "Te respondemos"
+    },
+    {
+      "type": "text",
+      "id": "trust_4_text",
+      "label": "Garantía 4 · texto",
+      "default": "support@ursulaprive.com"
+    },
+    {
+      "type": "header",
+      "content": "Botón"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto del botón",
+      "default": "Elige tu silueta"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón",
+      "info": "Déjalo vacío para que suba a la ficha del producto (elegir talla y comprar)."
+    },
+    {
+      "type": "text",
+      "id": "button_note",
+      "label": "Texto bajo el botón",
+      "default": "Envío gratis · 30 días para devolver"
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "bg_top",
+      "label": "Fondo arriba",
+      "default": "#F2F2F0"
+    },
+    {
+      "type": "color",
+      "id": "bg_bottom",
+      "label": "Fondo abajo",
+      "default": "#C3CCA6"
+    },
+    {
+      "type": "color",
+      "id": "ink",
+      "label": "Texto y estrellas",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Fondo de las tarjetas",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Color de acento",
+      "default": "#C3CCA6"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Margen superior",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Margen inferior",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 88
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Reseña",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Pega aquí la opinión de una clienta real, tal y como te la envió."
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Estrellas",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título de la reseña"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texto de la reseña"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nombre",
+          "info": "Nombre e inicial del apellido, p. ej. «Laura P.», con su permiso."
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "Ciudad"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Fecha",
+          "info": "P. ej. «Septiembre 2026»."
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Compra verificada",
+          "info": "Márcalo solo si has comprobado que esta clienta hizo un pedido.",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Talla y ajuste"
+        },
+        {
+          "type": "text",
+          "id": "size_bought",
+          "label": "Talla que compró",
+          "info": "P. ej. «M»."
+        },
+        {
+          "type": "text",
+          "id": "height",
+          "label": "Altura",
+          "info": "P. ej. «1,65 m»."
+        },
+        {
+          "type": "select",
+          "id": "fit",
+          "label": "¿Cómo le quedó?",
+          "options": [
+            { "value": "none", "label": "Sin indicar" },
+            { "value": "small", "label": "Tira a pequeña" },
+            { "value": "perfect", "label": "Talla perfecta" },
+            { "value": "large", "label": "Tira a grande" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "header",
+          "content": "Foto, vídeo y prenda"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Foto de la clienta con la prenda",
+          "info": "Solo fotos que la clienta te haya enviado y te deje publicar."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Vídeo de la clienta (opcional)"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Prenda que compró"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Opiniones Úrsula"
+    }
+  ]
+}
+{% endschema %}

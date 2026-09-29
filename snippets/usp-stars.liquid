@@ -1,0 +1,30 @@
+{%- comment -%}
+  Estrellas para la sección "Opiniones Úrsula" (up-social-proof).
+  Parámetros:
+  - rating: número de 0 a 5 (admite decimales, p. ej. 4.6)
+  - size: tamaño en px de cada estrella (por defecto 16)
+  - label: texto accesible (por defecto "X de 5 estrellas")
+{%- endcomment -%}
+{%- liquid
+  assign star_size = size | default: 16
+  assign pct = rating | times: 20
+  if pct > 100
+    assign pct = 100
+  endif
+  assign star_label = label | default: ''
+  if star_label == ''
+    assign star_label = rating | append: ' de 5 estrellas'
+  endif
+-%}
+<span class="usp-stars" style="--usp-star: {{ star_size }}px;" role="img" aria-label="{{ star_label | escape }}">
+  <span class="usp-stars__base" aria-hidden="true">
+    {%- for n in (1..5) -%}
+      <svg viewBox="0 0 24 24" focusable="false"><path d="M12 2.6l2.84 6.02 6.6.8-4.87 4.53 1.25 6.53L12 17.27 6.18 20.48l1.25-6.53L2.56 9.42l6.6-.8z"/></svg>
+    {%- endfor -%}
+  </span>
+  <span class="usp-stars__fill" aria-hidden="true" style="width: {{ pct }}%;">
+    {%- for n in (1..5) -%}
+      <svg viewBox="0 0 24 24" focusable="false"><path d="M12 2.6l2.84 6.02 6.6.8-4.87 4.53 1.25 6.53L12 17.27 6.18 20.48l1.25-6.53L2.56 9.42l6.6-.8z"/></svg>
+    {%- endfor -%}
+  </span>
+</span>
