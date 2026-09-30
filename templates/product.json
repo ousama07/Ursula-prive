@@ -224,10 +224,10 @@
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
-                  "blocks": {},
-                  "disabled": true
+                  "blocks": {}
                 }
               },
               "block_order": []
@@ -576,19 +576,19 @@
                 "group_XqRYxC"
               ]
             },
-            "up_description": {
-              "type": "custom-liquid",
-              "name": "Descripción",
-              "settings": {
-                "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guía de tallas'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
-              },
-              "blocks": {}
-            },
             "up_size_guide": {
               "type": "custom-liquid",
               "name": "Guía de tallas",
               "settings": {
                 "custom_liquid": "{%- liquid\n  assign up_p = closest.product\n  assign up_g = up_p.metafields.custom.guia_tallas.value | default: ''\n  if up_g == ''\n    assign up_parts = up_p.description | split: '<p><strong>Guía de tallas'\n    if up_parts.size > 1\n      assign up_rest = up_parts[1] | split: '</table>'\n      assign up_g = up_rest[0] | split: '</strong></p>' | last | append: '</table>'\n      assign up_tail = up_rest[1] | strip\n      assign up_start = up_tail | slice: 0, 7\n      if up_start == '<p><em>'\n        assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n        assign up_g = up_g | append: up_note\n      endif\n    endif\n  endif\n-%}\n{%- if up_g != '' -%}\n<details class=\"up-sg\"><summary><span>Guía de tallas <small>(cm)</small></span><i aria-hidden=\"true\"></i></summary><div class=\"up-sg__b\">{{ up_g }}</div></details><style>.up-sg{interpolate-size:allow-keywords;border-top:1px solid #e3dbd0;border-bottom:1px solid #e3dbd0}.up-sg summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;cursor:pointer;font-size:15px;color:#1c1a17}.up-sg summary::-webkit-details-marker{display:none}.up-sg summary small{font-size:12px;color:#6f655c}.up-sg summary i{position:relative;flex:none;width:12px;height:12px}.up-sg summary i:before,.up-sg summary i:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:#1c1a17;transition:transform .45s cubic-bezier(.22,.61,.36,1)}.up-sg summary i:after{transform:rotate(90deg)}.up-sg[open] summary i:after{transform:rotate(0)}.up-sg summary:focus-visible{outline:2px solid #1c1a17;outline-offset:3px}.up-sg::details-content{block-size:0;overflow:hidden;transition:block-size .45s cubic-bezier(.22,.61,.36,1),content-visibility .45s allow-discrete}.up-sg[open]::details-content{block-size:auto}.up-sg__b{padding:0 0 18px;overflow-x:auto}.up-sg table{width:100%;min-width:280px;border-collapse:collapse;font-size:14px;text-align:center}.up-sg th{padding:10px 8px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#6f655c;border-bottom:1px solid #e3dbd0}.up-sg td{padding:10px 8px;border-bottom:1px solid #f1ede8}.up-sg tbody tr:nth-child(odd){background:#faf8f5}.up-sg td:first-child,.up-sg th:first-child{text-align:left;font-weight:600;color:#1c1a17}.up-sg p{margin:12px 0 0;font-size:13px;color:#6f655c}</style>\n{%- endif -%}"
+              },
+              "blocks": {}
+            },
+            "up_description": {
+              "type": "custom-liquid",
+              "name": "Descripción",
+              "settings": {
+                "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guía de tallas'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
               },
               "blocks": {}
             }
@@ -600,8 +600,8 @@
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "group_X39hBc",
-            "up_description",
-            "up_size_guide"
+            "up_size_guide",
+            "up_description"
           ]
         }
       },
@@ -815,6 +815,7 @@
                   "name": "t:names.product_price",
                   "settings": {
                     "show_sale_price_first": true,
+                    "show_savings": false,
                     "show_installments": false,
                     "show_tax_info": false,
                     "type_preset": "paragraph",
