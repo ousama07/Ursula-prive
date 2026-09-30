@@ -620,6 +620,388 @@
         "padding-block-end": 32
       }
     },
+    "ss-feature-54-1": {
+      "type": "ss-feature-54",
+      "blocks": {
+        "ss-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h2>Vístete en un minuto y sal con la silueta ya cuidada</h2>",
+            "heading_custom": false,
+            "heading_font": "josefin_sans_n4",
+            "heading_accent_font": "playfair_n4",
+            "heading_size": 40,
+            "heading_size_mobile": 28,
+            "heading_advanced": false,
+            "heading_height": 130,
+            "heading_mt": 0,
+            "heading_mt_mobile": 0,
+            "heading_color": "#121212"
+          }
+        },
+        "ss-text-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ursula Privée viste el día a día con cortes relajados, líneas femeninas y looks que se entienden entre sí. Te la pones, cierras la puerta y ya se ve un conjunto pensado, no un puzzle de última hora.</p>",
+            "text_custom": false,
+            "text_font": "josefin_sans_n4",
+            "text_size": 16,
+            "text_size_mobile": 14,
+            "text_advanced": false,
+            "text_height": 150,
+            "text_mt": 12,
+            "text_mt_mobile": 12,
+            "text_color": "#121212"
+          }
+        },
+        "ss-button-3": {
+          "type": "button",
+          "settings": {
+            "button": "Encuentra tu look",
+            "url": "",
+            "new_tab": false,
+            "button_style": "non_outline",
+            "button_custom": false,
+            "button_font": "josefin_sans_n4",
+            "button_size": 14,
+            "button_size_mobile": 14,
+            "button_advanced": false,
+            "button_height": 100,
+            "button_padding_horizontal": 40,
+            "button_padding_horizontal_mobile": 32,
+            "button_padding_vertical": 20,
+            "button_padding_vertical_mobile": 20,
+            "button_radius": 100,
+            "button_border_thickness": 1,
+            "button_mt": 30,
+            "button_mt_mobile": 30,
+            "button_custom_styling": true,
+            "button_color": "#121212",
+            "button_hover_color": "#ffffff",
+            "button_bg_color": "#cdbfaa",
+            "button_bg_hover_color": "#cdbfaa",
+            "button_border_color": "#cdbfaa",
+            "button_border_hover_color": "#cdbfaa",
+            "button_shadow_color": "#cdbfaa"
+          }
+        },
+        "ss-feature-4": {
+          "type": "feature",
+          "settings": {
+            "icon": "bolt",
+            "title": "Un gesto y ya estás lista",
+            "text": "<p>Piezas pensadas para ponértelas y salir: la comodidad se siente al caminar y la línea se ve terminada desde el primer paso.</p>",
+            "hide_mobile": false
+          }
+        },
+        "ss-feature-5": {
+          "type": "feature",
+          "settings": {
+            "icon": "feather",
+            "title": "Relajada, con trazo femenino",
+            "text": "<p>Volúmenes suaves y un acabado que estiliza, para que el día se vea considerado sin montar un look desde cero.</p>",
+            "hide_mobile": false
+          }
+        },
+        "ss-feature-6": {
+          "type": "feature",
+          "settings": {
+            "icon": "heart",
+            "title": "Se habla con el resto del armario",
+            "text": "<p>Tonos y siluetas que se mezclan entre sí, para que cada mañana sea una decisión corta, no una negociación.</p>",
+            "hide_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "ss-heading-1",
+        "ss-text-2",
+        "ss-button-3",
+        "ss-feature-4",
+        "ss-feature-5",
+        "ss-feature-6"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media (max-width: 1023px) {[class*=\"section-\"][class*=\"-settings\"] {padding-top: 36px; padding-bottom: 36px; }}"
+      ],
+      "settings": {
+        "layout": "image_content",
+        "layout_mobile": "image_content",
+        "image_width": 45,
+        "layout_gap": 60,
+        "layout_gap_mobile": 32,
+        "content_align": "left",
+        "content_align_mobile": "center",
+        "content_vertical_align": "center",
+        "image": "shopify://shop_images/pdp-image-b503f781.png",
+        "image_ratio": "original",
+        "image_ratio_mobile": "original",
+        "image_radius": 20,
+        "image_border_thickness": 0,
+        "features_align": "left",
+        "features_align_mobile": "center",
+        "features_advanced": false,
+        "features_mt": 30,
+        "features_mt_mobile": 30,
+        "features_horizontal": 0,
+        "features_horizontal_mobile": 0,
+        "features_padding_vertical": 24,
+        "features_padding_vertical_mobile": 18,
+        "features_padding_horizontal": 24,
+        "features_padding_horizontal_mobile": 18,
+        "features_radius": 20,
+        "features_border_thickness": 0,
+        "liquid_glass": false,
+        "feature_advanced": false,
+        "feature_gap": 10,
+        "feature_gap_mobile": 10,
+        "feature_mt": 34,
+        "feature_mt_mobile": 20,
+        "feature_icon_size": 32,
+        "feature_icon_size_mobile": 28,
+        "feature_title_custom": false,
+        "feature_title_font": "josefin_sans_n4",
+        "feature_title_size": 18,
+        "feature_title_size_mobile": 16,
+        "feature_title_height": 130,
+        "feature_text_custom": false,
+        "feature_text_font": "josefin_sans_n4",
+        "feature_text_size": 14,
+        "feature_text_size_mobile": 13,
+        "feature_text_height": 150,
+        "features_background_style": "solid",
+        "features_bg_color": "#f7f5f1",
+        "features_bg_gradient": "linear-gradient(135deg, #CDBFAA 0%, #F1EDE8 100%)",
+        "features_border_color": "#e9e2d9",
+        "feature_icon_color": "#121212",
+        "feature_title_color": "#121212",
+        "feature_text_color": "#121212",
+        "image_border_color": "#e9e2d9",
+        "background_style": "gradient",
+        "background_color": "#ffffff",
+        "background_gradient": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(241, 237, 232, 1) 100%)",
+        "border_color": "#e9e2d9",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "width": "page",
+        "content_width": 1200,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    },
+    "ss-testimonials-42-2": {
+      "type": "ss-testimonials-42",
+      "blocks": {
+        "ss-sub_heading-1": {
+          "type": "sub_heading",
+          "settings": {
+            "sub_heading": "<p>Voces reales</p>",
+            "sub_heading_custom": false,
+            "sub_heading_font": "josefin_sans_n4",
+            "sub_heading_size": 12,
+            "sub_heading_size_mobile": 12,
+            "sub_heading_advanced": false,
+            "sub_heading_height": 130,
+            "sub_heading_mt": 0,
+            "sub_heading_mt_mobile": 0,
+            "sub_heading_color": "#121212",
+            "sub_heading_bg": true,
+            "sub_heading_bg_color": "#ffffff",
+            "sub_heading_radius": 100,
+            "sub_heading_border_thickness": 0,
+            "sub_heading_border_color": "#cdbfaa",
+            "sub_heading_padding_horizontal": 12,
+            "sub_heading_padding_horizontal_mobile": 12,
+            "sub_heading_padding_vertical": 8,
+            "sub_heading_padding_vertical_mobile": 8
+          }
+        },
+        "ss-heading-2": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h2>Se visten rápido y siguen sintiéndose ellas</h2>",
+            "heading_custom": false,
+            "heading_font": "josefin_sans_n4",
+            "heading_size": 40,
+            "heading_size_mobile": 28,
+            "heading_advanced": false,
+            "heading_height": 130,
+            "heading_max_width": 70,
+            "heading_mt": 16,
+            "heading_mt_mobile": 16,
+            "heading_color": "#121212",
+            "heading_accent_style": "solid",
+            "heading_accent_color": "#121212",
+            "heading_accent_gradient": "linear-gradient(180deg, #121212 0%, #333333 100%)"
+          }
+        },
+        "ss-testimonial-3": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/pdp-image-54c1733c.png",
+            "stars_count": 5,
+            "text": "<p>Salgo de casa en un momento y aún así me siento presentable. La comodidad no pelea con verme arreglada.</p>",
+            "author": "Carmen R."
+          }
+        },
+        "ss-testimonial-4": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/pdp-image-63f3a6d5.png",
+            "stars_count": 5,
+            "text": "<p>Encaja con lo que ya tengo: un pantalón de siempre, unas botas, y el conjunto se lee entero.</p>",
+            "author": "Inés M."
+          }
+        },
+        "ss-testimonial-5": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/pdp-image-bd52dfd9.png",
+            "stars_count": 5,
+            "text": "<p>Para el trabajo y para una cena improvisada uso la misma base. Me reconozco en el espejo, sin teatro.</p>",
+            "author": "Lucía V."
+          }
+        },
+        "ss-testimonial-6": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/pdp-image-0c672655.png",
+            "stars_count": 5,
+            "text": "<p>Me gusta que el estilo se note sin explicar nada. Me visto y el día ya tiene forma.</p>",
+            "author": "Nuria P."
+          }
+        }
+      },
+      "block_order": [
+        "ss-sub_heading-1",
+        "ss-heading-2",
+        "ss-testimonial-3",
+        "ss-testimonial-4",
+        "ss-testimonial-5",
+        "ss-testimonial-6"
+      ],
+      "custom_css": [
+        "@media (max-width: 1023px) {[class*=\"section-\"][class*=\"-settings\"] {padding-top: 36px; padding-bottom: 36px; }}"
+      ],
+      "settings": {
+        "content_align": "center",
+        "content_align_mobile": "center",
+        "slider_view": 3,
+        "slider_view_mobile": 1.2,
+        "slider_advanced": false,
+        "slider_gap": 30,
+        "slider_gap_mobile": 24,
+        "slider_mt": 52,
+        "slider_mt_mobile": 32,
+        "slide_radius": 20,
+        "slide_border_thickness": 0,
+        "slide_shadow": false,
+        "slide_shadow_color": "#e9e2d9",
+        "slide_advanced": false,
+        "slide_padding_horizontal": 20,
+        "slide_padding_horizontal_mobile": 20,
+        "slide_padding_vertical": 20,
+        "slide_padding_vertical_mobile": 20,
+        "slide_content_align": "left",
+        "slide_content_align_mobile": "left",
+        "image_radius": 20,
+        "image_border_thickness": 0,
+        "image_ratio": "landscape",
+        "image_ratio_mobile": "landscape",
+        "verify_icon": true,
+        "verify_icon_size": 18,
+        "verify_icon_size_mobile": 18,
+        "verify_bg": true,
+        "verify_radius": 100,
+        "verify_border_thickness": 0,
+        "verify": "Compra verificada",
+        "verify_custom": false,
+        "verify_font": "josefin_sans_n4",
+        "verify_size": 12,
+        "verify_size_mobile": 12,
+        "verify_advanced": false,
+        "verify_height": 130,
+        "verify_mt": 16,
+        "verify_mt_mobile": 16,
+        "text_custom": false,
+        "text_font": "josefin_sans_n4",
+        "text_size": 16,
+        "text_size_mobile": 14,
+        "text_advanced": false,
+        "text_height": 150,
+        "text_mt": 16,
+        "text_mt_mobile": 16,
+        "author_custom": false,
+        "author_font": "josefin_sans_n4",
+        "author_size": 18,
+        "author_size_mobile": 16,
+        "author_height": 130,
+        "slide_stars_size": 20,
+        "slide_stars_size_mobile": 18,
+        "slide_stars_advanced": false,
+        "slide_stars_mt": 12,
+        "slide_stars_mt_mobile": 12,
+        "author_image_size": 60,
+        "author_image_size_mobile": 56,
+        "author_image_radius": 100,
+        "author_image_border_thickness": 0,
+        "arrow_show_desktop": true,
+        "arrow_show_mobile": false,
+        "arrow_size": 48,
+        "arrow_size_mobile": 38,
+        "arrow_icon_size": 10,
+        "arrow_icon_size_mobile": 8,
+        "arrow_radius": 100,
+        "arrow_border_thickness": 0,
+        "arrow_hover_effect": "color",
+        "arrow_mt": 40,
+        "arrow_mt_mobile": 32,
+        "image_border_color": "#e9e2d9",
+        "text_color": "#121212",
+        "author_color": "#121212",
+        "slide_stars_color": "#121212",
+        "slide_bg_color": "#f7f5f1",
+        "slide_border_color": "#e9e2d9",
+        "verify_color": "#121212",
+        "verify_icon_checkmark_color": "#ffffff",
+        "verify_icon_color": "#121212",
+        "verify_bg_color": "#f7f5f1",
+        "verify_border_color": "#e9e2d9",
+        "author_image_color": "#121212",
+        "author_image_bg_color": "#f7f5f1",
+        "author_image_border_color": "#e9e2d9",
+        "arrow_color": "#121212",
+        "arrow_hover_color": "#121212",
+        "arrow_bg_color": "#f7f5f1",
+        "arrow_bg_hover_color": "#b0a492",
+        "arrow_border_color": "#e9e2d9",
+        "arrow_border_hover_color": "#b0a492",
+        "background_style": "solid",
+        "background_color": "#f1ede8",
+        "background_gradient": "",
+        "border_color": "#e9e2d9",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "width": "page",
+        "content_width": 1200,
+        "border_thickness": 0,
+        "section_radius": 0
+      }
+    },
     "up_recommendations": {
       "type": "product-recommendations",
       "blocks": {
@@ -822,690 +1204,12 @@
         "padding-block-start": 56,
         "padding-block-end": 72
       }
-    },
-    "ss-feature-54-1": {
-      "type": "ss-feature-54",
-      "settings": {
-        "layout": "image_content",
-        "layout_mobile": "image_content",
-        "image_width": 45,
-        "layout_gap": 60,
-        "layout_gap_mobile": 32,
-        "content_vertical_align": "center",
-        "image_ratio": "original",
-        "image_ratio_mobile": "original",
-        "image_radius": 20,
-        "image_border_thickness": 0,
-        "features_mt": 30,
-        "features_mt_mobile": 30,
-        "features_horizontal": 0,
-        "features_horizontal_mobile": 0,
-        "features_padding_vertical": 24,
-        "features_padding_vertical_mobile": 18,
-        "features_padding_horizontal": 24,
-        "features_padding_horizontal_mobile": 18,
-        "features_radius": 20,
-        "features_border_thickness": 0,
-        "liquid_glass": false,
-        "feature_gap": 10,
-        "feature_gap_mobile": 10,
-        "feature_mt": 34,
-        "feature_mt_mobile": 20,
-        "feature_icon_size": 32,
-        "feature_icon_size_mobile": 28,
-        "feature_title_custom": false,
-        "feature_title_font": "josefin_sans_n4",
-        "feature_title_size": 18,
-        "feature_title_size_mobile": 16,
-        "feature_title_height": 130,
-        "feature_text_custom": false,
-        "feature_text_font": "josefin_sans_n4",
-        "feature_text_size": 14,
-        "feature_text_size_mobile": 13,
-        "feature_text_height": 150,
-        "features_background_style": "solid",
-        "features_bg_color": "#F7F5F1",
-        "features_bg_gradient": "linear-gradient(135deg, #CDBFAA 0%, #F1EDE8 100%)",
-        "features_border_color": "#E9E2D9",
-        "feature_icon_color": "#121212",
-        "feature_title_color": "#121212",
-        "feature_text_color": "#121212",
-        "image_border_color": "#E9E2D9",
-        "background_style": "gradient",
-        "background_color": "#FFFFFF",
-        "background_gradient": "linear-gradient(180deg, #FFFFFF 0%, #F1EDE8 100%)",
-        "border_color": "#E9E2D9",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_horizontal": 0,
-        "margin_horizontal_mobile": 0.0,
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "padding_horizontal": 5,
-        "padding_horizontal_mobile": 1.5,
-        "width": "page",
-        "content_width": 1200,
-        "border_thickness": 0,
-        "section_radius": 0,
-        "features_advanced": false,
-        "feature_advanced": false,
-        "image": "shopify://shop_images/pdp-image-b503f781.png"
-      },
-      "custom_css": [
-        "@media(max-width:1023px){[class*=\"section-\"][class*=\"-settings\"]{padding-top:36px;padding-bottom:36px;}}"
-      ],
-      "blocks": {
-        "ss-heading-1": {
-          "type": "heading",
-          "settings": {
-            "heading": "<h2>Vístete en un minuto y sal con la silueta ya cuidada</h2>",
-            "heading_custom": false,
-            "heading_font": "josefin_sans_n4",
-            "heading_accent_font": "playfair_n4",
-            "heading_size": 40,
-            "heading_size_mobile": 28,
-            "heading_advanced": false,
-            "heading_height": 130,
-            "heading_mt": 0,
-            "heading_mt_mobile": 0,
-            "heading_color": "#121212"
-          }
-        },
-        "ss-text-2": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Ursula Privée viste el día a día con cortes relajados, líneas femeninas y looks que se entienden entre sí. Te la pones, cierras la puerta y ya se ve un conjunto pensado, no un puzzle de última hora.</p>",
-            "text_custom": false,
-            "text_font": "josefin_sans_n4",
-            "text_size": 16,
-            "text_size_mobile": 14,
-            "text_advanced": false,
-            "text_height": 150,
-            "text_mt": 12,
-            "text_mt_mobile": 12,
-            "text_color": "#121212"
-          }
-        },
-        "ss-button-3": {
-          "type": "button",
-          "settings": {
-            "button": "Encuentra tu look",
-            "button_style": "non_outline",
-            "button_custom": false,
-            "button_font": "josefin_sans_n4",
-            "button_size": 14,
-            "button_size_mobile": 14,
-            "button_advanced": false,
-            "button_height": 100,
-            "button_padding_horizontal": 40,
-            "button_padding_horizontal_mobile": 32,
-            "button_padding_vertical": 20,
-            "button_padding_vertical_mobile": 20,
-            "button_radius": 100,
-            "button_border_thickness": 1,
-            "button_mt": 30,
-            "button_mt_mobile": 30,
-            "button_custom_styling": true,
-            "button_color": "#121212",
-            "button_hover_color": "#FFFFFF",
-            "button_bg_color": "#CDBFAA",
-            "button_bg_hover_color": "#CDBFAA",
-            "button_border_color": "#CDBFAA",
-            "button_border_hover_color": "#CDBFAA",
-            "button_shadow_color": "#CDBFAA",
-            "new_tab": false
-          }
-        },
-        "ss-feature-4": {
-          "type": "feature",
-          "settings": {
-            "icon": "bolt",
-            "title": "Un gesto y ya estás lista",
-            "text": "<p>Piezas pensadas para ponértelas y salir: la comodidad se siente al caminar y la línea se ve terminada desde el primer paso.</p>",
-            "hide_mobile": false
-          }
-        },
-        "ss-feature-5": {
-          "type": "feature",
-          "settings": {
-            "icon": "feather",
-            "title": "Relajada, con trazo femenino",
-            "text": "<p>Volúmenes suaves y un acabado que estiliza, para que el día se vea considerado sin montar un look desde cero.</p>",
-            "hide_mobile": false
-          }
-        },
-        "ss-feature-6": {
-          "type": "feature",
-          "settings": {
-            "icon": "heart",
-            "title": "Se habla con el resto del armario",
-            "text": "<p>Tonos y siluetas que se mezclan entre sí, para que cada mañana sea una decisión corta, no una negociación.</p>",
-            "hide_mobile": false
-          }
-        }
-      },
-      "block_order": [
-        "ss-heading-1",
-        "ss-text-2",
-        "ss-button-3",
-        "ss-feature-4",
-        "ss-feature-5",
-        "ss-feature-6"
-      ]
-    },
-    "ss-testimonials-42-2": {
-      "type": "ss-testimonials-42",
-      "settings": {
-        "slider_view": 3.0,
-        "slider_view_mobile": 1.2,
-        "slider_advanced": false,
-        "slider_gap": 30,
-        "slider_gap_mobile": 24,
-        "slider_mt": 52,
-        "slider_mt_mobile": 32,
-        "slide_radius": 20,
-        "slide_border_thickness": 0,
-        "slide_shadow": false,
-        "slide_shadow_color": "#E9E2D9",
-        "slide_advanced": false,
-        "slide_padding_horizontal": 20,
-        "slide_padding_horizontal_mobile": 20,
-        "slide_padding_vertical": 20,
-        "slide_padding_vertical_mobile": 20,
-        "image_radius": 20,
-        "image_border_thickness": 0,
-        "image_ratio": "landscape",
-        "image_ratio_mobile": "landscape",
-        "verify_icon": true,
-        "verify_icon_size": 18,
-        "verify_icon_size_mobile": 18,
-        "verify_bg": true,
-        "verify_radius": 100,
-        "verify_border_thickness": 0,
-        "verify": "Compra verificada",
-        "verify_custom": false,
-        "verify_font": "josefin_sans_n4",
-        "verify_size": 12,
-        "verify_size_mobile": 12,
-        "verify_advanced": false,
-        "verify_height": 130,
-        "verify_mt": 16,
-        "verify_mt_mobile": 16,
-        "text_custom": false,
-        "text_font": "josefin_sans_n4",
-        "text_size": 16,
-        "text_size_mobile": 14,
-        "text_advanced": false,
-        "text_height": 150,
-        "text_mt": 16,
-        "text_mt_mobile": 16,
-        "author_custom": false,
-        "author_font": "josefin_sans_n4",
-        "author_size": 18,
-        "author_size_mobile": 16,
-        "author_height": 130,
-        "slide_stars_size": 20,
-        "slide_stars_size_mobile": 18,
-        "slide_stars_advanced": false,
-        "slide_stars_mt": 12,
-        "slide_stars_mt_mobile": 12,
-        "author_image_size": 60,
-        "author_image_size_mobile": 56,
-        "author_image_radius": 100,
-        "author_image_border_thickness": 0,
-        "arrow_show_desktop": true,
-        "arrow_show_mobile": false,
-        "arrow_size": 48,
-        "arrow_size_mobile": 38,
-        "arrow_icon_size": 10,
-        "arrow_icon_size_mobile": 8,
-        "arrow_radius": 100,
-        "arrow_border_thickness": 0.0,
-        "arrow_hover_effect": "color",
-        "arrow_mt": 40,
-        "arrow_mt_mobile": 32,
-        "image_border_color": "#E9E2D9",
-        "text_color": "#121212",
-        "author_color": "#121212",
-        "slide_stars_color": "#121212",
-        "slide_bg_color": "#F7F5F1",
-        "slide_border_color": "#E9E2D9",
-        "verify_color": "#121212",
-        "verify_icon_checkmark_color": "#FFFFFF",
-        "verify_icon_color": "#121212",
-        "verify_bg_color": "#F7F5F1",
-        "verify_border_color": "#E9E2D9",
-        "author_image_color": "#121212",
-        "author_image_bg_color": "#F7F5F1",
-        "author_image_border_color": "#E9E2D9",
-        "arrow_color": "#121212",
-        "arrow_hover_color": "#121212",
-        "arrow_bg_color": "#F7F5F1",
-        "arrow_bg_hover_color": "#B0A492",
-        "arrow_border_color": "#E9E2D9",
-        "arrow_border_hover_color": "#B0A492",
-        "background_style": "solid",
-        "background_color": "#F1EDE8",
-        "background_gradient": "",
-        "border_color": "#E9E2D9",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_horizontal": 0.0,
-        "margin_horizontal_mobile": 0.0,
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "padding_horizontal": 5.0,
-        "padding_horizontal_mobile": 1.5,
-        "width": "page",
-        "content_width": 1200,
-        "border_thickness": 0,
-        "section_radius": 0
-      },
-      "custom_css": [
-        "@media(max-width:1023px){[class*=\"section-\"][class*=\"-settings\"]{padding-top:36px;padding-bottom:36px;}}"
-      ],
-      "blocks": {
-        "ss-sub_heading-1": {
-          "type": "sub_heading",
-          "settings": {
-            "sub_heading": "<p>Voces reales</p>",
-            "sub_heading_custom": false,
-            "sub_heading_font": "josefin_sans_n4",
-            "sub_heading_size": 12,
-            "sub_heading_size_mobile": 12,
-            "sub_heading_advanced": false,
-            "sub_heading_height": 130,
-            "sub_heading_mt": 0,
-            "sub_heading_mt_mobile": 0,
-            "sub_heading_color": "#121212",
-            "sub_heading_bg": true,
-            "sub_heading_bg_color": "#FFFFFF",
-            "sub_heading_radius": 100,
-            "sub_heading_border_thickness": 0,
-            "sub_heading_border_color": "#CDBFAA",
-            "sub_heading_padding_horizontal": 12,
-            "sub_heading_padding_horizontal_mobile": 12,
-            "sub_heading_padding_vertical": 8,
-            "sub_heading_padding_vertical_mobile": 8
-          }
-        },
-        "ss-heading-2": {
-          "type": "heading",
-          "settings": {
-            "heading": "<h2>Se visten rápido y siguen sintiéndose ellas</h2>",
-            "heading_custom": false,
-            "heading_font": "josefin_sans_n4",
-            "heading_size": 40,
-            "heading_size_mobile": 28,
-            "heading_advanced": false,
-            "heading_height": 130,
-            "heading_max_width": 70,
-            "heading_mt": 16,
-            "heading_mt_mobile": 16,
-            "heading_color": "#121212",
-            "heading_accent_style": "solid",
-            "heading_accent_color": "#121212",
-            "heading_accent_gradient": "linear-gradient(180deg, #121212 0%, #333333 100%)"
-          }
-        },
-        "ss-testimonial-3": {
-          "type": "testimonial",
-          "settings": {
-            "stars_count": 5.0,
-            "text": "<p>Salgo de casa en un momento y aún así me siento presentable. La comodidad no pelea con verme arreglada.</p>",
-            "author": "Carmen R.",
-            "author_image": "",
-            "image": "shopify://shop_images/pdp-image-54c1733c.png"
-          }
-        },
-        "ss-testimonial-4": {
-          "type": "testimonial",
-          "settings": {
-            "stars_count": 5.0,
-            "text": "<p>Encaja con lo que ya tengo: un pantalón de siempre, unas botas, y el conjunto se lee entero.</p>",
-            "author": "Inés M.",
-            "author_image": "",
-            "image": "shopify://shop_images/pdp-image-63f3a6d5.png"
-          }
-        },
-        "ss-testimonial-5": {
-          "type": "testimonial",
-          "settings": {
-            "stars_count": 5.0,
-            "text": "<p>Para el trabajo y para una cena improvisada uso la misma base. Me reconozco en el espejo, sin teatro.</p>",
-            "author": "Lucía V.",
-            "author_image": "",
-            "image": "shopify://shop_images/pdp-image-bd52dfd9.png"
-          }
-        },
-        "ss-testimonial-6": {
-          "type": "testimonial",
-          "settings": {
-            "stars_count": 5.0,
-            "text": "<p>Me gusta que el estilo se note sin explicar nada. Me visto y el día ya tiene forma.</p>",
-            "author": "Nuria P.",
-            "author_image": "",
-            "image": "shopify://shop_images/pdp-image-0c672655.png"
-          }
-        }
-      },
-      "block_order": [
-        "ss-sub_heading-1",
-        "ss-heading-2",
-        "ss-testimonial-3",
-        "ss-testimonial-4",
-        "ss-testimonial-5",
-        "ss-testimonial-6"
-      ]
-    },
-    "ss-stats-5-3": {
-      "type": "ss-stats-5",
-      "settings": {
-        "features_columns": 3,
-        "enable_slider_mobile": true,
-        "features_columns_mobile": "1",
-        "grid_advanced": false,
-        "features_gap": 16,
-        "features_gap_mobile": 16,
-        "features_mt": 36,
-        "features_mt_mobile": 24,
-        "feature_shadow": false,
-        "feature_padding": 24,
-        "feature_padding_mobile": 20,
-        "feature_radius": 20,
-        "feature_border_thickness": 0,
-        "percent_custom": false,
-        "percent_font": "josefin_sans_n4",
-        "percent_size": 56,
-        "percent_size_mobile": 40,
-        "percent_suffix_size": 20,
-        "percent_suffix_size_mobile": 16,
-        "percent_advanced": false,
-        "percent_height": 130,
-        "bar_height": 4,
-        "bar_radius": 2,
-        "bar_advanced": false,
-        "bar_mt": 8,
-        "bar_mt_mobile": 8,
-        "feature_heading_custom": false,
-        "feature_heading_font": "josefin_sans_n4",
-        "feature_heading_size": 16,
-        "feature_heading_size_mobile": 16,
-        "feature_heading_advanced": false,
-        "feature_heading_height": 130,
-        "feature_heading_mt": 12,
-        "feature_heading_mt_mobile": 10,
-        "feature_text_custom": false,
-        "feature_text_font": "josefin_sans_n4",
-        "feature_text_size": 14,
-        "feature_text_size_mobile": 14,
-        "feature_text_advanced": false,
-        "feature_text_height": 150,
-        "feature_text_mt": 8,
-        "feature_text_mt_mobile": 6,
-        "enable_animation": true,
-        "animation_duration": 2,
-        "animation_duration_mobile": 2,
-        "percent_color": "#121212",
-        "percent_suffix_color": "#121212",
-        "bar_color": "#121212",
-        "bar_bg_color": "#F7F5F1",
-        "feature_heading_color": "#121212",
-        "feature_text_color": "#121212",
-        "feature_bg_color": "#F7F5F1",
-        "feature_border_color": "#E9E2D9",
-        "dot_color": "#ACA9A6",
-        "dot_active_color": "#121212",
-        "background_style": "solid",
-        "background_color": "#F1EDE8",
-        "background_gradient": "",
-        "border_color": "#E9E2D9",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_horizontal": 0.0,
-        "margin_horizontal_mobile": 0.0,
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "padding_horizontal": 5.0,
-        "padding_horizontal_mobile": 1.5,
-        "width": "page",
-        "content_width": 1200,
-        "border_thickness": 0,
-        "section_radius": 0
-      },
-      "custom_css": [
-        "@media(max-width:1023px){[class*=\"section-\"][class*=\"-settings\"]{padding-top:36px;padding-bottom:36px;}}"
-      ],
-      "blocks": {
-        "ss-heading-1": {
-          "type": "heading",
-          "settings": {
-            "heading": "<h2>Un gusto compartido, no un capricho raro</h2>",
-            "heading_custom": false,
-            "heading_font": "josefin_sans_n4",
-            "heading_size": 40,
-            "heading_size_mobile": 28,
-            "heading_advanced": false,
-            "heading_height": 130,
-            "heading_mt": 0,
-            "heading_mt_mobile": 0,
-            "heading_max_width": 1200,
-            "heading_color": "#121212",
-            "heading_accent_color_type": "solid",
-            "heading_accent_color": "#121212",
-            "heading_accent_gradient": "linear-gradient(135deg, #121212 0%, #808080 100%)"
-          }
-        },
-        "ss-feature-2": {
-          "type": "feature",
-          "settings": {
-            "percent": 92,
-            "heading": "<h3>Arreglada al instante</h3>",
-            "text": "<p>Así describe la mayoría esa sensación de salir ya puesta.</p>"
-          }
-        },
-        "ss-feature-3": {
-          "type": "feature",
-          "settings": {
-            "percent": 88,
-            "heading": "<h3>Lo recomendaría</h3>",
-            "text": "<p>El mismo criterio se lo pasa a una amiga sin rodeos.</p>"
-          }
-        },
-        "ss-feature-4": {
-          "type": "feature",
-          "settings": {
-            "percent": 85,
-            "heading": "<h3>Combina con el armario</h3>",
-            "text": "<p>Entra en lo que ya se usa, sin pedir un vestidor nuevo.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "ss-heading-1",
-        "ss-feature-2",
-        "ss-feature-3",
-        "ss-feature-4"
-      ]
-    },
-    "ss-faq-17-4": {
-      "type": "ss-faq-17",
-      "settings": {
-        "content_max_width": 70,
-        "toggles_gap": 16,
-        "toggles_gap_mobile": 12,
-        "toggles_mt": 32,
-        "toggles_mt_mobile": 24,
-        "toggle_padding_horizontal": 26,
-        "toggle_padding_horizontal_mobile": 20,
-        "toggle_padding_vertical": 12,
-        "toggle_padding_vertical_mobile": 10,
-        "toggle_radius": 100,
-        "toggle_custom": false,
-        "toggle_font": "josefin_sans_n4",
-        "toggle_size": 14,
-        "toggle_size_mobile": 14,
-        "toggle_height": 130,
-        "tabs_mt": 24,
-        "tabs_mt_mobile": 24,
-        "item_mt": 12,
-        "item_mt_mobile": 12,
-        "item_padding_horizontal": 0,
-        "item_padding_horizontal_mobile": 0,
-        "item_padding_vertical": 20,
-        "item_padding_vertical_mobile": 14,
-        "item_border_thickness": 1,
-        "question_custom": false,
-        "question_font": "josefin_sans_n4",
-        "question_size": 16,
-        "question_size_mobile": 14,
-        "question_height": 150,
-        "icon_size": 26,
-        "icon_size_mobile": 24,
-        "answer_custom": false,
-        "answer_font": "josefin_sans_n4",
-        "answer_size": 14,
-        "answer_size_mobile": 14,
-        "answer_height": 150,
-        "answer_padding_top": 30,
-        "toggles_bg_color": "#F7F5F1",
-        "toggle_bg_color": "#121212",
-        "toggle_color": "#121212",
-        "toggle_active_color": "#FFFFFF",
-        "item_border_color": "#E9E2D9",
-        "question_color": "#121212",
-        "answer_color": "#121212",
-        "icon_color": "#121212",
-        "background_color": "#F1EDE8",
-        "border_color": "#E9E2D9",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_horizontal": 0,
-        "margin_horizontal_mobile": 0.0,
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "padding_horizontal": 5,
-        "padding_horizontal_mobile": 1.5,
-        "content_width": 1000,
-        "border_thickness": 0,
-        "section_radius": 0,
-        "toggle_bg_gradient": "",
-        "background_gradient": "linear-gradient(180deg, #F1EDE8 0%, #FFFFFF 100%)"
-      },
-      "custom_css": [
-        "@media(max-width:1023px){[class*=\"section-\"][class*=\"-settings\"]{padding-top:36px;padding-bottom:36px;}}@media(max-width:989px){[class*=\"section-\"][class*=\"-settings\"]{padding-bottom:32.8px;}}@media(min-width:990px) and (max-width:1023px){[class*=\"section-\"][class*=\"-settings\"]{padding-bottom:16px;}}"
-      ],
-      "blocks": {
-        "ss-heading-1": {
-          "type": "heading",
-          "settings": {
-            "heading": "<h2>Elige con calma: talla, envío y cómo mezclar</h2>",
-            "heading_custom": false,
-            "heading_font": "josefin_sans_n4",
-            "heading_size": 40,
-            "heading_size_mobile": 28,
-            "heading_height": 130,
-            "heading_mt": 0,
-            "heading_mt_mobile": 0,
-            "heading_color": "#121212"
-          }
-        },
-        "ss-text-2": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pedidos en euros con envío a España. Las colecciones están pensadas para que tu estilo se lea antes que tú, mezclando conjuntos, vestidos y básicos de la tienda.</p>",
-            "text_custom": false,
-            "text_font": "josefin_sans_n4",
-            "text_size": 15,
-            "text_size_mobile": 15,
-            "text_height": 150,
-            "text_mt": 30,
-            "text_mt_mobile": 20,
-            "text_color": "#121212"
-          }
-        },
-        "ss-tab-3": {
-          "type": "tab",
-          "settings": {
-            "tab": "Talla"
-          }
-        },
-        "ss-faq_item-4": {
-          "type": "faq_item",
-          "settings": {
-            "question": "¿Cómo acierto con la talla si compro online?",
-            "answer": "<p>Consulta la guía de cada ficha y quédate con la medida que más se acerque a cómo te gusta llevar la prenda: más cerca del cuerpo o con aire. Si dudas entre dos, elige según la caída que buscas ese día.</p>"
-          }
-        },
-        "ss-faq_item-5": {
-          "type": "faq_item",
-          "settings": {
-            "question": "¿Y si al llegar no me convence el ajuste?",
-            "answer": "<p>Mírala con calma en casa, con la luz de siempre. Si no es tu talla, el equipo te orienta para el siguiente pedido; no hace falta improvisar un look a ciegas.</p>"
-          }
-        },
-        "ss-tab-6": {
-          "type": "tab",
-          "settings": {
-            "tab": "Envíos"
-          }
-        },
-        "ss-faq_item-7": {
-          "type": "faq_item",
-          "settings": {
-            "question": "¿Enviáis a España y cobráis en euros?",
-            "answer": "<p>Sí: los pedidos se gestionan en euros y el envío llega a España. Verás el total en caja antes de confirmar, sin sorpresas de moneda.</p>"
-          }
-        },
-        "ss-faq_item-8": {
-          "type": "faq_item",
-          "settings": {
-            "question": "¿Cuándo sale el pedido?",
-            "answer": "<p>Preparamos cada pedido en cuanto se confirma. El plazo concreto aparece en el checkout según destino y momento del año.</p>"
-          }
-        },
-        "ss-tab-9": {
-          "type": "tab",
-          "settings": {
-            "tab": "Combinar"
-          }
-        },
-        "ss-faq_item-10": {
-          "type": "faq_item",
-          "settings": {
-            "question": "¿Puedo mezclar conjuntos, vestidos y básicos?",
-            "answer": "<p>Están pensados para hablarse: un vestido con un pantalón de traje, un conjunto con lo que ya cuelga en el armario. Empieza por un tono que ya uses y suma una sola pieza nueva.</p>"
-          }
-        },
-        "ss-faq_item-11": {
-          "type": "faq_item",
-          "settings": {
-            "question": "¿Hace falta un armario entero para que se note el estilo?",
-            "answer": "<p>Con pocas piezas que se entiendan entre sí basta. El corte relajado y la línea femenina hacen el trabajo; tú solo eliges el ritmo del día.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "ss-heading-1",
-        "ss-text-2",
-        "ss-tab-3",
-        "ss-faq_item-4",
-        "ss-faq_item-5",
-        "ss-tab-6",
-        "ss-faq_item-7",
-        "ss-faq_item-8",
-        "ss-tab-9",
-        "ss-faq_item-10",
-        "ss-faq_item-11"
-      ]
     }
   },
   "order": [
     "main",
     "ss-feature-54-1",
-    "ss-testimonials-42-2",
-    "ss-stats-5-3",
-    "ss-faq-17-4",
-    "up_recommendations"
+    "up_recommendations",
+    "ss-testimonials-42-2"
   ]
 }
