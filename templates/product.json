@@ -88,6 +88,14 @@
             "padding-inline-end": 12
           },
           "blocks": {
+            "custom_liquid_U9GKTH": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{%- if product.handle == 'conjunto-mystique' or product.handle == 'leticia-vestido-grecia' -%}{%- capture up_s -%}{ {%- for v in product.variants -%}{%- if v.inventory_management == 'shopify' -%}\"{{ v.id }}\":[{{ v.inventory_quantity }},{{ v.options | last | json }}],{%- endif -%}{%- endfor -%}\"_\":0}{%- endcapture -%}<div data-up-urg data-stock=\"{{ up_s | escape }}\"></div><script src=\"https://cdn.shopify.com/s/files/1/1041/5816/7375/files/up-urgencia-v2.js\" defer></script>{%- endif -%}"
+              },
+              "blocks": {}
+            },
             "section_store_block_review_summary_piEPr6": {
               "type": "shopify://apps/section-store/blocks/block-review-summary/d7a2e423-ea88-4344-b866-6d0fb487c3dd",
               "settings": {
@@ -95,9 +103,9 @@
                 "stars_count": 4.5,
                 "stars_size": 15,
                 "stars_gap": 1,
-                "stars_color": "#FFFFFF",
-                "stars_bg_color": "#00B67A",
-                "stars_bg_half_color": "#DDDDDD",
+                "stars_color": "#ffffff",
+                "stars_bg_color": "#00b67a",
+                "stars_bg_half_color": "#dddddd",
                 "avatars_position": "none",
                 "avatars_size": 20,
                 "avatars_animate": false,
@@ -627,6 +635,7 @@
             }
           },
           "block_order": [
+            "custom_liquid_U9GKTH",
             "section_store_block_review_summary_piEPr6",
             "text_GnyQiN",
             "reviews",
