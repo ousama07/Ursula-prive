@@ -76,24 +76,6 @@
         "disabled": true,
         "settings": {}
       },
-      "3516830543601639398": {
-        "type": "shopify://apps/swatchy-color-swatch/blocks/color-swatches/9ffb0fa4-bc83-4328-b49f-930bca91f3cf",
-        "disabled": false,
-        "settings": {}
-      },
-      "14152569897387207382": {
-        "type": "shopify://apps/section-store/blocks/block-cart/d7a2e423-ea88-4344-b866-6d0fb487c3dd",
-        "disabled": false,
-        "settings": {}
-      },
-      "8315608621410374781": {
-        "type": "shopify://apps/pify-size-charts/blocks/size-chart-app-embed/6acea2e6-5389-4b9c-9a1f-ae00732bccb4",
-        "disabled": false,
-        "settings": {
-          "custom_liquid_css": "",
-          "custom_liquid_js": ""
-        }
-      },
       "17676059084223943535": {
         "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
         "disabled": false,
@@ -101,11 +83,6 @@
       },
       "10312807297210203588": {
         "type": "shopify://apps/aftersell/blocks/utm-triggers/509ec35d-0632-4dfc-a105-fa799cd9d149",
-        "disabled": false,
-        "settings": {}
-      },
-      "17198465164502963513": {
-        "type": "shopify://apps/cwill-parcel-panel/blocks/app.embed/fc785c3f-90e0-4c98-a20c-7cde9ba5e4b5",
         "disabled": false,
         "settings": {}
       },
@@ -150,14 +127,37 @@
         "disabled": false,
         "settings": {}
       },
-      "11068332061543699368": {
-        "type": "shopify://apps/booster-page-speed-optimizer/blocks/app-embed/d920faf3-7c60-423a-9636-22618b5561b5",
-        "disabled": false,
-        "settings": {}
-      },
       "4283104001981797428": {
         "type": "shopify://apps/wetracked-io-connect/blocks/tracking/01a0e78e-0b9c-7d8a-b7fe-af78b794e837",
         "disabled": false,
+        "settings": {}
+      },
+      "3516830543601639398": {
+        "type": "shopify://apps/swatchy-color-swatch/blocks/color-swatches/9ffb0fa4-bc83-4328-b49f-930bca91f3cf",
+        "disabled": true,
+        "settings": {}
+      },
+      "11068332061543699368": {
+        "type": "shopify://apps/booster-page-speed-optimizer/blocks/app-embed/d920faf3-7c60-423a-9636-22618b5561b5",
+        "disabled": true,
+        "settings": {}
+      },
+      "17198465164502963513": {
+        "type": "shopify://apps/cwill-parcel-panel/blocks/app.embed/fc785c3f-90e0-4c98-a20c-7cde9ba5e4b5",
+        "disabled": true,
+        "settings": {}
+      },
+      "8315608621410374781": {
+        "type": "shopify://apps/pify-size-charts/blocks/size-chart-app-embed/6acea2e6-5389-4b9c-9a1f-ae00732bccb4",
+        "disabled": true,
+        "settings": {
+          "custom_liquid_css": "",
+          "custom_liquid_js": ""
+        }
+      },
+      "14152569897387207382": {
+        "type": "shopify://apps/section-store/blocks/block-cart/d7a2e423-ea88-4344-b866-6d0fb487c3dd",
+        "disabled": true,
         "settings": {}
       }
     },
