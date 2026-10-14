@@ -235,7 +235,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<p><em>Tu estilo habla antes que tú.</em></p>",
+                "text": "<p><em>Los favoritos de nuestras clientas.</em></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
