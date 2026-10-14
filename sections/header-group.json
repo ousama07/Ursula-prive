@@ -14,12 +14,13 @@
     "header_announcements_WbCTVz": {
       "type": "header-announcements",
       "blocks": {
-        "announcement_mxxhta": {
+        "announcement_mFbGdg": {
           "type": "_announcement",
+          "name": "t:names.announcement",
           "settings": {
-            "text": "¡<strong>ENVÍO GRATUITO</strong> en toda España!",
+            "text": "&nbsp;<strong>ENVÍO GRATIS CON SEGUIMIENTO</strong> | Hasta 60 % de descuento&nbsp;",
             "link": "",
-            "font": "var(--font-body--family)",
+            "font": "var(--font-subheading--family)",
             "font_size": "1rem",
             "weight": "",
             "letter_spacing": "normal",
@@ -30,17 +31,17 @@
         }
       },
       "block_order": [
-        "announcement_mxxhta"
+        "announcement_mFbGdg"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
         "section_width": "full-width",
-        "background_color": "{{ settings.color_palette.color3 }}",
+        "background_color": "{{ settings.color_palette.foreground }}",
         "divider_width": 0,
         "divider_color": "",
-        "padding-block-start": 15,
-        "padding-block-end": 15
+        "padding-block-start": 30,
+        "padding-block-end": 10
       }
     },
     "header_section": {
@@ -130,22 +131,11 @@
         "text_color_transparent_collection": ""
       }
     },
-    "custom_liquid_Rycjh6": {
+    "custom_liquid_4ChtaT": {
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "{%- comment -%} Úrsula Privée · cuenta atrás de la barra de anuncios (hasta las 23:59:59, hora de España). Se reinicia cada día. {%- endcomment -%}\n<style>.up-cd{display:inline-flex;align-items:center;gap:6px;margin-inline-start:10px;padding:4px 11px 4px 9px;border-radius:999px;background:#c8102e;color:#fff;font-size:.82em;font-weight:700;letter-spacing:.04em;line-height:1.2;font-variant-numeric:tabular-nums;vertical-align:middle;white-space:nowrap}.up-cd svg{width:13px;height:13px;flex:none}.up-cd b{font-weight:700}.up-cd i{font-style:normal;font-weight:500;opacity:.85;margin-inline:1px 3px}.announcement-bar__text:has(.up-cd){line-height:1.6}@media(max-width:420px){.announcement-bar__text:has(.up-cd){font-size:13px}.up-cd{margin-inline-start:6px;padding:3px 9px 3px 7px}}</style>\n<script>(()=>{const p=document.querySelector('.announcement-bar__text');if(!p||p.querySelector('.up-cd'))return;const c=document.createElement('span');c.className='up-cd';c.setAttribute('role','timer');c.innerHTML='<svg viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"6.5\"/><path d=\"M8 4.5V8l2.5 1.5\" stroke-linecap=\"round\"/></svg><span></span>';const o=c.lastChild;p.append(' ',c);const z=n=>String(n).padStart(2,'0');const f=new Intl.DateTimeFormat('es-ES',{timeZone:'Europe/Madrid',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'});const t=()=>{const[h,m,s]=f.format(new Date()).split(':').map(Number);const r=86400-(h*3600+m*60+s);o.innerHTML='<b>'+z(Math.floor(r/3600))+'</b><i>h</i><b>'+z(Math.floor(r%3600/60))+'</b><i>m</i><b>'+z(r%60)+'</b><i>s</i>'};t();setInterval(t,1000)})();</script>\n<script src=\"https://cdn.shopify.com/s/files/1/1041/5816/7375/files/up-color-sync.js\" defer></script>",
-        "background_color": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_hFGrJh": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<!-- Meta Pixel Code -->\n<script>\n  !function(f,b,e,v,n,t,s)\n  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?\n  n.callMethod.apply(n,arguments):n.queue.push(arguments)};\n  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';\n  n.queue=[];t=b.createElement(e);t.async=!0;\n  t.src=v;s=b.getElementsByTagName(e)[0];\n  s.parentNode.insertBefore(t,s)}(window, document,'script',\n  'https://connect.facebook.net/en_US/fbevents.js');\n  fbq('init', '27568017549539064');\n  fbq('track', 'PageView');\n</script>\n<noscript><img height=\"1\" width=\"1\" style=\"display:none\"\n  src=\"https://www.facebook.com/tr?id=27568017549539064&ev=PageView&noscript=1\"\n/></noscript>\n<!-- End Meta Pixel Code -->",
+        "custom_liquid": "<style>\n.announcement-bar__text{white-space:nowrap}\n@media screen and (max-width:749px){\n  .announcement-bar__slides{width:100%;max-width:none}\n  .announcement-bar__slider .slideshow-control{display:none}\n  .announcement-bar__text{font-size:min(1rem,3vw)!important}\n}\n</style>\n<script src=\"https://cdn.shopify.com/s/files/1/1041/5816/7375/files/up-color-sync.js\" defer></script>",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
@@ -156,7 +146,6 @@
   "order": [
     "header_announcements_WbCTVz",
     "header_section",
-    "custom_liquid_Rycjh6",
-    "custom_liquid_hFGrJh"
+    "custom_liquid_4ChtaT"
   ]
 }
