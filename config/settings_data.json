@@ -137,11 +137,6 @@
         "disabled": true,
         "settings": {}
       },
-      "11068332061543699368": {
-        "type": "shopify://apps/booster-page-speed-optimizer/blocks/app-embed/d920faf3-7c60-423a-9636-22618b5561b5",
-        "disabled": true,
-        "settings": {}
-      },
       "17198465164502963513": {
         "type": "shopify://apps/cwill-parcel-panel/blocks/app.embed/fc785c3f-90e0-4c98-a20c-7cde9ba5e4b5",
         "disabled": true,
@@ -158,6 +153,11 @@
       "14152569897387207382": {
         "type": "shopify://apps/section-store/blocks/block-cart/d7a2e423-ea88-4344-b866-6d0fb487c3dd",
         "disabled": true,
+        "settings": {}
+      },
+      "11068332061543699368": {
+        "type": "shopify://apps/booster-page-speed-optimizer/blocks/app-embed/d920faf3-7c60-423a-9636-22618b5561b5",
+        "disabled": false,
         "settings": {}
       }
     },
