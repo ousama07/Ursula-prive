@@ -100,16 +100,16 @@
             "menu_font_style": "inverse",
             "type_font_primary_link": "body",
             "type_case_primary_link": "none",
-            "menu_style": "featured_products",
+            "menu_style": "text",
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
             "navigation_bar": false,
             "background_color_navigation_bar": "{{ settings.color_palette.background }}",
             "text_color_navigation_bar": "",
-            "drawer_accordion": false,
+            "drawer_accordion": true,
             "drawer_accordion_expand_first": false,
-            "drawer_dividers": false
+            "drawer_dividers": true
           },
           "blocks": {}
         }
@@ -167,7 +167,7 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "<style>\n.announcement-bar__text{white-space:nowrap}\n@media screen and (max-width:749px){\n  .announcement-bar__slides{width:100%;max-width:none}\n  .announcement-bar__slider .slideshow-control{display:none}\n  .announcement-bar__text{font-size:min(1rem,3vw)!important}\n}\n</style>\n<script src=\"https://cdn.shopify.com/s/files/1/1041/5816/7375/files/up-color-sync.js\" defer></script>",
+        "custom_liquid": "<style>\n.announcement-bar__text{white-space:nowrap}\n@media screen and (max-width:749px){\n  .announcement-bar__slides{width:100%;max-width:none}\n  .announcement-bar__slider .slideshow-control{display:none}\n  .announcement-bar__text{font-size:min(1rem,3vw)!important}\n}\n.menu-drawer__menu-item-text{letter-spacing:.08em}\n.menu-drawer__menu-container > summary .menu-drawer__menu-item-text,\n.menu-drawer__menu-item--parent .menu-drawer__menu-item-text{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}\n</style>\n<script src=\"https://cdn.shopify.com/s/files/1/1041/5816/7375/files/up-color-sync.js\" defer></script>",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
