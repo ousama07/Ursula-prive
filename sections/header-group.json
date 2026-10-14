@@ -167,7 +167,7 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "<style>\n.announcement-bar__text{white-space:nowrap}\n@media screen and (max-width:749px){\n  .announcement-bar__slides{width:100%;max-width:none}\n  .announcement-bar__slider .slideshow-control{display:none}\n  .announcement-bar__text{font-size:min(1rem,3vw)!important}\n}\n.menu-drawer__menu-item-text{letter-spacing:.08em}\n.menu-drawer__menu-container > summary .menu-drawer__menu-item-text,\n.menu-drawer__menu-item--parent .menu-drawer__menu-item-text{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}\n</style>\n<script src=\"https://cdn.shopify.com/s/files/1/1041/5816/7375/files/up-color-sync.js\" defer></script>",
+        "custom_liquid": "<style>\n.announcement-bar__text{white-space:nowrap}\n@media screen and (max-width:749px){\n  .announcement-bar__slides{width:100%;max-width:none}\n  .announcement-bar__slider .slideshow-control{display:none}\n  .announcement-bar__text{font-size:min(1rem,3vw)!important}\n}\n.menu-drawer__menu-item-text{letter-spacing:.08em}\n.menu-drawer__menu-container > summary .menu-drawer__menu-item-text,\n.menu-drawer__menu-item--parent .menu-drawer__menu-item-text{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}\n.menu-drawer__menu-item.menu-drawer__menu-item--mainlist{font-size:1rem;line-height:1.5}\n</style>\n<script src=\"https://cdn.shopify.com/s/files/1/1041/5816/7375/files/up-color-sync.js\" defer></script>",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
