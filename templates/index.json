@@ -158,6 +158,9 @@
       "block_order": [
         "group_mATTUY"
       ],
+      "custom_css": [
+        "@media screen and (max-width: 749px) {.hero {min-height: 0 !important; aspect-ratio: 2 / 3; } .hero__container {height: 100%; }}"
+      ],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
@@ -166,7 +169,7 @@
         "stack_media_on_mobile": false,
         "custom_mobile_media": true,
         "media_type_1_mobile": "image",
-        "image_1_mobile": "shopify://shop_images/banner_movil.png",
+        "image_1_mobile": "shopify://shop_images/encabezado_imagen.png",
         "media_type_2_mobile": "image",
         "link": "",
         "open_in_new_tab": false,
@@ -379,6 +382,7 @@
                   "name": "t:names.product_price",
                   "settings": {
                     "show_sale_price_first": false,
+                    "show_savings": false,
                     "show_installments": false,
                     "show_tax_info": false,
                     "type_preset": "paragraph",
@@ -431,6 +435,7 @@
       "settings": {
         "collection": "portada",
         "layout_type": "depth_carousel",
+        "initial_product": "lucia-vestido-estampado",
         "carousel_on_mobile": false,
         "max_products": 8,
         "columns": 4,
@@ -445,8 +450,7 @@
         "gap": 28,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 48,
-        "padding-block-end": 64,
-        "initial_product": "lucia-vestido-estampado"
+        "padding-block-end": 64
       }
     },
     "media_with_content_LfPdEJ": {
