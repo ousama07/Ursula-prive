@@ -5,7 +5,7 @@
   @param {product} product_resource - The product to render
   @param {boolean} [show_unit_price] - Whether to show the unit price
   @param {boolean} [show_sale_price_first] - Whether to show the sale price first
-  @param {boolean} [show_savings] - Úrsula Privée: muestra "Ahorras X€" y "Por tiempo limitado" junto al precio
+  @param {boolean} [show_savings] - Úrsula Privée: muestra el porcentaje de descuento y "Por tiempo limitado" junto al precio
 {%- enddoc -%}
 
 {% render 'price-styles' %}
@@ -25,8 +25,12 @@
   # Úrsula Privée – ahorro calculado para cada producto/variante (precio anterior - precio actual)
   assign show_savings = show_savings | default: false
   assign savings_amount = 0
+  assign savings_percent = 0
   if show_compare_price
     assign savings_amount = compare_at_price | minus: price
+    if compare_at_price > 0
+      assign savings_percent = savings_amount | times: 100.0 | divided_by: compare_at_price | round
+    endif
   endif
 
   if product_resource == blank
@@ -124,13 +128,13 @@
         ><bdi>{{ price | default: '&nbsp;' }}</bdi></span
       >
     {% endif %}
-    {%- if show_savings and show_compare_price and savings_amount > 0 -%}
-      <span class="price-savings">
-        <span class="price-savings__amount">Ahorras <bdi>{{ savings }}</bdi></span>
-        <span class="price-savings__note">
-          <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor"/><path d="M6 3.2V6l1.9 1.2" fill="none" stroke="currentColor" stroke-linecap="round"/></svg>
-          Por tiempo limitado
-        </span>
+    {%- if show_savings and show_compare_price and savings_percent > 0 -%}
+      <span class="price-savings__percent">
+        <span class="visually-hidden">Descuento&nbsp;</span>-{{ savings_percent }}%
+      </span>
+      <span class="price-savings__note">
+        <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor"/><path d="M6 3.2V6l1.9 1.2" fill="none" stroke="currentColor" stroke-linecap="round"/></svg>
+        Por tiempo limitado
       </span>
     {%- endif -%}
   {% endif %}
@@ -155,16 +159,15 @@
 {%- endif -%}
 
 {% stylesheet %}
-  /* Úrsula Privée – precio tachado · precio actual en rojo · ahorro en verde */
+  /* Úrsula Privée – precio tachado · precio actual y porcentaje de descuento en rojo */
   .price--with-savings {
     --price-sale-red: #c62828;
-    --price-savings-green: #1f7a4d;
 
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: baseline;
     column-gap: 0.45em;
-    row-gap: 10px;
+    row-gap: 8px;
     max-width: 100%;
   }
 
@@ -172,44 +175,33 @@
     color: var(--price-sale-red);
   }
 
-  .price-savings {
+  /* Porcentaje: a la derecha del precio, en la misma línea */
+  .price-savings__percent {
     display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    margin-inline-start: 0.4em;
-    margin-block-start: max(0px, calc((1lh - 27px) / 2));
+    align-items: baseline;
     min-width: 0;
+    color: var(--price-sale-red);
     font-family: var(--font-body--family);
     font-style: normal;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-  }
-
-  .price-savings__amount {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3em;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: rgb(31 122 77 / 0.1);
-    box-shadow: inset 0 0 0 1px rgb(31 122 77 / 0.14);
-    color: var(--price-savings-green);
     font-size: 0.9375rem;
-    font-weight: 600;
+    font-weight: 700;
+    line-height: 1;
     letter-spacing: 0.01em;
+    text-transform: none;
     white-space: nowrap;
   }
 
+  /* "Por tiempo limitado" baja a su propia línea */
   .price-savings__note {
-    display: inline-flex;
+    flex-basis: 100%;
+    display: flex;
     align-items: center;
     gap: 6px;
-    padding-inline-start: 12px;
     color: rgb(var(--color-foreground-rgb, 0 0 0) / 0.55);
+    font-family: var(--font-body--family);
     font-size: 0.6875rem;
     font-weight: 500;
+    line-height: 1;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     white-space: nowrap;
@@ -222,21 +214,11 @@
   }
 
   @media screen and (max-width: 749px) {
-    .price--with-savings {
-      row-gap: 8px;
-    }
-
-    .price-savings {
-      margin-inline-start: 0;
-    }
-
-    .price-savings__amount {
-      padding: 4px 9px;
-      font-size: 0.8125rem;
+    .price-savings__percent {
+      font-size: 0.875rem;
     }
 
     .price-savings__note {
-      padding-inline-start: 9px;
       font-size: 0.625rem;
       letter-spacing: 0.12em;
     }
