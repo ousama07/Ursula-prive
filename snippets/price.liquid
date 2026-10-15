@@ -129,9 +129,7 @@
       >
     {% endif %}
     {%- if show_savings and show_compare_price and savings_percent > 0 -%}
-      <span class="price-savings__percent">
-        <span class="visually-hidden">Descuento&nbsp;</span>-{{ savings_percent }}%
-      </span>
+      <span class="price-savings__percent">-{{ savings_percent }}% descuento</span>
       <span class="price-savings__note">
         <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor"/><path d="M6 3.2V6l1.9 1.2" fill="none" stroke="currentColor" stroke-linecap="round"/></svg>
         Por tiempo limitado
@@ -162,6 +160,7 @@
   /* Úrsula Privée – precio tachado · precio actual y porcentaje de descuento en rojo */
   .price--with-savings {
     --price-sale-red: #c62828;
+    --price-savings-green: #1f7a4d;
 
     display: flex;
     flex-wrap: wrap;
@@ -175,18 +174,23 @@
     color: var(--price-sale-red);
   }
 
-  /* Porcentaje: a la derecha del precio, en la misma línea */
+  /* Porcentaje: recuadro verde a la derecha del precio, en la misma línea */
   .price-savings__percent {
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
+    align-self: center;
     min-width: 0;
-    color: var(--price-sale-red);
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: rgb(31 122 77 / 0.1);
+    box-shadow: inset 0 0 0 1px rgb(31 122 77 / 0.18);
+    color: var(--price-savings-green);
     font-family: var(--font-body--family);
     font-style: normal;
-    font-size: 0.9375rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     line-height: 1;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
     text-transform: none;
     white-space: nowrap;
   }
@@ -215,7 +219,8 @@
 
   @media screen and (max-width: 749px) {
     .price-savings__percent {
-      font-size: 0.875rem;
+      padding: 4px 8px;
+      font-size: 0.75rem;
     }
 
     .price-savings__note {
