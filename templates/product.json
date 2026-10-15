@@ -88,16 +88,17 @@
             "padding-inline-end": 12
           },
           "blocks": {
-            "custom_liquid_U9GKTH": {
+            "custom_liquid_XQAYQM": {
               "type": "custom-liquid",
               "name": "t:names.custom_liquid",
               "settings": {
-                "custom_liquid": "{%- if product.handle == 'conjunto-mystique' or product.handle == 'leticia-vestido-grecia' -%}{%- capture up_s -%}{ {%- for v in product.variants -%}{%- if v.inventory_management == 'shopify' -%}\"{{ v.id }}\":[{{ v.inventory_quantity }},{{ v.options | last | json }}],{%- endif -%}{%- endfor -%}\"_\":0}{%- endcapture -%}<div data-up-urg data-stock=\"{{ up_s | escape }}\"></div><script src=\"https://cdn.shopify.com/s/files/1/1041/5816/7375/files/up-urgencia-v2.js\" defer></script>{%- endif -%}"
+                "custom_liquid": "<div class=\"social-proof-rating\">\n  <div class=\"social-proof-stars\" aria-label=\"Valoración de 4,8 sobre 5\">\n    ★★★★★\n  </div>\n  <span class=\"social-proof-score\">4,8/5</span>\n  <span class=\"social-proof-text\">6.981 clientas satisfechas</span>\n</div>\n\n<style>\n  .social-proof-rating {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    gap: 8px;\n    flex-wrap: wrap;\n    font-family: inherit;\n    font-size: 15px;\n    line-height: 1.4;\n    color: #292929;\n  }\n\n  .social-proof-stars {\n    color: #ffbf00;\n    font-size: 19px;\n    letter-spacing: 0;\n    line-height: 1;\n    white-space: nowrap;\n  }\n\n  .social-proof-score {\n    font-weight: 400;\n    white-space: nowrap;\n  }\n\n  .social-proof-text {\n    letter-spacing: 0.5px;\n  }\n\n  @media screen and (max-width: 480px) {\n    .social-proof-rating {\n      gap: 6px;\n      font-size: 13px;\n    }\n\n    .social-proof-stars {\n      font-size: 17px;\n    }\n  }\n</style>"
               },
               "blocks": {}
             },
             "section_store_block_review_summary_piEPr6": {
               "type": "shopify://apps/section-store/blocks/block-review-summary/d7a2e423-ea88-4344-b866-6d0fb487c3dd",
+              "disabled": true,
               "settings": {
                 "star_style": "standard",
                 "stars_count": 4.5,
@@ -635,7 +636,7 @@
             }
           },
           "block_order": [
-            "custom_liquid_U9GKTH",
+            "custom_liquid_XQAYQM",
             "section_store_block_review_summary_piEPr6",
             "text_GnyQiN",
             "reviews",
