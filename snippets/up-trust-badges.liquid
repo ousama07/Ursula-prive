@@ -1,0 +1,29 @@
+{%- doc -%}
+  Úrsula Privée · iconos de confianza de la ficha de producto.
+  Se usa en todas las plantillas de producto.
+{%- enddoc -%}
+<div class="upt">
+  <div class="upt-i">
+    <img src="{{ 'up-badge-30dias.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
+    <span>Garantía de devolución y reembolso</span>
+  </div>
+  <div class="upt-i">
+    <img src="{{ 'up-badge-correos.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
+    <span>Envío gratis</span>
+  </div>
+  <div class="upt-i">
+    <img src="{{ 'up-badge-espana.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
+    <span>Empresa española</span>
+  </div>
+</div>
+<style>
+.upt{display:flex;flex-direction:column;gap:14px;margin-block:18px}
+.upt-i{display:flex;align-items:center;gap:12px}
+.upt-i img{flex:none;width:34px;height:34px;border-radius:50%;object-fit:cover;display:block}
+.upt-i span{font-family:var(--font-body--family);font-size:.9375rem;line-height:1.3;letter-spacing:.02em;color:var(--color-foreground)}
+@media screen and (max-width:749px){
+  .upt{gap:12px}
+  .upt-i img{width:30px;height:30px}
+  .upt-i span{font-size:.875rem}
+}
+</style>

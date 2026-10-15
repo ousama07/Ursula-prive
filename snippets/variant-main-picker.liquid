@@ -82,29 +82,30 @@
           assign upv_sel = product_option.values | where: 'selected' | first
         -%}
         {%- if product_option.values.size == 1 and variant_style != 'swatch' -%}
-          <div
-            class="variant-option"
-            data-testid="variant-option-single"
-          >
-            {{- product_option.name | escape -}}
-            <span
-              class="variant-option__swatch-value"
-              data-testid="variant-option-single-value"
+          {%- if upv_color -%}
+            <div class="upv upv--color upv--single" data-testid="variant-option-single">
+              <span class="visually-hidden">{{ product_option.name | escape }}: {{ product_option.selected_value }}</span>
+              {% render 'up-color-swatch', value: upv_sel %}
+            </div>
+          {%- else -%}
+            <div
+              class="variant-option"
+              data-testid="variant-option-single"
             >
-              {%- if upv_color -%}{% render 'up-color-swatch', value: upv_sel %}{%- endif -%}
-              {{- product_option.selected_value -}}
-            </span>
-          </div>
+              {{- product_option.name | escape -}}
+              <span
+                class="variant-option__swatch-value"
+                data-testid="variant-option-single-value"
+              >
+                {{- product_option.selected_value -}}
+              </span>
+            </div>
+          {%- endif -%}
         {%- elsif variant_style == 'swatch' or block_settings.variant_style == 'buttons' -%}
-          <details class="upv{% if upv_color %} upv--color{% else %} upv--size{% endif %}" data-upv>
-          <summary class="upv__sum">
-            <span class="upv__lab">{{ product_option.name | escape }}</span>
-            <span class="upv__val">
-              {%- if upv_color and upv_sel -%}{% render 'up-color-swatch', value: upv_sel %}{%- endif -%}
-              <span class="upv__txt">{{ product_option.selected_value | default: 'Seleccionar' | escape }}</span>
-            </span>
-            <svg class="upv__car" viewBox="0 0 12 7" aria-hidden="true" focusable="false"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
-          </summary>
+          <div class="upv{% if upv_color %} upv--color{% else %} upv--size{% endif %}" data-upv>
+          {%- unless upv_color -%}
+            <p class="upv__lab">{{ product_option.name | escape }}</p>
+          {%- endunless -%}
           <fieldset
             class="variant-option variant-option--buttons{% if variant_style == 'swatch' %} variant-option--swatches{% else %} variant-option--{{ settings.variant_button_width }}{% endif %}"
             data-fieldset-index="{{ fieldset_index }}"
@@ -193,7 +194,7 @@
               {% endstyle %}
             {% endif %}
           </fieldset>
-          </details>
+          </div>
           {%- assign fieldset_index = fieldset_index | plus: 1 -%}
         {%- elsif block_settings.variant_style == 'dropdowns' -%}
           {%

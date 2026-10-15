@@ -195,7 +195,7 @@
               "type": "custom-liquid",
               "name": "t:names.custom_liquid",
               "settings": {
-                "custom_liquid": "<div class=\"upt\">\n  <div class=\"upt-i\">\n    <img src=\"{{ 'up-badge-30dias.png' | asset_url }}\" alt=\"\" width=\"320\" height=\"320\" loading=\"lazy\">\n    <span>Garantía de devolución y reembolso</span>\n  </div>\n  <div class=\"upt-i\">\n    <img src=\"{{ 'up-badge-correos.png' | asset_url }}\" alt=\"\" width=\"320\" height=\"320\" loading=\"lazy\">\n    <span>Envío gratis</span>\n  </div>\n  <div class=\"upt-i\">\n    <img src=\"{{ 'up-badge-espana.png' | asset_url }}\" alt=\"\" width=\"320\" height=\"320\" loading=\"lazy\">\n    <span>Empresa española</span>\n  </div>\n</div>\n<style>\n.upt{display:flex;flex-direction:column;gap:14px;margin-block:18px}\n.upt-i{display:flex;align-items:center;gap:12px}\n.upt-i img{flex:none;width:34px;height:34px;border-radius:50%;object-fit:cover;display:block}\n.upt-i span{font-family:var(--font-body--family);font-size:.9375rem;line-height:1.3;letter-spacing:.02em;color:var(--color-foreground)}\n@media screen and (max-width:749px){\n  .upt{gap:12px}\n  .upt-i img{width:30px;height:30px}\n  .upt-i span{font-size:.875rem}\n}\n</style>"
+                "custom_liquid": "{% render 'up-trust-badges' %}"
               },
               "blocks": {}
             },
@@ -214,8 +214,8 @@
                 "custom_selected_variant_text": "{{ settings.color_palette.background }}",
                 "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
                 "alignment": "left",
-                "padding-block-start": 12,
-                "padding-block-end": 12,
+                "padding-block-start": 0,
+                "padding-block-end": 4,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -265,7 +265,7 @@
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
-                    "style_class": "button",
+                    "style_class": "button-secondary",
                     "custom_button_background": "{{ settings.color_palette.foreground }}",
                     "custom_button_text": "{{ settings.color_palette.background }}",
                     "custom_button_border": "{{ settings.color_palette.background }}"
@@ -948,12 +948,177 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "up_story": {
+      "type": "media-with-content",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "video",
+            "link": "",
+            "video": "shopify://files/videos/9998209638602698-de5b146b-921e-4f8b-9995-511ecff42968-video_kling_turbo_932531298731294788_1790361397223247715.mp4",
+            "video_loop": true,
+            "video_autoplay": true,
+            "image_position": "cover",
+            "video_position": "cover"
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 24
+          },
+          "blocks": {
+            "custom_liquid_yQVUjp": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{%- comment -%}\n  ÚRSULA PRIVÉE · NUESTRA HISTORIA (versión solo texto, para ir junto al vídeo\n  en la sección \"Multimedia con texto\"). Este comentario no pesa nada.\n{%- endcomment -%}\n{%- liquid\n  assign ua_t1 = 'Nuestra'\n  assign ua_t2 = 'historia'\n  assign ua_q = 'Tu estilo habla antes que tú.'\n  assign ua_txt = ua_t1 | append: ua_t2 | append: ua_q\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&text={{ ua_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<div class=\"uat\"><p class=\"uat-e\">Sobre nosotros</p><h2>{{ ua_t1 }} <em>{{ ua_t2 }}</em></h2><p>Úrsula Privée nació de una idea sencilla: vestir bien no debería depender de la ocasión, sino de cómo quieres sentirte.</p><p>Elegimos cada pieza una a una, pensando en mujeres reales: en cómo cae el tejido, en si favorece de verdad y en si te acompañará igual en una comida entre semana que en una boda de verano.</p><p class=\"uat-q\">{{ ua_q }}</p><a class=\"uat-c\" href=\"{{ routes.all_products_collection_url }}\">Descubre la colección<svg viewBox=\"0 0 24 9\" aria-hidden=\"true\"><path d=\"M0 4.5h22M18.5 1l3.5 3.5L18.5 8\" fill=\"none\" stroke=\"currentColor\"/></svg></a></div>\n<style>.uat{--k:#1c1a17;--m:#6f655c;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);max-width:440px;color:var(--k);text-align:left}.uat-e{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.uat-e:before{content:'';width:28px;height:1px;background:currentColor}.uat h2{margin:0 0 18px;font:300 clamp(2.4rem,4vw,3.6rem)/1 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.uat p{margin:0 0 12px;font-size:15px;line-height:1.7;color:#4a433d}.uat .uat-q{display:flex;align-items:center;gap:14px;margin:20px 0 0;font:italic 400 1.35rem/1.2 var(--f);color:var(--k)}.uat-q:before{content:'';flex:none;width:28px;height:1px;background:currentColor}.uat-c{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding-bottom:6px;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;color:var(--k);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/28px 1px no-repeat;transition:background-size .9s var(--e)}.uat-c svg{width:24px;height:9px;transition:transform .9s var(--e)}.uat-c:focus-visible{outline:2px solid var(--k);outline-offset:4px}@media(hover:hover){.uat-c:hover{background-size:100% 1px}.uat-c:hover svg{transform:translateX(5px)}}</style>"
+              },
+              "blocks": {}
+            },
+            "image_y4ApqF": {
+              "type": "image",
+              "name": "t:names.image",
+              "disabled": true,
+              "settings": {
+                "link": "",
+                "image_ratio": "adapt",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Hf79zK": {
+              "type": "text",
+              "name": "t:names.heading",
+              "disabled": true,
+              "settings": {
+                "text": "<h2>Productivity Essentials</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_jxGhdJ": {
+              "type": "text",
+              "disabled": true,
+              "settings": {
+                "text": "<p>Objects that partner with your digital tools so you can focus on your most important work.</p>",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_zg4nUF": {
+              "type": "button",
+              "disabled": true,
+              "settings": {
+                "label": "Shop Now",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button-secondary",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "custom_liquid_yQVUjp",
+            "image_y4ApqF",
+            "text_Hf79zK",
+            "text_jxGhdJ",
+            "button_zg4nUF"
+          ]
+        }
+      },
+      "name": "t:names.media_with_text",
+      "settings": {
+        "media_position": "left",
+        "media_width": "medium",
+        "media_height": "50svh",
+        "section_width": "page-width",
+        "extend_media": true,
+        "background_color": "{{ settings.color_palette.color3 }}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "up_reviews": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "{% render 'up-reviews' %}",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
     "section_NaqU9X",
     "up_recommendations",
+    "up_story",
+    "up_reviews",
     "up_faq"
   ]
 }
