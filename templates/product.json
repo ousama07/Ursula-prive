@@ -191,6 +191,14 @@
               },
               "blocks": {}
             },
+            "custom_liquid_DKMNm8": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "<div class=\"upt\">\n  <div class=\"upt-i\">\n    <img src=\"{{ 'up-badge-30dias.png' | asset_url }}\" alt=\"\" width=\"320\" height=\"320\" loading=\"lazy\">\n    <span>Garantía de devolución y reembolso</span>\n  </div>\n  <div class=\"upt-i\">\n    <img src=\"{{ 'up-badge-correos.png' | asset_url }}\" alt=\"\" width=\"320\" height=\"320\" loading=\"lazy\">\n    <span>Envío gratis</span>\n  </div>\n  <div class=\"upt-i\">\n    <img src=\"{{ 'up-badge-espana.png' | asset_url }}\" alt=\"\" width=\"320\" height=\"320\" loading=\"lazy\">\n    <span>Empresa española</span>\n  </div>\n</div>\n<style>\n.upt{display:flex;flex-direction:column;gap:14px;margin-block:18px}\n.upt-i{display:flex;align-items:center;gap:12px}\n.upt-i img{flex:none;width:34px;height:34px;border-radius:50%;object-fit:cover;display:block}\n.upt-i span{font-family:var(--font-body--family);font-size:.9375rem;line-height:1.3;letter-spacing:.02em;color:var(--color-foreground)}\n@media screen and (max-width:749px){\n  .upt{gap:12px}\n  .upt-i img{width:30px;height:30px}\n  .upt-i span{font-size:.875rem}\n}\n</style>"
+              },
+              "blocks": {}
+            },
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
               "settings": {
@@ -641,6 +649,7 @@
             "text_GnyQiN",
             "reviews",
             "price_a7krng",
+            "custom_liquid_DKMNm8",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "group_X39hBc",
