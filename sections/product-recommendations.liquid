@@ -94,20 +94,69 @@
         else
           assign products = recommendations.products
         endif
+
+        # Úrsula Privée · más prendas y que no salgan siempre las mismas.
+        # Shopify sólo devuelve hasta 10 recomendaciones y siempre en el mismo
+        # orden, así que completamos con prendas de las colecciones del propio
+        # producto y rotamos el punto de partida cada hora.
+        if section.settings.product != blank
+          assign up_pool = null
+          for up_c in section.settings.product.collections
+            if up_c.handle == 'portada' or up_c.handle == 'destacados-portada'
+              continue
+            endif
+            if up_pool == null
+              assign up_pool = up_c.products
+            else
+              assign up_pool = up_pool | concat: up_c.products
+            endif
+          endfor
+          if up_pool == null or up_pool.size == 0
+            assign up_pool = collections.all.products
+          endif
+
+          assign up_size = up_pool.size
+          if up_size > 1
+            assign up_off = 'now' | date: '%H' | times: 1 | modulo: up_size
+            if up_off > 0
+              assign up_a = up_pool | slice: up_off, up_size
+              assign up_b = up_pool | slice: 0, up_off
+              assign up_pool = up_a | concat: up_b
+            endif
+          endif
+
+          if products == blank
+            assign products = up_pool
+          else
+            assign products = products | concat: up_pool
+          endif
+        endif
       %}
       {% capture list_items %}
-        {% for product in products limit: section.settings.max_products %}
-          <div class="resource-list__item">
-            {% content_for 'block',
-              type: '_product-card',
-              id: 'static-product-card',
-              closest.product: product,
-              product_view_context: 'recommendation'
-            %}
-          </div>
-          {% unless forloop.last %}
-            <!--@list/split-->
-          {% endunless %}
+        {%- liquid
+          assign up_seen = ','
+          if section.settings.product != blank
+            assign up_seen = up_seen | append: section.settings.product.id | append: ','
+          endif
+          assign up_n = 0
+        -%}
+        {% for product in products %}
+          {%- assign up_key = ',' | append: product.id | append: ',' -%}
+          {%- unless up_seen contains up_key -%}
+            {%- if up_n < section.settings.max_products -%}
+              {%- if up_n > 0 %}<!--@list/split-->{% endif -%}
+              {%- assign up_seen = up_seen | append: product.id | append: ',' -%}
+              {%- assign up_n = up_n | plus: 1 -%}
+              <div class="resource-list__item">
+                {% content_for 'block',
+                  type: '_product-card',
+                  id: 'static-product-card',
+                  closest.product: product,
+                  product_view_context: 'recommendation'
+                %}
+              </div>
+            {%- endif -%}
+          {%- endunless -%}
         {% endfor %}
       {% endcapture %}
 
@@ -286,7 +335,7 @@
       "id": "max_products",
       "label": "t:settings.product_count",
       "min": 3,
-      "max": 10,
+      "max": 24,
       "step": 1,
       "default": 4
     },
