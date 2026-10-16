@@ -221,7 +221,7 @@
               },
               "blocks": {}
             },
-            "custom_liquid_7VWdtc": {
+            "custom_liquid_ExHLT7": {
               "type": "custom-liquid",
               "name": "t:names.custom_liquid",
               "settings": {
@@ -634,7 +634,7 @@
                 "group_XqRYxC"
               ]
             },
-            "custom_liquid_piPB6h": {
+            "custom_liquid_76A9fL": {
               "type": "custom-liquid",
               "name": "t:names.custom_liquid",
               "settings": {
@@ -667,10 +667,10 @@
             "price_a7krng",
             "custom_liquid_DKMNm8",
             "variant_picker_R3rGDr",
-            "custom_liquid_7VWdtc",
+            "custom_liquid_ExHLT7",
             "buy_buttons_eYQEYi",
             "group_X39hBc",
-            "custom_liquid_piPB6h",
+            "custom_liquid_76A9fL",
             "up_size_guide",
             "up_description"
           ]
