@@ -1,0 +1,240 @@
+{%- comment -%}
+  ÚRSULA PRIVÉE · COMPLETA TU OUTFIT
+  Carrusel de bolsos y calzado bajo "También te puede gustar".
+  Usa los mismos estilos y la misma tarjeta de producto que las
+  recomendaciones, para que se vea nativo. Rota el punto de partida
+  cada hora para que no salgan siempre los mismos.
+{%- endcomment -%}
+
+{% liquid
+  assign up_a = collections[section.settings.collection_a].products
+  assign up_b = collections[section.settings.collection_b].products
+  assign up_all = up_a | concat: up_b
+
+  assign up_size = up_all.size
+  if up_size > 1
+    assign up_off = 'now' | date: '%H' | times: 1 | modulo: up_size
+    if up_off > 0
+      assign up_x = up_all | slice: up_off, up_size
+      assign up_y = up_all | slice: 0, up_off
+      assign up_all = up_x | concat: up_y
+    endif
+  endif
+
+  capture up_styles
+    echo '--resource-list-column-gap-desktop: ' | append: section.settings.columns_gap | append: 'px;'
+    echo '--resource-list-row-gap-desktop: ' | append: section.settings.rows_gap | append: 'px;'
+    echo '--resource-list-columns: repeat(' | append: section.settings.columns | append: ', 1fr);'
+    echo '--resource-list-columns-mobile: repeat(' | append: section.settings.mobile_columns | append: ', 1fr);'
+    echo '--column-count: ' | append: section.settings.columns | append: ';'
+    echo '--column-count-mobile: ' | append: section.settings.mobile_columns | append: ';'
+  endcapture
+%}
+
+{% render 'quick-add-styles' %}
+{% render 'quick-add-modal-styles' %}
+{% render 'swatch-styles' %}
+{% render 'quantity-selector-styles' %}
+{% render 'variant-picker-styles' %}
+{% render 'product-badges-styles' %}
+{% render 'resource-list-styles' %}
+
+<div class="up-outfit" {{ section.shopify_attributes }}>
+  <div class="section-background"></div>
+  <div
+    class="section section--{{ section.settings.section_width }} section-resource-list spacing-style gap-style"
+    style="
+      {% render 'spacing-style', settings: section.settings %}
+      {% render 'gap-style', value: section.settings.gap %}
+      {{ up_styles }}
+    "
+  >
+    <div class="section-resource-list__content">
+      {% content_for 'blocks' %}
+    </div>
+
+    {% capture up_items %}
+      {%- liquid
+        assign up_seen = ','
+        if product != blank
+          assign up_seen = up_seen | append: product.id | append: ','
+        endif
+        assign up_n = 0
+      -%}
+      {% for up_p in up_all %}
+        {%- assign up_key = ',' | append: up_p.id | append: ',' -%}
+        {%- unless up_seen contains up_key -%}
+          {%- if up_n < section.settings.max_products -%}
+            {%- if up_n > 0 %}<!--@list/split-->{% endif -%}
+            {%- assign up_seen = up_seen | append: up_p.id | append: ',' -%}
+            {%- assign up_n = up_n | plus: 1 -%}
+            <div class="resource-list__item">
+              {% content_for 'block',
+                type: '_product-card',
+                id: 'static-product-card',
+                closest.product: up_p,
+                product_view_context: 'recommendation'
+              %}
+            </div>
+          {%- endif -%}
+        {%- endunless -%}
+      {% endfor %}
+    {% endcapture %}
+
+    {% liquid
+      assign up_content = up_items | strip
+      assign up_slides = up_content | split: '<!--@list/split-->'
+    %}
+
+    {%- if up_slides.size > 0 and up_content != blank -%}
+      <div class="resource-list force-full-width resource-list__carousel">
+        {% render 'resource-list-carousel',
+          ref: 'upOutfitCarousel',
+          slides: up_slides,
+          slide_count: up_slides.size,
+          settings: section.settings
+        %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Completa tu outfit",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" },
+    { "type": "text" },
+    { "type": "group" },
+    { "type": "spacer" }
+  ],
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection_a",
+      "label": "Primera colección"
+    },
+    {
+      "type": "collection",
+      "id": "collection_b",
+      "label": "Segunda colección"
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "t:settings.product_count",
+      "min": 3,
+      "max": 24,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:settings.columns",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "t:settings.mobile_columns",
+      "options": [
+        { "value": "1", "label": "t:options.one_number" },
+        { "value": "2", "label": "t:options.two_number" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "columns_gap",
+      "label": "t:settings.horizontal_gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "rows_gap",
+      "label": "t:settings.vertical_gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "icons_style",
+      "label": "t:settings.icons",
+      "options": [
+        { "value": "none", "label": "t:options.none" },
+        { "value": "arrow", "label": "t:options.arrow" },
+        { "value": "chevron", "label": "t:options.chevron" },
+        { "value": "caret", "label": "t:options.caret" },
+        { "value": "plus", "label": "t:options.plus" }
+      ],
+      "default": "arrow"
+    },
+    {
+      "type": "select",
+      "id": "icons_shape",
+      "label": "t:settings.icons_shape",
+      "options": [
+        { "value": "none", "label": "t:options.none" },
+        { "value": "circle", "label": "t:options.circle" },
+        { "value": "square", "label": "t:options.square" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 72
+    }
+  ]
+}
+{% endschema %}
