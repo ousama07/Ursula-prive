@@ -103,14 +103,27 @@
 {
   "name": "Completa tu outfit",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "blocks": [
-    { "type": "@theme" },
-    { "type": "@app" },
-    { "type": "text" },
-    { "type": "group" },
-    { "type": "spacer" }
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "group"
+    },
+    {
+      "type": "spacer"
+    }
   ],
   "settings": [
     {
@@ -126,7 +139,7 @@
     {
       "type": "range",
       "id": "max_products",
-      "label": "t:settings.product_count",
+      "label": "Número de productos",
       "min": 3,
       "max": 24,
       "step": 1,
@@ -135,7 +148,7 @@
     {
       "type": "range",
       "id": "columns",
-      "label": "t:settings.columns",
+      "label": "Columnas",
       "min": 1,
       "max": 8,
       "step": 1,
@@ -144,17 +157,23 @@
     {
       "type": "select",
       "id": "mobile_columns",
-      "label": "t:settings.mobile_columns",
+      "label": "Columnas en móvil",
       "options": [
-        { "value": "1", "label": "t:options.one_number" },
-        { "value": "2", "label": "t:options.two_number" }
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
       ],
       "default": "2"
     },
     {
       "type": "range",
       "id": "columns_gap",
-      "label": "t:settings.horizontal_gap",
+      "label": "Separación horizontal",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -164,7 +183,7 @@
     {
       "type": "range",
       "id": "rows_gap",
-      "label": "t:settings.vertical_gap",
+      "label": "Separación vertical",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -174,41 +193,71 @@
     {
       "type": "select",
       "id": "icons_style",
-      "label": "t:settings.icons",
+      "label": "Flechas",
       "options": [
-        { "value": "none", "label": "t:options.none" },
-        { "value": "arrow", "label": "t:options.arrow" },
-        { "value": "chevron", "label": "t:options.chevron" },
-        { "value": "caret", "label": "t:options.caret" },
-        { "value": "plus", "label": "t:options.plus" }
+        {
+          "value": "none",
+          "label": "Ninguna"
+        },
+        {
+          "value": "arrow",
+          "label": "Flecha"
+        },
+        {
+          "value": "chevron",
+          "label": "Chevrón"
+        },
+        {
+          "value": "caret",
+          "label": "Punta"
+        },
+        {
+          "value": "plus",
+          "label": "Más"
+        }
       ],
       "default": "arrow"
     },
     {
       "type": "select",
       "id": "icons_shape",
-      "label": "t:settings.icons_shape",
+      "label": "Forma de las flechas",
       "options": [
-        { "value": "none", "label": "t:options.none" },
-        { "value": "circle", "label": "t:options.circle" },
-        { "value": "square", "label": "t:options.square" }
+        {
+          "value": "none",
+          "label": "Ninguna"
+        },
+        {
+          "value": "circle",
+          "label": "Círculo"
+        },
+        {
+          "value": "square",
+          "label": "Cuadrado"
+        }
       ],
       "default": "none"
     },
     {
       "type": "select",
       "id": "section_width",
-      "label": "t:settings.width",
+      "label": "Ancho",
       "options": [
-        { "value": "page-width", "label": "t:options.page" },
-        { "value": "full-width", "label": "t:options.full" }
+        {
+          "value": "page-width",
+          "label": "Ancho de página"
+        },
+        {
+          "value": "full-width",
+          "label": "Ancho completo"
+        }
       ],
       "default": "page-width"
     },
     {
       "type": "range",
       "id": "gap",
-      "label": "t:settings.gap",
+      "label": "Separación",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -218,7 +267,7 @@
     {
       "type": "range",
       "id": "padding-block-start",
-      "label": "t:settings.top_padding",
+      "label": "Margen superior",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -228,7 +277,7 @@
     {
       "type": "range",
       "id": "padding-block-end",
-      "label": "t:settings.bottom_padding",
+      "label": "Margen inferior",
       "min": 0,
       "max": 100,
       "step": 1,
