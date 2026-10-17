@@ -1313,7 +1313,7 @@
       "block_order": [
         "header"
       ],
-      "name": "t:names.product_recommendations",
+      "name": "Completa tu outfit",
       "settings": {
         "max_products": 16,
         "columns": 4,
