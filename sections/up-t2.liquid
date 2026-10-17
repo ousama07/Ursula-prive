@@ -1,0 +1,21 @@
+{% render 'quick-add-styles' %}
+{% render 'swatch-styles' %}
+{% render 'resource-list-styles' %}
+<div class="up-outfit" {{ section.shopify_attributes }}>
+  {% capture up_items %}<div>a</div><!--@list/split--><div>b</div>{% endcapture %}
+  {% liquid
+    assign up_content = up_items | strip
+    assign up_slides = up_content | split: '<!--@list/split-->'
+  %}
+  <div class="resource-list force-full-width resource-list__carousel">
+    {% render 'resource-list-carousel',
+      ref: 'upOutfitCarousel',
+      slides: up_slides,
+      slide_count: up_slides.size,
+      settings: section.settings
+    %}
+  </div>
+</div>
+{% schema %}
+{ "name": "T2", "settings": [{ "type": "select", "id": "section_width", "label": "Ancho", "options": [{ "value": "page-width", "label": "P" }], "default": "page-width" }, { "type": "select", "id": "icons_style", "label": "I", "options": [{ "value": "arrow", "label": "A" }], "default": "arrow" }, { "type": "select", "id": "icons_shape", "label": "F", "options": [{ "value": "none", "label": "N" }], "default": "none" }] }
+{% endschema %}
