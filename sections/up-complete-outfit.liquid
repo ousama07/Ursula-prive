@@ -443,14 +443,15 @@
   ],
   "presets": [
     {
-      "name": "t:names.product_recommendations",
+      "name": "Completa tu outfit",
       "category": "t:categories.products",
       "settings": {
-        "product": "{{ closest.product }}",
+        "collection_a": "bolsos",
+        "collection_b": "calzado",
         "recommendation_type": "related",
-        "layout_type": "grid",
+        "layout_type": "carousel",
         "carousel_on_mobile": false,
-        "max_products": 4,
+        "max_products": 16,
         "columns": 4,
         "mobile_columns": "2",
         "columns_gap": 12,
@@ -467,7 +468,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "t:html_defaults.related_product",
+            "text": "<h3>Completa tu <em>outfit</em></h3>",
             "type_preset": "h3"
           }
         },
