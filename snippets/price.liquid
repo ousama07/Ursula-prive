@@ -159,9 +159,10 @@
 {%- endif -%}
 
 {% stylesheet %}
-  /* Úrsula Privée – precio tachado · precio actual y porcentaje de descuento en rojo */
+  /* Úrsula Privée – precio tachado · precio actual en rojo · porcentaje de descuento en verde */
   .price--with-savings {
     --price-sale-red: #c62828;
+    --price-savings-green: #2e7d32;
 
     display: flex;
     flex-wrap: wrap;
@@ -180,7 +181,7 @@
     display: inline-flex;
     align-items: baseline;
     min-width: 0;
-    color: var(--price-sale-red);
+    color: var(--price-savings-green);
     font-family: var(--font-body--family);
     font-style: normal;
     font-size: 0.9375rem;
