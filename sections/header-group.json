@@ -18,7 +18,7 @@
           "type": "_announcement",
           "name": "t:names.announcement",
           "settings": {
-            "text": "&nbsp;<strong>ESPECIAL OTOÑO</strong> | Ofertas por tiempo limitado&nbsp;",
+            "text": "&nbsp;<strong>SPECIALE AUTUNNO</strong> | Offerte a tempo limitato&nbsp;",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
@@ -33,7 +33,7 @@
           "type": "_announcement",
           "name": "t:names.announcement",
           "settings": {
-            "text": "&nbsp;<strong>GARANTÍA DE 30 DÍAS</strong> | Compra con confianza&nbsp;",
+            "text": "&nbsp;<strong>GARANZIA DI 30 GIORNI</strong> | Acquista in tutta tranquillità&nbsp;",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
@@ -48,7 +48,7 @@
           "type": "_announcement",
           "name": "t:names.announcement",
           "settings": {
-            "text": "&nbsp;<strong>ENVÍO GRATIS CON SEGUIMIENTO</strong> | Hasta 60 % de descuento&nbsp;",
+            "text": "&nbsp;<strong>SPEDIZIONE GRATUITA CON TRACCIAMENTO</strong> | Fino al 60 % di sconto&nbsp;",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "1rem",

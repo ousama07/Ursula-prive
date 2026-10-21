@@ -17,7 +17,7 @@
           "name": "t:names.disclosures",
           "disabled": true,
           "settings": {
-            "heading": "Disclosures",
+            "heading": "Informazioni",
             "heading_preset": "h5",
             "open_by_default": false,
             "icon": "caret",
@@ -401,7 +401,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Envío gratuito</p>",
+                            "text": "<p>Spedizione gratuita</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -485,7 +485,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Devoluciones en 30 días</p>",
+                            "text": "<p>Resi entro 30 giorni</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -569,7 +569,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Pago 100 % seguro</p>",
+                            "text": "<p>Pagamento 100 % sicuro</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -611,9 +611,9 @@
             },
             "up_size_guide": {
               "type": "custom-liquid",
-              "name": "Guía de tallas",
+              "name": "Guida alle taglie",
               "settings": {
-                "custom_liquid": "{%- liquid\n  assign up_p = closest.product\n  assign up_g = up_p.metafields.custom.guia_tallas.value | default: ''\n  if up_g == ''\n    assign up_parts = up_p.description | split: '<p><strong>Guía de tallas'\n    if up_parts.size > 1\n      assign up_rest = up_parts[1] | split: '</table>'\n      assign up_g = up_rest[0] | split: '</strong></p>' | last | append: '</table>'\n      assign up_tail = up_rest[1] | strip\n      assign up_start = up_tail | slice: 0, 7\n      if up_start == '<p><em>'\n        assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n        assign up_g = up_g | append: up_note\n      endif\n    endif\n  endif\n-%}\n{%- if up_g != '' -%}\n<details class=\"up-sg\"><summary><span>Guía de tallas <small>(cm)</small></span><i aria-hidden=\"true\"></i></summary><div class=\"up-sg__b\">{{ up_g }}</div></details><style>.up-sg{interpolate-size:allow-keywords;border-top:1px solid #e3dbd0;border-bottom:1px solid #e3dbd0}.up-sg summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;cursor:pointer;font-size:15px;color:#1c1a17}.up-sg summary::-webkit-details-marker{display:none}.up-sg summary small{font-size:12px;color:#6f655c}.up-sg summary i{position:relative;flex:none;width:12px;height:12px}.up-sg summary i:before,.up-sg summary i:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:#1c1a17;transition:transform .45s cubic-bezier(.22,.61,.36,1)}.up-sg summary i:after{transform:rotate(90deg)}.up-sg[open] summary i:after{transform:rotate(0)}.up-sg summary:focus-visible{outline:2px solid #1c1a17;outline-offset:3px}.up-sg::details-content{block-size:0;overflow:hidden;transition:block-size .45s cubic-bezier(.22,.61,.36,1),content-visibility .45s allow-discrete}.up-sg[open]::details-content{block-size:auto}.up-sg__b{padding:0 0 18px;overflow-x:auto}.up-sg table{width:100%;min-width:280px;border-collapse:collapse;font-size:14px;text-align:center}.up-sg th{padding:10px 8px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#6f655c;border-bottom:1px solid #e3dbd0}.up-sg td{padding:10px 8px;border-bottom:1px solid #f1ede8}.up-sg tbody tr:nth-child(odd){background:#faf8f5}.up-sg td:first-child,.up-sg th:first-child{text-align:left;font-weight:600;color:#1c1a17}.up-sg p{margin:12px 0 0;font-size:13px;color:#6f655c}</style>\n{%- endif -%}"
+                "custom_liquid": "{%- liquid\n  assign up_p = closest.product\n  assign up_g = up_p.metafields.custom.guia_tallas.value | default: ''\n  if up_g == ''\n    assign up_parts = up_p.description | split: '<p><strong>Guida alle taglie'\n    if up_parts.size > 1\n      assign up_rest = up_parts[1] | split: '</table>'\n      assign up_g = up_rest[0] | split: '</strong></p>' | last | append: '</table>'\n      assign up_tail = up_rest[1] | strip\n      assign up_start = up_tail | slice: 0, 7\n      if up_start == '<p><em>'\n        assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n        assign up_g = up_g | append: up_note\n      endif\n    endif\n  endif\n-%}\n{%- if up_g != '' -%}\n<details class=\"up-sg\"><summary><span>Guida alle taglie <small>(cm)</small></span><i aria-hidden=\"true\"></i></summary><div class=\"up-sg__b\">{{ up_g }}</div></details><style>.up-sg{interpolate-size:allow-keywords;border-top:1px solid #e3dbd0;border-bottom:1px solid #e3dbd0}.up-sg summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;cursor:pointer;font-size:15px;color:#1c1a17}.up-sg summary::-webkit-details-marker{display:none}.up-sg summary small{font-size:12px;color:#6f655c}.up-sg summary i{position:relative;flex:none;width:12px;height:12px}.up-sg summary i:before,.up-sg summary i:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:#1c1a17;transition:transform .45s cubic-bezier(.22,.61,.36,1)}.up-sg summary i:after{transform:rotate(90deg)}.up-sg[open] summary i:after{transform:rotate(0)}.up-sg summary:focus-visible{outline:2px solid #1c1a17;outline-offset:3px}.up-sg::details-content{block-size:0;overflow:hidden;transition:block-size .45s cubic-bezier(.22,.61,.36,1),content-visibility .45s allow-discrete}.up-sg[open]::details-content{block-size:auto}.up-sg__b{padding:0 0 18px;overflow-x:auto}.up-sg table{width:100%;min-width:280px;border-collapse:collapse;font-size:14px;text-align:center}.up-sg th{padding:10px 8px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#6f655c;border-bottom:1px solid #e3dbd0}.up-sg td{padding:10px 8px;border-bottom:1px solid #f1ede8}.up-sg tbody tr:nth-child(odd){background:#faf8f5}.up-sg td:first-child,.up-sg th:first-child{text-align:left;font-weight:600;color:#1c1a17}.up-sg p{margin:12px 0 0;font-size:13px;color:#6f655c}</style>\n{%- endif -%}"
               },
               "blocks": {}
             },
@@ -621,7 +621,7 @@
               "type": "custom-liquid",
               "name": "Descripción",
               "settings": {
-                "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guía de tallas'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
+                "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guida alle taglie'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
               },
               "blocks": {}
             }
@@ -661,7 +661,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>También te puede <em>gustar</em></h3>",
+            "text": "<h3>Potrebbe piacerti <em>anche</em></h3>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -860,29 +860,29 @@
     "up_social_proof": {
       "type": "up-social-proof",
       "settings": {
-        "eyebrow": "Opiniones de clientas",
-        "heading": "Ellas ya lo <em>llevan puesto</em>",
-        "subheading": "Lo que cuentan después de estrenarlo: cómo les queda, qué talla eligieron y cómo se sintieron.",
+        "eyebrow": "Opinioni delle clienti",
+        "heading": "Loro lo <em>indossano già</em>",
+        "subheading": "Quello che raccontano dopo averlo indossato: come veste, quale taglia hanno scelto e come si sono sentite.",
         "show_score": true,
         "show_bars": true,
         "show_fit": true,
-        "reviews_note": "Solo publicamos opiniones que nos envían clientas después de recibir su pedido.",
+        "reviews_note": "Pubblichiamo solo le opinioni che ci inviano le clienti dopo aver ricevuto il loro ordine.",
         "prioritize_current": true,
         "show_gallery": true,
-        "gallery_heading": "Así les queda",
+        "gallery_heading": "Come sta loro",
         "speed": 6,
         "show_trust": true,
-        "trust_1_title": "Envío gratis",
-        "trust_1_text": "A toda España",
-        "trust_2_title": "30 días para devolver",
-        "trust_2_text": "Desde que recibes tu pedido",
-        "trust_3_title": "Pago seguro",
-        "trust_3_text": "Tus datos, cifrados",
-        "trust_4_title": "Te respondemos",
+        "trust_1_title": "Spedizione gratuita",
+        "trust_1_text": "In tutta la Spagna",
+        "trust_2_title": "30 giorni per restituire",
+        "trust_2_text": "Da quando ricevi il tuo ordine",
+        "trust_3_title": "Pagamento sicuro",
+        "trust_3_text": "I tuoi dati, criptati",
+        "trust_4_title": "Ti rispondiamo",
         "trust_4_text": "support@ursulaprive.com",
-        "button_label": "Elige tu silueta",
+        "button_label": "Scegli la tua silhouette",
         "button_link": "",
-        "button_note": "Envío gratis · 30 días para devolver",
+        "button_note": "Spedizione gratuita · 30 giorni per restituire",
         "bg_top": "{{ settings.color_palette.color4 }}",
         "bg_bottom": "{{ settings.color_palette.color4 }}",
         "ink": "{{ settings.color_palette.foreground }}",
@@ -896,7 +896,7 @@
       "type": "custom-liquid",
       "name": "Preguntas frecuentes",
       "settings": {
-        "custom_liquid": "{%- capture ufq_data -%}\nEnvíos|¿Cuánto tarda en llegar mi pedido?|<p>Tu pedido tarda <strong>a partir de 7 días</strong> en llegar desde que lo confirmas. El plazo final de entrega depende de la empresa de transporte, que es la responsable de hacerte llegar el paquete.</p>\n~~Envíos|¿Cómo puedo seguir mi pedido?|<p>Cuando tu pedido salga del almacén te enviaremos un email con el <strong>número de seguimiento</strong>. Si no lo encuentras, revisa la carpeta de spam o escríbenos a [EMAIL].</p>\n~~Envíos|Han pasado 15 días y mi pedido no ha llegado. ¿Qué hago?|<p>Escríbenos a [EMAIL] con tu número de pedido y lo revisaremos contigo al momento.</p>\n~~Devoluciones|¿Puedo devolver una prenda?|<p>Sí. Tienes <strong>30 días</strong> desde que recibes tu pedido para devolverlo. La prenda debe estar sin usar, sin lavar, con sus etiquetas y en su embalaje original.</p>\n~~Devoluciones|¿Cómo hago una devolución?|<p>Escríbenos a [EMAIL] con tu número de pedido, tu nombre y el motivo. Te responderemos con la dirección y los pasos a seguir. <strong>No envíes el paquete a la dirección del remitente</strong> sin haber recibido antes nuestras indicaciones.</p>\n~~Devoluciones|¿Quién paga el envío de la devolución?|<p>Los gastos de envío de la devolución corren a cargo de la clienta. Como la dirección de devolución es nuestro almacén en Asia, el coste puede ser elevado, así que te recomendamos revisar bien la guía de tallas antes de comprar. Si la prenda llega defectuosa o equivocada, los gastos los asumimos nosotros.</p>\n~~Devoluciones|¿Cuándo recibiré mi reembolso?|<p>En un máximo de <strong>14 días</strong>, por el mismo método de pago que usaste. Podemos esperar a recibir la prenda, o el justificante de que la has enviado, antes de hacerlo.</p>\n~~Contacto|¿Cómo puedo contactar con vosotros?|<p>Escríbenos a [EMAIL] y te responderemos lo antes posible. Si tu consulta es sobre un pedido, incluye el número de pedido para que podamos ayudarte más rápido.</p>\n{%- endcapture -%}\n{%- liquid\n  assign ufq_email = 'support@ursulaprive.com'\n  assign ufq_mail = '<a href=\"mailto:' | append: ufq_email | append: '\">' | append: ufq_email | append: '</a>'\n  assign ufq_items = ufq_data | strip | split: '~~'\n  assign ufq_txt = 'Preguntasfrecuentes'\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&text={{ ufq_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<section class=\"ufq\" aria-labelledby=\"ufq-{{ section.id }}\"><div class=\"ufq-w\">\n<header class=\"ufq-h\"><p class=\"ufq-e\">Ayuda</p><h2 id=\"ufq-{{ section.id }}\">Preguntas <em>frecuentes</em></h2><p class=\"ufq-s\">Todo lo que necesitas saber sobre envíos, tallas y devoluciones. ¿No encuentras tu respuesta? Escríbenos a {{ ufq_mail }}</p></header>\n<div class=\"ufq-l\">\n{%- assign ufq_cat = '' -%}\n{%- for it in ufq_items -%}\n{%- assign p = it | strip | split: '|' -%}\n{%- if p[0] != ufq_cat -%}{%- assign ufq_cat = p[0] -%}<p class=\"ufq-c\">{{ ufq_cat }}</p>{%- endif -%}\n<details class=\"ufq-i\" name=\"ufq-{{ section.id }}\"><summary>{{ p[1] }}<span aria-hidden=\"true\"></span></summary><div class=\"ufq-a\">{{ p[2] | replace: '[EMAIL]', ufq_mail }}</div></details>\n{%- endfor -%}\n</div></div></section>\n<style>.ufq{--k:#1c1a17;--m:#6f655c;--c:#efe8df;--l:#e3dbd0;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);interpolate-size:allow-keywords;padding:clamp(40px,6vw,88px) 0;color:var(--k)}.ufq *{box-sizing:border-box}.ufq-w{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,40px)}.ufq-e{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.ufq-e:before{content:'';width:28px;height:1px;background:currentColor}.ufq h2{margin:0;font:300 clamp(2.6rem,8vw,4.4rem)/.95 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.ufq-s{margin:18px 0 0;max-width:40ch;font-size:15px;line-height:1.7;color:#4a433d}.ufq a{color:var(--k);text-underline-offset:3px;text-decoration-thickness:1px}.ufq-c{margin:32px 0 6px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--m)}.ufq-c:first-child{margin-top:0}.ufq-i{border-bottom:1px solid var(--l)}.ufq-i summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;cursor:pointer;font-size:16px;line-height:1.4;color:var(--k)}.ufq-i summary::-webkit-details-marker{display:none}.ufq-i summary span{position:relative;flex:none;width:12px;height:12px}.ufq-i summary span:before,.ufq-i summary span:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:var(--k);transition:transform .5s var(--e)}.ufq-i summary span:after{transform:rotate(90deg)}.ufq-i[open] summary span:after{transform:rotate(0)}.ufq-i summary:focus-visible{outline:2px solid var(--k);outline-offset:4px}.ufq-i::details-content{block-size:0;overflow:hidden;transition:block-size .5s var(--e),content-visibility .5s allow-discrete}.ufq-i[open]::details-content{block-size:auto}.ufq-a{padding:0 32px 20px 0;font-size:15px;line-height:1.75;color:#4a433d}.ufq-a p{margin:0}.ufq-pay{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}.ufq-pay svg{display:block;width:38px;height:24px}@media(min-width:990px){.ufq-w{grid-template-columns:minmax(0,4fr) minmax(0,7fr);column-gap:clamp(48px,6vw,96px)}.ufq-h{position:sticky;top:32px;align-self:start}}@media(hover:hover){.ufq-i summary:hover{color:var(--m)}}@media(prefers-reduced-motion:reduce){.ufq *{transition:none!important}}</style>",
+        "custom_liquid": "{%- capture ufq_data -%}\nSpedizioni|Quanto ci mette ad arrivare il mio ordine?|<p>Il tuo ordine impiega <strong>a partire da 7 giorni</strong> ad arrivare da quando lo confermi. I tempi finali di consegna dipendono dal corriere, che è il responsabile di farti arrivare il pacco.</p>\n~~Spedizioni|Come posso seguire il mio ordine?|<p>Quando il tuo ordine lascerà il magazzino ti invieremo un'email con il <strong>numero di tracciamento</strong>. Se non la trovi, controlla la cartella spam oppure scrivici a [EMAIL].</p>\n~~Spedizioni|Sono passati 15 giorni e il mio ordine non è arrivato. Cosa faccio?|<p>Scrivici a [EMAIL] con il tuo numero d'ordine e lo controlleremo subito insieme a te.</p>\n~~Resi|Posso restituire un capo?|<p>Sì. Hai <strong>30 giorni</strong> da quando ricevi il tuo ordine per restituirlo. Il capo deve essere non indossato, non lavato, con le sue etichette e nella sua confezione originale.</p>\n~~Resi|Come faccio un reso?|<p>Scrivici a [EMAIL] con il tuo numero d'ordine, il tuo nome e il motivo. Ti risponderemo con l'indirizzo e i passaggi da seguire. <strong>Non inviare il pacco all'indirizzo del mittente</strong> senza aver prima ricevuto le nostre indicazioni.</p>\n~~Resi|Chi paga la spedizione del reso?|<p>Le spese di spedizione del reso sono a carico della cliente. Poiché l'indirizzo di reso è il nostro magazzino in Asia, il costo può essere elevato, quindi ti consigliamo di controllare bene la guida alle taglie prima di comprare. Se il capo arriva difettoso o sbagliato, le spese le sosteniamo noi.</p>\n~~Resi|Quando riceverò il mio rimborso?|<p>Entro un massimo di <strong>14 giorni</strong>, con lo stesso metodo di pagamento che hai usato. Possiamo aspettare di ricevere il capo, o la prova che lo hai spedito, prima di procedere.</p>\n~~Contatti|Come posso contattarvi?|<p>Scrivici a [EMAIL] e ti risponderemo il prima possibile. Se la tua domanda riguarda un ordine, includi il numero d'ordine così possiamo aiutarti più in fretta.</p>\n{%- endcapture -%}\n{%- liquid\n  assign ufq_email = 'support@ursulaprive.com'\n  assign ufq_mail = '<a href=\"mailto:' | append: ufq_email | append: '\">' | append: ufq_email | append: '</a>'\n  assign ufq_items = ufq_data | strip | split: '~~'\n  assign ufq_txt = 'Domandefrequenti'\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&text={{ ufq_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<section class=\"ufq\" aria-labelledby=\"ufq-{{ section.id }}\"><div class=\"ufq-w\">\n<header class=\"ufq-h\"><p class=\"ufq-e\">Aiuto</p><h2 id=\"ufq-{{ section.id }}\">Domande <em>frequenti</em></h2><p class=\"ufq-s\">Tutto quello che devi sapere su spedizioni, taglie e resi. Non trovi la tua risposta? Scrivici a {{ ufq_mail }}</p></header>\n<div class=\"ufq-l\">\n{%- assign ufq_cat = '' -%}\n{%- for it in ufq_items -%}\n{%- assign p = it | strip | split: '|' -%}\n{%- if p[0] != ufq_cat -%}{%- assign ufq_cat = p[0] -%}<p class=\"ufq-c\">{{ ufq_cat }}</p>{%- endif -%}\n<details class=\"ufq-i\" name=\"ufq-{{ section.id }}\"><summary>{{ p[1] }}<span aria-hidden=\"true\"></span></summary><div class=\"ufq-a\">{{ p[2] | replace: '[EMAIL]', ufq_mail }}</div></details>\n{%- endfor -%}\n</div></div></section>\n<style>.ufq{--k:#1c1a17;--m:#6f655c;--c:#efe8df;--l:#e3dbd0;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);interpolate-size:allow-keywords;padding:clamp(40px,6vw,88px) 0;color:var(--k)}.ufq *{box-sizing:border-box}.ufq-w{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,40px)}.ufq-e{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.ufq-e:before{content:'';width:28px;height:1px;background:currentColor}.ufq h2{margin:0;font:300 clamp(2.6rem,8vw,4.4rem)/.95 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.ufq-s{margin:18px 0 0;max-width:40ch;font-size:15px;line-height:1.7;color:#4a433d}.ufq a{color:var(--k);text-underline-offset:3px;text-decoration-thickness:1px}.ufq-c{margin:32px 0 6px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--m)}.ufq-c:first-child{margin-top:0}.ufq-i{border-bottom:1px solid var(--l)}.ufq-i summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;cursor:pointer;font-size:16px;line-height:1.4;color:var(--k)}.ufq-i summary::-webkit-details-marker{display:none}.ufq-i summary span{position:relative;flex:none;width:12px;height:12px}.ufq-i summary span:before,.ufq-i summary span:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:var(--k);transition:transform .5s var(--e)}.ufq-i summary span:after{transform:rotate(90deg)}.ufq-i[open] summary span:after{transform:rotate(0)}.ufq-i summary:focus-visible{outline:2px solid var(--k);outline-offset:4px}.ufq-i::details-content{block-size:0;overflow:hidden;transition:block-size .5s var(--e),content-visibility .5s allow-discrete}.ufq-i[open]::details-content{block-size:auto}.ufq-a{padding:0 32px 20px 0;font-size:15px;line-height:1.75;color:#4a433d}.ufq-a p{margin:0}.ufq-pay{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}.ufq-pay svg{display:block;width:38px;height:24px}@media(min-width:990px){.ufq-w{grid-template-columns:minmax(0,4fr) minmax(0,7fr);column-gap:clamp(48px,6vw,96px)}.ufq-h{position:sticky;top:32px;align-self:start}}@media(hover:hover){.ufq-i summary:hover{color:var(--m)}}@media(prefers-reduced-motion:reduce){.ufq *{transition:none!important}}</style>",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,

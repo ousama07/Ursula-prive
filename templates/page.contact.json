@@ -53,7 +53,7 @@
               "type": "contact-form-submit-button",
               "static": true,
               "settings": {
-                "label": "Enviar",
+                "label": "Invia",
                 "style_class": "button",
                 "width": "fit-content",
                 "custom_width": 100,

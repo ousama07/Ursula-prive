@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h1>Página no encontrada</h1>",
+            "text": "<h1>Pagina non trovata</h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -40,7 +40,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Puede que el enlace no sea correcto o que la página ya no exista. </p>",
+            "text": "<p>Può darsi che il link non sia corretto o che la pagina non esista più. </p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -64,7 +64,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Seguir comprando",
+            "label": "Continua lo shopping",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button",
@@ -131,7 +131,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>También te puede <em>gustar</em></h3>",
+                "text": "<h3>Potrebbe piacerti <em>anche</em></h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",

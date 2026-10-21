@@ -17,7 +17,7 @@
           "name": "t:names.disclosures",
           "disabled": true,
           "settings": {
-            "heading": "Disclosures",
+            "heading": "Informazioni",
             "heading_preset": "h5",
             "open_by_default": false,
             "icon": "caret",
@@ -408,7 +408,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Envío gratuito</p>",
+                            "text": "<p>Spedizione gratuita</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -492,7 +492,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Devoluciones en 30 días</p>",
+                            "text": "<p>Resi entro 30 giorni</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -576,7 +576,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Pago 100 % seguro</p>",
+                            "text": "<p>Pagamento 100 % sicuro</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -618,9 +618,9 @@
             },
             "up_size_guide": {
               "type": "custom-liquid",
-              "name": "Guía de tallas",
+              "name": "Guida alle taglie",
               "settings": {
-                "custom_liquid": "{%- liquid\n  assign up_p = closest.product\n  assign up_g = up_p.metafields.custom.guia_tallas.value | default: ''\n  if up_g == ''\n    assign up_parts = up_p.description | split: '<p><strong>Guía de tallas'\n    if up_parts.size > 1\n      assign up_rest = up_parts[1] | split: '</table>'\n      assign up_g = up_rest[0] | split: '</strong></p>' | last | append: '</table>'\n      assign up_tail = up_rest[1] | strip\n      assign up_start = up_tail | slice: 0, 7\n      if up_start == '<p><em>'\n        assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n        assign up_g = up_g | append: up_note\n      endif\n    endif\n  endif\n-%}\n{%- if up_g != '' -%}\n<details class=\"up-sg\"><summary><span>Guía de tallas <small>(cm)</small></span><i aria-hidden=\"true\"></i></summary><div class=\"up-sg__b\">{{ up_g }}</div></details><style>.up-sg{interpolate-size:allow-keywords;border-top:1px solid #e3dbd0;border-bottom:1px solid #e3dbd0}.up-sg summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;cursor:pointer;font-size:15px;color:#1c1a17}.up-sg summary::-webkit-details-marker{display:none}.up-sg summary small{font-size:12px;color:#6f655c}.up-sg summary i{position:relative;flex:none;width:12px;height:12px}.up-sg summary i:before,.up-sg summary i:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:#1c1a17;transition:transform .45s cubic-bezier(.22,.61,.36,1)}.up-sg summary i:after{transform:rotate(90deg)}.up-sg[open] summary i:after{transform:rotate(0)}.up-sg summary:focus-visible{outline:2px solid #1c1a17;outline-offset:3px}.up-sg::details-content{block-size:0;overflow:hidden;transition:block-size .45s cubic-bezier(.22,.61,.36,1),content-visibility .45s allow-discrete}.up-sg[open]::details-content{block-size:auto}.up-sg__b{padding:0 0 18px;overflow-x:auto}.up-sg table{width:100%;min-width:280px;border-collapse:collapse;font-size:14px;text-align:center}.up-sg th{padding:10px 8px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#6f655c;border-bottom:1px solid #e3dbd0}.up-sg td{padding:10px 8px;border-bottom:1px solid #f1ede8}.up-sg tbody tr:nth-child(odd){background:#faf8f5}.up-sg td:first-child,.up-sg th:first-child{text-align:left;font-weight:600;color:#1c1a17}.up-sg p{margin:12px 0 0;font-size:13px;color:#6f655c}</style>\n{%- endif -%}"
+                "custom_liquid": "{%- liquid\n  assign up_p = closest.product\n  assign up_g = up_p.metafields.custom.guia_tallas.value | default: ''\n  if up_g == ''\n    assign up_parts = up_p.description | split: '<p><strong>Guida alle taglie'\n    if up_parts.size > 1\n      assign up_rest = up_parts[1] | split: '</table>'\n      assign up_g = up_rest[0] | split: '</strong></p>' | last | append: '</table>'\n      assign up_tail = up_rest[1] | strip\n      assign up_start = up_tail | slice: 0, 7\n      if up_start == '<p><em>'\n        assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n        assign up_g = up_g | append: up_note\n      endif\n    endif\n  endif\n-%}\n{%- if up_g != '' -%}\n<details class=\"up-sg\"><summary><span>Guida alle taglie <small>(cm)</small></span><i aria-hidden=\"true\"></i></summary><div class=\"up-sg__b\">{{ up_g }}</div></details><style>.up-sg{interpolate-size:allow-keywords;border-top:1px solid #e3dbd0;border-bottom:1px solid #e3dbd0}.up-sg summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;cursor:pointer;font-size:15px;color:#1c1a17}.up-sg summary::-webkit-details-marker{display:none}.up-sg summary small{font-size:12px;color:#6f655c}.up-sg summary i{position:relative;flex:none;width:12px;height:12px}.up-sg summary i:before,.up-sg summary i:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:#1c1a17;transition:transform .45s cubic-bezier(.22,.61,.36,1)}.up-sg summary i:after{transform:rotate(90deg)}.up-sg[open] summary i:after{transform:rotate(0)}.up-sg summary:focus-visible{outline:2px solid #1c1a17;outline-offset:3px}.up-sg::details-content{block-size:0;overflow:hidden;transition:block-size .45s cubic-bezier(.22,.61,.36,1),content-visibility .45s allow-discrete}.up-sg[open]::details-content{block-size:auto}.up-sg__b{padding:0 0 18px;overflow-x:auto}.up-sg table{width:100%;min-width:280px;border-collapse:collapse;font-size:14px;text-align:center}.up-sg th{padding:10px 8px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#6f655c;border-bottom:1px solid #e3dbd0}.up-sg td{padding:10px 8px;border-bottom:1px solid #f1ede8}.up-sg tbody tr:nth-child(odd){background:#faf8f5}.up-sg td:first-child,.up-sg th:first-child{text-align:left;font-weight:600;color:#1c1a17}.up-sg p{margin:12px 0 0;font-size:13px;color:#6f655c}</style>\n{%- endif -%}"
               },
               "blocks": {}
             },
@@ -628,7 +628,7 @@
               "type": "custom-liquid",
               "name": "Descripción",
               "settings": {
-                "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guía de tallas'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
+                "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guida alle taglie'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
               },
               "blocks": {}
             }
@@ -668,7 +668,7 @@
         "ss-heading-1": {
           "type": "heading",
           "settings": {
-            "heading": "<h2>Vístete en un minuto y sal con la silueta ya cuidada</h2>",
+            "heading": "<h2>Vestiti in un minuto ed esci con la silhouette già curata</h2>",
             "heading_custom": false,
             "heading_font": "josefin_sans_n4",
             "heading_accent_font": "playfair_n4",
@@ -684,7 +684,7 @@
         "ss-text-2": {
           "type": "text",
           "settings": {
-            "text": "<p>Ursula Privée viste el día a día con cortes relajados, líneas femeninas y looks que se entienden entre sí. Te la pones, cierras la puerta y ya se ve un conjunto pensado, no un puzzle de última hora.</p>",
+            "text": "<p>Ursula Privée veste il quotidiano con tagli rilassati, linee femminili e look che dialogano tra loro. Te lo metti, chiudi la porta e si vede già un insieme pensato, non un puzzle dell'ultimo minuto.</p>",
             "text_custom": false,
             "text_font": "josefin_sans_n4",
             "text_size": 16,
@@ -731,8 +731,8 @@
           "type": "feature",
           "settings": {
             "icon": "bolt",
-            "title": "Un gesto y ya estás lista",
-            "text": "<p>Piezas pensadas para ponértelas y salir: la comodidad se siente al caminar y la línea se ve terminada desde el primer paso.</p>",
+            "title": "Un gesto e sei già pronta",
+            "text": "<p>Capi pensati per indossarli e uscire: la comodità si sente camminando e la linea si vede finita dal primo passo.</p>",
             "hide_mobile": false
           }
         },
@@ -740,8 +740,8 @@
           "type": "feature",
           "settings": {
             "icon": "feather",
-            "title": "Relajada, con trazo femenino",
-            "text": "<p>Volúmenes suaves y un acabado que estiliza, para que el día se vea considerado sin montar un look desde cero.</p>",
+            "title": "Rilassata, con tratto femminile",
+            "text": "<p>Volumi morbidi e una finitura che slancia, perché la giornata si veda curata senza costruire un look da zero.</p>",
             "hide_mobile": false
           }
         },
@@ -749,8 +749,8 @@
           "type": "feature",
           "settings": {
             "icon": "heart",
-            "title": "Se habla con el resto del armario",
-            "text": "<p>Tonos y siluetas que se mezclan entre sí, para que cada mañana sea una decisión corta, no una negociación.</p>",
+            "title": "Dialoga con il resto dell'armadio",
+            "text": "<p>Toni e silhouette che si mescolano tra loro, perché ogni mattina sia una decisione breve, non una trattativa.</p>",
             "hide_mobile": false
           }
         }
@@ -846,7 +846,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>También te puede <em>gustar</em></h3>",
+            "text": "<h3>Potrebbe piacerti <em>anche</em></h3>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -1072,7 +1072,7 @@
         "ss-heading-2": {
           "type": "heading",
           "settings": {
-            "heading": "<h2>Se visten rápido y siguen sintiéndose ellas</h2>",
+            "heading": "<h2>Si vestono in fretta e continuano a sentirsi se stesse</h2>",
             "heading_custom": false,
             "heading_font": "josefin_sans_n4",
             "heading_size": 40,
@@ -1093,7 +1093,7 @@
           "settings": {
             "image": "shopify://shop_images/pdp-image-54c1733c.png",
             "stars_count": 5,
-            "text": "<p>Salgo de casa en un momento y aún así me siento presentable. La comodidad no pelea con verme arreglada.</p>",
+            "text": "<p>Esco di casa in un attimo e comunque mi sento presentabile. La comodità non litiga con l'essere in ordine.</p>",
             "author": "Carmen R."
           }
         },
@@ -1102,7 +1102,7 @@
           "settings": {
             "image": "shopify://shop_images/pdp-image-63f3a6d5.png",
             "stars_count": 5,
-            "text": "<p>Encaja con lo que ya tengo: un pantalón de siempre, unas botas, y el conjunto se lee entero.</p>",
+            "text": "<p>Si abbina a quello che ho già: un pantalone di sempre, un paio di stivali, e l'insieme si legge tutto.</p>",
             "author": "Inés M."
           }
         },
@@ -1111,7 +1111,7 @@
           "settings": {
             "image": "shopify://shop_images/pdp-image-bd52dfd9.png",
             "stars_count": 5,
-            "text": "<p>Para el trabajo y para una cena improvisada uso la misma base. Me reconozco en el espejo, sin teatro.</p>",
+            "text": "<p>Per il lavoro e per una cena improvvisata uso la stessa base. Mi riconosco allo specchio, senza recitare.</p>",
             "author": "Lucía V."
           }
         },
@@ -1120,7 +1120,7 @@
           "settings": {
             "image": "shopify://shop_images/pdp-image-0c672655.png",
             "stars_count": 5,
-            "text": "<p>Me gusta que el estilo se note sin explicar nada. Me visto y el día ya tiene forma.</p>",
+            "text": "<p>Mi piace che lo stile si noti senza spiegare niente. Mi vesto e la giornata ha già una forma.</p>",
             "author": "Nuria P."
           }
         }
@@ -1278,7 +1278,7 @@
               "type": "custom-liquid",
               "name": "t:names.custom_liquid",
               "settings": {
-                "custom_liquid": "{%- comment -%}\n  ÚRSULA PRIVÉE · NUESTRA HISTORIA (versión solo texto, para ir junto al vídeo\n  en la sección \"Multimedia con texto\"). Este comentario no pesa nada.\n{%- endcomment -%}\n{%- liquid\n  assign ua_t1 = 'Nuestra'\n  assign ua_t2 = 'historia'\n  assign ua_q = 'Tu estilo habla antes que tú.'\n  assign ua_txt = ua_t1 | append: ua_t2 | append: ua_q\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&text={{ ua_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<div class=\"uat\"><p class=\"uat-e\">Sobre nosotros</p><h2>{{ ua_t1 }} <em>{{ ua_t2 }}</em></h2><p>Úrsula Privée nació de una idea sencilla: vestir bien no debería depender de la ocasión, sino de cómo quieres sentirte.</p><p>Elegimos cada pieza una a una, pensando en mujeres reales: en cómo cae el tejido, en si favorece de verdad y en si te acompañará igual en una comida entre semana que en una boda de verano.</p><p class=\"uat-q\">{{ ua_q }}</p><a class=\"uat-c\" href=\"{{ routes.all_products_collection_url }}\">Descubre la colección<svg viewBox=\"0 0 24 9\" aria-hidden=\"true\"><path d=\"M0 4.5h22M18.5 1l3.5 3.5L18.5 8\" fill=\"none\" stroke=\"currentColor\"/></svg></a></div>\n<style>.uat{--k:#1c1a17;--m:#6f655c;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);max-width:440px;color:var(--k);text-align:left}.uat-e{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.uat-e:before{content:'';width:28px;height:1px;background:currentColor}.uat h2{margin:0 0 18px;font:300 clamp(2.4rem,4vw,3.6rem)/1 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.uat p{margin:0 0 12px;font-size:15px;line-height:1.7;color:#4a433d}.uat .uat-q{display:flex;align-items:center;gap:14px;margin:20px 0 0;font:italic 400 1.35rem/1.2 var(--f);color:var(--k)}.uat-q:before{content:'';flex:none;width:28px;height:1px;background:currentColor}.uat-c{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding-bottom:6px;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;color:var(--k);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/28px 1px no-repeat;transition:background-size .9s var(--e)}.uat-c svg{width:24px;height:9px;transition:transform .9s var(--e)}.uat-c:focus-visible{outline:2px solid var(--k);outline-offset:4px}@media(hover:hover){.uat-c:hover{background-size:100% 1px}.uat-c:hover svg{transform:translateX(5px)}}</style>"
+                "custom_liquid": "{%- comment -%}\n  ÚRSULA PRIVÉE · NUESTRA HISTORIA (versión solo texto, para ir junto al vídeo\n  en la sección \"Multimedia con texto\"). Este comentario no pesa nada.\n{%- endcomment -%}\n{%- liquid\n  assign ua_t1 = 'Nuestra'\n  assign ua_t2 = 'historia'\n  assign ua_q = 'Tu estilo habla antes que tú.'\n  assign ua_txt = ua_t1 | append: ua_t2 | append: ua_q\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&text={{ ua_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<div class=\"uat\"><p class=\"uat-e\">Chi siamo</p><h2>{{ ua_t1 }} <em>{{ ua_t2 }}</em></h2><p>Úrsula Privée è nata da un'idea semplice: vestirsi bene non dovrebbe dipendere dall'occasione, ma da come vuoi sentirti.</p><p>Scegliamo ogni capo uno a uno, pensando a donne vere: a come cade il tessuto, a se valorizza davvero e a se ti accompagnerà allo stesso modo a un pranzo infrasettimanale come a un matrimonio d'estate.</p><p class=\"uat-q\">{{ ua_q }}</p><a class=\"uat-c\" href=\"{{ routes.all_products_collection_url }}\">Scopri la collezione<svg viewBox=\"0 0 24 9\" aria-hidden=\"true\"><path d=\"M0 4.5h22M18.5 1l3.5 3.5L18.5 8\" fill=\"none\" stroke=\"currentColor\"/></svg></a></div>\n<style>.uat{--k:#1c1a17;--m:#6f655c;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);max-width:440px;color:var(--k);text-align:left}.uat-e{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.uat-e:before{content:'';width:28px;height:1px;background:currentColor}.uat h2{margin:0 0 18px;font:300 clamp(2.4rem,4vw,3.6rem)/1 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.uat p{margin:0 0 12px;font-size:15px;line-height:1.7;color:#4a433d}.uat .uat-q{display:flex;align-items:center;gap:14px;margin:20px 0 0;font:italic 400 1.35rem/1.2 var(--f);color:var(--k)}.uat-q:before{content:'';flex:none;width:28px;height:1px;background:currentColor}.uat-c{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding-bottom:6px;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;color:var(--k);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/28px 1px no-repeat;transition:background-size .9s var(--e)}.uat-c svg{width:24px;height:9px;transition:transform .9s var(--e)}.uat-c:focus-visible{outline:2px solid var(--k);outline-offset:4px}@media(hover:hover){.uat-c:hover{background-size:100% 1px}.uat-c:hover svg{transform:translateX(5px)}}</style>"
               },
               "blocks": {}
             },
@@ -1311,7 +1311,7 @@
               "name": "t:names.heading",
               "disabled": true,
               "settings": {
-                "text": "<h2>Productivity Essentials</h2>",
+                "text": "<h2>Essenziali di produttività</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1337,7 +1337,7 @@
               "type": "text",
               "disabled": true,
               "settings": {
-                "text": "<p>Objects that partner with your digital tools so you can focus on your most important work.</p>",
+                "text": "<p>Oggetti che si affiancano ai tuoi strumenti digitali per permetterti di concentrarti sul lavoro più importante.</p>",
                 "width": "fit-content",
                 "max_width": "narrow",
                 "alignment": "left",
@@ -1363,7 +1363,7 @@
               "type": "button",
               "disabled": true,
               "settings": {
-                "label": "Shop Now",
+                "label": "Acquista ora",
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button-secondary",
@@ -1418,7 +1418,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>Completa tu <em>outfit</em></h3>",
+            "text": "<h3>Completa il tuo <em>outfit</em></h3>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",

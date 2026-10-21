@@ -87,9 +87,9 @@
     assign fit_pos = fit_pos | plus: fit_large_w | divided_by: fit_total | round
     assign fit_true_pct = fit_true | times: 100 | divided_by: fit_total | floor
     if fit_pos < 35
-      assign fit_label = 'Tira a pequeña'
+      assign fit_label = 'Veste piccolo'
     elsif fit_pos > 65
-      assign fit_label = 'Tira a grande'
+      assign fit_label = 'Veste grande'
     else
       assign fit_label = 'Fiel a la talla'
     endif
@@ -133,7 +133,7 @@
 
           <div class="usp__chips">
             {%- if review_count > 1 -%}
-              <span class="usp__chip"><strong>{{ high_pct }}%</strong> la valora con 4 o 5 estrellas</span>
+              <span class="usp__chip"><strong>{{ high_pct }}%</strong> la valuta con 4 o 5 stelle</span>
             {%- endif -%}
             {%- if media_count > 0 -%}
               <span class="usp__chip"><strong>{{ media_count }}</strong> {% if media_count == 1 %}opinión{% else %}opiniones{% endif %} con foto</span>
@@ -186,7 +186,7 @@
             {%- if ss.show_fit and fit_total > 0 -%}
               <div class="usp__fit">
                 <div class="usp__fit-head">
-                  <span>¿Cómo queda la talla?</span>
+                  <span>Come veste la taglia?</span>
                   <strong>{{ fit_label }}</strong>
                 </div>
                 <div class="usp__fit-track" role="img" aria-label="{{ fit_label }}: {{ fit_true_pct }}% dice que la talla es perfecta">
@@ -196,7 +196,7 @@
                   <span class="usp__fit-marker" style="--pos: {{ fit_pos }}%;"></span>
                 </div>
                 <div class="usp__fit-labels" aria-hidden="true">
-                  <span>Pequeña</span><span>Perfecta</span><span>Grande</span>
+                  <span>Piccola</span><span>Perfetta</span><span>Grande</span>
                 </div>
                 <p class="usp__fit-note">
                   {{ fit_true_pct }}% dice que la talla es perfecta ({{ fit_total }}
@@ -395,12 +395,12 @@
 
               {%- if s.size_bought != blank or s.height != blank or s.fit == 'small' or s.fit == 'perfect' or s.fit == 'large' -%}
                 <ul class="usp-m__facts">
-                  {%- if s.size_bought != blank -%}<li><span>Talla</span><strong>{{ s.size_bought | escape }}</strong></li>{%- endif -%}
-                  {%- if s.height != blank -%}<li><span>Altura</span><strong>{{ s.height | escape }}</strong></li>{%- endif -%}
+                  {%- if s.size_bought != blank -%}<li><span>Taglia</span><strong>{{ s.size_bought | escape }}</strong></li>{%- endif -%}
+                  {%- if s.height != blank -%}<li><span>Altezza</span><strong>{{ s.height | escape }}</strong></li>{%- endif -%}
                   {%- case s.fit -%}
-                    {%- when 'small' -%}<li><span>Ajuste</span><strong>Tira a pequeña</strong></li>
-                    {%- when 'perfect' -%}<li><span>Ajuste</span><strong>Perfecta</strong></li>
-                    {%- when 'large' -%}<li><span>Ajuste</span><strong>Tira a grande</strong></li>
+                    {%- when 'small' -%}<li><span>Vestibilità</span><strong>Veste piccolo</strong></li>
+                    {%- when 'perfect' -%}<li><span>Vestibilità</span><strong>Perfetta</strong></li>
+                    {%- when 'large' -%}<li><span>Vestibilità</span><strong>Veste grande</strong></li>
                   {%- endcase -%}
                 </ul>
               {%- endif -%}
@@ -422,9 +422,9 @@
                     <span class="usp-m__prod-price">{{ s.product.price | money }}</span>
                   </div>
                   {%- if is_current -%}
-                    <a href="#" class="usp-m__prod-btn" data-usp-top>Elegir mi talla</a>
+                    <a href="#" class="usp-m__prod-btn" data-usp-top>Scegli la mia taglia</a>
                   {%- else -%}
-                    <a href="{{ s.product.url }}" class="usp-m__prod-btn">Ver prenda</a>
+                    <a href="{{ s.product.url }}" class="usp-m__prod-btn">Vedi capo</a>
                   {%- endif -%}
                 </div>
               {%- endif -%}
@@ -434,7 +434,7 @@
       {%- endfor -%}
     {%- elsif request.design_mode -%}
       <div class="usp__empty">
-        <strong>Opiniones Úrsula: añade reseñas reales</strong>
+        <strong>Opinioni Úrsula: aggiungi recensioni reali</strong>
         <p>
           Pulsa «Añadir bloque → Reseña» y pega opiniones de clientas reales. Con una sola reseña ya aparecen la nota
           media, las barras y el medidor de talla (se calculan solos). Si subes su foto o vídeo, se activa la galería
@@ -1331,7 +1331,7 @@
       "id": "heading",
       "label": "Título",
       "info": "Pon una palabra en cursiva para el toque editorial.",
-      "default": "Ellas ya lo <em>llevan puesto</em>"
+      "default": "Ellas ya lo <em>indossano</em>"
     },
     {
       "type": "text",
@@ -1415,7 +1415,7 @@
       "type": "text",
       "id": "trust_1_title",
       "label": "Garantía 1 · título",
-      "default": "Envío gratis"
+      "default": "Spedizione gratuita"
     },
     {
       "type": "text",
@@ -1479,7 +1479,7 @@
       "type": "text",
       "id": "button_note",
       "label": "Texto bajo el botón",
-      "default": "Envío gratis · 30 días para devolver"
+      "default": "Spedizione gratuita · 30 días para devolver"
     },
     {
       "type": "header",
@@ -1615,9 +1615,9 @@
           "label": "¿Cómo le quedó?",
           "options": [
             { "value": "none", "label": "Sin indicar" },
-            { "value": "small", "label": "Tira a pequeña" },
+            { "value": "small", "label": "Veste piccolo" },
             { "value": "perfect", "label": "Talla perfecta" },
-            { "value": "large", "label": "Tira a grande" }
+            { "value": "large", "label": "Veste grande" }
           ],
           "default": "none"
         },

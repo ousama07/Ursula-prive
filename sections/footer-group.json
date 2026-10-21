@@ -70,7 +70,7 @@
                 "custom_button_border": "{{ settings.color_palette.background }}",
                 "link_text_color": "",
                 "display_type": "arrow",
-                "label": "Suscribirme",
+                "label": "Iscrivimi",
                 "integrated_button": false,
                 "button_type_preset": "paragraph",
                 "padding-block-start": 0,
@@ -105,7 +105,7 @@
           "type": "menu",
           "settings": {
             "menu": "footer",
-            "heading": "Tienda",
+            "heading": "Negozio",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -125,7 +125,7 @@
           "type": "menu",
           "settings": {
             "menu": "",
-            "heading": "Ayuda",
+            "heading": "Aiuto",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -204,7 +204,7 @@
             "text_jBr8nr": {
               "type": "text",
               "settings": {
-                "text": "<p>Síguenos</p>",
+                "text": "<p>Seguici</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",

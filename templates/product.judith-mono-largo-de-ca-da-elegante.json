@@ -16,7 +16,7 @@
           "type": "disclosures",
           "name": "t:names.disclosures",
           "settings": {
-            "heading": "Disclosures",
+            "heading": "Informazioni",
             "heading_preset": "h5",
             "open_by_default": false,
             "icon": "caret",
@@ -390,7 +390,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Made with care</p>",
+                            "text": "<p>Fatto con cura</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -472,7 +472,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Great value</p>",
+                            "text": "<p>Ottimo rapporto qualità-prezzo</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -599,7 +599,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Elegant design</p>",
+                            "text": "<p>Design elegante</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -681,7 +681,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Quality materials</p>",
+                            "text": "<p>Materiali di qualità</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -745,7 +745,7 @@
                 "accordion_row_VyFryh": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Details",
+                    "heading": "Dettagli",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -754,7 +754,7 @@
                     "text_McjMWz": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>This product is crafted with quality materials to ensure durability and performance. Designed with your convenience in mind, it seamlessly fits into your everyday life.</p>",
+                        "text": "<p>Questo prodotto è realizzato con materiali di qualità per garantire durata e prestazioni. Progettato pensando alla tua comodità, si inserisce senza sforzo nella tua vita di tutti i giorni.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -784,7 +784,7 @@
                 "accordion_row_aaFerA": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping & Returns",
+                    "heading": "Spedizioni e resi",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -793,7 +793,7 @@
                     "text_DNPAct": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We strive to process and ship all orders in a timely manner, working diligently to ensure that your items are on their way to you as soon as possible. </p><p>We are committed to ensuring a positive shopping experience for all our customers. If for any reason you wish to return an item, we invite you to reach out to our team for assistance, and we will evaluate every return request with care and consideration.</p>",
+                        "text": "<p>Ci impegniamo a elaborare e spedire tutti gli ordini in tempi rapidi, lavorando con cura per garantire che i tuoi articoli siano in viaggio verso di te il prima possibile. </p><p>Teniamo a garantire un'esperienza di acquisto positiva a tutte le nostre clienti. Se per qualsiasi motivo desideri restituire un articolo, ti invitiamo a contattare il nostro team per assistenza, e valuteremo ogni richiesta di reso con cura e attenzione.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -984,7 +984,7 @@
                 "action_on_complete": "reset",
                 "number_size": 14,
                 "number_color": "#111111",
-                "text": "<p>Colores populares: reposición en</p>",
+                "text": "<p>Colori popolari: riassortimento tra</p>",
                 "text_size": 13,
                 "text_color": "#111111",
                 "progress_default_color": "#EBE9EB",
@@ -1164,7 +1164,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<p>Shop The Full Collection</p>",
+                "text": "<p>Scopri tutta la collezione</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
