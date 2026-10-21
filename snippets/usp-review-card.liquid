@@ -20,18 +20,18 @@
 
   assign fit_parts = ''
   if s.size_bought != blank
-    assign fit_parts = fit_parts | append: 'Talla ' | append: s.size_bought | append: '|'
+    assign fit_parts = fit_parts | append: 'Taglia ' | append: s.size_bought | append: '|'
   endif
   if s.height != blank
-    assign fit_parts = fit_parts | append: 'Mide ' | append: s.height | append: '|'
+    assign fit_parts = fit_parts | append: 'Altezza ' | append: s.height | append: '|'
   endif
   case s.fit
     when 'small'
-      assign fit_parts = fit_parts | append: 'Tira a pequeña|'
+      assign fit_parts = fit_parts | append: 'Veste piccolo|'
     when 'perfect'
-      assign fit_parts = fit_parts | append: 'Talla perfecta|'
+      assign fit_parts = fit_parts | append: 'Taglia perfetta|'
     when 'large'
-      assign fit_parts = fit_parts | append: 'Tira a grande|'
+      assign fit_parts = fit_parts | append: 'Veste grande|'
   endcase
   assign fit_list = fit_parts | split: '|'
 -%}

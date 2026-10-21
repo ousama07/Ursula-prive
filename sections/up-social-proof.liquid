@@ -274,7 +274,7 @@
                   {% render 'usp-stars', rating: s.rating, size: 12 %}
                   <span class="usp-tile__name">{{ s.name | escape }}</span>
                   {%- if s.size_bought != blank -%}
-                    <span class="usp-tile__size">Talla {{ s.size_bought | escape }}{% if s.height != blank %} · {{ s.height | escape }}{% endif %}</span>
+                    <span class="usp-tile__size">Taglia {{ s.size_bought | escape }}{% if s.height != blank %} · {{ s.height | escape }}{% endif %}</span>
                   {%- endif -%}
                 </span>
               </button>
