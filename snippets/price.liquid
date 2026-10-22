@@ -162,12 +162,13 @@
   /* Úrsula Privée – precio tachado · precio actual en rojo · porcentaje de descuento en verde */
   .price--with-savings {
     --price-sale-red: #c62828;
-    --price-savings-green: #2e7d32;
+    --price-savings-green: #1b6b2f;
+    --price-savings-green-bg: #e3f4e7;
 
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    column-gap: 0.45em;
+    column-gap: 0.32em;
     row-gap: 8px;
     max-width: 100%;
   }
@@ -176,17 +177,23 @@
     color: var(--price-sale-red);
   }
 
-  /* Porcentaje: a la derecha del precio, en la misma línea */
+  /* Porcentaje: recuadro verde a la derecha del precio, en la misma línea.
+     El tamaño va en em, así que escala con el precio: grande en la ficha de
+     producto y pequeño en las tarjetas, siempre proporcionado. */
   .price-savings__percent {
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
+    align-self: center;
     min-width: 0;
+    padding: 0.2em 0.42em;
+    border-radius: 0.28em;
+    background: var(--price-savings-green-bg);
     color: var(--price-savings-green);
     font-family: var(--font-body--family);
     font-style: normal;
-    font-size: 0.9375rem;
+    font-size: max(0.7em, 0.8125rem);
     font-weight: 700;
-    line-height: 1;
+    line-height: 1.15;
     letter-spacing: 0.01em;
     text-transform: none;
     white-space: nowrap;
@@ -215,10 +222,6 @@
   }
 
   @media screen and (max-width: 749px) {
-    .price-savings__percent {
-      font-size: 0.875rem;
-    }
-
     .price-savings__note {
       font-size: 0.625rem;
       letter-spacing: 0.12em;

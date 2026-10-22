@@ -60,6 +60,19 @@
       assign ratio = product.featured_media.preview_image.aspect_ratio | default: '1'
   endcase
 
+  # ÚRSULA PRIVÉE · encuadre de la foto de la tarjeta.
+  # La tarjeta es cuadrada y las fotos de modelo son 4:5, así que el recorte
+  # centrado por defecto se lleva por delante la cara. Subimos el punto de
+  # enfoque para que por arriba casi no se corte nada.
+  # Solo se aplica a fotos de modelo (proporción entre 0,72 y 0,95): los
+  # bodegones cuadrados (bolsos, joyería) y las fotos muy verticales
+  # (calzado) se quedan centrados como hasta ahora.
+  assign up_focal = '50% 50%'
+  assign up_img_ratio = product.featured_media.preview_image.aspect_ratio
+  if up_img_ratio != blank and up_img_ratio >= 0.72 and up_img_ratio <= 0.95
+    assign up_focal = '50% 12%'
+  endif
+
   if block_settings.image_ratio == 'adapt' and block_settings.constrain_to_viewport
     if block_settings.constrain_to_viewport != ''
       assign constrain_to_viewport = true
@@ -75,6 +88,7 @@
     {% render 'border-override', settings: block_settings %}
     {% render 'spacing-style', settings: block_settings %}
     --gallery-aspect-ratio: {{ ratio }};
+    --up-card-focal: {{ up_focal }};
   "
   data-product-id="{{ product.id }}"
   {% if settings.show_second_image_on_hover and product.media.size > 1 %}
@@ -241,6 +255,11 @@
 {% render 'product-media-container-styles' %}
 
 {% stylesheet %}
+  /* ÚRSULA PRIVÉE · punto de enfoque de la foto de la tarjeta (ver up_focal) */
+  .card-gallery .product-media-container.media-fit img {
+    object-position: var(--up-card-focal, center center);
+  }
+
   .card-gallery {
     position: relative;
     overflow: hidden;
