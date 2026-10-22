@@ -88,38 +88,13 @@
             "padding-inline-end": 12
           },
           "blocks": {
-            "section_store_block_review_summary_dyDei4": {
-              "type": "shopify://apps/section-store/blocks/block-review-summary/d7a2e423-ea88-4344-b866-6d0fb487c3dd",
+            "custom_liquid_MKY3qg": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
               "settings": {
-                "star_style": "standard",
-                "stars_count": 4.5,
-                "stars_size": 15,
-                "stars_gap": 1,
-                "stars_color": "#FFFFFF",
-                "stars_bg_color": "#00B67A",
-                "stars_bg_half_color": "#DDDDDD",
-                "avatars_position": "none",
-                "avatars_size": 20,
-                "avatars_animate": false,
-                "first_text": "<p>&nbsp;</p>",
-                "first_text_size": 12,
-                "first_text_color": "#000000",
-                "second_text": "<p>Rated 4.7 excellent | <strong>921 reviews</strong></p>",
-                "second_text_size": 12,
-                "second_text_color": "#000000",
-                "border": "none",
-                "border_thickness": 1,
-                "border_color": "#000000",
-                "radius": 0,
-                "background": "",
-                "background_gradient": "",
-                "effect": "none",
-                "block_padding_top": 0,
-                "block_padding_bottom": 0,
-                "padding_vertical": 6,
-                "padding_horizontal": 0,
-                "custom_css": ""
-              }
+                "custom_liquid": "<div class=\"social-proof-rating\">\n  <div class=\"social-proof-stars\" aria-label=\"Valoración de 4,8 sobre 5\">\n    ★★★★★\n  </div>\n  <span class=\"social-proof-score\">4,8/5</span>\n  <span class=\"social-proof-text\">6.981 clienti donne soddisfatte</span>\n</div>\n\n<style>\n  .social-proof-rating {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    gap: 8px;\n    flex-wrap: wrap;\n    font-family: inherit;\n    font-size: 15px;\n    line-height: 1.4;\n    color: #292929;\n  }\n\n  .social-proof-stars {\n    color: #ffbf00;\n    font-size: 19px;\n    letter-spacing: 0;\n    line-height: 1;\n    white-space: nowrap;\n  }\n\n  .social-proof-score {\n    font-weight: 400;\n    white-space: nowrap;\n  }\n\n  .social-proof-text {\n    letter-spacing: 0.5px;\n  }\n\n  @media screen and (max-width: 480px) {\n    .social-proof-rating {\n      gap: 6px;\n      font-size: 13px;\n    }\n\n    .social-proof-stars {\n      font-size: 17px;\n    }\n  }\n</style>"
+              },
+              "blocks": {}
             },
             "text_GnyQiN": {
               "type": "text",
@@ -187,7 +162,8 @@
               "name": "t:names.custom_liquid",
               "settings": {
                 "custom_liquid": "{% render 'up-trust-badges' %}"
-              }
+              },
+              "blocks": {}
             },
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
@@ -634,7 +610,7 @@
             }
           },
           "block_order": [
-            "section_store_block_review_summary_dyDei4",
+            "custom_liquid_MKY3qg",
             "text_GnyQiN",
             "reviews",
             "price_a7krng",
@@ -1042,375 +1018,6 @@
         "padding-block-end": 72
       }
     },
-    "ss-testimonials-42-2": {
-      "type": "ss-testimonials-42",
-      "blocks": {
-        "ss-sub_heading-1": {
-          "type": "sub_heading",
-          "settings": {
-            "sub_heading": "<p>Voces reales</p>",
-            "sub_heading_custom": false,
-            "sub_heading_font": "josefin_sans_n4",
-            "sub_heading_size": 12,
-            "sub_heading_size_mobile": 12,
-            "sub_heading_advanced": false,
-            "sub_heading_height": 130,
-            "sub_heading_mt": 0,
-            "sub_heading_mt_mobile": 0,
-            "sub_heading_color": "#121212",
-            "sub_heading_bg": true,
-            "sub_heading_bg_color": "#ffffff",
-            "sub_heading_radius": 100,
-            "sub_heading_border_thickness": 0,
-            "sub_heading_border_color": "#cdbfaa",
-            "sub_heading_padding_horizontal": 12,
-            "sub_heading_padding_horizontal_mobile": 12,
-            "sub_heading_padding_vertical": 8,
-            "sub_heading_padding_vertical_mobile": 8
-          }
-        },
-        "ss-heading-2": {
-          "type": "heading",
-          "settings": {
-            "heading": "<h2>Si vestono in fretta e continuano a sentirsi se stesse</h2>",
-            "heading_custom": false,
-            "heading_font": "josefin_sans_n4",
-            "heading_size": 40,
-            "heading_size_mobile": 28,
-            "heading_advanced": false,
-            "heading_height": 130,
-            "heading_max_width": 70,
-            "heading_mt": 16,
-            "heading_mt_mobile": 16,
-            "heading_color": "#121212",
-            "heading_accent_style": "solid",
-            "heading_accent_color": "#121212",
-            "heading_accent_gradient": "linear-gradient(180deg, #121212 0%, #333333 100%)"
-          }
-        },
-        "ss-testimonial-3": {
-          "type": "testimonial",
-          "settings": {
-            "image": "shopify://shop_images/pdp-image-54c1733c.png",
-            "stars_count": 5,
-            "text": "<p>Esco di casa in un attimo e comunque mi sento presentabile. La comodità non litiga con l'essere in ordine.</p>",
-            "author": "Carmen R."
-          }
-        },
-        "ss-testimonial-4": {
-          "type": "testimonial",
-          "settings": {
-            "image": "shopify://shop_images/pdp-image-63f3a6d5.png",
-            "stars_count": 5,
-            "text": "<p>Si abbina a quello che ho già: un pantalone di sempre, un paio di stivali, e l'insieme si legge tutto.</p>",
-            "author": "Inés M."
-          }
-        },
-        "ss-testimonial-5": {
-          "type": "testimonial",
-          "settings": {
-            "image": "shopify://shop_images/pdp-image-bd52dfd9.png",
-            "stars_count": 5,
-            "text": "<p>Per il lavoro e per una cena improvvisata uso la stessa base. Mi riconosco allo specchio, senza recitare.</p>",
-            "author": "Lucía V."
-          }
-        },
-        "ss-testimonial-6": {
-          "type": "testimonial",
-          "settings": {
-            "image": "shopify://shop_images/pdp-image-0c672655.png",
-            "stars_count": 5,
-            "text": "<p>Mi piace che lo stile si noti senza spiegare niente. Mi vesto e la giornata ha già una forma.</p>",
-            "author": "Nuria P."
-          }
-        }
-      },
-      "block_order": [
-        "ss-sub_heading-1",
-        "ss-heading-2",
-        "ss-testimonial-3",
-        "ss-testimonial-4",
-        "ss-testimonial-5",
-        "ss-testimonial-6"
-      ],
-      "custom_css": [
-        "@media (max-width: 1023px) {[class*=\"section-\"][class*=\"-settings\"] {padding-top: 36px; padding-bottom: 36px; }}"
-      ],
-      "settings": {
-        "content_align": "center",
-        "content_align_mobile": "center",
-        "slider_view": 3,
-        "slider_view_mobile": 1.2,
-        "slider_advanced": false,
-        "slider_gap": 30,
-        "slider_gap_mobile": 24,
-        "slider_mt": 52,
-        "slider_mt_mobile": 32,
-        "slide_radius": 20,
-        "slide_border_thickness": 0,
-        "slide_shadow": false,
-        "slide_shadow_color": "#e9e2d9",
-        "slide_advanced": false,
-        "slide_padding_horizontal": 20,
-        "slide_padding_horizontal_mobile": 20,
-        "slide_padding_vertical": 20,
-        "slide_padding_vertical_mobile": 20,
-        "slide_content_align": "left",
-        "slide_content_align_mobile": "left",
-        "image_radius": 20,
-        "image_border_thickness": 0,
-        "image_ratio": "landscape",
-        "image_ratio_mobile": "landscape",
-        "verify_icon": true,
-        "verify_icon_size": 18,
-        "verify_icon_size_mobile": 18,
-        "verify_bg": true,
-        "verify_radius": 100,
-        "verify_border_thickness": 0,
-        "verify": "Compra verificada",
-        "verify_custom": false,
-        "verify_font": "josefin_sans_n4",
-        "verify_size": 12,
-        "verify_size_mobile": 12,
-        "verify_advanced": false,
-        "verify_height": 130,
-        "verify_mt": 16,
-        "verify_mt_mobile": 16,
-        "text_custom": false,
-        "text_font": "josefin_sans_n4",
-        "text_size": 16,
-        "text_size_mobile": 14,
-        "text_advanced": false,
-        "text_height": 150,
-        "text_mt": 16,
-        "text_mt_mobile": 16,
-        "author_custom": false,
-        "author_font": "josefin_sans_n4",
-        "author_size": 18,
-        "author_size_mobile": 16,
-        "author_height": 130,
-        "slide_stars_size": 20,
-        "slide_stars_size_mobile": 18,
-        "slide_stars_advanced": false,
-        "slide_stars_mt": 12,
-        "slide_stars_mt_mobile": 12,
-        "author_image_size": 60,
-        "author_image_size_mobile": 56,
-        "author_image_radius": 100,
-        "author_image_border_thickness": 0,
-        "arrow_show_desktop": true,
-        "arrow_show_mobile": false,
-        "arrow_size": 48,
-        "arrow_size_mobile": 38,
-        "arrow_icon_size": 10,
-        "arrow_icon_size_mobile": 8,
-        "arrow_radius": 100,
-        "arrow_border_thickness": 0,
-        "arrow_hover_effect": "color",
-        "arrow_mt": 40,
-        "arrow_mt_mobile": 32,
-        "image_border_color": "#e9e2d9",
-        "text_color": "#121212",
-        "author_color": "#121212",
-        "slide_stars_color": "#121212",
-        "slide_bg_color": "#f7f5f1",
-        "slide_border_color": "#e9e2d9",
-        "verify_color": "#121212",
-        "verify_icon_checkmark_color": "#ffffff",
-        "verify_icon_color": "#121212",
-        "verify_bg_color": "#f7f5f1",
-        "verify_border_color": "#e9e2d9",
-        "author_image_color": "#121212",
-        "author_image_bg_color": "#f7f5f1",
-        "author_image_border_color": "#e9e2d9",
-        "arrow_color": "#121212",
-        "arrow_hover_color": "#121212",
-        "arrow_bg_color": "#f7f5f1",
-        "arrow_bg_hover_color": "#b0a492",
-        "arrow_border_color": "#e9e2d9",
-        "arrow_border_hover_color": "#b0a492",
-        "background_style": "solid",
-        "background_color": "#f1ede8",
-        "background_gradient": "",
-        "border_color": "#e9e2d9",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_horizontal": 0,
-        "margin_horizontal_mobile": 0,
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "padding_horizontal": 5,
-        "padding_horizontal_mobile": 1.5,
-        "width": "page",
-        "content_width": 1200,
-        "border_thickness": 0,
-        "section_radius": 0
-      },
-      "disabled": true
-    },
-    "up_story": {
-      "type": "media-with-content",
-      "blocks": {
-        "media": {
-          "type": "_media-without-appearance",
-          "static": true,
-          "settings": {
-            "media_type": "video",
-            "link": "",
-            "video": "shopify://files/videos/9998209638602698-de5b146b-921e-4f8b-9995-511ecff42968-video_kling_turbo_932531298731294788_1790361397223247715.mp4",
-            "video_loop": true,
-            "video_autoplay": true,
-            "image_position": "cover",
-            "video_position": "cover"
-          },
-          "blocks": {}
-        },
-        "content": {
-          "type": "_content-without-appearance",
-          "static": true,
-          "settings": {
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 24
-          },
-          "blocks": {
-            "custom_liquid_yQVUjp": {
-              "type": "custom-liquid",
-              "name": "t:names.custom_liquid",
-              "settings": {
-                "custom_liquid": "{%- comment -%}\n  ÚRSULA PRIVÉE · LA NOSTRA STORIA (versione solo testo, da affiancare al video\n  en la sección \"Multimedia con texto\"). Este comentario no pesa nada.\n{%- endcomment -%}\n{%- liquid\n  assign ua_t1 = 'La nostra'\n  assign ua_t2 = 'storia'\n  assign ua_q = 'Il tuo stile parla prima di te.'\n  assign ua_txt = ua_t1 | append: ua_t2 | append: ua_q\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&text={{ ua_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<div class=\"uat\"><p class=\"uat-e\">Chi siamo</p><h2>{{ ua_t1 }} <em>{{ ua_t2 }}</em></h2><p>Úrsula Privée è nata da un'idea semplice: vestirsi bene non dovrebbe dipendere dall'occasione, ma da come vuoi sentirti.</p><p>Scegliamo ogni capo uno a uno, pensando a donne vere: a come cade il tessuto, a se valorizza davvero e a se ti accompagnerà allo stesso modo a un pranzo infrasettimanale come a un matrimonio d'estate.</p><p class=\"uat-q\">{{ ua_q }}</p><a class=\"uat-c\" href=\"{{ routes.all_products_collection_url }}\">Scopri la collezione<svg viewBox=\"0 0 24 9\" aria-hidden=\"true\"><path d=\"M0 4.5h22M18.5 1l3.5 3.5L18.5 8\" fill=\"none\" stroke=\"currentColor\"/></svg></a></div>\n<style>.uat{--k:#1c1a17;--m:#6f655c;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);max-width:440px;color:var(--k);text-align:left}.uat-e{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.uat-e:before{content:'';width:28px;height:1px;background:currentColor}.uat h2{margin:0 0 18px;font:300 clamp(2.4rem,4vw,3.6rem)/1 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.uat p{margin:0 0 12px;font-size:15px;line-height:1.7;color:#4a433d}.uat .uat-q{display:flex;align-items:center;gap:14px;margin:20px 0 0;font:italic 400 1.35rem/1.2 var(--f);color:var(--k)}.uat-q:before{content:'';flex:none;width:28px;height:1px;background:currentColor}.uat-c{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding-bottom:6px;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;color:var(--k);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/28px 1px no-repeat;transition:background-size .9s var(--e)}.uat-c svg{width:24px;height:9px;transition:transform .9s var(--e)}.uat-c:focus-visible{outline:2px solid var(--k);outline-offset:4px}@media(hover:hover){.uat-c:hover{background-size:100% 1px}.uat-c:hover svg{transform:translateX(5px)}}</style>"
-              },
-              "blocks": {}
-            },
-            "image_y4ApqF": {
-              "type": "image",
-              "name": "t:names.image",
-              "disabled": true,
-              "settings": {
-                "link": "",
-                "image_ratio": "adapt",
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_Hf79zK": {
-              "type": "text",
-              "name": "t:names.heading",
-              "disabled": true,
-              "settings": {
-                "text": "<h2>Essenziali di produttività</h2>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h3",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_jxGhdJ": {
-              "type": "text",
-              "disabled": true,
-              "settings": {
-                "text": "<p>Oggetti che si affiancano ai tuoi strumenti digitali per permetterti di concentrarti sul lavoro più importante.</p>",
-                "width": "fit-content",
-                "max_width": "narrow",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "button_zg4nUF": {
-              "type": "button",
-              "disabled": true,
-              "settings": {
-                "label": "Acquista ora",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "custom_button_background": "{{ settings.color_palette.foreground }}",
-                "custom_button_text": "{{ settings.color_palette.background }}",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "link_text_color": "",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "custom_liquid_yQVUjp",
-            "image_y4ApqF",
-            "text_Hf79zK",
-            "text_jxGhdJ",
-            "button_zg4nUF"
-          ]
-        }
-      },
-      "name": "t:names.media_with_text",
-      "settings": {
-        "media_position": "left",
-        "media_width": "medium",
-        "media_height": "50svh",
-        "section_width": "page-width",
-        "extend_media": true,
-        "background_color": "{{ settings.color_palette.color3 }}",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "up_reviews": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "{% render 'up-reviews' %}",
-        "background_color": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
     "up_outfit": {
       "type": "up-outfit",
       "blocks": {
@@ -1596,6 +1203,8 @@
       ],
       "name": "Completa tu outfit",
       "settings": {
+        "collection_a": "bolsos",
+        "collection_b": "calzado",
         "max_products": 16,
         "columns": 4,
         "mobile_columns": "2",
@@ -1606,9 +1215,376 @@
         "section_width": "page-width",
         "gap": 28,
         "padding-block-start": 56,
-        "padding-block-end": 72,
-        "collection_a": "bolsos",
-        "collection_b": "calzado"
+        "padding-block-end": 72
+      }
+    },
+    "up_story": {
+      "type": "media-with-content",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "video",
+            "link": "",
+            "video": "shopify://files/videos/9998209638602698-de5b146b-921e-4f8b-9995-511ecff42968-video_kling_turbo_932531298731294788_1790361397223247715.mp4",
+            "video_loop": true,
+            "video_autoplay": true,
+            "image_position": "cover",
+            "video_position": "cover"
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 24
+          },
+          "blocks": {
+            "custom_liquid_yQVUjp": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{%- comment -%}\n  ÚRSULA PRIVÉE · LA NOSTRA STORIA (versione solo testo, da affiancare al video\n  en la sección \"Multimedia con texto\"). Este comentario no pesa nada.\n{%- endcomment -%}\n{%- liquid\n  assign ua_t1 = 'La nostra'\n  assign ua_t2 = 'storia'\n  assign ua_q = 'Il tuo stile parla prima di te.'\n  assign ua_txt = ua_t1 | append: ua_t2 | append: ua_q\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&text={{ ua_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<div class=\"uat\"><p class=\"uat-e\">Chi siamo</p><h2>{{ ua_t1 }} <em>{{ ua_t2 }}</em></h2><p>Úrsula Privée è nata da un'idea semplice: vestirsi bene non dovrebbe dipendere dall'occasione, ma da come vuoi sentirti.</p><p>Scegliamo ogni capo uno a uno, pensando a donne vere: a come cade il tessuto, a se valorizza davvero e a se ti accompagnerà allo stesso modo a un pranzo infrasettimanale come a un matrimonio d'estate.</p><p class=\"uat-q\">{{ ua_q }}</p><a class=\"uat-c\" href=\"{{ routes.all_products_collection_url }}\">Scopri la collezione<svg viewBox=\"0 0 24 9\" aria-hidden=\"true\"><path d=\"M0 4.5h22M18.5 1l3.5 3.5L18.5 8\" fill=\"none\" stroke=\"currentColor\"/></svg></a></div>\n<style>.uat{--k:#1c1a17;--m:#6f655c;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);max-width:440px;color:var(--k);text-align:left}.uat-e{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.uat-e:before{content:'';width:28px;height:1px;background:currentColor}.uat h2{margin:0 0 18px;font:300 clamp(2.4rem,4vw,3.6rem)/1 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.uat p{margin:0 0 12px;font-size:15px;line-height:1.7;color:#4a433d}.uat .uat-q{display:flex;align-items:center;gap:14px;margin:20px 0 0;font:italic 400 1.35rem/1.2 var(--f);color:var(--k)}.uat-q:before{content:'';flex:none;width:28px;height:1px;background:currentColor}.uat-c{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding-bottom:6px;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;color:var(--k);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/28px 1px no-repeat;transition:background-size .9s var(--e)}.uat-c svg{width:24px;height:9px;transition:transform .9s var(--e)}.uat-c:focus-visible{outline:2px solid var(--k);outline-offset:4px}@media(hover:hover){.uat-c:hover{background-size:100% 1px}.uat-c:hover svg{transform:translateX(5px)}}</style>"
+              },
+              "blocks": {}
+            },
+            "image_y4ApqF": {
+              "type": "image",
+              "name": "t:names.image",
+              "disabled": true,
+              "settings": {
+                "link": "",
+                "image_ratio": "adapt",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Hf79zK": {
+              "type": "text",
+              "name": "t:names.heading",
+              "disabled": true,
+              "settings": {
+                "text": "<h2>Essenziali di produttività</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_jxGhdJ": {
+              "type": "text",
+              "disabled": true,
+              "settings": {
+                "text": "<p>Oggetti che si affiancano ai tuoi strumenti digitali per permetterti di concentrarti sul lavoro più importante.</p>",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_zg4nUF": {
+              "type": "button",
+              "disabled": true,
+              "settings": {
+                "label": "Acquista ora",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button-secondary",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "custom_liquid_yQVUjp",
+            "image_y4ApqF",
+            "text_Hf79zK",
+            "text_jxGhdJ",
+            "button_zg4nUF"
+          ]
+        }
+      },
+      "name": "t:names.media_with_text",
+      "settings": {
+        "media_position": "left",
+        "media_width": "medium",
+        "media_height": "50svh",
+        "section_width": "page-width",
+        "extend_media": true,
+        "background_color": "{{ settings.color_palette.color3 }}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "up_reviews": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "{% render 'up-reviews' %}",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "ss-testimonials-42-2": {
+      "type": "ss-testimonials-42",
+      "blocks": {
+        "ss-sub_heading-1": {
+          "type": "sub_heading",
+          "settings": {
+            "sub_heading": "<p>Voces reales</p>",
+            "sub_heading_custom": false,
+            "sub_heading_font": "josefin_sans_n4",
+            "sub_heading_size": 12,
+            "sub_heading_size_mobile": 12,
+            "sub_heading_advanced": false,
+            "sub_heading_height": 130,
+            "sub_heading_mt": 0,
+            "sub_heading_mt_mobile": 0,
+            "sub_heading_color": "#121212",
+            "sub_heading_bg": true,
+            "sub_heading_bg_color": "#ffffff",
+            "sub_heading_radius": 100,
+            "sub_heading_border_thickness": 0,
+            "sub_heading_border_color": "#cdbfaa",
+            "sub_heading_padding_horizontal": 12,
+            "sub_heading_padding_horizontal_mobile": 12,
+            "sub_heading_padding_vertical": 8,
+            "sub_heading_padding_vertical_mobile": 8
+          }
+        },
+        "ss-heading-2": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h2>Si vestono in fretta e continuano a sentirsi se stesse</h2>",
+            "heading_custom": false,
+            "heading_font": "josefin_sans_n4",
+            "heading_size": 40,
+            "heading_size_mobile": 28,
+            "heading_advanced": false,
+            "heading_height": 130,
+            "heading_max_width": 70,
+            "heading_mt": 16,
+            "heading_mt_mobile": 16,
+            "heading_color": "#121212",
+            "heading_accent_style": "solid",
+            "heading_accent_color": "#121212",
+            "heading_accent_gradient": "linear-gradient(180deg, #121212 0%, #333333 100%)"
+          }
+        },
+        "ss-testimonial-3": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/pdp-image-54c1733c.png",
+            "stars_count": 5,
+            "text": "<p>Esco di casa in un attimo e comunque mi sento presentabile. La comodità non litiga con l'essere in ordine.</p>",
+            "author": "Carmen R."
+          }
+        },
+        "ss-testimonial-4": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/pdp-image-63f3a6d5.png",
+            "stars_count": 5,
+            "text": "<p>Si abbina a quello che ho già: un pantalone di sempre, un paio di stivali, e l'insieme si legge tutto.</p>",
+            "author": "Inés M."
+          }
+        },
+        "ss-testimonial-5": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/pdp-image-bd52dfd9.png",
+            "stars_count": 5,
+            "text": "<p>Per il lavoro e per una cena improvvisata uso la stessa base. Mi riconosco allo specchio, senza recitare.</p>",
+            "author": "Lucía V."
+          }
+        },
+        "ss-testimonial-6": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/pdp-image-0c672655.png",
+            "stars_count": 5,
+            "text": "<p>Mi piace che lo stile si noti senza spiegare niente. Mi vesto e la giornata ha già una forma.</p>",
+            "author": "Nuria P."
+          }
+        }
+      },
+      "block_order": [
+        "ss-sub_heading-1",
+        "ss-heading-2",
+        "ss-testimonial-3",
+        "ss-testimonial-4",
+        "ss-testimonial-5",
+        "ss-testimonial-6"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media (max-width: 1023px) {[class*=\"section-\"][class*=\"-settings\"] {padding-top: 36px; padding-bottom: 36px; }}"
+      ],
+      "settings": {
+        "content_align": "center",
+        "content_align_mobile": "center",
+        "slider_view": 3,
+        "slider_view_mobile": 1.2,
+        "slider_advanced": false,
+        "slider_gap": 30,
+        "slider_gap_mobile": 24,
+        "slider_mt": 52,
+        "slider_mt_mobile": 32,
+        "slide_radius": 20,
+        "slide_border_thickness": 0,
+        "slide_shadow": false,
+        "slide_shadow_color": "#e9e2d9",
+        "slide_advanced": false,
+        "slide_padding_horizontal": 20,
+        "slide_padding_horizontal_mobile": 20,
+        "slide_padding_vertical": 20,
+        "slide_padding_vertical_mobile": 20,
+        "slide_content_align": "left",
+        "slide_content_align_mobile": "left",
+        "image_radius": 20,
+        "image_border_thickness": 0,
+        "image_ratio": "landscape",
+        "image_ratio_mobile": "landscape",
+        "verify_icon": true,
+        "verify_icon_size": 18,
+        "verify_icon_size_mobile": 18,
+        "verify_bg": true,
+        "verify_radius": 100,
+        "verify_border_thickness": 0,
+        "verify": "Compra verificada",
+        "verify_custom": false,
+        "verify_font": "josefin_sans_n4",
+        "verify_size": 12,
+        "verify_size_mobile": 12,
+        "verify_advanced": false,
+        "verify_height": 130,
+        "verify_mt": 16,
+        "verify_mt_mobile": 16,
+        "text_custom": false,
+        "text_font": "josefin_sans_n4",
+        "text_size": 16,
+        "text_size_mobile": 14,
+        "text_advanced": false,
+        "text_height": 150,
+        "text_mt": 16,
+        "text_mt_mobile": 16,
+        "author_custom": false,
+        "author_font": "josefin_sans_n4",
+        "author_size": 18,
+        "author_size_mobile": 16,
+        "author_height": 130,
+        "slide_stars_size": 20,
+        "slide_stars_size_mobile": 18,
+        "slide_stars_advanced": false,
+        "slide_stars_mt": 12,
+        "slide_stars_mt_mobile": 12,
+        "author_image_size": 60,
+        "author_image_size_mobile": 56,
+        "author_image_radius": 100,
+        "author_image_border_thickness": 0,
+        "arrow_show_desktop": true,
+        "arrow_show_mobile": false,
+        "arrow_size": 48,
+        "arrow_size_mobile": 38,
+        "arrow_icon_size": 10,
+        "arrow_icon_size_mobile": 8,
+        "arrow_radius": 100,
+        "arrow_border_thickness": 0,
+        "arrow_hover_effect": "color",
+        "arrow_mt": 40,
+        "arrow_mt_mobile": 32,
+        "image_border_color": "#e9e2d9",
+        "text_color": "#121212",
+        "author_color": "#121212",
+        "slide_stars_color": "#121212",
+        "slide_bg_color": "#f7f5f1",
+        "slide_border_color": "#e9e2d9",
+        "verify_color": "#121212",
+        "verify_icon_checkmark_color": "#ffffff",
+        "verify_icon_color": "#121212",
+        "verify_bg_color": "#f7f5f1",
+        "verify_border_color": "#e9e2d9",
+        "author_image_color": "#121212",
+        "author_image_bg_color": "#f7f5f1",
+        "author_image_border_color": "#e9e2d9",
+        "arrow_color": "#121212",
+        "arrow_hover_color": "#121212",
+        "arrow_bg_color": "#f7f5f1",
+        "arrow_bg_hover_color": "#b0a492",
+        "arrow_border_color": "#e9e2d9",
+        "arrow_border_hover_color": "#b0a492",
+        "background_style": "solid",
+        "background_color": "#f1ede8",
+        "background_gradient": "",
+        "border_color": "#e9e2d9",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "width": "page",
+        "content_width": 1200,
+        "border_thickness": 0,
+        "section_radius": 0
       }
     }
   },
