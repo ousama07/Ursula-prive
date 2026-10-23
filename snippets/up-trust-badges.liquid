@@ -2,28 +2,142 @@
   Úrsula Privée · iconos de confianza de la ficha de producto.
   Se usa en todas las plantillas de producto.
 {%- enddoc -%}
-<div class="upt">
-  <div class="upt-i">
-    <img src="{{ 'up-badge-30dias.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
-    <span>Garanzia di reso e rimborso</span>
+<div class="italian-benefits">
+
+  <!-- GARANTÍA DE DEVOLUCIÓN -->
+  <div class="italian-benefit">
+    <div class="italian-benefit__icon guarantee-icon" aria-hidden="true">
+      <span class="guarantee-number">30</span>
+      <span class="guarantee-copy">GIORNI</span>
+    </div>
+    <span class="italian-benefit__text">
+      Garanzia di reso e rimborso
+    </span>
   </div>
-  <div class="upt-i">
-    <img src="{{ 'up-badge-correos.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
-    <span>Spedizione gratuita</span>
+
+  <!-- ENVÍO GRATUITO CON POSTE ITALIANE -->
+  <div class="italian-benefit">
+    <div class="italian-benefit__icon poste-icon">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/8/82/Logo_semplice_Poste_Italiane.svg"
+        alt="Poste Italiane"
+        loading="lazy"
+      >
+    </div>
+    <span class="italian-benefit__text">
+      Spedizione gratuita
+    </span>
   </div>
-  <div class="upt-i">
-    <img src="{{ 'up-badge-espana.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
-    <span>Azienda spagnola</span>
+
+  <!-- EMPRESA ITALIANA CON BANDERA DE ITALIA -->
+  <div class="italian-benefit">
+    <div
+      class="italian-benefit__icon italy-flag"
+      role="img"
+      aria-label="Bandiera italiana"
+    ></div>
+    <span class="italian-benefit__text">
+      Azienda italiana
+    </span>
   </div>
+
 </div>
+
 <style>
-.upt{display:flex;flex-direction:column;gap:14px;margin-block:18px}
-.upt-i{display:flex;align-items:center;gap:12px}
-.upt-i img{flex:none;width:34px;height:34px;border-radius:50%;object-fit:cover;display:block}
-.upt-i span{font-family:var(--font-body--family);font-size:.9375rem;line-height:1.3;letter-spacing:.02em;color:var(--color-foreground)}
-@media screen and (max-width:749px){
-  .upt{gap:12px}
-  .upt-i img{width:30px;height:30px}
-  .upt-i span{font-size:.875rem}
-}
+  .italian-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    font-family: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  .italian-benefit {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 44px;
+  }
+
+  .italian-benefit__icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .italian-benefit__text {
+    font-size: 19px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: #171717;
+    letter-spacing: 0;
+  }
+
+  /* Medallón de garantía */
+  .guarantee-icon {
+    flex-direction: column;
+    background: radial-gradient(circle, #fff6cf 35%, #d6aa38 75%, #f6df8e 100%);
+    border: 2px solid #d8ab39;
+    box-shadow: inset 0 0 0 2px #fff0b2;
+    color: #403017;
+    position: relative;
+  }
+
+  .guarantee-number {
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: 800;
+  }
+
+  .guarantee-copy {
+    font-size: 6px;
+    line-height: 8px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+  }
+
+  /* Identidad visual de Poste Italiane */
+  .poste-icon {
+    background: #ffdc00;
+    border: 1px solid #f2d000;
+  }
+
+  .poste-icon img {
+    display: block;
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+  }
+
+  /* Bandera italiana circular */
+  .italy-flag {
+    background: linear-gradient(
+      to right,
+      #009246 0%,
+      #009246 33.333%,
+      #ffffff 33.333%,
+      #ffffff 66.666%,
+      #ce2b37 66.666%,
+      #ce2b37 100%
+    );
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  @media screen and (max-width: 480px) {
+    .italian-benefit__text {
+      font-size: 17px;
+    }
+
+    .italian-benefits {
+      gap: 14px;
+    }
+  }
 </style>
