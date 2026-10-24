@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "sections": {
     "section": {
       "type": "section",
@@ -16,7 +15,7 @@
           "type": "custom-liquid",
           "name": "t:names.custom_liquid",
           "settings": {
-            "custom_liquid": "<h1 class=\"up-ct\">{{ collection.title | escape | replace: '/', '/<wbr>' }}</h1><style>.up-ct{margin:0;font-family:var(--font-heading--family);font-weight:var(--font-heading--weight,400);font-size:clamp(2.25rem,10vw,4.5rem);line-height:1.05;word-break:normal;overflow-wrap:normal;hyphens:none;text-wrap:balance}</style>"
+            "custom_liquid": "<h1 class=\"up-ct\">{{ collection.title | escape | replace: '/', '/<wbr>' }}</h1><style>.up-ct{margin:0;text-align:center;font-family:var(--font-heading--family);font-weight:var(--font-heading--weight,400);font-size:clamp(2.25rem,10vw,4.5rem);line-height:1.05;word-break:normal;overflow-wrap:normal;hyphens:none;text-wrap:balance}</style>"
           },
           "blocks": {}
         },
@@ -53,14 +52,14 @@
           "settings": {
             "content_direction": "column",
             "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
+            "horizontal_alignment": "center",
             "vertical_alignment": "center",
             "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
+            "horizontal_alignment_flex_direction_column": "center",
             "vertical_alignment_flex_direction_column": "center",
             "gap": 12,
             "width": "custom",
-            "custom_width": 35,
+            "custom_width": 55,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
@@ -117,9 +116,9 @@
               "name": "t:names.description",
               "settings": {
                 "text": "{{ closest.collection.description }}",
-                "width": "fit-content",
-                "max_width": "narrow",
-                "alignment": "left",
+                "width": "fill",
+                "max_width": "normal",
+                "alignment": "center",
                 "type_preset": "paragraph",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -154,10 +153,10 @@
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
+        "horizontal_alignment": "center",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
+        "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
         "gap": 12,
         "section_width": "page-width",
