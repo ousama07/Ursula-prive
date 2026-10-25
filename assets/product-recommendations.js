@@ -11,9 +11,12 @@ class ProductRecommendations extends Component {
       if (!entries[0]?.isIntersecting) return;
 
       observer.disconnect();
-      this.#loadRecommendations();
+      this.#start();
     },
-    { rootMargin: '0px 0px 400px 0px' }
+    // ÚRSULA PRIVÉE: antes eran 400px. La seccion vive muy abajo en la
+    // ficha, asi que con 400px la peticion arrancaba cuando el carrusel
+    // ya casi se veia y siempre llegaba tarde.
+    { rootMargin: '0px 0px 1500px 0px' }
   );
 
   /**
@@ -56,16 +59,57 @@ class ProductRecommendations extends Component {
    */
   #activeFetch = null;
 
+  /**
+   * ÚRSULA PRIVÉE: evita que la carga inicial se dispare dos veces.
+   * Si el scroll y el tiempo muerto coincidieran, el segundo fetch
+   * abortaria al primero y el carrusel se quedaria vacio.
+   * @type {boolean}
+   */
+  #started = false;
+
+  /**
+   * ÚRSULA PRIVÉE: identificador de la carga en tiempo muerto.
+   * @type {number | null}
+   */
+  #idleHandle = null;
+
   connectedCallback() {
     super.connectedCallback();
     this.#intersectionObserver.observe(this);
     this.#mutationObserver.observe(this, { attributes: true });
+
+    // ÚRSULA PRIVÉE: ademas del scroll, se precarga cuando el navegador
+    // esta ocioso. Asi el carrusel ya esta montado cuando la clienta
+    // llega hasta el, en vez de empezar a pedirlo en ese momento.
+    // requestIdleCallback no compite con el renderizado inicial.
+    const idle = window.requestIdleCallback;
+    this.#idleHandle = idle
+      ? idle(() => this.#start(), { timeout: 4000 })
+      : window.setTimeout(() => this.#start(), 2500);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.#intersectionObserver.disconnect();
     this.#mutationObserver.disconnect();
+
+    if (this.#idleHandle != null) {
+      const cancel = window.cancelIdleCallback;
+      if (cancel) cancel(this.#idleHandle);
+      else window.clearTimeout(this.#idleHandle);
+      this.#idleHandle = null;
+    }
+  }
+
+  /**
+   * ÚRSULA PRIVÉE: arranca la carga una sola vez, venga del scroll o
+   * del tiempo muerto.
+   */
+  #start() {
+    if (this.#started) return;
+    this.#started = true;
+    this.#intersectionObserver.disconnect();
+    this.#loadRecommendations();
   }
 
   /**
