@@ -1591,10 +1591,10 @@
   "order": [
     "main",
     "ss-feature-54-1",
+    "up_reviews",
     "up_recommendations",
     "up_outfit",
     "up_story",
-    "up_reviews",
     "ss-testimonials-42-2"
   ]
 }
