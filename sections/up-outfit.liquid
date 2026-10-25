@@ -7,18 +7,32 @@
 {%- endcomment -%}
 
 {% liquid
-  assign up_a = section.settings.collection_a.products
-  assign up_b = section.settings.collection_b.products
-  assign up_all = up_a | concat: up_b
+  # ÚRSULA PRIVÉE · "Completa il tuo outfit"
+  # Antes se hacia collection_a.products | concat: collection_b.products.
+  # concat no funciona sobre el listado de productos de una coleccion
+  # (no es un array normal), asi que la lista salia vacia y el carrusel
+  # aparecia sin ninguna tarjeta. Ahora se recorre cada coleccion por
+  # separado con offset/limit, que si admite.
+  assign up_ca = section.settings.collection_a
+  assign up_cb = section.settings.collection_b
 
-  assign up_size = up_all.size
-  if up_size > 1
-    assign up_off = 'now' | date: '%H' | times: 1 | modulo: up_size
-    if up_off > 0
-      assign up_x = up_all | slice: up_off, up_size
-      assign up_y = up_all | slice: 0, up_off
-      assign up_all = up_x | concat: up_y
-    endif
+  assign up_half = section.settings.max_products | divided_by: 2
+  if up_half < 1
+    assign up_half = 1
+  endif
+
+  # Rotacion por hora para que no salgan siempre los mismos.
+  # El rango se calcula para que offset + limit nunca pase del total.
+  assign up_hour = 'now' | date: '%H' | times: 1
+  assign up_oa = 0
+  assign up_ob = 0
+  if up_ca.products_count > up_half
+    assign up_ra = up_ca.products_count | minus: up_half | plus: 1
+    assign up_oa = up_hour | times: up_half | modulo: up_ra
+  endif
+  if up_cb.products_count > up_half
+    assign up_rb = up_cb.products_count | minus: up_half | plus: 1
+    assign up_ob = up_hour | times: up_half | modulo: up_rb
   endif
 
   capture up_styles
@@ -62,22 +76,36 @@
         endif
         assign up_n = 0
       -%}
-      {% for up_p in up_all %}
+      {% for up_p in up_ca.products offset: up_oa limit: up_half %}
         {%- assign up_key = ',' | append: up_p.id | append: ',' -%}
         {%- unless up_seen contains up_key -%}
-          {%- if up_n < section.settings.max_products -%}
-            {%- if up_n > 0 %}<!--@list/split-->{% endif -%}
-            {%- assign up_seen = up_seen | append: up_p.id | append: ',' -%}
-            {%- assign up_n = up_n | plus: 1 -%}
-            <div class="resource-list__item">
-              {% content_for 'block',
-                type: '_product-card',
-                id: 'static-product-card',
-                closest.product: up_p,
-                product_view_context: 'recommendation'
-              %}
-            </div>
-          {%- endif -%}
+          {%- if up_n > 0 %}<!--@list/split-->{% endif -%}
+          {%- assign up_seen = up_seen | append: up_p.id | append: ',' -%}
+          {%- assign up_n = up_n | plus: 1 -%}
+          <div class="resource-list__item">
+            {% content_for 'block',
+              type: '_product-card',
+              id: 'static-product-card',
+              closest.product: up_p,
+              product_view_context: 'recommendation'
+            %}
+          </div>
+        {%- endunless -%}
+      {% endfor %}
+      {% for up_p in up_cb.products offset: up_ob limit: up_half %}
+        {%- assign up_key = ',' | append: up_p.id | append: ',' -%}
+        {%- unless up_seen contains up_key -%}
+          {%- if up_n > 0 %}<!--@list/split-->{% endif -%}
+          {%- assign up_seen = up_seen | append: up_p.id | append: ',' -%}
+          {%- assign up_n = up_n | plus: 1 -%}
+          <div class="resource-list__item">
+            {% content_for 'block',
+              type: '_product-card',
+              id: 'static-product-card',
+              closest.product: up_p,
+              product_view_context: 'recommendation'
+            %}
+          </div>
         {%- endunless -%}
       {% endfor %}
     {% endcapture %}
