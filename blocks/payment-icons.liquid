@@ -20,11 +20,35 @@
     class="payment-icons__list"
     role="list"
   >
-    {%- for type in shop.enabled_payment_types -%}
-      <li class="payment-icons__item">
-        {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-      </li>
-    {%- endfor -%}
+    {%- comment -%}
+      ÚRSULA PRIVÉE · orden fijo de los iconos de pago del pie.
+      Shopify los devuelve en su propio orden; aqui mandamos nosotros.
+      Solo se pinta el metodo que ESTE realmente activado en la tienda,
+      para no anunciar una tarjeta que luego no se puede usar al pagar.
+      Si ninguno coincide, se vuelve al listado original de Shopify.
+    {%- endcomment -%}
+    {%- liquid
+      assign up_pay = 'master,mastercard,maestro,visa,american_express,amex,apple_pay,google_pay' | split: ','
+      capture up_icons
+        for up_t in up_pay
+          if shop.enabled_payment_types contains up_t
+            echo '<li class="payment-icons__item">'
+            echo up_t | payment_type_svg_tag: class: 'icon icon--full-color'
+            echo '</li>'
+          endif
+        endfor
+      endcapture
+      assign up_icons_clean = up_icons | strip
+    -%}
+    {%- if up_icons_clean != blank -%}
+      {{ up_icons_clean }}
+    {%- else -%}
+      {%- for type in shop.enabled_payment_types -%}
+        <li class="payment-icons__item">
+          {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+        </li>
+      {%- endfor -%}
+    {%- endif -%}
   </ul>
 </div>
 
