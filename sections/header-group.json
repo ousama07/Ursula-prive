@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "type": "header",
   "name": "t:names.header",
   "sections": {
@@ -172,11 +173,23 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "custom_liquid_4LW687": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<!-- Facebook Pixel Code -->\n<script>\n!function(f,b,e,v,n,t,s)\n{if(f.fbq)return;n=f.fbq=function(){n.callMethod?\nn.callMethod.apply(n,arguments):n.queue.push(arguments)};\nif(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';\nn.queue=[];t=b.createElement(e);t.async=!0;\nt.src=v;s=b.getElementsByTagName(e)[0];\ns.parentNode.insertBefore(t,s)}(window,document,'script',\n'https://connect.facebook.net/en_US/fbevents.js');\n fbq('init', '1114425231513788'); \nfbq('track', 'PageView');\n</script>\n<noscript>\n <img height=\"1\" width=\"1\" \nsrc=\"https://www.facebook.com/tr?id=1114425231513788&ev=PageView\n&noscript=1\"/>\n</noscript>\n<!-- End Facebook Pixel Code -->",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "header_announcements_WbCTVz",
     "header_section",
-    "custom_liquid_4ChtaT"
+    "custom_liquid_4ChtaT",
+    "custom_liquid_4LW687"
   ]
 }
