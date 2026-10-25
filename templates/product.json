@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -257,6 +258,7 @@
               "blocks": {
                 "quantity": {
                   "type": "quantity",
+                  "disabled": true,
                   "static": true,
                   "settings": {
                     "input_style": "default",
@@ -266,8 +268,7 @@
                     "border_width": 1,
                     "border_radius": 0
                   },
-                  "blocks": {},
-                  "disabled": true
+                  "blocks": {}
                 },
                 "add-to-cart": {
                   "type": "add-to-cart",
@@ -956,174 +957,11 @@
         "padding-block-end": 72
       }
     },
-    "up_story": {
-      "type": "media-with-content",
-      "blocks": {
-        "media": {
-          "type": "_media-without-appearance",
-          "static": true,
-          "settings": {
-            "media_type": "video",
-            "link": "",
-            "video": "shopify://files/videos/9998209638602698-de5b146b-921e-4f8b-9995-511ecff42968-video_kling_turbo_932531298731294788_1790361397223247715.mp4",
-            "video_loop": true,
-            "video_autoplay": true,
-            "image_position": "cover",
-            "video_position": "cover"
-          },
-          "blocks": {}
-        },
-        "content": {
-          "type": "_content-without-appearance",
-          "static": true,
-          "settings": {
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 24
-          },
-          "blocks": {
-            "custom_liquid_yQVUjp": {
-              "type": "custom-liquid",
-              "name": "t:names.custom_liquid",
-              "settings": {
-                "custom_liquid": "{%- comment -%}\n  ÚRSULA PRIVÉE · LA NOSTRA STORIA (versione solo testo, da affiancare al video\n  en la sección \"Multimedia con texto\"). Este comentario no pesa nada.\n{%- endcomment -%}\n{%- liquid\n  assign ua_t1 = 'La nostra'\n  assign ua_t2 = 'storia'\n  assign ua_q = 'Il tuo stile parla prima di te.'\n  assign ua_txt = ua_t1 | append: ua_t2 | append: ua_q\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&text={{ ua_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<div class=\"uat\"><p class=\"uat-e\">Chi siamo</p><h2>{{ ua_t1 }} <em>{{ ua_t2 }}</em></h2><p>Úrsula Privée è nata da un'idea semplice: vestirsi bene non dovrebbe dipendere dall'occasione, ma da come vuoi sentirti.</p><p>Scegliamo ogni capo uno a uno, pensando a donne vere: a come cade il tessuto, a se valorizza davvero e a se ti accompagnerà allo stesso modo a un pranzo infrasettimanale come a un matrimonio d'estate.</p><p class=\"uat-q\">{{ ua_q }}</p><a class=\"uat-c\" href=\"{{ routes.all_products_collection_url }}\">Scopri la collezione<svg viewBox=\"0 0 24 9\" aria-hidden=\"true\"><path d=\"M0 4.5h22M18.5 1l3.5 3.5L18.5 8\" fill=\"none\" stroke=\"currentColor\"/></svg></a></div>\n<style>.uat{--k:#1c1a17;--m:#6f655c;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);max-width:440px;color:var(--k);text-align:left}.uat-e{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.uat-e:before{content:'';width:28px;height:1px;background:currentColor}.uat h2{margin:0 0 18px;font:300 clamp(2.4rem,4vw,3.6rem)/1 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.uat p{margin:0 0 12px;font-size:15px;line-height:1.7;color:#4a433d}.uat .uat-q{display:flex;align-items:center;gap:14px;margin:20px 0 0;font:italic 400 1.35rem/1.2 var(--f);color:var(--k)}.uat-q:before{content:'';flex:none;width:28px;height:1px;background:currentColor}.uat-c{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding-bottom:6px;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;color:var(--k);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/28px 1px no-repeat;transition:background-size .9s var(--e)}.uat-c svg{width:24px;height:9px;transition:transform .9s var(--e)}.uat-c:focus-visible{outline:2px solid var(--k);outline-offset:4px}@media(hover:hover){.uat-c:hover{background-size:100% 1px}.uat-c:hover svg{transform:translateX(5px)}}</style>"
-              },
-              "blocks": {}
-            },
-            "image_y4ApqF": {
-              "type": "image",
-              "name": "t:names.image",
-              "disabled": true,
-              "settings": {
-                "link": "",
-                "image_ratio": "adapt",
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_Hf79zK": {
-              "type": "text",
-              "name": "t:names.heading",
-              "disabled": true,
-              "settings": {
-                "text": "<h2>Essenziali di produttività</h2>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h3",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_jxGhdJ": {
-              "type": "text",
-              "disabled": true,
-              "settings": {
-                "text": "<p>Oggetti che si affiancano ai tuoi strumenti digitali per permetterti di concentrarti sul lavoro più importante.</p>",
-                "width": "fit-content",
-                "max_width": "narrow",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "button_zg4nUF": {
-              "type": "button",
-              "disabled": true,
-              "settings": {
-                "label": "Acquista ora",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "custom_button_background": "{{ settings.color_palette.foreground }}",
-                "custom_button_text": "{{ settings.color_palette.background }}",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "link_text_color": "",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "custom_liquid_yQVUjp",
-            "image_y4ApqF",
-            "text_Hf79zK",
-            "text_jxGhdJ",
-            "button_zg4nUF"
-          ]
-        }
-      },
-      "name": "t:names.media_with_text",
-      "settings": {
-        "media_position": "left",
-        "media_width": "medium",
-        "media_height": "50svh",
-        "section_width": "page-width",
-        "extend_media": true,
-        "background_color": "{{ settings.color_palette.color3 }}",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
     "up_reviews": {
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
         "custom_liquid": "{% render 'up-reviews' %}",
-        "background_color": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "up_faq": {
-      "type": "custom-liquid",
-      "name": "Domande frequenti",
-      "settings": {
-        "custom_liquid": "{%- capture ufq_data -%}\nSpedizioni|Quanto ci mette ad arrivare il mio ordine?|<p>Il tuo ordine impiega <strong>a partire da 7 giorni</strong> ad arrivare da quando lo confermi. I tempi finali di consegna dipendono dal corriere, che è il responsabile di farti arrivare il pacco.</p>\n~~Spedizioni|Come posso seguire il mio ordine?|<p>Quando il tuo ordine lascerà il magazzino ti invieremo un'email con il <strong>numero di tracciamento</strong>. Se non la trovi, controlla la cartella spam oppure scrivici a [EMAIL].</p>\n~~Spedizioni|Sono passati 15 giorni e il mio ordine non è arrivato. Cosa faccio?|<p>Scrivici a [EMAIL] con il tuo numero d'ordine e lo controlleremo subito insieme a te.</p>\n~~Resi|Posso restituire un capo?|<p>Sì. Hai <strong>30 giorni</strong> da quando ricevi il tuo ordine per restituirlo. Il capo deve essere non indossato, non lavato, con le sue etichette e nella sua confezione originale.</p>\n~~Resi|Come faccio un reso?|<p>Scrivici a [EMAIL] con il tuo numero d'ordine, il tuo nome e il motivo. Ti risponderemo con l'indirizzo e i passaggi da seguire. <strong>Non inviare il pacco all'indirizzo del mittente</strong> senza aver prima ricevuto le nostre indicazioni.</p>\n~~Resi|Chi paga la spedizione del reso?|<p>Le spese di spedizione del reso sono a carico della cliente. Poiché l'indirizzo di reso è il nostro magazzino in Asia, il costo può essere elevato, quindi ti consigliamo di controllare bene la guida alle taglie prima di comprare. Se il capo arriva difettoso o sbagliato, le spese le sosteniamo noi.</p>\n~~Resi|Quando riceverò il mio rimborso?|<p>Entro un massimo di <strong>14 giorni</strong>, con lo stesso metodo di pagamento che hai usato. Possiamo aspettare di ricevere il capo, o la prova che lo hai spedito, prima di procedere.</p>\n~~Contatti|Come posso contattarvi?|<p>Scrivici a [EMAIL] e ti risponderemo il prima possibile. Se la tua domanda riguarda un ordine, includi il numero d'ordine così possiamo aiutarti più in fretta.</p>\n{%- endcapture -%}\n{%- liquid\n  assign ufq_email = 'support@ursulaprive.com'\n  assign ufq_mail = '<a href=\"mailto:' | append: ufq_email | append: '\">' | append: ufq_email | append: '</a>'\n  assign ufq_items = ufq_data | strip | split: '~~'\n  assign ufq_txt = 'Domandefrequenti'\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&text={{ ufq_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<section class=\"ufq\" aria-labelledby=\"ufq-{{ section.id }}\"><div class=\"ufq-w\">\n<header class=\"ufq-h\"><p class=\"ufq-e\">Aiuto</p><h2 id=\"ufq-{{ section.id }}\">Domande <em>frequenti</em></h2><p class=\"ufq-s\">Tutto quello che devi sapere su spedizioni, taglie e resi. Non trovi la tua risposta? Scrivici a {{ ufq_mail }}</p></header>\n<div class=\"ufq-l\">\n{%- assign ufq_cat = '' -%}\n{%- for it in ufq_items -%}\n{%- assign p = it | strip | split: '|' -%}\n{%- if p[0] != ufq_cat -%}{%- assign ufq_cat = p[0] -%}<p class=\"ufq-c\">{{ ufq_cat }}</p>{%- endif -%}\n<details class=\"ufq-i\" name=\"ufq-{{ section.id }}\"><summary>{{ p[1] }}<span aria-hidden=\"true\"></span></summary><div class=\"ufq-a\">{{ p[2] | replace: '[EMAIL]', ufq_mail }}</div></details>\n{%- endfor -%}\n</div></div></section>\n<style>.ufq{--k:#1c1a17;--m:#6f655c;--c:#efe8df;--l:#e3dbd0;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);interpolate-size:allow-keywords;padding:clamp(40px,6vw,88px) 0;color:var(--k)}.ufq *{box-sizing:border-box}.ufq-w{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,40px)}.ufq-e{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.ufq-e:before{content:'';width:28px;height:1px;background:currentColor}.ufq h2{margin:0;font:300 clamp(2.6rem,8vw,4.4rem)/.95 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.ufq-s{margin:18px 0 0;max-width:40ch;font-size:15px;line-height:1.7;color:#4a433d}.ufq a{color:var(--k);text-underline-offset:3px;text-decoration-thickness:1px}.ufq-c{margin:32px 0 6px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--m)}.ufq-c:first-child{margin-top:0}.ufq-i{border-bottom:1px solid var(--l)}.ufq-i summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;cursor:pointer;font-size:16px;line-height:1.4;color:var(--k)}.ufq-i summary::-webkit-details-marker{display:none}.ufq-i summary span{position:relative;flex:none;width:12px;height:12px}.ufq-i summary span:before,.ufq-i summary span:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:var(--k);transition:transform .5s var(--e)}.ufq-i summary span:after{transform:rotate(90deg)}.ufq-i[open] summary span:after{transform:rotate(0)}.ufq-i summary:focus-visible{outline:2px solid var(--k);outline-offset:4px}.ufq-i::details-content{block-size:0;overflow:hidden;transition:block-size .5s var(--e),content-visibility .5s allow-discrete}.ufq-i[open]::details-content{block-size:auto}.ufq-a{padding:0 32px 20px 0;font-size:15px;line-height:1.75;color:#4a433d}.ufq-a p{margin:0}.ufq-pay{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}.ufq-pay svg{display:block;width:38px;height:24px}@media(min-width:990px){.ufq-w{grid-template-columns:minmax(0,4fr) minmax(0,7fr);column-gap:clamp(48px,6vw,96px)}.ufq-h{position:sticky;top:32px;align-self:start}}@media(hover:hover){.ufq-i summary:hover{color:var(--m)}}@media(prefers-reduced-motion:reduce){.ufq *{transition:none!important}}</style>",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
@@ -1315,6 +1153,8 @@
       ],
       "name": "Completa tu outfit",
       "settings": {
+        "collection_a": "bolsos",
+        "collection_b": "calzado",
         "max_products": 16,
         "columns": 4,
         "mobile_columns": "2",
@@ -1325,19 +1165,180 @@
         "section_width": "page-width",
         "gap": 28,
         "padding-block-start": 56,
-        "padding-block-end": 72,
-        "collection_a": "bolsos",
-        "collection_b": "calzado"
+        "padding-block-end": 72
+      }
+    },
+    "up_story": {
+      "type": "media-with-content",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "video",
+            "link": "",
+            "video": "shopify://files/videos/9998209638602698-de5b146b-921e-4f8b-9995-511ecff42968-video_kling_turbo_932531298731294788_1790361397223247715.mp4",
+            "video_loop": true,
+            "video_autoplay": true,
+            "image_position": "cover",
+            "video_position": "cover"
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 24
+          },
+          "blocks": {
+            "custom_liquid_yQVUjp": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{%- comment -%}\n  ÚRSULA PRIVÉE · LA NOSTRA STORIA (versione solo testo, da affiancare al video\n  en la sección \"Multimedia con texto\"). Este comentario no pesa nada.\n{%- endcomment -%}\n{%- liquid\n  assign ua_t1 = 'La nostra'\n  assign ua_t2 = 'storia'\n  assign ua_q = 'Il tuo stile parla prima di te.'\n  assign ua_txt = ua_t1 | append: ua_t2 | append: ua_q\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&text={{ ua_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<div class=\"uat\"><p class=\"uat-e\">Chi siamo</p><h2>{{ ua_t1 }} <em>{{ ua_t2 }}</em></h2><p>Úrsula Privée è nata da un'idea semplice: vestirsi bene non dovrebbe dipendere dall'occasione, ma da come vuoi sentirti.</p><p>Scegliamo ogni capo uno a uno, pensando a donne vere: a come cade il tessuto, a se valorizza davvero e a se ti accompagnerà allo stesso modo a un pranzo infrasettimanale come a un matrimonio d'estate.</p><p class=\"uat-q\">{{ ua_q }}</p><a class=\"uat-c\" href=\"{{ routes.all_products_collection_url }}\">Scopri la collezione<svg viewBox=\"0 0 24 9\" aria-hidden=\"true\"><path d=\"M0 4.5h22M18.5 1l3.5 3.5L18.5 8\" fill=\"none\" stroke=\"currentColor\"/></svg></a></div>\n<style>.uat{--k:#1c1a17;--m:#6f655c;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);max-width:440px;color:var(--k);text-align:left}.uat-e{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.uat-e:before{content:'';width:28px;height:1px;background:currentColor}.uat h2{margin:0 0 18px;font:300 clamp(2.4rem,4vw,3.6rem)/1 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.uat p{margin:0 0 12px;font-size:15px;line-height:1.7;color:#4a433d}.uat .uat-q{display:flex;align-items:center;gap:14px;margin:20px 0 0;font:italic 400 1.35rem/1.2 var(--f);color:var(--k)}.uat-q:before{content:'';flex:none;width:28px;height:1px;background:currentColor}.uat-c{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding-bottom:6px;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;color:var(--k);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/28px 1px no-repeat;transition:background-size .9s var(--e)}.uat-c svg{width:24px;height:9px;transition:transform .9s var(--e)}.uat-c:focus-visible{outline:2px solid var(--k);outline-offset:4px}@media(hover:hover){.uat-c:hover{background-size:100% 1px}.uat-c:hover svg{transform:translateX(5px)}}</style>"
+              },
+              "blocks": {}
+            },
+            "image_y4ApqF": {
+              "type": "image",
+              "name": "t:names.image",
+              "disabled": true,
+              "settings": {
+                "link": "",
+                "image_ratio": "adapt",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Hf79zK": {
+              "type": "text",
+              "name": "t:names.heading",
+              "disabled": true,
+              "settings": {
+                "text": "<h2>Essenziali di produttività</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_jxGhdJ": {
+              "type": "text",
+              "disabled": true,
+              "settings": {
+                "text": "<p>Oggetti che si affiancano ai tuoi strumenti digitali per permetterti di concentrarti sul lavoro più importante.</p>",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_zg4nUF": {
+              "type": "button",
+              "disabled": true,
+              "settings": {
+                "label": "Acquista ora",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button-secondary",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "custom_liquid_yQVUjp",
+            "image_y4ApqF",
+            "text_Hf79zK",
+            "text_jxGhdJ",
+            "button_zg4nUF"
+          ]
+        }
+      },
+      "name": "t:names.media_with_text",
+      "settings": {
+        "media_position": "left",
+        "media_width": "medium",
+        "media_height": "50svh",
+        "section_width": "page-width",
+        "extend_media": true,
+        "background_color": "{{ settings.color_palette.color3 }}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "up_faq": {
+      "type": "custom-liquid",
+      "name": "Domande frequenti",
+      "settings": {
+        "custom_liquid": "{%- capture ufq_data -%}\nSpedizioni|Quanto ci mette ad arrivare il mio ordine?|<p>Il tuo ordine impiega <strong>a partire da 7 giorni</strong> ad arrivare da quando lo confermi. I tempi finali di consegna dipendono dal corriere, che è il responsabile di farti arrivare il pacco.</p>\n~~Spedizioni|Come posso seguire il mio ordine?|<p>Quando il tuo ordine lascerà il magazzino ti invieremo un'email con il <strong>numero di tracciamento</strong>. Se non la trovi, controlla la cartella spam oppure scrivici a [EMAIL].</p>\n~~Spedizioni|Sono passati 15 giorni e il mio ordine non è arrivato. Cosa faccio?|<p>Scrivici a [EMAIL] con il tuo numero d'ordine e lo controlleremo subito insieme a te.</p>\n~~Resi|Posso restituire un capo?|<p>Sì. Hai <strong>30 giorni</strong> da quando ricevi il tuo ordine per restituirlo. Il capo deve essere non indossato, non lavato, con le sue etichette e nella sua confezione originale.</p>\n~~Resi|Come faccio un reso?|<p>Scrivici a [EMAIL] con il tuo numero d'ordine, il tuo nome e il motivo. Ti risponderemo con l'indirizzo e i passaggi da seguire. <strong>Non inviare il pacco all'indirizzo del mittente</strong> senza aver prima ricevuto le nostre indicazioni.</p>\n~~Resi|Chi paga la spedizione del reso?|<p>Le spese di spedizione del reso sono a carico della cliente. Poiché l'indirizzo di reso è il nostro magazzino in Asia, il costo può essere elevato, quindi ti consigliamo di controllare bene la guida alle taglie prima di comprare. Se il capo arriva difettoso o sbagliato, le spese le sosteniamo noi.</p>\n~~Resi|Quando riceverò il mio rimborso?|<p>Entro un massimo di <strong>14 giorni</strong>, con lo stesso metodo di pagamento che hai usato. Possiamo aspettare di ricevere il capo, o la prova che lo hai spedito, prima di procedere.</p>\n~~Contatti|Come posso contattarvi?|<p>Scrivici a [EMAIL] e ti risponderemo il prima possibile. Se la tua domanda riguarda un ordine, includi il numero d'ordine così possiamo aiutarti più in fretta.</p>\n{%- endcapture -%}\n{%- liquid\n  assign ufq_email = 'support@ursulaprive.com'\n  assign ufq_mail = '<a href=\"mailto:' | append: ufq_email | append: '\">' | append: ufq_email | append: '</a>'\n  assign ufq_items = ufq_data | strip | split: '~~'\n  assign ufq_txt = 'Domandefrequenti'\n-%}\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&text={{ ufq_txt | url_encode }}&display=swap\" media=\"print\" onload=\"this.media='all'\">\n<section class=\"ufq\" aria-labelledby=\"ufq-{{ section.id }}\"><div class=\"ufq-w\">\n<header class=\"ufq-h\"><p class=\"ufq-e\">Aiuto</p><h2 id=\"ufq-{{ section.id }}\">Domande <em>frequenti</em></h2><p class=\"ufq-s\">Tutto quello che devi sapere su spedizioni, taglie e resi. Non trovi la tua risposta? Scrivici a {{ ufq_mail }}</p></header>\n<div class=\"ufq-l\">\n{%- assign ufq_cat = '' -%}\n{%- for it in ufq_items -%}\n{%- assign p = it | strip | split: '|' -%}\n{%- if p[0] != ufq_cat -%}{%- assign ufq_cat = p[0] -%}<p class=\"ufq-c\">{{ ufq_cat }}</p>{%- endif -%}\n<details class=\"ufq-i\" name=\"ufq-{{ section.id }}\"><summary>{{ p[1] }}<span aria-hidden=\"true\"></span></summary><div class=\"ufq-a\">{{ p[2] | replace: '[EMAIL]', ufq_mail }}</div></details>\n{%- endfor -%}\n</div></div></section>\n<style>.ufq{--k:#1c1a17;--m:#6f655c;--c:#efe8df;--l:#e3dbd0;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1);interpolate-size:allow-keywords;padding:clamp(40px,6vw,88px) 0;color:var(--k)}.ufq *{box-sizing:border-box}.ufq-w{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,40px)}.ufq-e{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}.ufq-e:before{content:'';width:28px;height:1px;background:currentColor}.ufq h2{margin:0;font:300 clamp(2.6rem,8vw,4.4rem)/.95 var(--f);color:var(--k);word-break:normal;overflow-wrap:normal}.ufq-s{margin:18px 0 0;max-width:40ch;font-size:15px;line-height:1.7;color:#4a433d}.ufq a{color:var(--k);text-underline-offset:3px;text-decoration-thickness:1px}.ufq-c{margin:32px 0 6px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--m)}.ufq-c:first-child{margin-top:0}.ufq-i{border-bottom:1px solid var(--l)}.ufq-i summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;cursor:pointer;font-size:16px;line-height:1.4;color:var(--k)}.ufq-i summary::-webkit-details-marker{display:none}.ufq-i summary span{position:relative;flex:none;width:12px;height:12px}.ufq-i summary span:before,.ufq-i summary span:after{content:'';position:absolute;left:0;top:50%;width:12px;height:1px;background:var(--k);transition:transform .5s var(--e)}.ufq-i summary span:after{transform:rotate(90deg)}.ufq-i[open] summary span:after{transform:rotate(0)}.ufq-i summary:focus-visible{outline:2px solid var(--k);outline-offset:4px}.ufq-i::details-content{block-size:0;overflow:hidden;transition:block-size .5s var(--e),content-visibility .5s allow-discrete}.ufq-i[open]::details-content{block-size:auto}.ufq-a{padding:0 32px 20px 0;font-size:15px;line-height:1.75;color:#4a433d}.ufq-a p{margin:0}.ufq-pay{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}.ufq-pay svg{display:block;width:38px;height:24px}@media(min-width:990px){.ufq-w{grid-template-columns:minmax(0,4fr) minmax(0,7fr);column-gap:clamp(48px,6vw,96px)}.ufq-h{position:sticky;top:32px;align-self:start}}@media(hover:hover){.ufq-i summary:hover{color:var(--m)}}@media(prefers-reduced-motion:reduce){.ufq *{transition:none!important}}</style>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
   "order": [
     "main",
     "section_NaqU9X",
+    "up_reviews",
     "up_recommendations",
     "up_outfit",
     "up_story",
-    "up_reviews",
     "up_faq"
   ]
 }
