@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "type": "header",
   "name": "t:names.header",
   "sections": {
@@ -167,7 +166,7 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "<style>\n.announcement-bar__text{white-space:nowrap}\n@media screen and (max-width:749px){\n  .announcement-bar__slides{width:100%;max-width:none}\n  .announcement-bar__slider .slideshow-control{display:none}\n  .announcement-bar__text{font-size:min(1rem,3vw)!important}\n}\n.menu-drawer__menu-item-text{letter-spacing:.08em}\n.menu-drawer__menu-container > summary .menu-drawer__menu-item-text,\n.menu-drawer__menu-item--parent .menu-drawer__menu-item-text{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}\n.menu-drawer__menu-item.menu-drawer__menu-item--mainlist{font-size:1rem;line-height:1.5}\n:root{--up-kl-teaser:72px}\n@media screen and (max-width:749px){\n  .sticky-add-to-cart__bar{padding-bottom:calc(var(--up-kl-teaser) + 10px)!important}\n}\n</style>\n<script src=\"https://cdn.shopify.com/s/files/1/1041/5816/7375/files/up-color-sync.js\" defer></script>",
+        "custom_liquid": "<style>\n/* Barra de anuncios: margen lateral y sin letras cortadas.\n   El nowrap se mantiene en escritorio, donde el texto cabe de sobra.\n   En movil se permite partir en dos lineas: el anuncio mas largo\n   ocupaba justo el ancho de la pantalla y se cortaba por la derecha. */\n.announcement-bar{padding-inline:16px}\n.announcement-bar__text{white-space:nowrap}\n@media screen and (max-width:749px){\n  .announcement-bar__slides{width:100%;max-width:none}\n  .announcement-bar__slider .slideshow-control{display:none}\n  .announcement-bar__text{white-space:normal;overflow-wrap:break-word;font-size:min(.8125rem,3.2vw)!important}\n  .announcement-bar__slide{--line-height:1.3!important}\n}\n.menu-drawer__menu-item-text{letter-spacing:.08em}\n.menu-drawer__menu-container > summary .menu-drawer__menu-item-text,\n.menu-drawer__menu-item--parent .menu-drawer__menu-item-text{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}\n.menu-drawer__menu-item.menu-drawer__menu-item--mainlist{font-size:1rem;line-height:1.5}\n:root{--up-kl-teaser:72px}\n@media screen and (max-width:749px){\n  .sticky-add-to-cart__bar{padding-bottom:calc(var(--up-kl-teaser) + 10px)!important}\n}\n</style>\n<script src=\"https://cdn.shopify.com/s/files/1/1041/5816/7375/files/up-color-sync.js\" defer></script>",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
