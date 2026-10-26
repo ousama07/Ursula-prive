@@ -1235,13 +1235,14 @@
           "type": "_media-without-appearance",
           "static": true,
           "settings": {
-            "media_type": "video",
+            "media_type": "image",
             "link": "",
             "video": "shopify://files/videos/9998209638602698-de5b146b-921e-4f8b-9995-511ecff42968-video_kling_turbo_932531298731294788_1790361397223247715.mp4",
             "video_loop": true,
             "video_autoplay": true,
             "image_position": "cover",
-            "video_position": "cover"
+            "video_position": "cover",
+            "image": "shopify://shop_images/aiimg_36a7000f3ffe66d648d50423000c36d1-0.jpg"
           },
           "blocks": {}
         },
