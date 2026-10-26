@@ -1,0 +1,99 @@
+{%- doc -%}
+  Úrsula Privée · aviso de oferta con cuenta atrás.
+  Sustituye al antiguo bloque AVVISO en la ficha de producto.
+
+  PARA CAMBIAR LA PROMOCIÓN SOLO HAY QUE TOCAR upoff_end Y LOS TEXTOS.
+  La cuenta atrás apunta a una fecha real: cuando pasa, el aviso
+  desaparece solo. Asi lo que ve la clienta es verdad.
+{%- enddoc -%}
+{%- liquid
+  # Fin de la promocion (hora de Italia). Cambia solo esta linea.
+  assign upoff_end = '2026-10-31T23:59:59+01:00'
+  assign upoff_fin_txt = 'la mezzanotte del 31 ottobre'
+
+  assign upoff_end_ts = upoff_end | date: '%s' | times: 1
+  assign upoff_now_ts = 'now' | date: '%s' | times: 1
+-%}
+{%- if upoff_now_ts < upoff_end_ts -%}
+<aside class="upav upav--offer" data-upoff data-upoff-end="{{ upoff_end_ts }}">
+  <p class="upav-h">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 4.3v4.2l2.6 1.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <strong>OFFERTE PRE-HALLOWEEN &amp; OGNISSANTI</strong>
+  </p>
+  <p><strong>Sconti speciali su una selezione di capi</strong>, solo nel nostro negozio.</p>
+  <p class="upav-cdl">L'offerta si chiude tra:</p>
+  <div class="upav-cd" role="timer" aria-live="off">
+    <span><b data-upoff-d>00</b><i>giorni</i></span>
+    <span><b data-upoff-h>00</b><i>ore</i></span>
+    <span><b data-upoff-m>00</b><i>min</i></span>
+    <span><b data-upoff-s>00</b><i>sec</i></span>
+  </div>
+  <p class="upav-f"><strong>Passata {{ upoff_fin_txt }}, i prezzi tornano quelli di sempre.</strong></p>
+</aside>
+<style>
+.upav{margin:18px 0;padding:18px 20px;border-radius:12px;background:#fce9ec;font-family:var(--font-body--family);font-size:.9375rem;line-height:1.55;color:#2b2621}
+.upav p{margin:0 0 10px}
+.upav p:last-child{margin:0}
+.upav-h{display:flex;align-items:center;gap:8px;letter-spacing:.04em}
+.upav-h svg{flex:none;width:16px;height:16px}
+.upav-f{color:#c62828}
+.upav-cdl{margin:0 0 8px!important;font-size:.8125rem;letter-spacing:.06em;text-transform:uppercase;color:#6f655c}
+.upav-cd{display:flex;gap:8px;margin:0 0 12px}
+.upav-cd span{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:58px;padding:8px 6px;border-radius:10px;background:#fff;
+  box-shadow:inset 0 0 0 1px rgb(198 40 40 / .18)}
+.upav-cd b{font-size:1.25rem;font-weight:700;line-height:1;color:#c62828;font-variant-numeric:tabular-nums}
+.upav-cd i{margin-top:3px;font-style:normal;font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:#6f655c}
+@media screen and (max-width:749px){
+  .upav{padding:16px;font-size:.875rem}
+  .upav-cd span{min-width:0;flex:1;padding:8px 4px}
+  .upav-cd b{font-size:1.125rem}
+}
+</style>
+<script>
+(function(){
+  if (window.__upoffInit) return;
+  window.__upoffInit = true;
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function run(box){
+    if (box.dataset.upoffOn === '1') return;
+    box.dataset.upoffOn = '1';
+
+    var end = parseInt(box.dataset.upoffEnd, 10) * 1000;
+    if (!end) return;
+
+    var d = box.querySelector('[data-upoff-d]'),
+        h = box.querySelector('[data-upoff-h]'),
+        m = box.querySelector('[data-upoff-m]'),
+        s = box.querySelector('[data-upoff-s]');
+    var timer = null;
+
+    function tick(){
+      var left = end - Date.now();
+      // La promocion termina de verdad: el aviso se retira solo.
+      if (left <= 0){
+        clearInterval(timer);
+        box.remove();
+        return;
+      }
+      var t = Math.floor(left / 1000);
+      d.textContent = pad(Math.floor(t / 86400));
+      h.textContent = pad(Math.floor(t % 86400 / 3600));
+      m.textContent = pad(Math.floor(t % 3600 / 60));
+      s.textContent = pad(t % 60);
+    }
+
+    tick();
+    timer = setInterval(tick, 1000);
+  }
+
+  function init(){ document.querySelectorAll('[data-upoff]').forEach(run); }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+  document.addEventListener('shopify:section:load', init);
+})();
+</script>
+{%- endif -%}

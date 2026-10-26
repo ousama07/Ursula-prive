@@ -636,9 +636,9 @@
             },
             "custom_liquid_76A9fL": {
               "type": "custom-liquid",
-              "name": "t:names.custom_liquid",
+              "name": "Offerta con conto alla rovescia",
               "settings": {
-                "custom_liquid": "<aside class=\"upav\">\n  <p class=\"upav-h\">\n    <svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"6.6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"/><path d=\"M8 4.6v.1M8 7v4.4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg>\n    <strong>AVVISO:</strong>\n  </p>\n  <p><strong>Alta richiesta in questo momento.</strong> Se riesci ad aggiungerlo al carrello, è ancora disponibile.</p>\n  <p class=\"upav-f\"><strong>Prendi il tuo prima che finisca!</strong></p>\n</aside>\n<style>\n.upav{margin:18px 0;padding:18px 20px;border-radius:12px;background:#fce9ec;font-family:var(--font-body--family);font-size:.9375rem;line-height:1.55;color:#2b2621}\n.upav p{margin:0 0 10px}\n.upav p:last-child{margin:0}\n.upav-h{display:flex;align-items:center;gap:8px;letter-spacing:.04em}\n.upav-h svg{flex:none;width:16px;height:16px}\n.upav-f{color:#c62828}\n@media screen and (max-width:749px){.upav{padding:16px;font-size:.875rem}}\n</style>"
+                "custom_liquid": "{% render 'up-offer-countdown' %}"
               },
               "blocks": {}
             },
