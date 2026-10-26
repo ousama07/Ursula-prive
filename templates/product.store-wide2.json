@@ -1385,7 +1385,7 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "{% render 'up-reviews' %}",
+        "custom_liquid": "{% render 'up-ugc' %}",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
