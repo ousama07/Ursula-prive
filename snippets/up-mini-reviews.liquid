@@ -1,0 +1,129 @@
+{%- doc -%}
+  Úrsula Privée · tarjeta de reseña rotatoria para la ficha de producto.
+  Va justo debajo de las garantías (pago seguro, devoluciones, envío).
+  Los textos salen de 'up-review-data', el mismo archivo que usa el
+  carrusel grande: editando alli se actualizan los dos.
+{%- enddoc -%}
+{%- liquid
+  capture upmr_raw
+    render 'up-review-data'
+  endcapture
+  assign upmr_items = upmr_raw | strip | split: '~~'
+  assign upmr_uid = block.id | default: section.id | default: 'x'
+-%}
+{%- if upmr_items.size > 0 -%}
+<div class="upmr" id="upmr-{{ upmr_uid }}" data-upmr data-upmr-ms="6000">
+  <ul class="upmr__l" role="list">
+    {%- for upmr_it in upmr_items -%}
+      {%- assign upmr_p = upmr_it | strip | split: '|' -%}
+      {%- assign upmr_n = upmr_p[1] | times: 1 -%}
+      {%- assign upmr_name = upmr_p[3] | strip -%}
+      {%- if upmr_name != blank and upmr_p[2] != blank -%}
+      <li class="upmr__c{% if forloop.first %} is-on{% endif %}"{% unless forloop.first %} aria-hidden="true"{% endunless %}>
+        <span class="upmr__av" aria-hidden="true">
+          <span class="upmr__ini">{{ upmr_name | slice: 0 | upcase }}</span>
+          {%- assign upmr_img = upmr_p[0] | strip -%}
+          {%- if upmr_img != blank -%}
+            <img src="{{ upmr_img }}" alt="" loading="lazy" decoding="async" width="88" height="88" onerror="this.remove()">
+          {%- endif -%}
+        </span>
+        <div class="upmr__b">
+          <p class="upmr__h">
+            <span class="upmr__n">{{ upmr_name }}</span>
+            <span class="upmr__s" role="img" aria-label="{{ upmr_n }} di 5 stelle">
+              {%- for i in (1..upmr_n) -%}
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8L12 2z" fill="currentColor"/></svg>
+              {%- endfor -%}
+            </span>
+          </p>
+          <p class="upmr__t">{{ upmr_p[2] | strip }}</p>
+        </div>
+      </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
+
+<style>
+  .upmr{margin:18px 0 4px}
+  .upmr__l{display:grid;grid-template-areas:'stack';margin:0;padding:0;list-style:none}
+  .upmr__c{grid-area:stack;display:flex;align-items:flex-start;gap:14px;
+    padding:16px 18px;border-radius:14px;
+    background:var(--up-soft,#ece7df);
+    opacity:0;visibility:hidden;transition:opacity .5s ease;pointer-events:none}
+  .upmr__c.is-on{opacity:1;visibility:visible;pointer-events:auto}
+  .upmr__av{position:relative;flex:none;width:52px;height:52px;border-radius:50%;
+    overflow:hidden;background:var(--up-line,#d9d2c7);
+    display:flex;align-items:center;justify-content:center}
+  .upmr__ini{font-size:18px;font-weight:600;color:var(--up-ink,#1c1a17)}
+  .upmr__av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+  .upmr__b{min-width:0}
+  .upmr__h{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+  .upmr__n{font-size:15px;font-weight:600;color:var(--up-ink,#1c1a17)}
+  .upmr__s{display:inline-flex;gap:1px;color:#f2b705}
+  .upmr__s svg{width:15px;height:15px}
+  .upmr__t{margin:0;font-size:14px;line-height:1.5;color:var(--up-mut,#6f655c)}
+  @media screen and (max-width:480px){
+    .upmr__c{gap:12px;padding:14px}
+    .upmr__av{width:44px;height:44px}
+    .upmr__t{font-size:13.5px}
+  }
+  @media (prefers-reduced-motion:reduce){.upmr__c{transition:none}}
+</style>
+
+<script>
+(function(){
+  if (window.__upmrInit) return;
+  window.__upmrInit = true;
+
+  function start(box){
+    if (box.dataset.upmrOn === '1') return;
+    box.dataset.upmrOn = '1';
+
+    var cards = box.querySelectorAll('.upmr__c');
+    if (cards.length < 2) return;
+
+    var i = 0, timer = null;
+    var wait = parseInt(box.dataset.upmrMs, 10) || 6000;
+
+    function show(n){
+      cards[i].classList.remove('is-on');
+      cards[i].setAttribute('aria-hidden','true');
+      i = n;
+      cards[i].classList.add('is-on');
+      cards[i].removeAttribute('aria-hidden');
+    }
+    function tick(){ show((i + 1) % cards.length); }
+    function play(){ if (!timer) timer = setInterval(tick, wait); }
+    function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+
+    box.addEventListener('mouseenter', stop);
+    box.addEventListener('mouseleave', play);
+    box.addEventListener('focusin', stop);
+    box.addEventListener('focusout', play);
+    document.addEventListener('visibilitychange', function(){
+      document.hidden ? stop() : play();
+    });
+
+    // Solo corre mientras se ve: no gasta nada fuera de pantalla.
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        es[0] && es[0].isIntersecting ? play() : stop();
+      }, { rootMargin: '100px' }).observe(box);
+    } else {
+      play();
+    }
+  }
+
+  function init(){ document.querySelectorAll('[data-upmr]').forEach(start); }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  // El tema reemplaza secciones por AJAX (variantes, editor): re-inicializa.
+  document.addEventListener('shopify:section:load', init);
+})();
+</script>
+{%- endif -%}
