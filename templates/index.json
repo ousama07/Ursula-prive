@@ -471,7 +471,8 @@
           "type": "_media-without-appearance",
           "static": true,
           "settings": {
-            "media_type": "video",
+            "media_type": "image",
+            "image": "shopify://shop_images/aiimg_b386632ec82a9e6be01fa89eebf550d4-0.jpg",
             "link": "",
             "video": "shopify://files/videos/9998209638602698-de5b146b-921e-4f8b-9995-511ecff42968-video_kling_turbo_932531298731294788_1790361397223247715.mp4",
             "video_loop": true,
