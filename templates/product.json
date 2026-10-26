@@ -222,9 +222,9 @@
             },
             "custom_liquid_ExHLT7": {
               "type": "custom-liquid",
-              "name": "t:names.custom_liquid",
+              "name": "Urgenza ultime unità",
               "settings": {
-                "custom_liquid": "<p class=\"upu\">\n  <span class=\"upu-dot\" aria-hidden=\"true\"></span><span class=\"upu-st\">Poche unità</span>\n  <span class=\"upu-sep\">·</span>\n  <span class=\"upu-of\">Offerta <strong>a tempo</strong> limitato</span>\n</p>\n<style>\n.upu{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:0 0 10px;font-family:var(--font-body--family);font-size:.9375rem;line-height:1.3;color:var(--color-foreground)}\n.upu-dot{flex:none;width:8px;height:8px;border-radius:50%;background:#e8637f;box-shadow:0 0 0 0 rgb(232 99 127/.55);animation:upu-p 1.8s ease-out infinite}\n.upu-st{color:#e8637f}\n.upu-sep{opacity:.45}\n.upu-of strong{font-weight:700}\n@keyframes upu-p{0%{box-shadow:0 0 0 0 rgb(232 99 127/.5)}70%{box-shadow:0 0 0 7px rgb(232 99 127/0)}100%{box-shadow:0 0 0 0 rgb(232 99 127/0)}}\n@media(prefers-reduced-motion:reduce){.upu-dot{animation:none}}\n</style>"
+                "custom_liquid": "<p class=\"upu\">\n  <span class=\"upu-dot\" aria-hidden=\"true\"></span><strong class=\"upu-st\">APPROFITTA</strong>\n  <span class=\"upu-sep\">·</span>\n  <span class=\"upu-of\">ultime unità disponibili</span>\n</p>\n<style>\n.upu{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:0 0 10px;font-family:var(--font-body--family);font-size:.9375rem;line-height:1.3;color:var(--color-foreground)}\n.upu-dot{flex:none;width:8px;height:8px;border-radius:50%;background:#d32f2f;box-shadow:0 0 0 0 rgb(211 47 47/.55);animation:upu-p 1.8s ease-out infinite}\n.upu-st{color:#d32f2f;font-weight:700;letter-spacing:.02em}\n.upu-sep{opacity:.45}\n@keyframes upu-p{0%{box-shadow:0 0 0 0 rgb(211 47 47/.5)}70%{box-shadow:0 0 0 7px rgb(211 47 47/0)}100%{box-shadow:0 0 0 0 rgb(211 47 47/0)}}\n@media(prefers-reduced-motion:reduce){.upu-dot{animation:none}}\n</style>"
               },
               "blocks": {}
             },
