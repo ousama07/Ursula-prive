@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -662,9 +663,7 @@
               "type": "custom-liquid",
               "name": "Recensione rotante",
               "settings": {
-                "custom_liquid": "{% render 'up-mini-reviews' %}",
-                "padding-block-start": 0,
-                "padding-block-end": 0
+                "custom_liquid": "{% render 'up-mini-reviews' %}"
               },
               "blocks": {}
             }
