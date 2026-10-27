@@ -1,0 +1,36 @@
+{%- doc -%}
+  Úrsula Privée · barra de confianza bajo el boton de pagar.
+  Se renderiza desde cart-summary, asi que sale tanto en la pagina
+  del carrito como en el cajon lateral. Para quitarla, borra la
+  linea {% render 'up-cart-trust' %} de snippets/cart-summary.liquid.
+{%- enddoc -%}
+{%- if cart != empty -%}
+<div class="upct">
+  <p class="upct-r">
+    <span class="upct-s" aria-hidden="true">{% for i in (1..5) %}<svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8L12 2z" fill="currentColor"/></svg>{% endfor %}</span>
+    <strong>4,8/5</strong>
+    <span class="upct-d" aria-hidden="true">·</span>
+    <span>+6.000 clienti soddisfatte</span>
+  </p>
+  <ul class="upct-l" role="list">
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.3-3 8.2-7 9.5-4-1.3-7-5.2-7-9.5V6l7-3z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4" class="t"/></svg>Garanzia 30 giorni</li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h10v8H3zM13 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.8" class="t"/><circle cx="17" cy="17" r="1.8" class="t"/></svg>Spedizione gratuita</li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10h12v10H6z"/><path d="M8.5 10V7.5a3.5 3.5 0 017 0V10" class="t"/></svg>Pagamento sicuro</li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.2v9.6L12 21l-8-4.2V7.2z"/><path d="M4 7.2l8 4.2 8-4.2M12 11.4V21" class="t"/></svg>Spedizione tracciata</li>
+  </ul>
+</div>
+<style>
+.upct{--k:#1c1a17;--m:#6f655c;--g:#c9a54c;margin:14px 0 0;padding:14px 14px 12px;border-radius:12px;background:#f3efe9;color:var(--k);font-family:var(--font-body--family)}
+.upct *{box-sizing:border-box}
+.upct-r{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px;margin:0 0 10px;font-size:13px;line-height:1.3}
+.upct-r strong{font-weight:700}
+.upct-d{opacity:.4}
+.upct-s{display:inline-flex;gap:2px;color:var(--g)}
+.upct-s svg{width:14px;height:14px}
+.upct-l{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;margin:0;padding:0;list-style:none}
+.upct-l li{display:flex;align-items:center;gap:7px;min-width:0;font-size:12px;line-height:1.25;color:#4a433d}
+.upct-l svg{flex:none;width:16px;height:16px;fill:none;stroke:var(--m);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.upct-l svg .t{stroke:var(--k)}
+@media(min-width:620px){.upct-l{grid-template-columns:repeat(4,minmax(0,1fr))}.upct-l li{flex-direction:column;text-align:center;gap:5px}}
+</style>
+{%- endif -%}
