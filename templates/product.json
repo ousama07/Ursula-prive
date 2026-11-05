@@ -191,14 +191,6 @@
               },
               "blocks": {}
             },
-            "custom_liquid_DKMNm8": {
-              "type": "custom-liquid",
-              "name": "t:names.custom_liquid",
-              "settings": {
-                "custom_liquid": "{% render 'up-trust-badges' %}"
-              },
-              "blocks": {}
-            },
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
               "settings": {
@@ -291,9 +283,26 @@
               },
               "block_order": []
             },
+            "up_pay_icons": {
+              "type": "custom-liquid",
+              "name": "Metodi di pagamento",
+              "settings": {
+                "custom_liquid": "{% render 'up-pay-icons' %}"
+              },
+              "blocks": {}
+            },
+            "custom_liquid_DKMNm8": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{% render 'up-trust-badges' %}"
+              },
+              "blocks": {}
+            },
             "group_X39hBc": {
               "type": "group",
               "name": "t:names.group",
+              "disabled": true,
               "settings": {
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -633,8 +642,15 @@
               },
               "block_order": [
                 "group_XqRYxC"
-              ],
-              "disabled": true
+              ]
+            },
+            "up_mini_reviews": {
+              "type": "custom-liquid",
+              "name": "Recensione rotante",
+              "settings": {
+                "custom_liquid": "{% render 'up-mini-reviews' %}"
+              },
+              "blocks": {}
             },
             "custom_liquid_76A9fL": {
               "type": "custom-liquid",
@@ -659,22 +675,6 @@
                 "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guida alle taglie'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
               },
               "blocks": {}
-            },
-            "up_mini_reviews": {
-              "type": "custom-liquid",
-              "name": "Recensione rotante",
-              "settings": {
-                "custom_liquid": "{% render 'up-mini-reviews' %}"
-              },
-              "blocks": {}
-            },
-            "up_pay_icons": {
-              "type": "custom-liquid",
-              "name": "Metodi di pagamento",
-              "settings": {
-                "custom_liquid": "{% render 'up-pay-icons' %}"
-              },
-              "blocks": {}
             }
           },
           "block_order": [
@@ -683,11 +683,11 @@
             "text_GnyQiN",
             "reviews",
             "price_a7krng",
-            "custom_liquid_DKMNm8",
             "variant_picker_R3rGDr",
             "custom_liquid_ExHLT7",
             "buy_buttons_eYQEYi",
             "up_pay_icons",
+            "custom_liquid_DKMNm8",
             "group_X39hBc",
             "up_mini_reviews",
             "custom_liquid_76A9fL",
@@ -976,17 +976,6 @@
         "padding-block-end": 72
       }
     },
-    "up_reviews": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "{% render 'up-ugc' %}",
-        "background_color": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
     "up_outfit": {
       "type": "up-outfit",
       "blocks": {
@@ -1187,6 +1176,17 @@
         "padding-block-end": 72
       }
     },
+    "up_reviews": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "{% render 'up-ugc' %}",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "up_story": {
       "type": "media-with-content",
       "blocks": {
@@ -1195,13 +1195,13 @@
           "static": true,
           "settings": {
             "media_type": "image",
+            "image": "shopify://shop_images/aiimg_36a7000f3ffe66d648d50423000c36d1-0.jpg",
             "link": "",
             "video": "shopify://files/videos/9998209638602698-de5b146b-921e-4f8b-9995-511ecff42968-video_kling_turbo_932531298731294788_1790361397223247715.mp4",
             "video_loop": true,
             "video_autoplay": true,
             "image_position": "cover",
-            "video_position": "cover",
-            "image": "shopify://shop_images/aiimg_36a7000f3ffe66d648d50423000c36d1-0.jpg"
+            "video_position": "cover"
           },
           "blocks": {}
         },
