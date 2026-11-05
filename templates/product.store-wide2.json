@@ -591,7 +591,8 @@
               },
               "block_order": [
                 "group_XqRYxC"
-              ]
+              ],
+              "disabled": true
             },
             "up_size_guide": {
               "type": "custom-liquid",
@@ -616,6 +617,14 @@
                 "custom_liquid": "{% render 'up-mini-reviews' %}"
               },
               "blocks": {}
+            },
+            "up_pay_icons": {
+              "type": "custom-liquid",
+              "name": "Metodi di pagamento",
+              "settings": {
+                "custom_liquid": "{% render 'up-pay-icons' %}"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -626,6 +635,7 @@
             "up_trust",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "up_pay_icons",
             "group_X39hBc",
             "up_mini_reviews",
             "up_size_guide",

@@ -1,0 +1,41 @@
+{%- doc -%}
+  Úrsula Privée · metodos de pago bajo el boton de comprar.
+  Mismo orden fijo que el pie de pagina: Mastercard, Maestro, Visa,
+  Amex, Apple Pay, Google Pay. Solo se pinta el metodo que ESTE
+  activado de verdad en la tienda, para no anunciar una tarjeta que
+  luego no se pueda usar al pagar.
+{%- enddoc -%}
+{%- liquid
+  assign upp_order = 'master,mastercard,maestro,visa,american_express,amex,apple_pay,google_pay' | split: ','
+  capture upp_icons
+    for upp_t in upp_order
+      if shop.enabled_payment_types contains upp_t
+        echo '<li>'
+        echo upp_t | payment_type_svg_tag: class: 'icon icon--full-color'
+        echo '</li>'
+      endif
+    endfor
+  endcapture
+  assign upp_clean = upp_icons | strip
+-%}
+{%- if upp_clean == blank -%}
+  {%- capture upp_clean -%}
+    {%- for upp_t in shop.enabled_payment_types -%}
+      <li>{{ upp_t | payment_type_svg_tag: class: 'icon icon--full-color' }}</li>
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- assign upp_clean = upp_clean | strip -%}
+{%- endif -%}
+{%- if upp_clean != blank -%}
+<div class="uppay">
+  <span class="visually-hidden">Metodi di pagamento accettati</span>
+  <ul class="uppay-l" role="list">{{ upp_clean }}</ul>
+</div>
+<style>
+.uppay{margin:14px 0 0}
+.uppay-l{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:0;padding:0;list-style:none}
+.uppay-l li{display:flex;align-items:center;justify-content:center;padding:5px 9px;border:1px solid #e3ddd4;border-radius:7px;background:#fff}
+.uppay-l svg,.uppay-l img{display:block;width:34px;height:22px}
+@media(max-width:480px){.uppay-l{gap:6px}.uppay-l li{padding:4px 7px}.uppay-l svg,.uppay-l img{width:30px;height:20px}}
+</style>
+{%- endif -%}

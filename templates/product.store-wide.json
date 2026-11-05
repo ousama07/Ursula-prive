@@ -607,7 +607,8 @@
               },
               "block_order": [
                 "group_XqRYxC"
-              ]
+              ],
+              "disabled": true
             },
             "up_size_guide": {
               "type": "custom-liquid",
@@ -624,6 +625,14 @@
                 "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guida alle taglie'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
               },
               "blocks": {}
+            },
+            "up_pay_icons": {
+              "type": "custom-liquid",
+              "name": "Metodi di pagamento",
+              "settings": {
+                "custom_liquid": "{% render 'up-pay-icons' %}"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -633,6 +642,7 @@
             "price_a7krng",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "up_pay_icons",
             "group_X39hBc",
             "up_size_guide",
             "up_description"
