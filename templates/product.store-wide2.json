@@ -616,7 +616,8 @@
               "settings": {
                 "custom_liquid": "{% render 'up-mini-reviews' %}"
               },
-              "blocks": {}
+              "blocks": {},
+              "disabled": true
             },
             "up_pay_icons": {
               "type": "custom-liquid",
@@ -632,10 +633,10 @@
             "text_GnyQiN",
             "reviews",
             "price_a7krng",
-            "up_trust",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "up_pay_icons",
+            "up_trust",
             "group_X39hBc",
             "up_mini_reviews",
             "up_size_guide",
