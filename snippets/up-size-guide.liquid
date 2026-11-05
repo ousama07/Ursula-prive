@@ -1,0 +1,72 @@
+{%- doc -%}
+  Úrsula Privée · guia de tallas en ventana.
+  Pone un enlace subrayado "Guida alle taglie" a la derecha de la
+  etiqueta TAGLIA, y al pulsarlo abre la tabla en una ventana sobre la
+  pagina. La tabla sale del metacampo custom.guia_tallas y, si no lo
+  hay, se intenta sacar de la descripcion del producto.
+{%- enddoc -%}
+{%- liquid
+  assign up_p = closest.product
+  assign up_g = up_p.metafields.custom.guia_tallas.value | default: ''
+  if up_g == ''
+    assign up_parts = up_p.description | split: '<p><strong>Guida alle taglie'
+    if up_parts.size > 1
+      assign up_rest = up_parts[1] | split: '</table>'
+      assign up_g = up_rest[0] | split: '</strong></p>' | last | append: '</table>'
+      assign up_tail = up_rest[1] | strip
+      assign up_start = up_tail | slice: 0, 7
+      if up_start == '<p><em>'
+        assign up_note = up_tail | split: '</p>' | first | append: '</p>'
+        assign up_g = up_g | append: up_note
+      endif
+    endif
+  endif
+-%}
+{%- if up_g != '' -%}
+<button type="button" class="up-sgt" data-up-sgt aria-haspopup="dialog">Guida alle taglie</button>
+<dialog class="up-sgd" data-up-sgd aria-labelledby="up-sgd-t">
+  <div class="up-sgd__box">
+    <header class="up-sgd__h">
+      <h2 id="up-sgd-t">Guida alle taglie <small>(cm)</small></h2>
+      <button type="button" class="up-sgd__x" data-up-sgx aria-label="Chiudi">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+    <div class="up-sgd__b">{{ up_g }}</div>
+  </div>
+</dialog>
+<style>
+.up-sgt{display:inline;padding:0;border:0;background:none;font-family:inherit;font-size:13px;line-height:1.2;color:#1c1a17;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;cursor:pointer;white-space:nowrap}
+.up-sgt:focus-visible{outline:2px solid #1c1a17;outline-offset:3px}
+.upv--size .upv__lab:has(.up-sgt){display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.up-sgd{width:min(560px,calc(100vw - 32px));max-height:min(80vh,620px);padding:0;border:0;border-radius:14px;background:#fff;color:#1c1a17;overflow:hidden}
+.up-sgd::backdrop{background:rgb(28 26 23/.45)}
+.up-sgd__box{display:flex;flex-direction:column;max-height:inherit}
+.up-sgd__h{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px 14px;border-bottom:1px solid #e3dbd0}
+.up-sgd__h h2{margin:0;font-size:16px;font-weight:600}
+.up-sgd__h small{font-size:12px;font-weight:400;color:#6f655c}
+.up-sgd__x{display:grid;place-items:center;flex:none;width:34px;height:34px;padding:0;border:0;border-radius:50%;background:#f3efe9;color:#1c1a17;cursor:pointer}
+.up-sgd__x svg{width:17px;height:17px}
+.up-sgd__b{padding:4px 20px 22px;overflow:auto}
+.up-sgd table{width:100%;min-width:280px;border-collapse:collapse;font-size:14px;text-align:center}
+.up-sgd th{position:sticky;top:0;background:#fff;padding:10px 8px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#6f655c;border-bottom:1px solid #e3dbd0}
+.up-sgd td{padding:10px 8px;border-bottom:1px solid #f1ede8}
+.up-sgd tbody tr:nth-child(odd){background:#faf8f5}
+.up-sgd td:first-child,.up-sgd th:first-child{text-align:left;font-weight:600;color:#1c1a17}
+.up-sgd p{margin:12px 0 0;font-size:13px;line-height:1.6;color:#6f655c}
+@media(prefers-reduced-motion:no-preference){.up-sgd[open]{animation:up-sgd-in .25s ease}@keyframes up-sgd-in{from{opacity:0;transform:translateY(8px)}}}
+</style>
+<script>
+(()=>{
+  const t=document.querySelector('[data-up-sgt]'),d=document.querySelector('[data-up-sgd]');
+  if(!t||!d)return;
+  const lab=document.querySelector('.upv--size .upv__lab');
+  if(lab&&!lab.contains(t))lab.appendChild(t);
+  const open=()=>{ if(d.showModal){d.showModal()} else {d.setAttribute('open','')} };
+  t.addEventListener('click',open);
+  const close=()=>{ if(d.close){d.close()} else {d.removeAttribute('open')} };
+  d.querySelector('[data-up-sgx]').addEventListener('click',close);
+  d.addEventListener('click',e=>{ if(e.target===d)close(); });
+})();
+</script>
+{%- endif -%}
