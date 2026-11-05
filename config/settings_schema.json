@@ -1,3 +1,4 @@
+
 [
   {
     "name": "theme_info",
@@ -2114,6 +2115,56 @@
           }
         ],
         "default": "equal-width-buttons"
+      }
+    ]
+  },
+  {
+    "name": "Úrsula Privée · La nostra storia",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Este texto se muestra igual en la portada y en todas las fichas de producto. Al cambiarlo aquí, cambia en toda la tienda."
+      },
+      {
+        "type": "text",
+        "id": "up_story_eyebrow",
+        "label": "Antetítulo",
+        "default": "Chi siamo"
+      },
+      {
+        "type": "text",
+        "id": "up_story_title_1",
+        "label": "Título (primera parte)",
+        "default": "La nostra"
+      },
+      {
+        "type": "text",
+        "id": "up_story_title_2",
+        "label": "Título (segunda parte, en cursiva)",
+        "default": "storia"
+      },
+      {
+        "type": "richtext",
+        "id": "up_story_body",
+        "label": "Texto",
+        "default": "<p>Úrsula Privée è nata in una piccola boutique tra le strade di Roma: mia nonna, le mani sempre al lavoro e il desiderio di far sentire bella ogni donna che varcava quella porta.</p><p>Sono cresciuta lì, tra gli appendiabiti e i tessuti. Non mi ha insegnato la moda: mi ha insegnato cosa significa costruire qualcosa con amore.</p><p>Oggi quel sogno continua qui. Una nuova fase, una collezione che si rinnova e le stesse radici di sempre.</p>"
+      },
+      {
+        "type": "text",
+        "id": "up_story_quote",
+        "label": "Frase final (en cursiva)",
+        "default": "Dietro ogni acquisto c'è sempre una persona."
+      },
+      {
+        "type": "text",
+        "id": "up_story_cta",
+        "label": "Texto del enlace",
+        "default": "Leggi la nostra storia"
+      },
+      {
+        "type": "url",
+        "id": "up_story_link",
+        "label": "Destino del enlace (vacío = página La nostra storia)"
       }
     ]
   }
