@@ -114,10 +114,7 @@
           "blocks": {}
         }
       },
-      "custom_css": [
-        ".header-logo__image {width: 200px !important; height: 120px !important; object-fit: cover; object-position: center;}",
-        "@media screen and (min-width: 750px) {.header-logo__image {width: 260px !important; }}"
-      ],
+      "custom_css": [],
       "settings": {
         "logo_position": "center",
         "menu_position": "left",
