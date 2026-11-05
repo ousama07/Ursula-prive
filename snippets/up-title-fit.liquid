@@ -1,0 +1,23 @@
+{%- doc -%}
+  Úrsula Privée · tamaño del titulo segun lo largo que sea.
+  La fuente Instrument Serif ocupa ~0,34 em por caracter, asi que el
+  ancho de un titulo de N letras es N x 0,34 x el tamaño de letra.
+  Despejando, el tamaño que hace que quepa en una linea es
+  ancho / (0,34 x N). Aqui se calcula con el ancho de la columna
+  (~92vw en movil, ~34vw en escritorio) y se acota arriba y abajo
+  para que un titulo corto no salga gigante ni uno larguisimo ilegible.
+{%- enddoc -%}
+{%- liquid
+  assign upt_n = closest.product.title | strip | size
+  if upt_n < 8
+    assign upt_n = 8
+  endif
+  assign upt_vwm = 2500 | divided_by: upt_n | divided_by: 10.0
+  assign upt_vwd = 1000 | divided_by: upt_n | divided_by: 10.0
+-%}
+<style>
+.product-details h1{font-size:clamp(1.25rem,{{ upt_vwm }}vw,2.25rem)!important;line-height:1.12;text-wrap:balance}
+@media screen and (min-width:750px){
+  .product-details h1{font-size:clamp(1.4rem,{{ upt_vwd }}vw,2.75rem)!important}
+}
+</style>

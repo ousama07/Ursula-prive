@@ -676,12 +676,21 @@
                 "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guida alle taglie'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
               },
               "blocks": {}
+            },
+            "up_title_fit": {
+              "type": "custom-liquid",
+              "name": "Titolo adattivo",
+              "settings": {
+                "custom_liquid": "{% render 'up-title-fit' %}"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "custom_liquid_XQAYQM",
             "section_store_block_review_summary_piEPr6",
             "text_GnyQiN",
+            "up_title_fit",
             "reviews",
             "price_a7krng",
             "variant_picker_R3rGDr",

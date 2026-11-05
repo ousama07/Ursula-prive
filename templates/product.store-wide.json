@@ -633,11 +633,20 @@
                 "custom_liquid": "{% render 'up-pay-icons' %}"
               },
               "blocks": {}
+            },
+            "up_title_fit": {
+              "type": "custom-liquid",
+              "name": "Titolo adattivo",
+              "settings": {
+                "custom_liquid": "{% render 'up-title-fit' %}"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "section_store_block_review_summary_tyRYtL",
             "text_GnyQiN",
+            "up_title_fit",
             "reviews",
             "price_a7krng",
             "variant_picker_R3rGDr",
