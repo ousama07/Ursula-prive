@@ -1,23 +1,52 @@
 {%- doc -%}
-  Úrsula Privée · tamaño del titulo segun lo largo que sea.
-  La fuente Instrument Serif ocupa ~0,34 em por caracter, asi que el
-  ancho de un titulo de N letras es N x 0,34 x el tamaño de letra.
-  Despejando, el tamaño que hace que quepa en una linea es
-  ancho / (0,34 x N). Aqui se calcula con el ancho de la columna
-  (~92vw en movil, ~34vw en escritorio) y se acota arriba y abajo
-  para que un titulo corto no salga gigante ni uno larguisimo ilegible.
+  Úrsula Privée · titulo de producto en una sola linea siempre que quepa.
+
+  Dos pasos:
+  1. CSS. Primera aproximacion a partir de la longitud del titulo.
+     Instrument Serif ocupa ~0,36 em por caracter, asi que un titulo de
+     N letras mide N x 0,36 x el tamaño de letra. Evita el parpadeo de
+     ver el titulo grande y luego encogerse.
+  2. JS. Mide de verdad el ancho que necesita el texto y el que tiene
+     disponible, y ajusta. Es lo que hace que funcione con cualquier
+     titulo, fuente y pantalla, sin depender de la estimacion de arriba.
+     Solo encoge, nunca agranda, y nunca baja del suelo marcado.
 {%- enddoc -%}
 {%- liquid
   assign upt_n = closest.product.title | strip | size
   if upt_n < 8
     assign upt_n = 8
   endif
-  assign upt_vwm = 2500 | divided_by: upt_n | divided_by: 10.0
-  assign upt_vwd = 1000 | divided_by: upt_n | divided_by: 10.0
+  assign upt_vwm = 2400 | divided_by: upt_n | divided_by: 10.0
+  assign upt_vwd = 950 | divided_by: upt_n | divided_by: 10.0
 -%}
 <style>
-.product-details h1{font-size:clamp(1.25rem,{{ upt_vwm }}vw,2.25rem)!important;line-height:1.12;text-wrap:balance}
+.product-details h1{font-size:clamp(1.15rem,{{ upt_vwm }}vw,2.25rem)!important;line-height:1.12;text-wrap:balance}
 @media screen and (min-width:750px){
-  .product-details h1{font-size:clamp(1.4rem,{{ upt_vwd }}vw,2.75rem)!important}
+  .product-details h1{font-size:clamp(1.3rem,{{ upt_vwd }}vw,2.75rem)!important}
 }
 </style>
+<script>
+(()=>{
+  const MIN=18;
+  const fit=()=>{
+    const h=document.querySelector('.product-details h1');
+    if(!h||!h.parentElement)return;
+    const avail=h.parentElement.clientWidth;
+    if(!avail)return;
+    h.style.fontSize='';
+    const base=parseFloat(getComputedStyle(h).fontSize);
+    if(!base)return;
+    const ws=h.style.whiteSpace;
+    h.style.whiteSpace='nowrap';
+    const need=h.scrollWidth;
+    h.style.whiteSpace=ws;
+    if(need<=avail||!need)return;
+    const next=Math.max(MIN,Math.floor(base*avail/need*100)/100);
+    if(next<base)h.style.setProperty('font-size',next+'px','important');
+  };
+  const run=()=>{fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});
+  else run();
+  let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(fit,150)},{passive:true});
+})();
+</script>
