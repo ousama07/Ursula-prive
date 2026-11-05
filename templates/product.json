@@ -1153,9 +1153,9 @@
     },
     "up_reviews": {
       "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
+      "name": "Recensioni con foto",
       "settings": {
-        "custom_liquid": "{% render 'up-ugc' %}",
+        "custom_liquid": "{% render 'up-reviews' %}",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
@@ -1325,6 +1325,17 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "up_ugc": {
+      "type": "custom-liquid",
+      "name": "Community · foto delle clienti",
+      "settings": {
+        "custom_liquid": "{% render 'up-ugc' %}",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
@@ -1333,6 +1344,7 @@
     "up_recommendations",
     "up_outfit",
     "up_reviews",
+    "up_ugc",
     "up_story",
     "up_faq"
   ]
