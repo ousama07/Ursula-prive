@@ -122,6 +122,14 @@
               },
               "blocks": {}
             },
+            "up_title_fit": {
+              "type": "custom-liquid",
+              "name": "Titolo adattivo",
+              "settings": {
+                "custom_liquid": "{% render 'up-title-fit' %}"
+              },
+              "blocks": {}
+            },
             "reviews": {
               "type": "review",
               "settings": {
@@ -176,6 +184,14 @@
                 "padding-block-end": 4,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "up_size_guide": {
+              "type": "custom-liquid",
+              "name": "Guida alle taglie",
+              "settings": {
+                "custom_liquid": "{% render 'up-size-guide' %}"
               },
               "blocks": {}
             },
@@ -627,27 +643,11 @@
               },
               "blocks": {}
             },
-            "up_size_guide": {
-              "type": "custom-liquid",
-              "name": "Guida alle taglie",
-              "settings": {
-                "custom_liquid": "{% render 'up-size-guide' %}"
-              },
-              "blocks": {}
-            },
             "up_description": {
               "type": "custom-liquid",
               "name": "Descripción",
               "settings": {
                 "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guida alle taglie'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
-              },
-              "blocks": {}
-            },
-            "up_title_fit": {
-              "type": "custom-liquid",
-              "name": "Titolo adattivo",
-              "settings": {
-                "custom_liquid": "{% render 'up-title-fit' %}"
               },
               "blocks": {}
             }
@@ -684,68 +684,6 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 32
-      }
-    },
-    "section_NaqU9X": {
-      "type": "section",
-      "blocks": {
-        "video_PthMbP": {
-          "type": "video",
-          "name": "t:names.video",
-          "settings": {
-            "source": "uploaded",
-            "video_url": "",
-            "video_autoplay": false,
-            "video_loop": true,
-            "alt": "",
-            "custom_width": 100,
-            "custom_width_mobile": 100,
-            "aspect_ratio": "16/9",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "video_PthMbP"
-      ],
-      "disabled": true,
-      "name": "t:names.video_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "full-width",
-        "section_height": "small",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "{{ settings.color_palette.background }}",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 0,
-        "padding-block-end": 0
       }
     },
     "up_recommendations": {
@@ -1162,6 +1100,17 @@
         "padding-block-end": 0
       }
     },
+    "up_ugc": {
+      "type": "custom-liquid",
+      "name": "Community · foto delle clienti",
+      "settings": {
+        "custom_liquid": "{% render 'up-ugc' %}",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "up_story": {
       "type": "media-with-content",
       "blocks": {
@@ -1325,26 +1274,14 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
-    },
-    "up_ugc": {
-      "type": "custom-liquid",
-      "name": "Community · foto delle clienti",
-      "settings": {
-        "custom_liquid": "{% render 'up-ugc' %}",
-        "background_color": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
     }
   },
   "order": [
     "main",
-    "section_NaqU9X",
-    "up_recommendations",
-    "up_outfit",
     "up_reviews",
     "up_ugc",
+    "up_recommendations",
+    "up_outfit",
     "up_story",
     "up_faq"
   ]
