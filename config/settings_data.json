@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Logo_minimalista_Ursula_Privee-removebg-preview_2b98b8bc-cb0d-44e6-8386-d7a5c2a9e5b8.png",
+    "logo": "shopify://shop_images/Logotipo_Ursula_Privee_con_mariposa-removebg-preview.png",
     "logo_height": 64,
     "logo_height_mobile": 52,
     "favicon": "shopify://shop_images/favicon-ursula-prive.png",
@@ -81,11 +81,6 @@
         "disabled": false,
         "settings": {}
       },
-      "10312807297210203588": {
-        "type": "shopify://apps/aftersell/blocks/utm-triggers/509ec35d-0632-4dfc-a105-fa799cd9d149",
-        "disabled": false,
-        "settings": {}
-      },
       "16803653808412383594": {
         "type": "shopify://apps/ysms-sms-marketing/blocks/back_in_stock/100124b5-2f57-4ba4-97a3-a4d223780a62",
         "disabled": false,
@@ -134,19 +129,6 @@
       },
       "3516830543601639398": {
         "type": "shopify://apps/swatchy-color-swatch/blocks/color-swatches/9ffb0fa4-bc83-4328-b49f-930bca91f3cf",
-        "disabled": true,
-        "settings": {}
-      },
-      "8315608621410374781": {
-        "type": "shopify://apps/pify-size-charts/blocks/size-chart-app-embed/6acea2e6-5389-4b9c-9a1f-ae00732bccb4",
-        "disabled": true,
-        "settings": {
-          "custom_liquid_css": "",
-          "custom_liquid_js": ""
-        }
-      },
-      "14152569897387207382": {
-        "type": "shopify://apps/section-store/blocks/block-cart/d7a2e423-ea88-4344-b866-6d0fb487c3dd",
         "disabled": true,
         "settings": {}
       },
