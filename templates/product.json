@@ -647,6 +647,7 @@
             "up_mini_reviews": {
               "type": "custom-liquid",
               "name": "Recensione rotante",
+              "disabled": true,
               "settings": {
                 "custom_liquid": "{% render 'up-mini-reviews' %}"
               },
