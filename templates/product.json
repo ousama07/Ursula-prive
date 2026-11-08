@@ -1091,6 +1091,7 @@
       "block_order": [
         "header"
       ],
+      "disabled": true,
       "name": "Completa tu outfit",
       "settings": {
         "collection_a": "bolsos",
