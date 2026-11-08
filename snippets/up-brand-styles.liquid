@@ -32,6 +32,15 @@
 .upv-sw img{display:block;width:100%;height:100%;object-fit:cover}
 .upv-sw--pat{background:repeating-linear-gradient(45deg,#9a9a9a 0 3px,#fff 3px 6px)}
 .upv-sw--none{background:conic-gradient(#e8dfd3,#cbb9a3,#e8dfd3)}
+/* Color con foto de la prenda: la muestra deja de ser un circulito de
+   color y pasa a una ficha rectangular con la imagen de ese color.
+   Si algun color no tiene foto asignada en Shopify, ese sigue saliendo
+   como circulo, asi que nunca se queda hueco. */
+.upv--color .variant-option__button-label:has(.upv-sw--img){box-sizing:border-box;width:56px;height:74px;padding:3px;border-radius:10px}
+.upv--color .variant-option__button-label:has(.upv-sw--img) .upv-sw{width:100%;height:100%;border-radius:8px}
+.upv--color .variant-option__button-label:has(.upv-sw--img):has(:checked){box-shadow:inset 0 0 0 2px var(--up-ink)}
+.upv-sw--img img{object-position:center}
+@media(max-width:749px){.upv--color .variant-option__button-label:has(.upv-sw--img){width:50px;height:66px}}
 .variant-option__swatch-value .upv-sw{vertical-align:-4px;margin:0 6px 0 4px}
 /* ===== Ficha de producto ===== */
 .product-details product-price .price{font-weight:600}

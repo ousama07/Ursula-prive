@@ -1,15 +1,30 @@
 {%- doc -%}
   Úrsula Privée · muestra de color para los selectores de variante.
-  Prioridad: 1) muestra de Shopify (option value swatch) · 2) tono según el nombre real del color · 3) imagen de la variante (solo si el color no se reconoce).
+  Prioridad: 1) foto de la prenda en ese color (la imagen asignada a la
+  variante) · 2) muestra de imagen de Shopify · 3) muestra de color de
+  Shopify · 4) tono deducido del nombre del color.
+  Si un color no tiene foto asignada en Shopify, cae al circulito de
+  color de siempre, asi que la ficha nunca se queda sin muestra.
   @param {object} value - product_option_value
 {%- enddoc -%}
 {%- liquid
   assign upc_img = blank
   assign upc_col = blank
-  if value.swatch.image
-    assign upc_img = value.swatch.image
-  elsif value.swatch.color
-    assign upc_col = value.swatch.color
+
+  # 1. Foto de la prenda en ese color
+  if value.variant.featured_media
+    assign upc_img = value.variant.featured_media.preview_image
+  elsif value.product_url and value.variant.product.featured_media
+    assign upc_img = value.variant.product.featured_media.preview_image
+  endif
+
+  # 2 y 3. Muestras configuradas en Shopify
+  if upc_img == blank
+    if value.swatch.image
+      assign upc_img = value.swatch.image
+    elsif value.swatch.color
+      assign upc_col = value.swatch.color
+    endif
   endif
   if upc_img == blank and upc_col == blank
     assign upc_n = value.name | default: value | downcase | strip
@@ -25,12 +40,9 @@
       assign upc_col = 'pattern'
     endif
   endif
-  if upc_img == blank and upc_col == blank and value.variant.featured_media
-    assign upc_img = value.variant.featured_media.preview_image
-  endif
 -%}
 {%- if upc_img != blank -%}
-<span class="upv-sw upv-sw--img" aria-hidden="true">{{ upc_img | image_url: width: 64, height: 64, crop: 'top' | image_tag: alt: '', loading: 'lazy' }}</span>
+<span class="upv-sw upv-sw--img" aria-hidden="true">{{ upc_img | image_url: width: 150, height: 200, crop: 'center' | image_tag: alt: '', loading: 'lazy' }}</span>
 {%- elsif upc_col == 'pattern' -%}
 <span class="upv-sw upv-sw--pat" aria-hidden="true"></span>
 {%- elsif upc_col != blank -%}
