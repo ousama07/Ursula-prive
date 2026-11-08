@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -251,6 +252,7 @@
             "group_X39hBc": {
               "type": "group",
               "name": "t:names.group",
+              "disabled": true,
               "settings": {
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -590,8 +592,7 @@
               },
               "block_order": [
                 "group_XqRYxC"
-              ],
-              "disabled": true
+              ]
             },
             "up_size_guide": {
               "type": "custom-liquid",
@@ -612,11 +613,11 @@
             "up_mini_reviews": {
               "type": "custom-liquid",
               "name": "Recensione rotante",
+              "disabled": true,
               "settings": {
                 "custom_liquid": "{% render 'up-mini-reviews' %}"
               },
-              "blocks": {},
-              "disabled": true
+              "blocks": {}
             },
             "up_pay_icons": {
               "type": "custom-liquid",
@@ -1040,7 +1041,6 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 56,
         "padding-block-end": 72
       }
@@ -1253,13 +1253,13 @@
           "static": true,
           "settings": {
             "media_type": "image",
+            "image": "shopify://shop_images/aiimg_36a7000f3ffe66d648d50423000c36d1-0.jpg",
             "link": "",
             "video": "shopify://files/videos/9998209638602698-de5b146b-921e-4f8b-9995-511ecff42968-video_kling_turbo_932531298731294788_1790361397223247715.mp4",
             "video_loop": true,
             "video_autoplay": true,
             "image_position": "cover",
-            "video_position": "cover",
-            "image": "shopify://shop_images/aiimg_36a7000f3ffe66d648d50423000c36d1-0.jpg"
+            "video_position": "cover"
           },
           "blocks": {}
         },

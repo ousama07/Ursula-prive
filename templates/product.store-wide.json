@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -834,7 +835,6 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 56,
         "padding-block-end": 72
       }
@@ -887,25 +887,25 @@
     },
     "up_reviews": {
       "type": "custom-liquid",
+      "name": "Recensioni con foto",
       "settings": {
         "custom_liquid": "{% render 'up-reviews' %}",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 0
-      },
-      "name": "Recensioni con foto"
+      }
     },
     "up_ugc": {
       "type": "custom-liquid",
+      "name": "Community · foto delle clienti",
       "settings": {
         "custom_liquid": "{% render 'up-ugc' %}",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 0
-      },
-      "name": "Community · foto delle clienti"
+      }
     }
   },
   "order": [

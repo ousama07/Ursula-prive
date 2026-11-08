@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
@@ -86,6 +87,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "t:names.media_with_text",
       "settings": {
         "media_position": "left",
@@ -96,8 +98,7 @@
         "background_color": "{{ settings.color_palette.color4 }}",
         "padding-block-start": 0,
         "padding-block-end": 0
-      },
-      "disabled": true
+      }
     },
     "footer": {
       "type": "footer",
@@ -258,11 +259,7 @@
                 "custom_button_background": "#ffffff",
                 "custom_button_text": "#000000",
                 "custom_button_border": "#ffffff",
-                "width": "fit-content",
-                "padding-block-start": 0,
-                "padding-block-end": 6,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "width": "fit-content"
               }
             }
           },
