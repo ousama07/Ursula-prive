@@ -2,14 +2,19 @@
   Úrsula Privée · carrusel de reseñas con foto.
   Se usa en la portada y en todas las fichas de producto.
   Los textos viven en el snippet up-review-data (fuente unica).
+  Acepta 'grupo' para enseñar solo las reseñas de una categoria:
+    {% render 'up-reviews', grupo: 'giacche' %}
+  Sin 'grupo' se deduce de las colecciones del producto.
 {%- enddoc -%}
-{%- capture urv_data -%}{%- render 'up-review-data' -%}{%- endcapture -%}
+{%- capture urv_data -%}{%- render 'up-review-data', grupo: grupo -%}{%- endcapture -%}
 {%- liquid
   assign urv_items = urv_data | strip | split: '~~'
   assign urv_t1 = 'Cosa dicono'
   assign urv_t2 = 'le nostre clienti?'
   assign urv_txt = 'Recensioni' | append: urv_t1 | append: urv_t2
 -%}
+{%- comment -%}Si el grupo no tiene reseñas, no se pinta nada.{%- endcomment -%}
+{%- if urv_items.size > 0 -%}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&text={{ urv_txt | url_encode }}&display=swap" media="print" onload="this.media='all'">
 <section class="urv" id="urv-{{ section.id }}" aria-labelledby="urvh-{{ section.id }}">
   <header class="urv-h">
@@ -82,3 +87,4 @@ const step=()=>{const c=l.querySelector('.urv-c');return c?c.getBoundingClientRe
 const upd=()=>{const max=l.scrollWidth-l.clientWidth;p.disabled=l.scrollLeft<4;n.disabled=l.scrollLeft>=max-4};
 l.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();})();
 </script>
+{%- endif -%}

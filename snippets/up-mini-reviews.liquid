@@ -6,7 +6,7 @@
 {%- enddoc -%}
 {%- liquid
   capture upmr_raw
-    render 'up-review-data'
+    render 'up-review-data', grupo: grupo
   endcapture
   assign upmr_items = upmr_raw | strip | split: '~~'
   assign upmr_uid = block.id | default: section.id | default: 'x'

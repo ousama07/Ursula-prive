@@ -1,10 +1,17 @@
 {%- doc -%}
   Úrsula Privée · galeria UGC (solo fotos) con movimiento automatico.
   Las fotos salen del snippet up-review-data (primer campo de cada linea),
+  y respetan el grupo de la categoria igual que las reseñas,
   asi que se mantiene una unica fuente de imagenes.
   Se usa en las fichas de producto, debajo de "Completa il tuo outfit".
 {%- enddoc -%}
-{%- capture ugc_data -%}{%- render 'up-review-data' -%}{%- endcapture -%}
+{%- capture ugc_data -%}{%- render 'up-review-data', grupo: grupo -%}{%- endcapture -%}
+{%- comment -%}
+  Si la categoria tiene menos de 5 fotos la tira se veria pobre,
+  asi que en ese caso usamos el conjunto completo.
+{%- endcomment -%}
+{%- assign ugc_n = ugc_data | strip | split: '~~' | size -%}
+{%- if ugc_n < 5 -%}{%- capture ugc_data -%}{%- render 'up-review-data', grupo: 'generale' -%}{%- endcapture -%}{%- endif -%}
 {%- liquid
   assign ugc_items = ugc_data | strip | split: '~~'
   assign ugc_t1 = 'Le nostre clienti con'

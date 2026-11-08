@@ -1,16 +1,98 @@
 {%- comment -%}
-  ÚRSULA PRIVÉE · DATOS DE LAS RESEÑAS (fuente unica)
-  Lo usan 'up-reviews' (el carrusel grande con foto) y
-  'up-mini-reviews' (la tarjeta rotatoria de la ficha de producto).
-  Editando aqui se actualizan los dos a la vez.
+  ÚRSULA PRIVÉE · RESEÑAS POR CATEGORIA (fuente unica)
 
-  Cada resena va en una linea con este formato:
+  Lo usan tres sitios a la vez, asi que editando AQUI se actualizan los tres:
+    - 'up-reviews'      : el carrusel grande con foto
+    - 'up-ugc'          : la tira de fotos que se mueve sola
+    - 'up-mini-reviews' : la tarjeta rotatoria de la ficha (hoy oculta)
+
+  FORMATO DE CADA RESEÑA (una por linea):
     URL_de_la_imagen|estrellas|texto de la resena|Nombre
-  y se separa de la siguiente con ~~
-  (No uses | ni ~~ dentro de los textos.)
-  Las imagenes se suben en Contenido -> Archivos.
+  Se separan entre si con ~~ al principio de la linea siguiente.
+  No uses | ni ~~ dentro de los textos. Las imagenes se suben en
+  Contenido -> Archivos y se pega aqui la URL del archivo.
+
+  COMO SE ELIGE EL GRUPO
+  1. Si la plantilla pasa un grupo, manda ese grupo. Ejemplo:
+       {% render 'up-reviews', grupo: 'giacche' %}
+  2. Si no, se deduce solo de las colecciones del producto.
+  3. Si no encaja en ninguno, se usan todas las reseñas ('generale').
+
+  GRUPOS: abiti · completi · giacche · capispalla · maglioni ·
+          calzature · borse · gioielli · generale
+
+  COMO AÑADIR RESEÑAS A UN GRUPO QUE AUN NO TIENE
+  Busca abajo la linea  {%- when 'borse' -%}  (o crea una nueva igual
+  debajo de las demas) y pega las reseñas justo despues, con el mismo
+  formato. Mientras un grupo no tenga su propio bloque, esa ficha de
+  producto enseña las reseñas generales, asi que la pagina nunca se
+  queda vacia.
+{%- endcomment -%}
+{%- liquid
+  assign urd_g = grupo | default: '' | downcase | strip
+
+  # Si la plantilla no dice el grupo, lo deducimos de las colecciones.
+  if urd_g == blank and product != blank
+    assign urd_h = ''
+    for urd_c in product.collections
+      assign urd_h = urd_h | append: ',' | append: urd_c.handle
+    endfor
+    if urd_h contains 'completi-3-pezzi' or urd_h contains 'conjuntos-americanas' or urd_h contains 'mosaicos'
+      assign urd_g = 'completi'
+    elsif urd_h contains 'vestidos'
+      assign urd_g = 'abiti'
+    elsif urd_h contains 'americanas'
+      assign urd_g = 'giacche'
+    elsif urd_h contains 'jerseys'
+      assign urd_g = 'maglioni'
+    elsif urd_h contains 'calzado'
+      assign urd_g = 'calzature'
+    elsif urd_h contains 'bolsos'
+      assign urd_g = 'borse'
+    elsif urd_h contains 'joyeria'
+      assign urd_g = 'gioielli'
+    endif
+  endif
+-%}
+{%- case urd_g -%}
+
+{%- comment -%} ----------  ABITI (vestidos)  ---------- {%- endcomment -%}
+{%- when 'abiti' -%}
+https://cdn.shopify.com/s/files/1/1041/5816/7375/files/Elegancia_entre_jardines_y_globos.png?v=1792052837|5|Mi ha sorpresa in positivo. Avevo un po' paura che una volta ricevuto non si vedesse come nelle foto, ma è bellissimo e sta molto bene addosso. Ora non resta che godersi questi momenti speciali in famiglia, grazie Úrsula Privée.|Giulia Moretti
+~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998207974141291-af17f22e-bb43-409f-85b1-73b7883fbcfa-image_01M4YH14MC09NJV8YHVXX0W2YB_1.png?v=1792053299|5|Quello che mi preoccupava di più era che il tessuto sembrasse scadente e invece per niente. Ha una lucentezza molto bella senza essere esagerata. Un abito comodo, elegante e la qualità supera quella delle marche di design. Semplicemente senza parole....|Sofia Romano
+~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998207946837303-85377bc4-355a-4eb5-b090-5c31caef6608-image_01M4ZB2CNYNEMM6761GV85GZBB_1.png?v=1792053220image_01M4XX9M5PVPRPGWHKDQQYJSE2_0.png?v=1792052475|5|Incredibile il livello di dettaglio negli abiti. Completamente soddisfatta del mio ordine e super grata a Úrsula Privée.|Chiara Ricci
+~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998209186612721-1ba34385-d4d7-4735-ad07-850f1b33aea5-image_task_01M3TCQEGCK7FVVAXQFDXRTNZ9_0.png?v=1792053667|5|Mi sto godendo il mio nuovo abito, super top.|Francesca Lombardi
+~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998207945890448-1158a074-61ff-4cf9-8b27-3e78ff62bff9-image_01M4ZBZ9B655VSY64W9PPQ3Q23_1.png?v=1792054187|5| All'inizio ero indecisa se ordinare un abito o due. Vedendo la garanzia di reso ho scelto due perché mi ha dato più sicurezza il fatto di poterlo restituire con tanta facilità. Ma quando mi è arrivato a casa l'ultima cosa a cui ho pensato è stata restituirlo. Onestamente sono rimasta a bocca aperta per il livello di dettaglio e di qualità. Ormai ho il negozio per gli outfit per parecchio tempo ahah. .|Aurora Conti
+~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998207994834754-7e672c13-9878-41f3-beda-c92216c6ecb9-image_01M4XX9M5PVPRPGWHKDQQYJSE2_0.png?v=1792052475|5|Tutto perfetto. L'ordine è arrivato nei tempi e ho potuto seguire il tracciamento. È arrivato con largo anticipo.|Alessia Ferrari
+
+{%- comment -%} ----------  COMPLETI (conjuntos y 3 piezas)  ---------- {%- endcomment -%}
+{%- when 'completi' -%}
+https://cdn.shopify.com/s/files/1/1041/5816/7375/files/Creativo_espejo.jpg?v=1792053678|5|Mi sembra incredibile che un completo giacca e gonna costi così poco e abbia tanta qualità. La verità è che non ero molto sicura al momento di comprare ma alla fine mi sono dovuta rimangiare le mie parole. Uso il completo per l'università, per il tirocinio, super elegante, sexy e anche comodo. .|Martina Esposito
+~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998207994834754-7e672c13-9878-41f3-beda-c92216c6ecb9-image_01M4XX9M5PVPRPGWHKDQQYJSE2_0.png?v=1792052475|5|Tutto perfetto. L'ordine è arrivato nei tempi e ho potuto seguire il tracciamento. È arrivato con largo anticipo.|Alessia Ferrari
+~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/Elegancia_entre_jardines_y_globos.png?v=1792052837|5|Mi ha sorpresa in positivo. Avevo un po' paura che una volta ricevuto non si vedesse come nelle foto, ma è bellissimo e sta molto bene addosso. Ora non resta che godersi questi momenti speciali in famiglia, grazie Úrsula Privée.|Giulia Moretti
+
+{%- comment -%} ----------  GIACCHE (chaquetas y americanas)  ---------- {%- endcomment -%}
+{%- when 'giacche' -%}
+https://cdn.shopify.com/s/files/1/1041/5816/7375/files/Creativo_espejo.jpg?v=1792053678|5|Mi sembra incredibile che un completo giacca e gonna costi così poco e abbia tanta qualità. La verità è che non ero molto sicura al momento di comprare ma alla fine mi sono dovuta rimangiare le mie parole. Uso il completo per l'università, per il tirocinio, super elegante, sexy e anche comodo. .|Martina Esposito
+~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998207974141291-af17f22e-bb43-409f-85b1-73b7883fbcfa-image_01M4YH14MC09NJV8YHVXX0W2YB_1.png?v=1792053299|5|Quello che mi preoccupava di più era che il tessuto sembrasse scadente e invece per niente. Ha una lucentezza molto bella senza essere esagerata. Un abito comodo, elegante e la qualità supera quella delle marche di design. Semplicemente senza parole....|Sofia Romano
+~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998207994834754-7e672c13-9878-41f3-beda-c92216c6ecb9-image_01M4XX9M5PVPRPGWHKDQQYJSE2_0.png?v=1792052475|5|Tutto perfetto. L'ordine è arrivato nei tempi e ho potuto seguire il tracciamento. È arrivato con largo anticipo.|Alessia Ferrari
+
+{%- comment -%}
+  ----------  GRUPOS AUN SIN RESEÑAS PROPIAS  ----------
+  capispalla (trench y abrigos) · maglioni · calzature · borse · gioielli
+
+  Hoy caen en 'generale' a proposito: asi la ficha sigue enseñando el
+  carrusel en vez de quedarse vacia. Cuando tengas reseñas reales de una
+  de esas categorias, quita el # de las dos lineas de su bloque y pega
+  las reseñas debajo. Ejemplo para borse:
+
+      {%- when 'borse' -%}
+      https://.../foto.jpg|5|Texto de la resena|Nombre
+
 {%- endcomment -%}
 
+{%- comment -%} ----------  GENERALE (todas)  ---------- {%- endcomment -%}
+{%- else -%}
 https://cdn.shopify.com/s/files/1/1041/5816/7375/files/Elegancia_entre_jardines_y_globos.png?v=1792052837|5|Mi ha sorpresa in positivo. Avevo un po' paura che una volta ricevuto non si vedesse come nelle foto, ma è bellissimo e sta molto bene addosso. Ora non resta che godersi questi momenti speciali in famiglia, grazie Úrsula Privée.|Giulia Moretti
 ~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998207974141291-af17f22e-bb43-409f-85b1-73b7883fbcfa-image_01M4YH14MC09NJV8YHVXX0W2YB_1.png?v=1792053299|5|Quello che mi preoccupava di più era che il tessuto sembrasse scadente e invece per niente. Ha una lucentezza molto bella senza essere esagerata. Un abito comodo, elegante e la qualità supera quella delle marche di design. Semplicemente senza parole....|Sofia Romano
 ~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998207994834754-7e672c13-9878-41f3-beda-c92216c6ecb9-image_01M4XX9M5PVPRPGWHKDQQYJSE2_0.png?v=1792052475|5|Tutto perfetto. L'ordine è arrivato nei tempi e ho potuto seguire il tracciamento. È arrivato con largo anticipo.|Alessia Ferrari
@@ -18,4 +100,4 @@ https://cdn.shopify.com/s/files/1/1041/5816/7375/files/Elegancia_entre_jardines_
 ~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998209186612721-1ba34385-d4d7-4735-ad07-850f1b33aea5-image_task_01M3TCQEGCK7FVVAXQFDXRTNZ9_0.png?v=1792053667|5|Mi sto godendo il mio nuovo abito, super top.|Francesca Lombardi
 ~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/Creativo_espejo.jpg?v=1792053678|5|Mi sembra incredibile che un completo giacca e gonna costi così poco e abbia tanta qualità. La verità è che non ero molto sicura al momento di comprare ma alla fine mi sono dovuta rimangiare le mie parole. Uso il completo per l'università, per il tirocinio, super elegante, sexy e anche comodo. .|Martina Esposito
 ~~https://cdn.shopify.com/s/files/1/1041/5816/7375/files/9998207945890448-1158a074-61ff-4cf9-8b27-3e78ff62bff9-image_01M4ZBZ9B655VSY64W9PPQ3Q23_1.png?v=1792054187|5| All'inizio ero indecisa se ordinare un abito o due. Vedendo la garanzia di reso ho scelto due perché mi ha dato più sicurezza il fatto di poterlo restituire con tanta facilità. Ma quando mi è arrivato a casa l'ultima cosa a cui ho pensato è stata restituirlo. Onestamente sono rimasta a bocca aperta per il livello di dettaglio e di qualità. Ormai ho il negozio per gli outfit per parecchio tempo ahah. .|Aurora Conti
-
+{%- endcase -%}
