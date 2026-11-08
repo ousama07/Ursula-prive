@@ -370,6 +370,34 @@
       white-space: nowrap;
     }
   }
+
+  /* ÚRSULA PRIVÉE · precio de la barra fija de "añadir al carrito":
+     el precio actual en rojo y el precio anterior tachado a su
+     izquierda. El tema ocultaba el precio tachado por debajo de 390 px
+     de ancho (por eso en el movil solo se veia un precio); se vuelve a
+     enseñar, un poco mas pequeño para que quepa junto al boton.
+     Estas reglas van al final a proposito: asi ganan a la de arriba. */
+  .sticky-add-to-cart__price > div {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3em;
+    white-space: nowrap;
+  }
+
+  .sticky-add-to-cart__price .price {
+    color: #c62828;
+  }
+
+  .sticky-add-to-cart__price .compare-at-price {
+    font-size: 0.85em;
+  }
+
+  @media screen and (max-width: 389px) {
+    .sticky-add-to-cart__bar .compare-at-price {
+      display: inline-block;
+      font-size: 0.8em;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
