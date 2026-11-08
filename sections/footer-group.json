@@ -14,7 +14,7 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "{%- unless template.name == 'index' -%}<style>.header-logo__image{filter:brightness(0)}</style>{%- endunless -%}",
+        "custom_liquid": "{%- unless template.name == 'index' -%}<style>.header-logo__image{filter:brightness(0)}</style>{%- endunless -%}\n<style>\n/* Pie de pagina: fondo negro y letras blancas.\n   El fondo lo pone el ajuste de color de las secciones \"footer\" y\n   \"utilities\" (#000000). Aqui solo forzamos el blanco puro del texto,\n   porque el contraste automatico del tema elige el tono mas claro de la\n   paleta (un crema), no el blanco. */\n.footer-content,.utilities{\n  --color:#fff;--color-rgb:255 255 255;\n  --color-foreground:#fff;--color-foreground-rgb:255 255 255;\n  --color-foreground-muted:rgb(255 255 255 / .75);\n  --color-foreground-subdued:rgb(255 255 255 / .60);\n  --color-border:rgb(255 255 255 / .22);--color-border-rgb:255 255 255;\n  color:#fff;\n}\n.footer-content a,.utilities a,\n.footer-content .text-block,.utilities .text-block,\n.utilities__text,.footer-utilities__text,\n.footer-content svg,.utilities svg{color:#fff}\n.footer-content a:hover,.utilities a:hover{color:rgb(255 255 255 / .72)}\n/* Enlaces de los menus: subrayado al pasar por encima, para que se vea\n   que cada palabra (Resi, Spedizioni, Informativa...) es pulsable. */\n.footer-content .menu-block a{text-decoration:none;text-underline-offset:3px}\n.footer-content .menu-block a:hover{text-decoration:underline}\n/* El campo de email se queda en blanco con texto oscuro */\n.footer-content .email-signup-block input{background:#fff!important;color:#111!important}\n.footer-content .email-signup-block input::placeholder{color:rgb(0 0 0 / .45)!important}\n/* Boton blanco con letra negra (La nostra storia / Iscrivimi) */\n.footer-content .button-custom,.footer-content .button-custom svg{color:#000}\n</style>",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
@@ -96,7 +96,8 @@
         "background_color": "{{ settings.color_palette.color4 }}",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
+      },
+      "disabled": true
     },
     "footer": {
       "type": "footer",
@@ -124,7 +125,7 @@
         "menu_jRmAQi": {
           "type": "menu",
           "settings": {
-            "menu": "",
+            "menu": "ursula-brand-ayuda",
             "heading": "Aiuto",
             "menu_spacing": 12,
             "show_as_accordion": false,
@@ -145,8 +146,8 @@
           "type": "menu",
           "name": "t:names.menu",
           "settings": {
-            "menu": "",
-            "heading": "Úrsula Privée",
+            "menu": "ursula-brand-legal",
+            "heading": "Informative e condizioni",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -246,15 +247,127 @@
                 "custom_url": ""
               },
               "blocks": {}
+            },
+            "button_storia": {
+              "type": "button",
+              "settings": {
+                "label": "La nostra storia",
+                "link": "shopify://pages/nuestra-historia",
+                "open_in_new_tab": false,
+                "style_class": "button-custom",
+                "custom_button_background": "#ffffff",
+                "custom_button_text": "#000000",
+                "custom_button_border": "#ffffff",
+                "width": "fit-content",
+                "padding-block-start": 0,
+                "padding-block-end": 6,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
             }
           },
           "block_order": [
+            "button_storia",
             "text_jBr8nr",
             "social_links_JBkCiP"
+          ]
+        },
+        "group_newsletter": {
+          "type": "group",
+          "name": "Newsletter · 10%",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "flex-start",
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 10,
+            "width": "fill",
+            "width_mobile": "fill",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "news_title": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Iscriviti e ricevi il 10% di sconto</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              }
+            },
+            "news_text": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Lascia la tua email: ti inviamo il codice del 10% di sconto da usare sul primo ordine, insieme alle novità in anteprima.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "0.8125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "padding-block-start": 0,
+                "padding-block-end": 4
+              }
+            },
+            "news_form": {
+              "type": "email-signup",
+              "settings": {
+                "width": "fill",
+                "custom_width": 100,
+                "heading": "",
+                "heading_text_color": "",
+                "heading_preset": "h3",
+                "border_style": "all",
+                "input_style": "custom",
+                "border_width": 0,
+                "border_radius": 100,
+                "input_background_color": "#ffffff",
+                "input_text_color": "#111111",
+                "input_border_color": "#ffffff",
+                "input_type_preset": "paragraph",
+                "style_class": "button",
+                "custom_button_background": "#ffffff",
+                "custom_button_text": "#000000",
+                "custom_button_border": "#ffffff",
+                "link_text_color": "",
+                "display_type": "arrow",
+                "label": "Iscrivimi",
+                "integrated_button": false,
+                "button_type_preset": "paragraph",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            }
+          },
+          "block_order": [
+            "news_title",
+            "news_text",
+            "news_form"
           ]
         }
       },
       "block_order": [
+        "group_newsletter",
         "menu_8tJbUk",
         "menu_jRmAQi",
         "menu_6jWwP4",
@@ -264,7 +377,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 12,
-        "background_color": "{{ settings.color_palette.color2 }}",
+        "background_color": "#000000",
         "padding-block-start": 36,
         "padding-block-end": 18
       }
@@ -300,7 +413,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 24,
-        "background_color": "{{ settings.color_palette.color2 }}",
+        "background_color": "#000000",
         "divider_thickness": 1,
         "divider_color": "",
         "padding-block-start": 20,
