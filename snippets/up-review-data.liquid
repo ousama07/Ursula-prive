@@ -31,27 +31,14 @@
 {%- liquid
   assign urd_g = grupo | default: '' | downcase | strip
 
-  # Si la plantilla no dice el grupo, lo deducimos de las colecciones.
-  if urd_g == blank and product != blank
-    assign urd_h = ''
-    for urd_c in product.collections
-      assign urd_h = urd_h | append: ',' | append: urd_c.handle
-    endfor
-    if urd_h contains 'completi-3-pezzi' or urd_h contains 'conjuntos-americanas' or urd_h contains 'mosaicos'
-      assign urd_g = 'completi'
-    elsif urd_h contains 'vestidos'
-      assign urd_g = 'abiti'
-    elsif urd_h contains 'americanas'
-      assign urd_g = 'giacche'
-    elsif urd_h contains 'jerseys'
-      assign urd_g = 'maglioni'
-    elsif urd_h contains 'calzado'
-      assign urd_g = 'calzature'
-    elsif urd_h contains 'bolsos'
-      assign urd_g = 'borse'
-    elsif urd_h contains 'joyeria'
-      assign urd_g = 'gioielli'
-    endif
+  # Si la plantilla no dice el grupo, lo deducimos de las colecciones
+  # del producto. La tabla vive en el snippet 'up-categoria', que usan
+  # tambien las recomendaciones, para que las dos cosas coincidan.
+  if urd_g == blank
+    capture urd_auto
+      render 'up-categoria'
+    endcapture
+    assign urd_g = urd_auto | strip
   endif
 -%}
 {%- case urd_g -%}

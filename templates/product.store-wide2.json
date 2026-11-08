@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "sections": {
     "main": {
       "type": "product-information",
@@ -846,7 +845,7 @@
       }
     },
     "up_recommendations": {
-      "type": "product-recommendations",
+      "type": "up-similar",
       "blocks": {
         "header": {
           "type": "text",
@@ -1028,12 +1027,10 @@
       "block_order": [
         "header"
       ],
-      "name": "t:names.product_recommendations",
+      "name": "Simili · stessa categoria",
       "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "carousel",
-        "carousel_on_mobile": true,
+        "collection": "",
+        "fallback_collection": "portada",
         "max_products": 16,
         "columns": 4,
         "mobile_columns": "2",

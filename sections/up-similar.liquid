@@ -1,0 +1,162 @@
+{%- comment -%}
+  ÚRSULA PRIVÉE · "TAMBIEN TE PUEDE GUSTAR" POR CATEGORIA
+
+  Sustituye a las recomendaciones automaticas de Shopify, que con pocas
+  ventas no tienen datos y mezclan categorias. Aqui el carrusel enseña
+  productos de la MISMA categoria que el producto que se esta viendo:
+  en una chaqueta salen otras chaquetas, en un vestido otros vestidos.
+
+  COMO ELIGE LA COLECCION
+  1. Si la plantilla fija una coleccion en el ajuste "Coleccion", manda esa.
+  2. Si no, se deduce de las colecciones del producto con la tabla del
+     snippet 'up-categoria' (la misma que usan las reseñas).
+  3. Si no encaja en ninguna, usa la coleccion de reserva del ajuste.
+
+  Nunca repite el producto que se esta viendo, y rota el punto de
+  partida cada hora para que no salgan siempre los mismos.
+{%- endcomment -%}
+
+{% liquid
+  assign ups_cur = closest.product | default: product
+  assign ups_col = section.settings.collection
+
+  # 2. Deteccion automatica por categoria
+  if ups_col == blank
+    capture ups_cat
+      render 'up-categoria', producto: ups_cur
+    endcapture
+    assign ups_cat = ups_cat | strip
+    case ups_cat
+      when 'abiti'
+        assign ups_col = collections['vestidos']
+      when 'giacche'
+        assign ups_col = collections['americanas']
+      when 'completi'
+        assign ups_col = collections['completi-3-pezzi']
+        if ups_col.products_count < 2
+          assign ups_col = collections['conjuntos-americanas']
+        endif
+      when 'maglioni'
+        assign ups_col = collections['jerseys']
+      when 'calzature'
+        assign ups_col = collections['calzado']
+      when 'borse'
+        assign ups_col = collections['bolsos']
+      when 'gioielli'
+        assign ups_col = collections['joyeria']
+    endcase
+  endif
+
+  # 3. Coleccion de reserva
+  if ups_col == blank or ups_col.products_count < 2
+    assign ups_col = section.settings.fallback_collection
+  endif
+
+  assign ups_max = section.settings.max_products
+
+  # Rotacion por hora: el rango se calcula para que offset + limit nunca
+  # se pase del total de la coleccion.
+  assign ups_off = 0
+  if ups_col.products_count > ups_max
+    assign ups_range = ups_col.products_count | minus: ups_max | plus: 1
+    assign ups_hour = 'now' | date: '%H' | times: 1
+    assign ups_off = ups_hour | times: ups_max | modulo: ups_range
+  endif
+
+  capture ups_styles
+    echo '--resource-list-column-gap-desktop: ' | append: section.settings.columns_gap | append: 'px;'
+    echo '--resource-list-row-gap-desktop: ' | append: section.settings.rows_gap | append: 'px;'
+    echo '--resource-list-columns: repeat(' | append: section.settings.columns | append: ', 1fr);'
+    echo '--resource-list-columns-mobile: repeat(' | append: section.settings.mobile_columns | append: ', 1fr);'
+    echo '--column-count: ' | append: section.settings.columns | append: ';'
+    echo '--column-count-mobile: ' | append: section.settings.mobile_columns | append: ';'
+  endcapture
+%}
+
+{% render 'quick-add-styles' %}
+{% render 'quick-add-modal-styles' %}
+{% render 'swatch-styles' %}
+{% render 'quantity-selector-styles' %}
+{% render 'variant-picker-styles' %}
+{% render 'product-badges-styles' %}
+{% render 'resource-list-styles' %}
+
+<div class="up-similar" {{ section.shopify_attributes }}>
+  <div class="section-background"></div>
+  <div
+    class="section section--{{ section.settings.section_width }} section-resource-list spacing-style gap-style"
+    style="
+      {% render 'spacing-style', settings: section.settings %}
+      {% render 'gap-style', value: section.settings.gap %}
+      {{ ups_styles }}
+    "
+  >
+    <div class="section-resource-list__content">
+      {% content_for 'blocks' %}
+    </div>
+
+    {% capture ups_items %}
+      {%- liquid
+        assign ups_seen = ','
+        if ups_cur != blank
+          assign ups_seen = ups_seen | append: ups_cur.id | append: ','
+        endif
+        assign ups_n = 0
+      -%}
+      {% for ups_p in ups_col.products offset: ups_off limit: ups_max %}
+        {%- assign ups_key = ',' | append: ups_p.id | append: ',' -%}
+        {%- unless ups_seen contains ups_key -%}
+          {%- if ups_n > 0 %}<!--@list/split-->{% endif -%}
+          {%- assign ups_seen = ups_seen | append: ups_p.id | append: ',' -%}
+          {%- assign ups_n = ups_n | plus: 1 -%}
+          <div class="resource-list__item">
+            {% content_for 'block',
+              type: '_product-card',
+              id: 'static-product-card',
+              closest.product: ups_p,
+              product_view_context: 'recommendation'
+            %}
+          </div>
+        {%- endunless -%}
+      {% endfor %}
+    {% endcapture %}
+
+    {% liquid
+      assign ups_content = ups_items | strip
+      assign ups_slides = ups_content | split: '<!--@list/split-->'
+    %}
+
+    {%- if ups_slides.size > 0 and ups_content != blank -%}
+      <div class="resource-list force-full-width resource-list__carousel">
+        {% render 'resource-list-carousel',
+          ref: 'upSimilarCarousel',
+          slides: ups_slides,
+          slide_count: ups_slides.size,
+          settings: section.settings
+        %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Similares por categoria",
+  "blocks": [{ "type": "@theme" }, { "type": "text" }],
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Coleccion (dejar vacio para automatico)" },
+    { "type": "collection", "id": "fallback_collection", "label": "Coleccion de reserva" },
+    { "type": "range", "id": "max_products", "label": "Productos", "min": 3, "max": 24, "step": 1, "default": 16 },
+    { "type": "range", "id": "columns", "label": "Columnas", "min": 1, "max": 8, "step": 1, "default": 4 },
+    { "type": "select", "id": "mobile_columns", "label": "Columnas en movil", "options": [{ "value": "1", "label": "1" }, { "value": "2", "label": "2" }], "default": "2" },
+    { "type": "range", "id": "columns_gap", "label": "Separacion horizontal", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 12 },
+    { "type": "range", "id": "rows_gap", "label": "Separacion vertical", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 24 },
+    { "type": "select", "id": "icons_style", "label": "Flechas", "options": [{ "value": "arrow", "label": "Flecha" }, { "value": "chevron", "label": "Chevron" }], "default": "arrow" },
+    { "type": "select", "id": "icons_shape", "label": "Fondo de las flechas", "options": [{ "value": "none", "label": "Ninguno" }, { "value": "circle", "label": "Circulo" }], "default": "none" },
+    { "type": "select", "id": "section_width", "label": "Ancho", "options": [{ "value": "page-width", "label": "Pagina" }, { "value": "full-width", "label": "Completo" }], "default": "page-width" },
+    { "type": "range", "id": "gap", "label": "Espaciado interno", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 28 },
+    { "type": "range", "id": "padding-block-start", "label": "Margen superior", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding-block-end", "label": "Margen inferior", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 72 }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,46 @@
+{%- comment -%}
+  ÚRSULA PRIVÉE · CATEGORIA DEL PRODUCTO (fuente unica)
+
+  Devuelve el nombre corto de la categoria mirando las colecciones del
+  producto. Lo usan las reseñas por categoria ('up-review-data') y las
+  recomendaciones por categoria (seccion 'up-similar'), asi que las dos
+  cosas siempre coinciden.
+
+  Uso:
+    {%- capture cat -%}{%- render 'up-categoria' -%}{%- endcapture -%}
+    {%- capture cat -%}{%- render 'up-categoria', producto: otro -%}{%- endcapture -%}
+
+  Devuelve uno de estos, o vacio si no encaja en ninguno:
+    abiti · giacche · completi · maglioni · calzature · borse · gioielli
+
+  PARA AÑADIR UNA CATEGORIA NUEVA
+  Añade un elsif con el handle de la coleccion (el que sale en la URL
+  /collections/XXXX) y el nombre corto que quieras usar. Acuerdate de
+  dar de alta ese mismo nombre en 'up-review-data' y en la tabla de
+  'up-similar'.
+{%- endcomment -%}
+{%- liquid
+  assign upc_p = producto | default: closest.product | default: product
+  assign upc_h = ''
+  if upc_p != blank
+    for upc_c in upc_p.collections
+      assign upc_h = upc_h | append: ',' | append: upc_c.handle
+    endfor
+  endif
+
+  if upc_h contains 'vestidos'
+    echo 'abiti'
+  elsif upc_h contains 'americanas'
+    echo 'giacche'
+  elsif upc_h contains 'completi-3-pezzi' or upc_h contains 'conjuntos-americanas' or upc_h contains 'mosaicos'
+    echo 'completi'
+  elsif upc_h contains 'jerseys'
+    echo 'maglioni'
+  elsif upc_h contains 'calzado'
+    echo 'calzature'
+  elsif upc_h contains 'bolsos'
+    echo 'borse'
+  elsif upc_h contains 'joyeria'
+    echo 'gioielli'
+  endif
+-%}
