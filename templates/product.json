@@ -165,14 +165,6 @@
               },
               "blocks": {}
             },
-            "custom_liquid_DKMNm8": {
-              "type": "custom-liquid",
-              "name": "t:names.custom_liquid",
-              "settings": {
-                "custom_liquid": "{% render 'up-trust-badges' %}"
-              },
-              "blocks": {}
-            },
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
               "settings": {
@@ -278,6 +270,14 @@
               "name": "Metodi di pagamento",
               "settings": {
                 "custom_liquid": "{% render 'up-pay-icons' %}"
+              },
+              "blocks": {}
+            },
+            "custom_liquid_DKMNm8": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{% render 'up-trust-badges' %}"
               },
               "blocks": {}
             },
@@ -658,12 +658,12 @@
             "up_title_fit",
             "reviews",
             "price_a7krng",
-            "custom_liquid_DKMNm8",
             "variant_picker_R3rGDr",
             "up_size_guide",
             "custom_liquid_ExHLT7",
             "buy_buttons_eYQEYi",
             "up_pay_icons",
+            "custom_liquid_DKMNm8",
             "group_X39hBc",
             "up_mini_reviews",
             "custom_liquid_76A9fL",
