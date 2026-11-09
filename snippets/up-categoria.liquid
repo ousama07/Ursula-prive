@@ -11,7 +11,7 @@
     {%- capture cat -%}{%- render 'up-categoria', producto: otro -%}{%- endcapture -%}
 
   Devuelve uno de estos, o vacio si no encaja en ninguno:
-    abiti · giacche · completi · maglioni · calzature · borse · gioielli
+    abiti · capispalla · giacche · completi · maglioni · calzature · borse · gioielli
 
   PARA AÑADIR UNA CATEGORIA NUEVA
   Añade un elsif con el handle de la coleccion (el que sale en la URL
@@ -27,20 +27,25 @@
       assign upc_h = upc_h | append: ',' | append: upc_c.handle
     endfor
   endif
+  # Coma final: asi cada handle queda entre comas y se compara EXACTO.
+  # Antes 'americanas' tambien coincidia con 'conjuntos-americanas'.
+  assign upc_h = upc_h | append: ','
 
-  if upc_h contains 'vestidos'
+  if upc_h contains ',vestidos,'
     echo 'abiti'
-  elsif upc_h contains 'americanas'
+  elsif upc_h contains ',capispalla,'
+    echo 'capispalla'
+  elsif upc_h contains ',americanas,'
     echo 'giacche'
-  elsif upc_h contains 'completi-3-pezzi' or upc_h contains 'conjuntos-americanas' or upc_h contains 'mosaicos'
+  elsif upc_h contains ',completi-3-pezzi,' or upc_h contains ',conjuntos-americanas,' or upc_h contains ',mosaicos,'
     echo 'completi'
-  elsif upc_h contains 'jerseys'
+  elsif upc_h contains ',jerseys,'
     echo 'maglioni'
-  elsif upc_h contains 'calzado'
+  elsif upc_h contains ',calzado,'
     echo 'calzature'
-  elsif upc_h contains 'bolsos'
+  elsif upc_h contains ',bolsos,'
     echo 'borse'
-  elsif upc_h contains 'joyeria'
+  elsif upc_h contains ',joyeria,'
     echo 'gioielli'
   endif
 -%}

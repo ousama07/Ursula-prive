@@ -14,6 +14,10 @@
 
   Nunca repite el producto que se esta viendo, y rota el punto de
   partida cada hora para que no salgan siempre los mismos.
+
+  RELLENO: si la categoria tiene pocos productos, el carrusel se completa
+  con la coleccion de reserva y despues con el resto del catalogo, hasta
+  llegar al numero de productos. En las fichas de producto son minimo 24.
 {%- endcomment -%}
 
 {% liquid
@@ -29,6 +33,8 @@
     case ups_cat
       when 'abiti'
         assign ups_col = collections['vestidos']
+      when 'capispalla'
+        assign ups_col = collections['capispalla']
       when 'giacche'
         assign ups_col = collections['americanas']
       when 'completi'
@@ -53,6 +59,11 @@
   endif
 
   assign ups_max = section.settings.max_products
+  # En las fichas de producto el carrusel siempre va lleno: minimo 24.
+  if ups_cur != blank
+    assign ups_max = ups_max | at_least: 24
+  endif
+  assign ups_fb = section.settings.fallback_collection
 
   # Rotacion por hora: el rango se calcula para que offset + limit nunca
   # se pase del total de la coleccion.
@@ -103,22 +114,41 @@
         endif
         assign ups_n = 0
       -%}
-      {% for ups_p in ups_col.products offset: ups_off limit: ups_max %}
-        {%- assign ups_key = ',' | append: ups_p.id | append: ',' -%}
-        {%- unless ups_seen contains ups_key -%}
-          {%- if ups_n > 0 %}<!--@list/split-->{% endif -%}
-          {%- assign ups_seen = ups_seen | append: ups_p.id | append: ',' -%}
-          {%- assign ups_n = ups_n | plus: 1 -%}
-          <div class="resource-list__item">
-            {% content_for 'block',
-              type: '_product-card',
-              id: 'static-product-card',
-              closest.product: ups_p,
-              product_view_context: 'recommendation'
-            %}
-          </div>
-        {%- endunless -%}
-      {% endfor %}
+      {%- for ups_round in (1..3) -%}
+        {%- liquid
+          case ups_round
+            when 1
+              assign ups_src = ups_col
+              assign ups_src_off = ups_off
+            when 2
+              assign ups_src = ups_fb
+              assign ups_src_off = 0
+            else
+              assign ups_src = collections.all
+              assign ups_src_off = 0
+          endcase
+        -%}
+        {%- if ups_n < ups_max and ups_src != blank -%}
+          {% for ups_p in ups_src.products offset: ups_src_off limit: 50 %}
+            {%- if ups_n >= ups_max %}{% break %}{% endif -%}
+            {%- unless ups_p.available -%}{% continue %}{%- endunless -%}
+            {%- assign ups_key = ',' | append: ups_p.id | append: ',' -%}
+            {%- unless ups_seen contains ups_key -%}
+              {%- if ups_n > 0 %}<!--@list/split-->{% endif -%}
+              {%- assign ups_seen = ups_seen | append: ups_p.id | append: ',' -%}
+              {%- assign ups_n = ups_n | plus: 1 -%}
+              <div class="resource-list__item">
+                {% content_for 'block',
+                  type: '_product-card',
+                  id: 'static-product-card',
+                  closest.product: ups_p,
+                  product_view_context: 'recommendation'
+                %}
+              </div>
+            {%- endunless -%}
+          {% endfor %}
+        {%- endif -%}
+      {%- endfor -%}
     {% endcapture %}
 
     {% liquid
