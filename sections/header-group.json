@@ -14,11 +14,11 @@
     "header_announcements_WbCTVz": {
       "type": "header-announcements",
       "blocks": {
-        "announcement_agBtcL": {
+        "announcement_RfPzDT": {
           "type": "_announcement",
           "name": "t:names.announcement",
           "settings": {
-            "text": "&nbsp;<strong>SPECIALE AUTUNNO</strong> | Offerte a tempo limitato&nbsp;",
+            "text": "✦<strong> PRE-BLACK FRIDAY</strong> ✦ Fino al -50% su una selezione di capi",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
@@ -33,7 +33,7 @@
           "type": "_announcement",
           "name": "t:names.announcement",
           "settings": {
-            "text": "&nbsp;<strong>GARANZIA DI 30 GIORNI</strong> | Acquista in tutta tranquillità&nbsp;",
+            "text": "✦ <strong>RESO GRATUITO</strong> ✦ Hai 30 giorni per cambiare idea",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
@@ -48,7 +48,7 @@
           "type": "_announcement",
           "name": "t:names.announcement",
           "settings": {
-            "text": "&nbsp;<strong>SPEDIZIONE GRATUITA CON TRACCIAMENTO</strong> | Fino al 60 % di sconto&nbsp;",
+            "text": "<strong>✦ SPEDIZIONE GRATUITA ✦</strong> In tutta Italia, senza minimo d'ordine",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "1rem",
@@ -61,7 +61,7 @@
         }
       },
       "block_order": [
-        "announcement_agBtcL",
+        "announcement_RfPzDT",
         "announcement_Nw4mth",
         "announcement_mFbGdg"
       ],
