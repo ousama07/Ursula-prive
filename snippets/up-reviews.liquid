@@ -55,7 +55,7 @@
 .urv-e{margin:0 0 6px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}
 .urv-r{display:block;width:48px;height:1px;margin:10px auto 0;background:var(--k);opacity:.45}
 .urv-w{position:relative;max-width:1320px;margin:0 auto}
-.urv-l{display:flex;align-items:flex-start;gap:var(--gap);margin:0;padding:8px var(--edge);list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline-start:var(--edge);scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.urv-l{display:flex;align-items:flex-start;box-sizing:border-box;transition:height .35s var(--e);gap:var(--gap);margin:0;padding:8px var(--edge);list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline-start:var(--edge);scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
 .urv-l::-webkit-scrollbar{display:none}
 .urv-c{flex:0 0 min(78%,320px);scroll-snap-align:start;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:#f6f3ef}
 .urv-i{position:relative;aspect-ratio:1/1;background:#efe9e1}
@@ -85,6 +85,22 @@ const l=r.querySelector('.urv-l'),p=r.querySelector('.urv-a--p'),n=r.querySelect
 const step=()=>{const c=l.querySelector('.urv-c');return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(l).columnGap||16):300};
 [p,n].forEach(b=>b&&b.addEventListener('click',()=>l.scrollBy({left:b.dataset.d==='n'?step():-step(),behavior:'smooth'})));
 const upd=()=>{const max=l.scrollWidth-l.clientWidth;p.disabled=l.scrollLeft<4;n.disabled=l.scrollLeft>=max-4};
-l.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();})();
+/* El carrusel reservaba siempre la altura de la resena mas larga, asi que
+   debajo de una resena corta quedaba un hueco. Ahora se ajusta a la que
+   se esta viendo. */
+const cards=[...l.querySelectorAll('.urv-c')];
+const pos=c=>c.getBoundingClientRect().left-l.getBoundingClientRect().left+l.scrollLeft;
+const actual=()=>cards.find(c=>pos(c)>=l.scrollLeft-8)||cards[0];
+let pend=false;
+const fit=()=>{const c=actual();if(!c||!c.offsetHeight)return;
+ const h=c.offsetHeight+16+'px';if(l.style.height!==h)l.style.height=h;};
+const onScroll=()=>{upd();if(pend)return;pend=true;requestAnimationFrame(()=>{pend=false;fit()})};
+l.addEventListener('scroll',onScroll,{passive:true});
+addEventListener('resize',()=>{upd();fit()});
+addEventListener('load',fit);
+upd();fit();
+if(window.ResizeObserver){const ro=new ResizeObserver(()=>{upd();fit()});cards.forEach(c=>ro.observe(c));}
+cards.forEach(c=>{const i=c.querySelector('img');if(i&&!i.complete)i.addEventListener('load',fit,{once:true})});
+})();
 </script>
 {%- endif -%}
