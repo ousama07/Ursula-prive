@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "hero_iLBwPd": {
       "type": "hero",
@@ -580,8 +581,8 @@
       "name": "t:names.media_with_text",
       "settings": {
         "media_position": "left",
-        "media_width": "medium",
-        "media_height": "50svh",
+        "media_width": "wide",
+        "media_height": "auto",
         "section_width": "page-width",
         "extend_media": true,
         "background_color": "{{ settings.color_palette.color3 }}",
@@ -753,7 +754,7 @@
   "order": [
     "hero_iLBwPd",
     "product_list_EDUBdR",
-    "collection_list_xpBxCm",
-    "media_with_content_LfPdEJ"
+    "media_with_content_LfPdEJ",
+    "collection_list_xpBxCm"
   ]
 }
