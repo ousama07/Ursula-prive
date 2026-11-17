@@ -83,7 +83,7 @@
 (()=>{const r=document.getElementById('urv-{{ section.id }}');if(!r)return;
 const l=r.querySelector('.urv-l'),p=r.querySelector('.urv-a--p'),n=r.querySelector('.urv-a--n');
 const step=()=>{const c=l.querySelector('.urv-c');return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(l).columnGap||16):300};
-[p,n].forEach(b=>b&&b.addEventListener('click',()=>l.scrollBy({left:b.dataset.d==='n'?step():-step(),behavior:'smooth'})));
+[p,n].forEach(b=>b&&b.addEventListener('click',()=>{l.scrollBy({left:b.dataset.d==='n'?step():-step(),behavior:'smooth'});setTimeout(()=>fit(),60);setTimeout(()=>fit(),420);}));
 const upd=()=>{const max=l.scrollWidth-l.clientWidth;p.disabled=l.scrollLeft<4;n.disabled=l.scrollLeft>=max-4};
 /* El carrusel reservaba siempre la altura de la resena mas larga, asi que
    debajo de una resena corta quedaba un hueco. Ahora se ajusta a la que
@@ -94,7 +94,7 @@ const actual=()=>cards.find(c=>pos(c)>=l.scrollLeft-8)||cards[0];
 let pend=false;
 const fit=()=>{const c=actual();if(!c||!c.offsetHeight)return;
  const h=c.offsetHeight+16+'px';if(l.style.height!==h)l.style.height=h;};
-const onScroll=()=>{upd();if(pend)return;pend=true;requestAnimationFrame(()=>{pend=false;fit()})};
+const onScroll=()=>{upd();fit();if(pend||!window.requestAnimationFrame)return;pend=true;requestAnimationFrame(()=>{pend=false;fit()})};
 l.addEventListener('scroll',onScroll,{passive:true});
 addEventListener('resize',()=>{upd();fit()});
 addEventListener('load',fit);
