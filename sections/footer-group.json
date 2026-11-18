@@ -103,6 +103,135 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "group_newsletter": {
+          "type": "group",
+          "name": "Newsletter · 10%",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "flex-start",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 10,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "news_title": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Iscriviti e ricevi il 10% di sconto</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "news_text": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Lascia la tua email: ti inviamo il codice del 10% di sconto da usare sul primo ordine, insieme alle novità in anteprima.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "0.8125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 4,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "news_form": {
+              "type": "email-signup",
+              "settings": {
+                "width": "fill",
+                "custom_width": 100,
+                "heading": "",
+                "heading_text_color": "",
+                "heading_preset": "h3",
+                "border_style": "all",
+                "input_style": "custom",
+                "border_width": 0,
+                "border_radius": 100,
+                "input_background_color": "#ffffff",
+                "input_text_color": "#111111",
+                "input_border_color": "#ffffff",
+                "input_type_preset": "paragraph",
+                "style_class": "button",
+                "custom_button_background": "#ffffff",
+                "custom_button_text": "#000000",
+                "custom_button_border": "#ffffff",
+                "link_text_color": "",
+                "display_type": "arrow",
+                "label": "Iscrivimi",
+                "integrated_button": false,
+                "button_type_preset": "paragraph",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "news_title",
+            "news_text",
+            "news_form"
+          ]
+        },
         "menu_8tJbUk": {
           "type": "menu",
           "settings": {
@@ -203,6 +332,24 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "button_storia": {
+              "type": "button",
+              "settings": {
+                "label": "La nostra storia",
+                "link": "shopify://pages/nuestra-historia",
+                "open_in_new_tab": false,
+                "style_class": "button-custom",
+                "custom_button_background": "#ffffff",
+                "custom_button_text": "#000000",
+                "custom_button_border": "#ffffff",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            },
             "text_jBr8nr": {
               "type": "text",
               "settings": {
@@ -248,118 +395,12 @@
                 "custom_url": ""
               },
               "blocks": {}
-            },
-            "button_storia": {
-              "type": "button",
-              "settings": {
-                "label": "La nostra storia",
-                "link": "shopify://pages/nuestra-historia",
-                "open_in_new_tab": false,
-                "style_class": "button-custom",
-                "custom_button_background": "#ffffff",
-                "custom_button_text": "#000000",
-                "custom_button_border": "#ffffff",
-                "width": "fit-content"
-              }
             }
           },
           "block_order": [
             "button_storia",
             "text_jBr8nr",
             "social_links_JBkCiP"
-          ]
-        },
-        "group_newsletter": {
-          "type": "group",
-          "name": "Newsletter · 10%",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "flex-start",
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 10,
-            "width": "fill",
-            "width_mobile": "fill",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "news_title": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Iscriviti e ricevi il 10% di sconto</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h3",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              }
-            },
-            "news_text": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Lascia la tua email: ti inviamo il codice del 10% di sconto da usare sul primo ordine, insieme alle novità in anteprima.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "0.8125rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "padding-block-start": 0,
-                "padding-block-end": 4
-              }
-            },
-            "news_form": {
-              "type": "email-signup",
-              "settings": {
-                "width": "fill",
-                "custom_width": 100,
-                "heading": "",
-                "heading_text_color": "",
-                "heading_preset": "h3",
-                "border_style": "all",
-                "input_style": "custom",
-                "border_width": 0,
-                "border_radius": 100,
-                "input_background_color": "#ffffff",
-                "input_text_color": "#111111",
-                "input_border_color": "#ffffff",
-                "input_type_preset": "paragraph",
-                "style_class": "button",
-                "custom_button_background": "#ffffff",
-                "custom_button_text": "#000000",
-                "custom_button_border": "#ffffff",
-                "link_text_color": "",
-                "display_type": "arrow",
-                "label": "Iscrivimi",
-                "integrated_button": false,
-                "button_type_preset": "paragraph",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              }
-            }
-          },
-          "block_order": [
-            "news_title",
-            "news_text",
-            "news_form"
           ]
         }
       },

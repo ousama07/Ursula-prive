@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "hero_iLBwPd": {
       "type": "hero",
@@ -463,6 +464,32 @@
         "padding-block-end": 64
       }
     },
+    "up_collezioni_fCgErt": {
+      "type": "up-collezioni",
+      "name": "Le nostre collezioni",
+      "settings": {
+        "eyebrow": "Scopri la nostra selezione",
+        "heading": "Le nostre collezioni",
+        "uomo_label": "Uomo",
+        "uomo_collections": [
+          "uomo"
+        ],
+        "donna_label": "Donna",
+        "donna_collections": [
+          "mosaicos",
+          "completi-3-pezzi",
+          "conjuntos-americanas",
+          "vestidos",
+          "jerseys",
+          "calzado",
+          "bolsos",
+          "joyeria"
+        ],
+        "products_limit": 12,
+        "padding-block-start": 48,
+        "padding-block-end": 64
+      }
+    },
     "collection_list_xpBxCm": {
       "type": "collection-list",
       "blocks": {
@@ -543,6 +570,7 @@
       "block_order": [
         "custom_liquid_3MpCYE"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "t:names.collection_list",
       "settings": {
@@ -567,8 +595,7 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 48,
         "padding-block-end": 64
-      },
-      "disabled": true
+      }
     },
     "media_with_content_LfPdEJ": {
       "type": "media-with-content",
@@ -706,38 +733,13 @@
         "padding-block-start": 48,
         "padding-block-end": 64
       }
-    },
-    "up_collezioni": {
-      "type": "up-collezioni",
-      "name": "Collezioni · Uomo e Donna",
-      "settings": {
-        "eyebrow": "Scopri la nostra selezione",
-        "heading": "Le nostre collezioni",
-        "uomo_label": "Uomo",
-        "uomo_collections": [
-          "uomo"
-        ],
-        "donna_label": "Donna",
-        "donna_collections": [
-          "mosaicos",
-          "completi-3-pezzi",
-          "conjuntos-americanas",
-          "vestidos",
-          "jerseys",
-          "calzado",
-          "bolsos",
-          "joyeria"
-        ],
-        "products_limit": 12,
-        "padding-block-start": 48,
-        "padding-block-end": 64
-      }
     }
   },
   "order": [
     "hero_iLBwPd",
     "product_list_EDUBdR",
-    "up_collezioni",
+    "up_collezioni_fCgErt",
+    "collection_list_xpBxCm",
     "media_with_content_LfPdEJ",
     "up_faq_home"
   ]
