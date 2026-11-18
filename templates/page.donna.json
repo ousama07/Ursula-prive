@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "griglia": {
+      "type": "up-griglia-collezioni",
+      "settings": {
+        "eyebrow": "Úrsula Privée",
+        "heading": "Collezione Donna",
+        "collections": [
+          "mosaicos",
+          "completi-3-pezzi",
+          "conjuntos-americanas",
+          "vestidos",
+          "americanas",
+          "jerseys",
+          "capispalla",
+          "calzado",
+          "bolsos",
+          "joyeria"
+        ],
+        "image_ratio": "portrait"
+      }
+    }
+  },
+  "order": ["griglia"]
+}

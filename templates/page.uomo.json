@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "griglia": {
+      "type": "up-griglia-collezioni",
+      "settings": {
+        "eyebrow": "Úrsula Privée",
+        "heading": "Collezione Uomo",
+        "collections": ["uomo"],
+        "image_ratio": "portrait"
+      }
+    }
+  },
+  "order": ["griglia"]
+}
