@@ -717,7 +717,6 @@
         "uomo_collections": [
           "uomo"
         ],
-        "uomo_image": "",
         "donna_label": "Donna",
         "donna_collections": [
           "mosaicos",
@@ -729,7 +728,6 @@
           "bolsos",
           "joyeria"
         ],
-        "donna_image": "",
         "products_limit": 12,
         "padding-block-start": 48,
         "padding-block-end": 64
