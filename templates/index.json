@@ -567,7 +567,8 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 48,
         "padding-block-end": 64
-      }
+      },
+      "disabled": true
     },
     "media_with_content_LfPdEJ": {
       "type": "media-with-content",
@@ -705,12 +706,40 @@
         "padding-block-start": 48,
         "padding-block-end": 64
       }
+    },
+    "up_collezioni": {
+      "type": "up-collezioni",
+      "name": "Le nostre collezioni",
+      "settings": {
+        "eyebrow": "Scopri la nostra selezione",
+        "heading": "Le nostre collezioni",
+        "uomo_label": "Uomo",
+        "uomo_collections": [
+          "uomo"
+        ],
+        "uomo_image": "",
+        "donna_label": "Donna",
+        "donna_collections": [
+          "mosaicos",
+          "completi-3-pezzi",
+          "conjuntos-americanas",
+          "vestidos",
+          "jerseys",
+          "calzado",
+          "bolsos",
+          "joyeria"
+        ],
+        "donna_image": "",
+        "products_limit": 12,
+        "padding-block-start": 48,
+        "padding-block-end": 64
+      }
     }
   },
   "order": [
     "hero_iLBwPd",
     "product_list_EDUBdR",
-    "collection_list_xpBxCm",
+    "up_collezioni",
     "media_with_content_LfPdEJ",
     "up_faq_home"
   ]

@@ -1,0 +1,350 @@
+{%- comment -%}
+  ÚRSULA PRIVÉE · LE NOSTRE COLLEZIONI
+  Sustituye al carrusel de colecciones de la portada.
+
+  Tres niveles, sin recargar la pagina:
+    1. Dos puertas: UOMO y DONNA.
+    2. Al pulsar una, se despliega la cuadricula de sus colecciones.
+    3. Al pulsar una coleccion, se despliega la cuadricula de sus productos.
+
+  Todo sale de Shopify: los nombres, las fotos y los enlaces de las
+  colecciones se leen con Liquid, y los productos se piden al abrir la
+  coleccion a /collections/<handle>/products.json, asi que la seccion no
+  se queda desactualizada cuando cambies el catalogo.
+
+  Las colecciones de cada lado se eligen en el editor de temas
+  (ajustes "Collezioni uomo" y "Collezioni donna").
+{%- endcomment -%}
+
+{%- liquid
+  assign upc_u = section.settings.uomo_collections
+  assign upc_d = section.settings.donna_collections
+  assign upc_lim = section.settings.products_limit
+
+  capture upc_txt
+    echo section.settings.heading
+    echo section.settings.uomo_label
+    echo section.settings.donna_label
+    for c in upc_u
+      echo c.title
+    endfor
+    for c in upc_d
+      echo c.title
+    endfor
+  endcapture
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&text={{ upc_txt | url_encode }}&display=swap" media="print" onload="this.media='all'">
+
+<section class="upc" id="upc-{{ section.id }}" data-upc aria-labelledby="upch-{{ section.id }}">
+  <div class="upc-w">
+
+    <header class="upc-h">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="upc-e">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 id="upch-{{ section.id }}">{{ section.settings.heading }}</h2>
+      <span class="upc-r" aria-hidden="true"></span>
+    </header>
+
+    {%- comment -%} ---------- Nivel 1: las dos puertas ---------- {%- endcomment -%}
+    <div class="upc-gates">
+      {%- for upc_side in (1..2) -%}
+        {%- liquid
+          if upc_side == 1
+            assign upc_key = 'uomo'
+            assign upc_lab = section.settings.uomo_label
+            assign upc_img = section.settings.uomo_image
+            assign upc_set = upc_u
+          else
+            assign upc_key = 'donna'
+            assign upc_lab = section.settings.donna_label
+            assign upc_img = section.settings.donna_image
+            assign upc_set = upc_d
+          endif
+          if upc_img == blank
+            assign upc_first = upc_set | first
+            assign upc_img = upc_first.image
+            if upc_img == blank
+              assign upc_fp = upc_first.products | first
+              assign upc_img = upc_fp.featured_image
+            endif
+          endif
+        -%}
+        <button type="button" class="upc-gate" data-upc-gate="{{ upc_key }}" aria-expanded="false" aria-controls="upcp-{{ upc_key }}-{{ section.id }}">
+          <span class="upc-gate__media">
+            {%- if upc_img != blank -%}
+              {{ upc_img | image_url: width: 900 | image_tag: alt: '', loading: 'lazy', widths: '360,540,720,900' }}
+            {%- endif -%}
+          </span>
+          <span class="upc-gate__veil" aria-hidden="true"></span>
+          <span class="upc-gate__label">
+            <span class="upc-gate__name">{{ upc_lab }}</span>
+            <span class="upc-gate__cue" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+        </button>
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} ---------- Nivel 2: cuadricula de colecciones ---------- {%- endcomment -%}
+    {%- for upc_side in (1..2) -%}
+      {%- liquid
+        if upc_side == 1
+          assign upc_key = 'uomo'
+          assign upc_lab = section.settings.uomo_label
+          assign upc_set = upc_u
+        else
+          assign upc_key = 'donna'
+          assign upc_lab = section.settings.donna_label
+          assign upc_set = upc_d
+        endif
+      -%}
+      <div class="upc-panel" id="upcp-{{ upc_key }}-{{ section.id }}" data-upc-panel="{{ upc_key }}" hidden>
+        <div class="upc-bar">
+          <p class="upc-bar__title">{{ upc_lab }}</p>
+          <button type="button" class="upc-x" data-upc-close aria-label="Chiudi">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+
+        {%- if upc_set.size > 0 -%}
+          <div class="upc-grid">
+            {%- for c in upc_set -%}
+              {%- liquid
+                assign ci = c.image
+                if ci == blank
+                  assign cp = c.products | first
+                  assign ci = cp.featured_image
+                endif
+              -%}
+              <button type="button" class="upc-card" data-upc-col="{{ c.handle }}" data-upc-title="{{ c.title | escape }}" data-upc-url="{{ c.url }}">
+                <span class="upc-card__media">
+                  {%- if ci != blank -%}
+                    {{ ci | image_url: width: 700 | image_tag: alt: '', loading: 'lazy', widths: '280,420,560,700' }}
+                  {%- endif -%}
+                </span>
+                <span class="upc-card__tag">{{ c.title }}</span>
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- else -%}
+          <p class="upc-empty">Nessuna collezione disponibile al momento.</p>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+
+    {%- comment -%} ---------- Nivel 3: productos de la coleccion ---------- {%- endcomment -%}
+    <div class="upc-prods" data-upc-prods hidden>
+      <div class="upc-bar">
+        <button type="button" class="upc-back" data-upc-back>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Collezioni</span>
+        </button>
+        <p class="upc-bar__title" data-upc-ptitle></p>
+        <button type="button" class="upc-x" data-upc-close aria-label="Chiudi">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="upc-pgrid" data-upc-pgrid aria-live="polite"></div>
+      <p class="upc-more"><a href="#" data-upc-all>Vedi tutta la collezione <span aria-hidden="true">&rarr;</span></a></p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+#upc-{{ section.id }}{--k:#1c1a17;--m:#6f655c;--line:#e3dbd0;--f:'Cormorant Garamond',Georgia,serif;--e:cubic-bezier(.22,.61,.36,1)}
+.upc{display:block;width:100%;max-width:100vw;padding:clamp(28px,4vw,56px) 0;color:var(--k)}
+.upc *{box-sizing:border-box}
+.upc-w{max-width:1320px;margin:0 auto;padding:0 clamp(16px,3vw,48px)}
+.upc-h{text-align:center;margin:0 0 clamp(18px,2.6vw,32px)}
+.upc-e{margin:0 0 8px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--m)}
+.upc-h h2{margin:0;font:300 clamp(1.9rem,4.4vw,3.2rem)/1.08 var(--f);text-wrap:balance}
+.upc-r{display:block;width:48px;height:1px;margin:14px auto 0;background:var(--k);opacity:.45}
+
+/* Nivel 1 */
+.upc-gates{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.6vw,20px)}
+.upc-gate{position:relative;display:block;width:100%;aspect-ratio:4/5;padding:0;border:0;border-radius:16px;overflow:hidden;background:#efe9e1;cursor:pointer;isolation:isolate}
+.upc-gate__media,.upc-gate__media img{display:block;width:100%;height:100%;object-fit:cover}
+.upc-gate__veil{position:absolute;inset:0;background:linear-gradient(180deg,rgb(28 26 23/.05) 40%,rgb(28 26 23/.55));transition:background .4s var(--e)}
+.upc-gate__label{position:absolute;left:0;right:0;bottom:clamp(14px,2vw,26px);display:flex;flex-direction:column;align-items:center;gap:8px;color:#fff}
+.upc-gate__name{font:400 clamp(1.1rem,2.6vw,1.9rem)/1 var(--f);letter-spacing:.2em;text-transform:uppercase}
+.upc-gate__cue{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgb(255 255 255/.92);color:var(--k);transition:transform .4s var(--e)}
+.upc-gate__cue svg{width:16px;height:16px}
+.upc-gate[aria-expanded="true"] .upc-gate__veil{background:linear-gradient(180deg,rgb(28 26 23/.15) 30%,rgb(28 26 23/.7))}
+.upc-gate[aria-expanded="true"] .upc-gate__cue{transform:rotate(180deg)}
+@media(hover:hover){.upc-gate:hover .upc-gate__cue{transform:translateY(2px)}.upc-gate[aria-expanded="true"]:hover .upc-gate__cue{transform:rotate(180deg)}}
+.upc-gate:focus-visible{outline:2px solid var(--k);outline-offset:3px}
+
+/* Niveles 2 y 3 */
+.upc-panel,.upc-prods{margin-top:clamp(14px,2vw,26px);animation:upc-in .35s var(--e)}
+.upc-panel[hidden],.upc-prods[hidden]{display:none}
+@keyframes upc-in{from{opacity:0;transform:translateY(10px)}}
+.upc-bar{display:flex;align-items:center;gap:12px;padding:0 2px 12px;border-bottom:1px solid var(--line);margin-bottom:clamp(12px,1.8vw,20px)}
+.upc-bar__title{flex:1;margin:0;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--m)}
+.upc-back,.upc-x{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--k);font:inherit;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.upc-x{padding:6px;border-radius:50%}
+.upc-back svg,.upc-x svg{width:15px;height:15px;flex:none}
+.upc-back:focus-visible,.upc-x:focus-visible{outline:2px solid var(--k);outline-offset:2px}
+
+.upc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.4vw,18px)}
+@media(min-width:750px){.upc-grid{grid-template-columns:repeat(4,1fr)}}
+.upc-card{position:relative;display:block;width:100%;aspect-ratio:1/1;padding:0;border:0;border-radius:12px;overflow:hidden;background:#efe9e1;cursor:pointer}
+.upc-card__media,.upc-card__media img{display:block;width:100%;height:100%;object-fit:cover}
+.upc-card__tag{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);max-width:86%;padding:9px 14px;background:#fff;color:var(--k);font-size:clamp(12px,1.5vw,14px);line-height:1.25;text-align:center;box-shadow:0 2px 12px rgb(28 26 23/.14)}
+.upc-card:focus-visible{outline:2px solid var(--k);outline-offset:3px}
+@media(hover:hover){.upc-card img{transition:transform .6s var(--e)}.upc-card:hover img{transform:scale(1.04)}}
+.upc-empty{margin:0;color:var(--m);font-size:14px}
+
+.upc-pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.4vw,18px);min-height:120px}
+@media(min-width:750px){.upc-pgrid{grid-template-columns:repeat(4,1fr)}}
+.upc-p{display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.upc-p__media{display:block;width:100%;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:#efe9e1}
+.upc-p__media img{width:100%;height:100%;object-fit:cover;display:block}
+.upc-p__t{margin:10px 0 4px;font-size:13px;line-height:1.35;text-align:center}
+.upc-p__pr{margin:0;text-align:center;font-size:13px;font-weight:600}
+.upc-p__was{margin-right:6px;font-weight:400;color:var(--m);text-decoration:line-through}
+.upc-p__now{color:#c62828}
+.upc-skel{aspect-ratio:1/1;border-radius:12px;background:linear-gradient(90deg,#efe9e1 25%,#f6f3ef 50%,#efe9e1 75%);background-size:200% 100%;animation:upc-sk 1.1s linear infinite}
+@keyframes upc-sk{to{background-position:-200% 0}}
+.upc-more{margin:clamp(14px,2vw,22px) 0 0;text-align:center}
+.upc-more a{color:var(--k);font-size:12px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--k);padding-bottom:3px}
+.upc-err{margin:0;color:var(--m);font-size:14px;grid-column:1/-1}
+@media(prefers-reduced-motion:reduce){.upc *,.upc-panel,.upc-prods{animation:none!important;transition:none!important}}
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById('upc-{{ section.id }}');
+  if (!root || root.dataset.upcReady === '1') return;
+  root.dataset.upcReady = '1';
+
+  const gates  = [...root.querySelectorAll('[data-upc-gate]')];
+  const panels = [...root.querySelectorAll('[data-upc-panel]')];
+  const prods  = root.querySelector('[data-upc-prods]');
+  const pgrid  = root.querySelector('[data-upc-pgrid]');
+  const ptitle = root.querySelector('[data-upc-ptitle]');
+  const allLnk = root.querySelector('[data-upc-all]');
+  const LIMIT  = {{ upc_lim }};
+  let abierto = null;   /* 'uomo' | 'donna' | null */
+
+  const euro = v => {
+    const n = parseFloat(v);
+    return isNaN(n) ? '' : n.toFixed(2).replace('.', ',') + '€';
+  };
+
+  const mostrarPanel = (key) => {
+    prods.hidden = true;
+    panels.forEach(p => { p.hidden = p.dataset.upcPanel !== key; });
+    gates.forEach(g => g.setAttribute('aria-expanded', String(g.dataset.upcGate === key)));
+    abierto = key;
+  };
+
+  const cerrar = () => {
+    prods.hidden = true;
+    panels.forEach(p => { p.hidden = true; });
+    gates.forEach(g => g.setAttribute('aria-expanded', 'false'));
+    abierto = null;
+  };
+
+  gates.forEach(g => g.addEventListener('click', () => {
+    const key = g.dataset.upcGate;
+    if (abierto === key && prods.hidden) { cerrar(); return; }
+    mostrarPanel(key);
+    const p = root.querySelector('[data-upc-panel="' + key + '"]');
+    if (p) p.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }));
+
+  root.querySelectorAll('[data-upc-close]').forEach(b => b.addEventListener('click', cerrar));
+  root.querySelector('[data-upc-back]').addEventListener('click', () => { if (abierto) mostrarPanel(abierto); });
+
+  const esqueletos = (n) => {
+    pgrid.innerHTML = '';
+    for (let i = 0; i < n; i++) {
+      const d = document.createElement('div');
+      d.className = 'upc-skel';
+      pgrid.appendChild(d);
+    }
+  };
+
+  const pintar = (lista) => {
+    pgrid.innerHTML = '';
+    if (!lista.length) {
+      pgrid.innerHTML = '<p class="upc-err">Questa collezione non ha ancora prodotti.</p>';
+      return;
+    }
+    const frag = document.createDocumentFragment();
+    lista.forEach(p => {
+      const v = (p.variants && p.variants[0]) || {};
+      const img = (p.images && p.images[0] && p.images[0].src) || '';
+      const src = img ? img.replace(/(\.[a-z]+)(\?|$)/i, '_600x$1$2') : '';
+      const a = document.createElement('a');
+      a.className = 'upc-p';
+      a.href = '/products/' + p.handle;
+      const was = v.compare_at_price && parseFloat(v.compare_at_price) > parseFloat(v.price)
+        ? '<span class="upc-p__was">' + euro(v.compare_at_price) + '</span>' : '';
+      a.innerHTML =
+        '<span class="upc-p__media">' + (src ? '<img src="' + src + '" alt="" loading="lazy" decoding="async">' : '') + '</span>' +
+        '<span class="upc-p__t">' + p.title + '</span>' +
+        '<span class="upc-p__pr">' + was + '<span class="' + (was ? 'upc-p__now' : '') + '">' + euro(v.price) + '</span></span>';
+      frag.appendChild(a);
+    });
+    pgrid.appendChild(frag);
+  };
+
+  const cache = {};
+
+  const abrirColeccion = async (handle, titulo, url) => {
+    panels.forEach(p => { p.hidden = true; });
+    prods.hidden = false;
+    ptitle.textContent = titulo;
+    allLnk.href = url;
+    prods.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+
+    if (cache[handle]) { pintar(cache[handle]); return; }
+
+    esqueletos(Math.min(LIMIT, 8));
+    try {
+      const r = await fetch('/collections/' + handle + '/products.json?limit=' + LIMIT);
+      if (!r.ok) throw new Error(r.status);
+      const j = await r.json();
+      cache[handle] = j.products || [];
+      pintar(cache[handle]);
+    } catch (e) {
+      pgrid.innerHTML = '<p class="upc-err">Non siamo riusciti a caricare i prodotti. <a href="' + url + '">Apri la collezione</a>.</p>';
+    }
+  };
+
+  root.querySelectorAll('[data-upc-col]').forEach(c => c.addEventListener('click', () => {
+    abrirColeccion(c.dataset.upcCol, c.dataset.upcTitle, c.dataset.upcUrl);
+  }));
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Le nostre collezioni",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetitulo", "default": "Scopri la nostra selezione" },
+    { "type": "text", "id": "heading", "label": "Titulo", "default": "Le nostre collezioni" },
+    { "type": "header", "content": "Uomo" },
+    { "type": "text", "id": "uomo_label", "label": "Etiqueta", "default": "Uomo" },
+    { "type": "collection_list", "id": "uomo_collections", "label": "Collezioni uomo", "limit": 12 },
+    { "type": "image_picker", "id": "uomo_image", "label": "Imagen de la puerta (opcional)" },
+    { "type": "header", "content": "Donna" },
+    { "type": "text", "id": "donna_label", "label": "Etiqueta", "default": "Donna" },
+    { "type": "collection_list", "id": "donna_collections", "label": "Collezioni donna", "limit": 12 },
+    { "type": "image_picker", "id": "donna_image", "label": "Imagen de la puerta (opcional)" },
+    { "type": "header", "content": "Productos" },
+    { "type": "range", "id": "products_limit", "label": "Productos por coleccion", "min": 4, "max": 24, "step": 2, "default": 12 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding-block-start", "label": "Margen superior", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding-block-end", "label": "Margen inferior", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 64 }
+  ],
+  "presets": [{ "name": "Le nostre collezioni" }]
+}
+{% endschema %}
