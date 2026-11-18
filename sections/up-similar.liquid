@@ -24,6 +24,15 @@
   assign ups_cur = closest.product | default: product
   assign ups_col = section.settings.collection
 
+  # Si la plantilla fija una coleccion a mano (por ejemplo 'uomo' en la
+  # plantilla de hombres), se respeta tal cual: el carrusel ensena solo
+  # esa coleccion y no se rellena con la de reserva ni con el catalogo
+  # entero. Asi en una ficha de hombre no aparecen prendas de mujer.
+  assign ups_strict = false
+  if section.settings.collection != blank
+    assign ups_strict = true
+  endif
+
   # 2. Deteccion automatica por categoria
   if ups_col == blank
     capture ups_cat
@@ -64,6 +73,13 @@
     assign ups_max = ups_max | at_least: 24
   endif
   assign ups_fb = section.settings.fallback_collection
+
+  # Rondas de relleno: 1 = la coleccion elegida, 2 = la de reserva,
+  # 3 = el catalogo entero. En modo estricto solo se hace la primera.
+  assign ups_rounds = 3
+  if ups_strict
+    assign ups_rounds = 1
+  endif
 
   # Rotacion por hora: el rango se calcula para que offset + limit nunca
   # se pase del total de la coleccion.
@@ -114,7 +130,7 @@
         endif
         assign ups_n = 0
       -%}
-      {%- for ups_round in (1..3) -%}
+      {%- for ups_round in (1..ups_rounds) -%}
         {%- liquid
           case ups_round
             when 1
