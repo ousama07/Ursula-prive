@@ -84,10 +84,12 @@
   # Rotacion por hora: el rango se calcula para que offset + limit nunca
   # se pase del total de la coleccion.
   assign ups_off = 0
-  if section.settings.pinned_product != blank
+  # En modo estricto (la plantilla fija la coleccion) no rotamos: asi el
+  # orden de la coleccion manda y el primer producto de la coleccion sale
+  # siempre el primero del carrusel.
+  assign ups_rotate = true
+  if ups_strict or section.settings.pinned_product != blank
     assign ups_rotate = false
-  else
-    assign ups_rotate = true
   endif
   if ups_rotate and ups_col.products_count > ups_max
     assign ups_range = ups_col.products_count | minus: ups_max | plus: 1
