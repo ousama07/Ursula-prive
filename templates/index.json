@@ -198,14 +198,6 @@
     "product_list_EDUBdR": {
       "type": "product-list",
       "blocks": {
-        "custom_liquid_YqCpm9": {
-          "type": "custom-liquid",
-          "name": "t:names.custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'up-reviews' %}"
-          },
-          "blocks": {}
-        },
         "static-header": {
           "type": "_product-list-content",
           "static": true,
@@ -439,9 +431,7 @@
           ]
         }
       },
-      "block_order": [
-        "custom_liquid_YqCpm9"
-      ],
+      "block_order": [],
       "name": "t:names.product_list",
       "settings": {
         "collection": "portada",
@@ -732,11 +722,23 @@
         "padding-block-start": 48,
         "padding-block-end": 64
       }
+    },
+    "up_reviews_home": {
+      "type": "custom-liquid",
+      "name": "Recensioni",
+      "settings": {
+        "custom_liquid": "{% render 'up-reviews' %}",
+        "background_color": "{{ settings.color_palette.background }}",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 24
+      }
     }
   },
   "order": [
     "hero_iLBwPd",
     "product_list_EDUBdR",
+    "up_reviews_home",
     "up_collezioni_fCgErt",
     "collection_list_xpBxCm",
     "media_with_content_LfPdEJ",
