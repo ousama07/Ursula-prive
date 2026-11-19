@@ -129,7 +129,25 @@
           assign ups_seen = ups_seen | append: ups_cur.id | append: ','
         endif
         assign ups_n = 0
+        assign ups_pin = section.settings.pinned_product
       -%}
+      {%- comment -%}
+        Producto fijo: si la plantilla elige uno en el ajuste "Producto destacado",
+        sale siempre el primero del carrusel. No se repite mas abajo y no aparece
+        cuando se esta viendo su propia ficha o cuando esta agotado.
+      {%- endcomment -%}
+      {%- if ups_pin != blank and ups_pin.id != ups_cur.id and ups_pin.available -%}
+        {%- assign ups_seen = ups_seen | append: ups_pin.id | append: ',' -%}
+        {%- assign ups_n = ups_n | plus: 1 -%}
+        <div class="resource-list__item">
+          {% content_for 'block',
+            type: '_product-card',
+            id: 'static-product-card',
+            closest.product: ups_pin,
+            product_view_context: 'recommendation'
+          %}
+        </div>
+      {%- endif -%}
       {%- for ups_round in (1..ups_rounds) -%}
         {%- liquid
           case ups_round
@@ -190,6 +208,7 @@
   "name": "Similares por categoria",
   "blocks": [{ "type": "@theme" }, { "type": "text" }],
   "settings": [
+    { "type": "product", "id": "pinned_product", "label": "Producto destacado (siempre el primero)" },
     { "type": "collection", "id": "collection", "label": "Coleccion (dejar vacio para automatico)" },
     { "type": "collection", "id": "fallback_collection", "label": "Coleccion de reserva" },
     { "type": "range", "id": "max_products", "label": "Productos", "min": 3, "max": 24, "step": 1, "default": 16 },
