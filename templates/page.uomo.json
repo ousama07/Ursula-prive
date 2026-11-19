@@ -5,7 +5,13 @@
       "settings": {
         "eyebrow": "Úrsula Privée",
         "heading": "Collezione Uomo",
-        "collections": ["uomo"],
+        "collections": [
+          "giacche-uomo",
+          "maglioni-uomo",
+          "felpe-uomo",
+          "gilet-uomo",
+          "camicie-polo-uomo"
+        ],
         "image_ratio": "portrait"
       }
     }
