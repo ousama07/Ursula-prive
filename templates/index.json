@@ -446,9 +446,9 @@
       "settings": {
         "collection": "portada",
         "layout_type": "depth_carousel",
-        "initial_product": "roussel-paris-doudoune-d-hiver-matelassee-avec-doublure-en-polaire",
+        "initial_product": "thomas-veste-matelassee",
         "carousel_on_mobile": false,
-        "max_products": 8,
+        "max_products": 10,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
