@@ -84,7 +84,12 @@
   # Rotacion por hora: el rango se calcula para que offset + limit nunca
   # se pase del total de la coleccion.
   assign ups_off = 0
-  if ups_col.products_count > ups_max
+  if section.settings.pinned_product != blank
+    assign ups_rotate = false
+  else
+    assign ups_rotate = true
+  endif
+  if ups_rotate and ups_col.products_count > ups_max
     assign ups_range = ups_col.products_count | minus: ups_max | plus: 1
     assign ups_hour = 'now' | date: '%H' | times: 1
     assign ups_off = ups_hour | times: ups_max | modulo: ups_range
@@ -136,7 +141,6 @@
         sale siempre el primero del carrusel. No se repite mas abajo y no aparece
         cuando se esta viendo su propia ficha o cuando esta agotado.
       {%- endcomment -%}
-      <!--UPPIN tipo:{{ ups_pin | json | slice: 0, 60 }} titulo:{{ ups_pin.title }} disp:{{ ups_pin.available }}-->
       {%- if ups_pin != blank and ups_pin.id != ups_cur.id and ups_pin.available -%}
         {%- assign ups_seen = ups_seen | append: ups_pin.id | append: ',' -%}
         {%- assign ups_n = ups_n | plus: 1 -%}
