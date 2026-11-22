@@ -1,7 +1,7 @@
 {%- comment -%}
   ÚRSULA PRIVÉE · BARRA PRE-BLACK FRIDAY
 
-  Barra negra bajo el encabezado con el descuento y una cuenta atras.
+  Barra negra a todo lo ancho, entre la barra de anuncios y el encabezado.
 
   PARA CAMBIAR LA FECHA DE FIN: edita upbf_fine. Es una fecha fija y
   publica, igual para todos los visitantes, con la hora de Italia.
@@ -12,9 +12,9 @@
 {%- liquid
   assign upbf_fine = '2026-11-23T11:31:00+01:00'
   assign upbf_sconto = '-50%'
-  assign upbf_txt = 'Fridayfinoal'
 -%}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400;1,600&text={{ upbf_txt | url_encode }}&display=swap" media="print" onload="this.media='all'">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,600&text=Fridayfinoal&display=swap" media="print" onload="this.media='all'">
 
 <div class="upbf" data-upbf data-upbf-fine="{{ upbf_fine }}" hidden>
   <div class="upbf-w">
@@ -24,10 +24,14 @@
       <span class="upbf-fri">Friday</span>
     </div>
 
+    <span class="upbf-div" aria-hidden="true"></span>
+
     <div class="upbf-off">
       <span class="upbf-upto">fino al</span>
       <span class="upbf-pct">{{ upbf_sconto }}</span>
     </div>
+
+    <span class="upbf-div" aria-hidden="true"></span>
 
     <div class="upbf-cd">
       <span class="upbf-lbl">TERMINA<br>TRA</span>
@@ -35,34 +39,60 @@
       <span class="upbf-sep">:</span>
       <span class="upbf-box"><b data-upbf-m>00</b><i>MIN</i></span>
       <span class="upbf-sep">:</span>
-      <span class="upbf-box"><b data-upbf-s>00</b><i>SEC</i></span>
+      <span class="upbf-box upbf-box--s"><b data-upbf-s>00</b><i>SEC</i></span>
     </div>
 
   </div>
 </div>
 
 <style>
-.upbf{background:#000;color:#fff;overflow:hidden}
+/* A todo lo ancho: la seccion del encabezado es una rejilla con margenes
+   laterales, asi que la barra ocupa todas las columnas. */
+.shopify-section:has(.upbf) .section{padding-block:0!important}
+.upbf{grid-column:1/-1!important;justify-self:stretch!important;width:100%!important}
+
+.upbf{position:relative;background:#000;color:#fff;overflow:hidden;
+  --rojo:#ee1f33;--gris:#9a938c;
+  --f:'Playfair Display',Georgia,serif}
 .upbf[hidden]{display:none}
 .upbf *{box-sizing:border-box}
-.upbf-w{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,46px);
-  max-width:1320px;margin:0 auto;padding:10px clamp(12px,3vw,40px)}
-.upbf-brand{display:flex;flex-direction:column;line-height:1;flex:none}
-.upbf-pre{font-size:clamp(11px,2.6vw,15px);font-weight:800;letter-spacing:.06em}
-.upbf-fri{font:italic 600 clamp(15px,4vw,26px)/1 'Cormorant Garamond',Georgia,serif;color:#fff;margin-top:2px}
-.upbf-off{display:flex;align-items:center;gap:6px;flex:none;
-  padding-inline:clamp(10px,2.4vw,26px);border-inline:1px solid rgb(255 255 255/.22)}
-.upbf-upto{font:italic 400 clamp(10px,2.4vw,14px)/1 'Cormorant Garamond',Georgia,serif;color:#e7dfd4}
-.upbf-pct{font-size:clamp(17px,4.6vw,30px);font-weight:800;letter-spacing:-.02em;color:#e02b2b}
-.upbf-cd{display:flex;align-items:center;gap:clamp(4px,1vw,8px);flex:none}
-.upbf-lbl{font-size:9px;line-height:1.15;letter-spacing:.14em;color:#cfc7bb;text-align:right;margin-right:4px}
-.upbf-box{display:flex;flex-direction:column;align-items:center;min-width:clamp(24px,6vw,34px)}
-.upbf-box b{font-size:clamp(15px,4vw,24px);font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
-.upbf-box i{font-size:8px;font-style:normal;letter-spacing:.1em;color:#cfc7bb;margin-top:3px}
-.upbf-sep{font-size:clamp(14px,3.4vw,20px);font-weight:700;color:#e02b2b;transform:translateY(-4px)}
-@media(max-width:400px){
+.upbf::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(62% 150% at 50% 115%,rgb(238 31 51/.38),transparent 62%)}
+
+.upbf-w{position:relative;display:flex;align-items:center;justify-content:center;
+  gap:clamp(12px,2.6vw,40px);padding:clamp(10px,1.4vw,18px) clamp(10px,3vw,40px)}
+
+.upbf-div{flex:none;width:1px;align-self:stretch;min-height:clamp(34px,4.4vw,62px);
+  background:rgb(255 255 255/.26)}
+
+.upbf-brand{display:flex;align-items:baseline;gap:.18em;flex:none}
+.upbf-pre{font-size:clamp(13px,2.3vw,38px);font-weight:800;letter-spacing:.1em;line-height:1}
+.upbf-fri{font:italic 500 clamp(17px,2.7vw,44px)/1 var(--f)}
+
+.upbf-off{display:flex;align-items:baseline;gap:.3em;flex:none}
+.upbf-upto{font:italic 500 clamp(11px,1.6vw,27px)/1 var(--f);color:#fff}
+.upbf-pct{font-size:clamp(19px,2.9vw,48px);font-weight:800;letter-spacing:-.01em;line-height:1;color:var(--rojo)}
+
+.upbf-cd{display:flex;align-items:center;gap:clamp(4px,.7vw,11px);flex:none}
+.upbf-lbl{font-size:clamp(7px,.75vw,12px);line-height:1.3;letter-spacing:.2em;
+  color:#fff;text-align:right;margin-right:clamp(2px,.5vw,8px)}
+.upbf-box{display:flex;flex-direction:column;align-items:center;line-height:1}
+.upbf-box b{font-size:clamp(18px,2.8vw,44px);font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.upbf-box i{font-size:clamp(7px,.72vw,11px);font-style:normal;letter-spacing:.18em;color:var(--gris);margin-top:.5em}
+.upbf-box--s b{color:var(--rojo)}
+.upbf-sep{font-size:clamp(15px,2.2vw,34px);font-weight:700;line-height:1;color:var(--rojo);
+  align-self:flex-start;margin-top:clamp(1px,.2vw,4px)}
+
+/* Movil: PRE-BLACK sobre Friday, como en el original */
+@media(max-width:749px){
+  .upbf-brand{flex-direction:column;align-items:flex-start;gap:1px}
+  .upbf-pre{letter-spacing:.08em}
   .upbf-w{gap:10px;padding:8px 10px}
   .upbf-lbl{display:none}
+}
+@media(max-width:359px){
+  .upbf-w{gap:7px}
+  .upbf-div{display:none}
 }
 </style>
 
