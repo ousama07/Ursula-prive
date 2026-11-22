@@ -27,7 +27,8 @@
             "case": "none",
             "text_color": ""
           },
-          "blocks": {}
+          "blocks": {},
+          "disabled": true
         },
         "announcement_Nw4mth": {
           "type": "_announcement",
