@@ -1,0 +1,144 @@
+{%- comment -%}
+  ÚRSULA PRIVÉE · CAJA DE OFERTA EN LA FICHA DE PRODUCTO
+
+  La cuenta atras NO tiene fecha propia: lee la de la barra
+  PRE-BLACK FRIDAY del encabezado (snippet up-preblack), asi que las dos
+  marcan siempre lo mismo. Si esa barra ya ha caducado y desaparece, aqui
+  se oculta la linea del contador y el resto de la caja se queda.
+{%- endcomment -%}
+<style>
+  .up-sale-box{background:#fbefed;border:1px solid #dfaaa3;border-radius:5px;
+    padding:18px 20px;margin:15px 0;font-family:inherit;color:#963c34}
+  .up-sale-header{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .up-sale-dot{width:9px;height:9px;background:#c83229;border-radius:50%;
+    flex-shrink:0;animation:up-pulse 1.5s infinite}
+  .up-sale-label{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}
+  .up-sale-main{display:flex;align-items:center;gap:13px;margin-bottom:12px}
+  .up-sale-number{font-size:46px;line-height:1;font-weight:800;letter-spacing:-2px;color:#c83229}
+  .up-sale-text{display:flex;flex-direction:column;gap:2px}
+  .up-sale-sconto{font-size:20px;font-weight:800;letter-spacing:1px;color:#96352e}
+  .up-sale-desc{font-size:11px;color:#a45a52;text-transform:uppercase;letter-spacing:.5px}
+  .up-sale-message{font-size:13px;line-height:1.55;color:#8f4841;margin:0}
+  .up-sale-message strong{color:#b52f27}
+  .up-sale-divider{height:1px;background:#e8c5c0;margin:12px 0}
+  .up-sale-bottom{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:#a33d35}
+  .up-sale-bottom svg{width:15px;height:15px;flex-shrink:0}
+
+  /* Cuenta atras */
+  .up-sale-cd[hidden]{display:none}
+  .up-sale-cd{display:flex;align-items:center;gap:8px;margin-top:11px}
+  .up-sale-cd__lbl{font-size:11px;font-weight:600;letter-spacing:.4px;color:#a33d35}
+  .up-sale-cd__g{display:flex;align-items:center;gap:5px;margin-left:auto}
+  .up-sale-cd__b{display:flex;flex-direction:column;align-items:center;
+    min-width:34px;padding:4px 5px 3px;background:#fff;border:1px solid #e8c5c0;border-radius:4px}
+  .up-sale-cd__b b{font-size:16px;font-weight:800;line-height:1;color:#c83229;font-variant-numeric:tabular-nums}
+  .up-sale-cd__b i{font-size:8px;font-style:normal;letter-spacing:.09em;color:#a45a52;margin-top:2px}
+  .up-sale-cd__s{font-size:14px;font-weight:800;color:#c83229;transform:translateY(-3px)}
+
+  /* Descuento por cantidad */
+  .up-sale-tiers{margin:0}
+  .up-sale-tiers__t{display:block;font-size:11px;font-weight:700;letter-spacing:1.2px;
+    text-transform:uppercase;color:#96352e;margin-bottom:8px}
+  .up-sale-tiers ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+  .up-sale-tiers li{display:flex;align-items:baseline;gap:8px;font-size:13px;line-height:1.4;color:#8f4841}
+  .up-sale-tiers li b{color:#b52f27;font-weight:700;white-space:nowrap}
+  .up-sale-tiers li::before{content:'';width:5px;height:5px;border-radius:50%;
+    background:#c83229;flex:none;transform:translateY(-2px)}
+
+  @keyframes up-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  @media(max-width:480px){
+    .up-sale-box{padding:15px}
+    .up-sale-number{font-size:40px}
+    .up-sale-sconto{font-size:18px}
+    .up-sale-cd{flex-wrap:wrap;gap:6px}
+    .up-sale-cd__g{margin-left:0}
+  }
+</style>
+
+<div class="up-sale-box" data-upsale>
+
+  <div class="up-sale-header">
+    <span class="up-sale-dot"></span>
+    <span class="up-sale-label">Úrsula Privée · Early Black Friday</span>
+  </div>
+
+  <div class="up-sale-main">
+    <span class="up-sale-number">50%</span>
+    <div class="up-sale-text">
+      <span class="up-sale-sconto">SCONTO</span>
+      <span class="up-sale-desc">Black Friday Anticipato</span>
+    </div>
+  </div>
+
+  <p class="up-sale-message">
+    Il <strong>Black Friday è arrivato in anticipo</strong> da Úrsula Privée!
+    Approfitta di uno sconto esclusivo del <strong>50%</strong>
+    sulla collezione selezionata per un periodo limitato.
+  </p>
+
+  <div class="up-sale-divider"></div>
+
+  <div class="up-sale-bottom">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M12 7v5l3 2"></path>
+    </svg>
+    Offerta limitata: approfittane prima che finisca!
+  </div>
+
+  <div class="up-sale-cd" data-upsale-cd hidden>
+    <span class="up-sale-cd__lbl">Termina tra</span>
+    <span class="up-sale-cd__g">
+      <span class="up-sale-cd__b"><b data-upsale-h>00</b><i>ORE</i></span>
+      <span class="up-sale-cd__s">:</span>
+      <span class="up-sale-cd__b"><b data-upsale-m>00</b><i>MIN</i></span>
+      <span class="up-sale-cd__s">:</span>
+      <span class="up-sale-cd__b"><b data-upsale-s>00</b><i>SEC</i></span>
+    </span>
+  </div>
+
+  <div class="up-sale-divider"></div>
+
+  <div class="up-sale-tiers">
+    <span class="up-sale-tiers__t">Più capi, più risparmi</span>
+    <ul>
+      <li>Acquista <b>2 capi</b> e risparmia il <b>10%</b></li>
+      <li>Acquista <b>3 capi</b> e risparmia il <b>15%</b></li>
+      <li>Acquista <b>4 capi</b> e risparmia il <b>20%</b></li>
+      <li>Acquista <b>5 capi</b> e risparmia il <b>25%</b></li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+(() => {
+  const box = document.querySelector('[data-upsale]');
+  if (!box || box.dataset.upsaleReady === '1') return;
+  box.dataset.upsaleReady = '1';
+
+  const cd = box.querySelector('[data-upsale-cd]');
+  const barra = document.querySelector('[data-upbf]');
+  const fin = barra ? new Date(barra.dataset.upbfFine).getTime() : NaN;
+  if (!cd || isNaN(fin)) return;
+
+  const h = cd.querySelector('[data-upsale-h]');
+  const m = cd.querySelector('[data-upsale-m]');
+  const s = cd.querySelector('[data-upsale-s]');
+  const dd = n => String(n).padStart(2, '0');
+
+  const tick = () => {
+    const falta = fin - Date.now();
+    if (falta <= 0) { cd.remove(); return; }
+    const t = Math.floor(falta / 1000);
+    h.textContent = dd(Math.floor(t / 3600));
+    m.textContent = dd(Math.floor(t / 60) % 60);
+    s.textContent = dd(t % 60);
+    cd.hidden = false;
+  };
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
