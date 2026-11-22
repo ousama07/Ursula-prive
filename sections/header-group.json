@@ -27,8 +27,7 @@
             "case": "none",
             "text_color": ""
           },
-          "blocks": {},
-          "disabled": true
+          "blocks": {}
         },
         "announcement_Nw4mth": {
           "type": "_announcement",
@@ -75,7 +74,8 @@
         "divider_color": "",
         "padding-block-start": 10,
         "padding-block-end": 10
-      }
+      },
+      "disabled": true
     },
     "header_section": {
       "type": "header",
