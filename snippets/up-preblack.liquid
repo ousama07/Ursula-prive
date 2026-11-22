@@ -1,0 +1,96 @@
+{%- comment -%}
+  ÚRSULA PRIVÉE · BARRA PRE-BLACK FRIDAY
+
+  Barra negra bajo el encabezado con el descuento y una cuenta atras.
+
+  PARA CAMBIAR LA FECHA DE FIN: edita upbf_fine. Es una fecha fija y
+  publica, igual para todos los visitantes, con la hora de Italia.
+  Cuando pasa, la barra desaparece sola: no se reinicia por visitante.
+
+  PARA CAMBIAR EL DESCUENTO: edita upbf_sconto.
+{%- endcomment -%}
+{%- liquid
+  assign upbf_fine = '2026-11-23T11:31:00+01:00'
+  assign upbf_sconto = '-50%'
+  assign upbf_txt = 'Fridayfinoal'
+-%}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400;1,600&text={{ upbf_txt | url_encode }}&display=swap" media="print" onload="this.media='all'">
+
+<div class="upbf" data-upbf data-upbf-fine="{{ upbf_fine }}" hidden>
+  <div class="upbf-w">
+
+    <div class="upbf-brand">
+      <span class="upbf-pre">PRE-BLACK</span>
+      <span class="upbf-fri">Friday</span>
+    </div>
+
+    <div class="upbf-off">
+      <span class="upbf-upto">fino al</span>
+      <span class="upbf-pct">{{ upbf_sconto }}</span>
+    </div>
+
+    <div class="upbf-cd">
+      <span class="upbf-lbl">TERMINA<br>TRA</span>
+      <span class="upbf-box"><b data-upbf-h>00</b><i>ORE</i></span>
+      <span class="upbf-sep">:</span>
+      <span class="upbf-box"><b data-upbf-m>00</b><i>MIN</i></span>
+      <span class="upbf-sep">:</span>
+      <span class="upbf-box"><b data-upbf-s>00</b><i>SEC</i></span>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.upbf{background:#000;color:#fff;overflow:hidden}
+.upbf[hidden]{display:none}
+.upbf *{box-sizing:border-box}
+.upbf-w{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,46px);
+  max-width:1320px;margin:0 auto;padding:10px clamp(12px,3vw,40px)}
+.upbf-brand{display:flex;flex-direction:column;line-height:1;flex:none}
+.upbf-pre{font-size:clamp(11px,2.6vw,15px);font-weight:800;letter-spacing:.06em}
+.upbf-fri{font:italic 600 clamp(15px,4vw,26px)/1 'Cormorant Garamond',Georgia,serif;color:#fff;margin-top:2px}
+.upbf-off{display:flex;align-items:center;gap:6px;flex:none;
+  padding-inline:clamp(10px,2.4vw,26px);border-inline:1px solid rgb(255 255 255/.22)}
+.upbf-upto{font:italic 400 clamp(10px,2.4vw,14px)/1 'Cormorant Garamond',Georgia,serif;color:#e7dfd4}
+.upbf-pct{font-size:clamp(17px,4.6vw,30px);font-weight:800;letter-spacing:-.02em;color:#e02b2b}
+.upbf-cd{display:flex;align-items:center;gap:clamp(4px,1vw,8px);flex:none}
+.upbf-lbl{font-size:9px;line-height:1.15;letter-spacing:.14em;color:#cfc7bb;text-align:right;margin-right:4px}
+.upbf-box{display:flex;flex-direction:column;align-items:center;min-width:clamp(24px,6vw,34px)}
+.upbf-box b{font-size:clamp(15px,4vw,24px);font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.upbf-box i{font-size:8px;font-style:normal;letter-spacing:.1em;color:#cfc7bb;margin-top:3px}
+.upbf-sep{font-size:clamp(14px,3.4vw,20px);font-weight:700;color:#e02b2b;transform:translateY(-4px)}
+@media(max-width:400px){
+  .upbf-w{gap:10px;padding:8px 10px}
+  .upbf-lbl{display:none}
+}
+</style>
+
+<script>
+(() => {
+  const el = document.querySelector('[data-upbf]');
+  if (!el || el.dataset.upbfReady === '1') return;
+  el.dataset.upbfReady = '1';
+
+  const fin = new Date(el.dataset.upbfFine).getTime();
+  if (isNaN(fin)) return;
+
+  const h = el.querySelector('[data-upbf-h]');
+  const m = el.querySelector('[data-upbf-m]');
+  const s = el.querySelector('[data-upbf-s]');
+  const dd = n => String(n).padStart(2, '0');
+
+  const tick = () => {
+    const falta = fin - Date.now();
+    if (falta <= 0) { el.remove(); return; }
+    const t = Math.floor(falta / 1000);
+    h.textContent = dd(Math.floor(t / 3600));
+    m.textContent = dd(Math.floor(t / 60) % 60);
+    s.textContent = dd(t % 60);
+    el.hidden = false;
+  };
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
