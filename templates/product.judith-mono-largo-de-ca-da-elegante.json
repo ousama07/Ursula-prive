@@ -1026,6 +1026,13 @@
                 "padding_horizontal": 18,
                 "background_gradient": ""
               }
+            },
+            "up_sale_box": {
+              "type": "custom-liquid",
+              "name": "Offerta Early Black Friday",
+              "settings": {
+                "custom_liquid": "{% render 'up-sale-box' %}"
+              }
             }
           },
           "block_order": [
@@ -1037,6 +1044,7 @@
             "29e0b2bfd864e1a2",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "up_sale_box",
             "0e3c02eafefe51d4",
             "89df06c7e8a04bdd",
             "9f9cecb17530458b",

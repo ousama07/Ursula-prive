@@ -651,6 +651,13 @@
                 "custom_liquid": "{%- liquid\n  assign up_d = closest.product.description\n  assign up_parts = up_d | split: '<p><strong>Guida alle taglie'\n  assign up_out = up_parts[0]\n  if up_parts.size > 1\n    assign up_rest = up_parts[1] | split: '</table>'\n    assign up_tail = up_rest[1] | strip\n    assign up_start = up_tail | slice: 0, 7\n    if up_start == '<p><em>'\n      assign up_note = up_tail | split: '</p>' | first | append: '</p>'\n      assign up_tail = up_tail | remove_first: up_note\n    endif\n    assign up_out = up_out | append: up_tail\n  endif\n-%}\n<div class=\"rte up-desc\">{{ up_out }}</div>"
               },
               "blocks": {}
+            },
+            "up_sale_box": {
+              "type": "custom-liquid",
+              "name": "Offerta Early Black Friday",
+              "settings": {
+                "custom_liquid": "{% render 'up-sale-box' %}"
+              }
             }
           },
           "block_order": [
@@ -664,6 +671,7 @@
             "custom_liquid_ExHLT7",
             "buy_buttons_eYQEYi",
             "up_pay_icons",
+            "up_sale_box",
             "custom_liquid_DKMNm8",
             "group_X39hBc",
             "up_mini_reviews",

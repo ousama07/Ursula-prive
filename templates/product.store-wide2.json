@@ -634,6 +634,13 @@
                 "custom_liquid": "{% render 'up-title-fit' %}"
               },
               "blocks": {}
+            },
+            "up_sale_box": {
+              "type": "custom-liquid",
+              "name": "Offerta Early Black Friday",
+              "settings": {
+                "custom_liquid": "{% render 'up-sale-box' %}"
+              }
             }
           },
           "block_order": [
@@ -646,6 +653,7 @@
             "up_size_guide",
             "buy_buttons_eYQEYi",
             "up_pay_icons",
+            "up_sale_box",
             "up_trust",
             "group_X39hBc",
             "up_mini_reviews",
