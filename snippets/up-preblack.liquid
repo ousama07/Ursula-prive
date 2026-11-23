@@ -3,20 +3,26 @@
 
   Barra negra a todo lo ancho, entre la barra de anuncios y el encabezado.
 
-  PARA CAMBIAR LA FECHA DE FIN: edita upbf_fine. Es una fecha fija y
-  publica, igual para todos los visitantes, con la hora de Italia.
-  Cuando pasa, la barra desaparece sola: no se reinicia por visitante.
+  LA CUENTA ATRAS SE REINICIA SOLA. No hay fecha de fin: es un ciclo de
+  upbf_ciclo_ore horas contado desde upbf_ancla, asi que al llegar a cero
+  vuelve a empezar y la barra no desaparece nunca. Todos los visitantes ven
+  exactamente el mismo numero (va con la hora de Italia, no con la del
+  movil de cada uno).
 
+  PARA CAMBIAR LA DURACION DEL CICLO: edita upbf_ciclo_ore.
+  PARA QUITAR LA BARRA: quita el bloque de codigo del encabezado
+  (Personalizar tema > Encabezado > bloque "custom_liquid").
   PARA CAMBIAR EL DESCUENTO: edita upbf_sconto.
 {%- endcomment -%}
 {%- liquid
-  assign upbf_fine = '2026-11-23T11:31:00+01:00'
+  assign upbf_ciclo_ore = 6
+  assign upbf_ancla = '2026-11-23T00:00:00+01:00'
   assign upbf_sconto = '-50%'
 -%}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,600&text=Fridayfinoal&display=swap" media="print" onload="this.media='all'">
 
-<div class="upbf" data-upbf data-upbf-fine="{{ upbf_fine }}" hidden>
+<div class="upbf" data-upbf data-upbf-ancla="{{ upbf_ancla }}" data-upbf-ore="{{ upbf_ciclo_ore }}" hidden>
   <div class="upbf-w">
 
     <div class="upbf-brand">
@@ -102,8 +108,11 @@
   if (!el || el.dataset.upbfReady === '1') return;
   el.dataset.upbfReady = '1';
 
-  const fin = new Date(el.dataset.upbfFine).getTime();
-  if (isNaN(fin)) return;
+  // Ciclo que se reinicia: no hay fecha de fin, solo un ancla y una
+  // duracion. Al llegar a cero vuelve a empezar y la barra se queda.
+  const ancla = new Date(el.dataset.upbfAncla).getTime();
+  const ciclo = (parseFloat(el.dataset.upbfOre) || 6) * 3600000;
+  if (isNaN(ancla) || !ciclo) return;
 
   const h = el.querySelector('[data-upbf-h]');
   const m = el.querySelector('[data-upbf-m]');
@@ -111,9 +120,8 @@
   const dd = n => String(n).padStart(2, '0');
 
   const tick = () => {
-    const falta = fin - Date.now();
-    if (falta <= 0) { el.remove(); return; }
-    const t = Math.floor(falta / 1000);
+    const pasado = (((Date.now() - ancla) % ciclo) + ciclo) % ciclo;
+    const t = Math.ceil((ciclo - pasado) / 1000);
     h.textContent = dd(Math.floor(t / 3600));
     m.textContent = dd(Math.floor(t / 60) % 60);
     s.textContent = dd(t % 60);

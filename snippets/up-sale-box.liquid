@@ -1,10 +1,14 @@
 {%- comment -%}
   ÚRSULA PRIVÉE · CAJA DE OFERTA EN LA FICHA DE PRODUCTO
 
-  La cuenta atras NO tiene fecha propia: lee la de la barra
-  PRE-BLACK FRIDAY del encabezado (snippet up-preblack), asi que las dos
-  marcan siempre lo mismo. Si esa barra ya ha caducado y desaparece, aqui
-  se oculta la linea del contador y el resto de la caja se queda.
+  La cuenta atras va sincronizada con la barra PRE-BLACK FRIDAY del
+  encabezado (snippet up-preblack): mismo ancla y mismo ciclo, asi que las
+  dos marcan siempre el mismo segundo. Si la barra esta en la pagina, lee
+  sus datos; si no, usa los valores de respaldo del script, que son
+  identicos. Se reinicia sola: no desaparece.
+
+  SI CAMBIAS EL CICLO EN up-preblack.liquid, cambia tambien aqui los
+  valores de respaldo (UP_ANCLA y UP_ORE, al final del archivo).
 {%- endcomment -%}
 <style>
   .up-sale-box{background:#fbefed;border:1px solid #dfaaa3;border-radius:5px;
@@ -114,14 +118,22 @@
 
 <script>
 (() => {
+  // Respaldo: tiene que ser igual que upbf_ancla y upbf_ciclo_ore
+  // del snippet up-preblack.liquid (la barra del encabezado).
+  const UP_ANCLA = '2026-11-23T00:00:00+01:00';
+  const UP_ORE = 6;
+
   const box = document.querySelector('[data-upsale]');
   if (!box || box.dataset.upsaleReady === '1') return;
   box.dataset.upsaleReady = '1';
 
   const cd = box.querySelector('[data-upsale-cd]');
+  if (!cd) return;
+
   const barra = document.querySelector('[data-upbf]');
-  const fin = barra ? new Date(barra.dataset.upbfFine).getTime() : NaN;
-  if (!cd || isNaN(fin)) return;
+  const ancla = new Date((barra && barra.dataset.upbfAncla) || UP_ANCLA).getTime();
+  const ciclo = (parseFloat(barra && barra.dataset.upbfOre) || UP_ORE) * 3600000;
+  if (isNaN(ancla) || !ciclo) return;
 
   const h = cd.querySelector('[data-upsale-h]');
   const m = cd.querySelector('[data-upsale-m]');
@@ -129,9 +141,8 @@
   const dd = n => String(n).padStart(2, '0');
 
   const tick = () => {
-    const falta = fin - Date.now();
-    if (falta <= 0) { cd.remove(); return; }
-    const t = Math.floor(falta / 1000);
+    const pasado = (((Date.now() - ancla) % ciclo) + ciclo) % ciclo;
+    const t = Math.ceil((ciclo - pasado) / 1000);
     h.textContent = dd(Math.floor(t / 3600));
     m.textContent = dd(Math.floor(t / 60) % 60);
     s.textContent = dd(t % 60);
